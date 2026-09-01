@@ -71,6 +71,31 @@ flowchart TB
 - [ ] 云训练平台与自建集群的成本对比模型
 - [ ] 一次私有化微调项目的完整复盘（脱敏）
 
+## 精选资源
+
+> 筛选标准：官方与一手来源优先，近两年内容优先，经典明确标注。更新于 2026-09-01。
+
+### 预训练与大规模集群
+
+- [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437) — 千亿 MoE 低成本训练全复盘，架构与工程细节齐备（2024 · 论文）
+- [The Llama 3 Herd of Models](https://arxiv.org/abs/2407.21783) — 1.6 万卡集群预训练过程与故障复盘（2024 · 论文）
+- [MegaScale: Scaling LLM Training to More Than 10,000 GPUs](https://arxiv.org/abs/2402.15627) — 万卡训练实践：故障诊断、检查点与容错设计（2024 · 论文）
+- [The Ultra-Scale Playbook: Training LLMs on GPU Clusters](https://huggingface.co/spaces/nanotron/ultrascale-playbook) — 系统讲透显存与 ZeRO/TP/CP/PP 并行的训练指南（2025 · 课程教程）
+- [大模型在超大规模集群性能提升实践](https://www.infoq.cn/article/bcvHd1zutZqjWL0iBQFE) — 万卡集群一手优化经验：并行选型与通信瓶颈（2025 · 工程博客）
+- [从 0 手撕 LLM 分布式训练：DP, ZeRO, TP, PP, CP, EP](https://developer.volcengine.com/articles/7526781261617037355) — 中文从零推导六大并行策略（2025 · 工程博客）
+
+### 微调与对齐
+
+- [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) — 低秩高效微调的奠基之作（2021 · 论文）
+- [Practical Tips for Finetuning LLMs Using LoRA](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms) — 实验讲透 rank/alpha 等超参调优，极具实操性（2023 · 工程博客）
+- [Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290) — 直接偏好优化取代 RLHF 的对齐里程碑（2023 · 论文）
+- [从 RLHF 到 DPO：多种人类偏好对齐算法原理对比](https://developer.aliyun.com/article/1559136) — 中文对比各对齐算法原理，推导清晰（2024 · 工程博客）
+- [想训大模型？这里有一份避坑指南](https://hub.baai.ac.cn/view/25052) — 预训练数据、超参、loss 尖峰等常见坑系统总结（2023 · 工程博客）
+
+### 数据工程
+
+- [FineWeb: decanting the web for the finest text data at scale](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1) — 15T token 预训练语料构建管线与消融实验全公开（2024 · 工程博客）
+
 ## 参考与衔接
 
 - 训练完成后的下一站：[大模型推理部署实战](/ai/inference/llm-inference)

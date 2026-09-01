@@ -32,6 +32,34 @@ flowchart LR
 - 多模型路由与降级策略
 - AI 应用的安全基线（提示注入、数据泄露、内容合规）
 
+## 精选资源
+
+> 筛选标准：官方与一手来源优先，近两年内容优先，经典明确标注。更新于 2026-09-01。
+
+### RAG
+
+- [Contextual Retrieval in AI Systems](https://www.anthropic.com/engineering/contextual-retrieval) — 上下文嵌入 + BM25 混合检索的生产调优，大幅降低检索失败（2024 · 工程博客）
+- [Retrieval-Augmented Generation for LLMs: A Survey](https://arxiv.org/abs/2312.10997) — 系统综述 RAG 三大范式与优化方向（2023 · 论文）
+- [从零搭建企业私有知识库：RAG + 大模型实战](https://developer.aliyun.com/article/1726467) — 十万级文档知识库生产落地复盘，含分块重排与踩坑（2026 · 工程博客）
+- [Ragas Documentation](https://docs.ragas.io/en/stable/) — faithfulness 等指标的官方文档，无参考自动化评测（2025 · 官方文档）
+
+### Agent 与 MCP
+
+- [What is the Model Context Protocol (MCP)?](https://modelcontextprotocol.io/docs/getting-started/intro) — MCP 官方规范：协议架构与接入方式（2026 · 官方文档）
+- [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) — 辨析工作流与 Agent 并给出设计模式，智能体实践经典（2024 · 工程博客）
+- [MCP 火爆半年后，是时候对它"祛魅"了](https://www.infoq.cn/article/aojruzcywajsxgj00jv6) — 冷静剖析 MCP 架构本质与生态炒作（2025 · 工程博客）
+- [Berkeley Function Calling Leaderboard](https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html) — 函数调用能力权威横评榜单（2024 · 工程博客）
+
+### Prompt 工程
+
+- [Prompt Engineering Guide（中文版）](https://www.promptingguide.ai/zh) — 最权威的提示工程教程中文版（持续更新 · 课程教程）
+
+### 安全
+
+- [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM 应用十大风险权威清单（2025 · 行业报告）
+- [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — 点明提示注入风险三要素与防御思路（2025 · 工程博客）
+- [提示词注入攻击方法与多模型纵深防御架构](https://developer.aliyun.com/article/1667146) — 中文系统梳理攻击手法与纵深防御（2025 · 工程博客）
+
 ## 衔接
 
 - 上游：[推理与算力](/ai/inference/) · [模型训练](/ai/training/)
