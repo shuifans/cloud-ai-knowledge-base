@@ -146,12 +146,14 @@ export default withMermaid(
           {
             text: '07 · 技术编年史',
             items: [
-              { text: '十年五浪：总纲', link: '/chronicle/' },
+              { text: '十年六浪：总纲', link: '/chronicle/' },
               { text: '移动互联网时代（提纲）', link: '/chronicle/mobile-internet' },
               { text: '直播时代（提纲）', link: '/chronicle/livestream' },
+              { text: '短视频时代（提纲）', link: '/chronicle/short-video' },
               { text: '区块链时代（提纲）', link: '/chronicle/blockchain' },
               { text: '元宇宙时代（提纲）', link: '/chronicle/metaverse' },
               { text: 'AI 大模型时代（提纲）', link: '/chronicle/ai-era' },
+              { text: '暗流：信创与国产化', link: '/chronicle/xinchuang' },
             ],
           },
         ],

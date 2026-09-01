@@ -14,7 +14,7 @@
 | 04 · 云原生 | `docs/cloud-native/` | Kubernetes、微服务、可观测 |
 | 05 · AI 与大模型 | `docs/ai/` | 推理部署、GPU 成本、RAG、Agent |
 | 06 · 解决方案方法论 | `docs/methodology/` | 架构设计、上云迁移、高可用 |
-| 07 · 技术编年史 | `docs/chronicle/` | 移动互联网→直播→区块链→元宇宙→AI |
+| 07 · 技术编年史 | `docs/chronicle/` | 移动互联网→直播→短视频→区块链→元宇宙→AI，及信创暗流 |
 
 文章状态：无标记 = 完整文章；🚧 = 提纲页（知识框架已就位，正文待扩充）。
 

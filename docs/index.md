@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: 云与 AI 知识体系
-  text: 十年云实践 · 五浪技术变迁
+  text: 十年云实践 · 六浪技术变迁
   tagline: 从 OpenStack 云计算基座到大模型应用，一名解决方案架构师的系统性知识沉淀
   actions:
     - theme: brand
@@ -46,14 +46,14 @@ features:
     linkText: 进入
   - icon: 📜
     title: 07 · 技术编年史
-    details: 移动互联网→直播→区块链→元宇宙→AI 大模型：十年五浪
+    details: 移动互联网→直播→短视频→区块链→元宇宙→AI 大模型：十年六浪与信创暗流
     link: /chronicle/
     linkText: 进入
 ---
 
 <div class="home-extra">
 
-## 技术编年史：十年五浪
+## 技术编年史：十年六浪
 
 <p class="subtitle">每一浪技术周期都有它独特的架构命题。这里记录的不只是技术，还有一线亲历者的观察。</p>
 

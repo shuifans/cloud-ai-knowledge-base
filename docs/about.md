@@ -35,7 +35,7 @@ outline: [2, 3]
 - [04 · 云原生](/cloud-native/)：Kubernetes、微服务、可观测
 - [05 · AI 与大模型](/ai/)：推理部署、GPU 成本、RAG、Agent
 - [06 · 解决方案方法论](/methodology/)：架构设计、迁移、高可用
-- [07 · 技术编年史](/chronicle/)：十年五浪的技术周期观察
+- [07 · 技术编年史](/chronicle/)：十年六浪与信创暗流的技术周期观察
 
 ## 更新计划
 

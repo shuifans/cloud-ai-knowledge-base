@@ -23,6 +23,13 @@ const eras: Era[] = [
     link: '/chronicle/livestream',
   },
   {
+    period: '2018 – 2021',
+    title: '短视频',
+    essence: '推荐规模化与海量媒体成本战争，算法成为基础设施',
+    keywords: ['推荐系统', '海量存储', '转码优化'],
+    link: '/chronicle/short-video',
+  },
+  {
     period: '2017 – 2019',
     title: '区块链',
     essence: '分布式系统的再探索：共识、信任与性能的不可能三角',
