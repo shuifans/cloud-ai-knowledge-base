@@ -3,7 +3,7 @@ title: 导读：云原生知识框架
 outline: [2, 3]
 ---
 
-# 04 · 云原生
+# 云原生
 
 > 云原生不是"把应用塞进容器"，而是一整套以 Kubernetes 为底座、以声明式 API 为接口、以可观测性为生命线的工程体系。这一域记录从单机应用到大规模生产集群的落地经验。
 
@@ -31,9 +31,9 @@ flowchart TB
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [Kubernetes 核心机制与企业级落地](/cloud-native/kubernetes) | ✅ 已发布 | 种子文：声明式/控制器/调度 + 企业落地清单 |
-| [微服务治理](/cloud-native/microservice) | 🚧 提纲 | 拆分粒度、注册配置、限流熔断、Mesh |
-| [可观测体系](/cloud-native/observability) | 🚧 提纲 | 指标/日志/链路三支柱与告警治理 |
+| [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) | ✅ 已发布 | 种子文：声明式/控制器/调度 + 企业落地清单 |
+| [微服务治理](/cloud/native/microservice) | 🚧 提纲 | 拆分粒度、注册配置、限流熔断、Mesh |
+| [可观测体系](/cloud/native/observability) | 🚧 提纲 | 指标/日志/链路三支柱与告警治理 |
 
 ## 一句话入门
 

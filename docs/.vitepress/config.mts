@@ -9,7 +9,7 @@ export default withMermaid(
   defineConfig({
     title: '云与 AI 知识体系',
     description:
-      '一名云解决方案架构师的十年沉淀：从 OpenStack 云计算基座、全栈云产品到云原生与大模型应用的系统性知识体系。',
+      '一名云解决方案架构师的十年沉淀：从 OpenStack 云计算基座、全栈云产品到模型训练、推理与大模型应用的系统性知识体系。',
     lang: 'zh-CN',
     base,
     cleanUrls: true,
@@ -65,75 +65,95 @@ export default withMermaid(
       },
 
       nav: [
-        { text: '云计算基座', link: '/foundation/' },
-        { text: '计算·存储·网络', link: '/csn/' },
-        { text: '数据', link: '/data/' },
-        { text: '云原生', link: '/cloud-native/' },
-        { text: 'AI 与大模型', link: '/ai/' },
+        {
+          text: '云计算',
+          items: [
+            { text: '云计算全景', link: '/cloud/' },
+            { text: '云计算基座', link: '/cloud/foundation/' },
+            { text: '计算·存储·网络', link: '/cloud/infra/' },
+            { text: '数据库·大数据', link: '/cloud/data/' },
+            { text: '云原生', link: '/cloud/native/' },
+          ],
+        },
+        {
+          text: '人工智能',
+          items: [
+            { text: '人工智能全景', link: '/ai/' },
+            { text: '模型训练', link: '/ai/training/' },
+            { text: '推理与算力', link: '/ai/inference/' },
+            { text: '大模型应用', link: '/ai/application/' },
+          ],
+        },
         { text: '方法论', link: '/methodology/' },
         { text: '编年史', link: '/chronicle/' },
         { text: '关于', link: '/about' },
       ],
 
       sidebar: {
-        '/foundation/': [
+        '/cloud/': [
+          { text: '云计算全景', link: '/cloud/' },
           {
-            text: '01 · 云计算基座',
+            text: '云计算基座',
             items: [
-              { text: '导读：基座知识框架', link: '/foundation/' },
-              { text: 'OpenStack 架构与十年演进', link: '/foundation/openstack' },
-              { text: '虚拟化与 KVM（提纲）', link: '/foundation/virtualization' },
-              { text: 'SDN / NFV（提纲）', link: '/foundation/sdn-nfv' },
+              { text: '导读：基座知识框架', link: '/cloud/foundation/' },
+              { text: 'OpenStack 架构与十年演进', link: '/cloud/foundation/openstack' },
+              { text: '虚拟化与 KVM（提纲）', link: '/cloud/foundation/virtualization' },
+              { text: 'SDN / NFV（提纲）', link: '/cloud/foundation/sdn-nfv' },
             ],
           },
-        ],
-        '/csn/': [
           {
-            text: '02 · 计算 · 存储 · 网络',
+            text: '计算 · 存储 · 网络',
             items: [
-              { text: '导读：三大件知识框架', link: '/csn/' },
-              { text: '弹性计算（提纲）', link: '/csn/compute' },
-              { text: '云存储（提纲）', link: '/csn/storage' },
-              { text: '云网络（提纲）', link: '/csn/network' },
+              { text: '导读：三大件知识框架', link: '/cloud/infra/' },
+              { text: '弹性计算（提纲）', link: '/cloud/infra/compute' },
+              { text: '云存储（提纲）', link: '/cloud/infra/storage' },
+              { text: '云网络（提纲）', link: '/cloud/infra/network' },
             ],
           },
-        ],
-        '/data/': [
           {
-            text: '03 · 数据库 · 大数据',
+            text: '数据库 · 大数据',
             items: [
-              { text: '导读：数据层知识框架', link: '/data/' },
-              { text: '数据库选型（提纲）', link: '/data/database' },
-              { text: '大数据体系（提纲）', link: '/data/bigdata' },
+              { text: '导读：数据层知识框架', link: '/cloud/data/' },
+              { text: '数据库选型（提纲）', link: '/cloud/data/database' },
+              { text: '大数据体系（提纲）', link: '/cloud/data/bigdata' },
             ],
           },
-        ],
-        '/cloud-native/': [
           {
-            text: '04 · 云原生',
+            text: '云原生',
             items: [
-              { text: '导读：云原生知识框架', link: '/cloud-native/' },
-              { text: 'Kubernetes 核心机制与企业级落地', link: '/cloud-native/kubernetes' },
-              { text: '微服务治理（提纲）', link: '/cloud-native/microservice' },
-              { text: '可观测体系（提纲）', link: '/cloud-native/observability' },
+              { text: '导读：云原生知识框架', link: '/cloud/native/' },
+              { text: 'Kubernetes 核心机制与企业级落地', link: '/cloud/native/kubernetes' },
+              { text: '微服务治理（提纲）', link: '/cloud/native/microservice' },
+              { text: '可观测体系（提纲）', link: '/cloud/native/observability' },
             ],
           },
         ],
         '/ai/': [
+          { text: '人工智能全景', link: '/ai/' },
           {
-            text: '05 · AI 与大模型',
+            text: '模型训练',
+            items: [{ text: '模型训练导读', link: '/ai/training/' }],
+          },
+          {
+            text: '推理与算力',
             items: [
-              { text: '导读：AI 技术栈全景', link: '/ai/' },
-              { text: '大模型推理部署实战', link: '/ai/llm-inference' },
-              { text: 'GPU 选型与推理成本测算', link: '/ai/gpu-sizing' },
-              { text: '企业级 RAG 架构设计', link: '/ai/rag-architecture' },
-              { text: 'Agent 与 MCP（提纲）', link: '/ai/agent' },
+              { text: '子域总览', link: '/ai/inference/' },
+              { text: '大模型推理部署实战', link: '/ai/inference/llm-inference' },
+              { text: 'GPU 选型与推理成本测算', link: '/ai/inference/gpu-sizing' },
+            ],
+          },
+          {
+            text: '大模型应用',
+            items: [
+              { text: '子域总览', link: '/ai/application/' },
+              { text: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
+              { text: 'Agent 与 MCP（提纲）', link: '/ai/application/agent' },
             ],
           },
         ],
         '/methodology/': [
           {
-            text: '06 · 解决方案方法论',
+            text: '解决方案方法论',
             items: [
               { text: '导读：SA 能力地图', link: '/methodology/' },
               { text: '解决方案架构设计方法论', link: '/methodology/architecture-design' },
@@ -144,7 +164,7 @@ export default withMermaid(
         ],
         '/chronicle/': [
           {
-            text: '07 · 技术编年史',
+            text: '技术编年史',
             items: [
               { text: '十年六浪：总纲', link: '/chronicle/' },
               { text: '移动互联网时代（提纲）', link: '/chronicle/mobile-internet' },

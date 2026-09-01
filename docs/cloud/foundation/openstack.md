@@ -126,4 +126,4 @@ OpenStack 没有消失，而是完成了历史使命后的"退隐"：
 
 - [OpenStack 官方架构文档](https://docs.openstack.org/)
 - [OpenStack 项目历史与治理结构](https://www.openstack.org/)
-- 站内相关：[虚拟化与 KVM](/foundation/virtualization) · [SDN / NFV](/foundation/sdn-nfv) · [上云迁移方法论](/methodology/cloud-migration)
+- 站内相关：[虚拟化与 KVM](/cloud/foundation/virtualization) · [SDN / NFV](/cloud/foundation/sdn-nfv) · [上云迁移方法论](/methodology/cloud-migration)

@@ -54,7 +54,7 @@ flowchart TD
 
 - 资产盘点：应用、依赖关系、数据量、合规属性
 - 依赖分析是重中之重：**画出系统间调用与数据依赖图，迁移批次按依赖拓扑切分**——被依赖多的底座系统先迁，叶子系统后迁
-- 目标架构与网络规划（VPC、混合云互联）先行设计（见 [云网络提纲](/csn/network)）
+- 目标架构与网络规划（VPC、混合云互联）先行设计（见 [云网络提纲](/cloud/infra/network)）
 - 制定回滚预案：每个批次明确"什么条件触发回滚、回滚到哪一步、谁下令"
 
 ### 阶段二：迁移与验证（占 50%）
@@ -95,4 +95,4 @@ flowchart TD
 ## 参考资料
 
 - 各云厂商官方迁移中心与最佳实践文档
-- 站内相关：[解决方案架构设计方法论](/methodology/architecture-design) · [云网络](/csn/network) · [高可用与容灾设计](/methodology/ha-dr)
+- 站内相关：[解决方案架构设计方法论](/methodology/architecture-design) · [云网络](/cloud/infra/network) · [高可用与容灾设计](/methodology/ha-dr)

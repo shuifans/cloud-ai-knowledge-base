@@ -6,15 +6,14 @@
 
 ## 内容结构
 
-| 知识域 | 路径 | 主题 |
+知识体系分为四大支柱：
+
+| 支柱 | 路径 | 主题 |
 | --- | --- | --- |
-| 01 · 云计算基座 | `docs/foundation/` | 虚拟化、OpenStack、SDN/NFV |
-| 02 · 计算·存储·网络 | `docs/csn/` | ECS/OSS/VPC 三大件 |
-| 03 · 数据库·大数据 | `docs/data/` | RDS/PolarDB、MaxCompute/Flink |
-| 04 · 云原生 | `docs/cloud-native/` | Kubernetes、微服务、可观测 |
-| 05 · AI 与大模型 | `docs/ai/` | 推理部署、GPU 成本、RAG、Agent |
-| 06 · 解决方案方法论 | `docs/methodology/` | 架构设计、上云迁移、高可用 |
-| 07 · 技术编年史 | `docs/chronicle/` | 移动互联网→直播→短视频→区块链→元宇宙→AI，及信创暗流 |
+| ☁️ 云计算 | `docs/cloud/` | 基座（虚拟化/OpenStack）· 计算·存储·网络 · 数据库·大数据 · 云原生 |
+| 🤖 人工智能 | `docs/ai/` | 模型训练 · 推理与算力（GPU）· 大模型应用（RAG/Agent） |
+| 🧭 解决方案方法论 | `docs/methodology/` | 架构设计、上云迁移、高可用 |
+| 📜 技术编年史 | `docs/chronicle/` | 移动互联网→直播→短视频→区块链→元宇宙→AI，及信创暗流 |
 
 文章状态：无标记 = 完整文章；🚧 = 提纲页（知识框架已就位，正文待扩充）。
 

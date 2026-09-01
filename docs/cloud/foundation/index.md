@@ -3,7 +3,7 @@ title: 导读：云计算基座知识框架
 outline: [2, 3]
 ---
 
-# 01 · 云计算基座
+# 云计算基座
 
 > 理解云从哪里来。在公有云产品（ECS、VPC、SLB……）成为"水电煤"之前，先有一代工程师在 OpenStack 与虚拟化层之上手工搭建"私有云"。理解基座，才能理解今天所有云产品底层的设计取舍。
 
@@ -43,9 +43,9 @@ mindmap
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [OpenStack 架构与十年演进](/foundation/openstack) | ✅ 已发布 | 种子文：组件全景、数据流与基座的兴衰思考 |
-| [虚拟化与 KVM](/foundation/virtualization) | 🚧 提纲 | KVM/QEMU、virtio、性能开销 |
-| [SDN / NFV](/foundation/sdn-nfv) | 🚧 提纲 | 控制面/数据面分离、云网络实现 |
+| [OpenStack 架构与十年演进](/cloud/foundation/openstack) | ✅ 已发布 | 种子文：组件全景、数据流与基座的兴衰思考 |
+| [虚拟化与 KVM](/cloud/foundation/virtualization) | 🚧 提纲 | KVM/QEMU、virtio、性能开销 |
+| [SDN / NFV](/cloud/foundation/sdn-nfv) | 🚧 提纲 | 控制面/数据面分离、云网络实现 |
 
 ## 一句话入门
 

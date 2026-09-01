@@ -6,7 +6,10 @@
 
 - 个人知识库网站：**云与 AI 知识体系**，作者为从业十余年的云解决方案架构师
 - 技术栈：VitePress 1.x + vitepress-plugin-mermaid，纯中文
-- 目录：`docs/` 下 7 个知识域（foundation / csn / data / cloud-native / ai / methodology / chronicle）
+- 分类体系：四大支柱
+  - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·大数据）/ native（云原生）
+  - **人工智能** `docs/ai/`：training（模型训练）/ inference（推理与算力）/ application（大模型应用）
+  - **方法论** `docs/methodology/` · **编年史** `docs/chronicle/`
 - 内容分级：完整文章（无标记）· 提纲页（🚧 提示块 + 要点大纲）
 
 ## 常用命令

@@ -13,7 +13,7 @@ outline: [2, 3]
 
 1. **自回归生成**：输出是逐 token 串行的，延迟天然随输出长度线性增长
 2. **KV Cache**：每个请求的上下文状态都要常驻显存，一个 70B 模型 + 长上下文请求，KV Cache 可能比权重本身还占地方
-3. **显存墙**：推理瓶颈通常不是算力而是**显存容量与带宽**——这也决定了 GPU 选型逻辑（见 [GPU 选型与推理成本测算](/ai/gpu-sizing)）
+3. **显存墙**：推理瓶颈通常不是算力而是**显存容量与带宽**——这也决定了 GPU 选型逻辑（见 [GPU 选型与推理成本测算](/ai/inference/gpu-sizing)）
 
 由此引出一个反直觉的结论：**推理优化的主线，不是让单次计算更快，而是让一张卡在同一时间服务更多请求**。
 
@@ -115,4 +115,4 @@ flowchart LR
 
 - [vLLM 项目文档](https://docs.vllm.ai/)
 - [PagedAttention 论文（Efficient Memory Management for LLM Serving）](https://arxiv.org/abs/2309.06180)
-- 站内相关：[GPU 选型与推理成本测算](/ai/gpu-sizing) · [企业级 RAG 架构设计](/ai/rag-architecture)
+- 站内相关：[GPU 选型与推理成本测算](/ai/inference/gpu-sizing) · [企业级 RAG 架构设计](/ai/application/rag-architecture)
