@@ -36,7 +36,8 @@ export default withMermaid(
     },
 
     sitemap: {
-      hostname: 'https://shuifans.github.io',
+      // 项目站点：hostname 需包含仓库路径并以 / 结尾，保证 URL 正确拼接
+      hostname: 'https://shuifans.github.io/cloud-ai-knowledge-base/',
     },
 
     themeConfig: {
