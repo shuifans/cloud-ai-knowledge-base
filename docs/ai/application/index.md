@@ -13,6 +13,7 @@ outline: [2, 3]
 | --- | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | ✅ 已发布 | 解析/切分/混合检索/重排/评测全链路 |
 | [Agent 与 MCP](/ai/application/agent) | 🚧 提纲 | Function Calling、工具编排、落地边界 |
+| [多模态模型与视频生成](/ai/application/multimodal) | 🚧 提纲 | 文生视频/图生视频、评测与本地部署路线 |
 
 ## 子域地图
 
@@ -49,6 +50,14 @@ flowchart LR
 - [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) — 辨析工作流与 Agent 并给出设计模式，智能体实践经典（2024 · 工程博客）
 - [MCP 火爆半年后，是时候对它"祛魅"了](https://www.infoq.cn/article/aojruzcywajsxgj00jv6) — 冷静剖析 MCP 架构本质与生态炒作（2025 · 工程博客）
 - [Berkeley Function Calling Leaderboard](https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html) — 函数调用能力权威横评榜单（2024 · 工程博客）
+
+### Agent 工具链与评测（2026-09-02 书签补充）
+
+- [anthropics/skills — Agent Skills](https://github.com/anthropics/skills) — Anthropic 官方 Agent Skills 仓库与规范示例（持续更新 · 开源项目）
+- [Orca — Agent Development Environment](https://www.onorca.dev/) — 面向 Agent 的 ADE：多智能体编排与终端自动化（2026 · 工程博客）
+- [Agent Arena Leaderboard](https://arena.ai/leaderboard/agent) — Agent 任务能力排行榜，跟踪模型智能体化进展（持续更新 · 行业报告）
+- [SWE-Marathon](https://www.swe-marathon.org/) — 长程软件工程基准，测 Agent 自主开发的持续作战能力（2026 · 行业报告）
+- [Hermes Agent Documentation](https://hermes-agent.nousresearch.com/docs/) — Nous 开源 Agent 框架官方文档（2026 · 官方文档）
 
 ### Prompt 工程
 

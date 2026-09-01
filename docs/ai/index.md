@@ -60,6 +60,7 @@ flowchart LR
 | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | ✅ 已发布 |
 | [Agent 与 MCP](/ai/application/agent) | 🚧 提纲 |
+| [多模态模型与视频生成](/ai/application/multimodal) | 🚧 提纲 |
 
 ## 一句话入门
 

@@ -47,3 +47,5 @@ outline: [2, 3]
 - [ ] 补充 Function Calling 的 Schema 设计案例
 - [ ] 补充 MCP Server 自建的最小示例
 - [ ] 补充 Agent 成本失控的典型案例分析
+- [ ] Agent 开发环境（ADE）横评：Orca 类工具的多智能体编排模式（2026-09 书签研究方向）
+- [ ] Agent 评测体系：任务型榜单（Agent Arena、SWE-Marathon 类）的指标解读与选型应用（2026-09 书签研究方向）

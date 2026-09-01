@@ -148,6 +148,7 @@ export default withMermaid(
               { text: '子域总览', link: '/ai/application/' },
               { text: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
               { text: 'Agent 与 MCP（提纲）', link: '/ai/application/agent' },
+              { text: '多模态与视频生成（提纲）', link: '/ai/application/multimodal' },
             ],
           },
         ],

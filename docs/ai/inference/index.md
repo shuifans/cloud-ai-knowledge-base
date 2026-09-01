@@ -57,6 +57,13 @@ flowchart LR
 
 - [The Best GPUs for Deep Learning — An In-depth Analysis](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/) — 算力/显存/带宽/成本四维选型方法论，公认经典（2023 · 工程博客）
 
+### 模型服务与选型（2026-09-02 书签补充）
+
+- [Artificial Analysis](https://artificialanalysis.ai/) — 独立第三方的模型能力/速度/价格横评，跨厂商选型参考（持续更新 · 行业报告）
+- [OpenRouter Models](https://openrouter.ai/models) — 模型聚合路由：统一 API 接入数百模型与实时价格表（持续更新 · 平台清单）
+- [阿里云百炼大模型服务平台官方文档](https://help.aliyun.com/zh/model-studio/) — 模型调用、应用编排与微调的一站式文档（持续更新 · 官方文档）
+- [火山方舟官方文档](https://www.volcengine.com/docs/82379) — 方舟 MaaS 平台的模型服务与应用开发文档（持续更新 · 官方文档）
+
 ## 衔接
 
 - 上游：[模型训练](/ai/training/) · 下游：[大模型应用](/ai/application/)
