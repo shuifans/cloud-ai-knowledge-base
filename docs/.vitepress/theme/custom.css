@@ -1,0 +1,71 @@
+/* 品牌色与中文排版优化 */
+:root {
+  --vp-c-brand-1: #0f6fff;
+  --vp-c-brand-2: #2b7fff;
+  --vp-c-brand-3: #0f6fff;
+  --vp-c-brand-soft: rgba(15, 111, 255, 0.14);
+
+  --vp-font-family-base:
+    'Inter var', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC',
+    system-ui, -apple-system, sans-serif;
+}
+
+.dark {
+  --vp-c-brand-1: #4d9aff;
+  --vp-c-brand-2: #2b7fff;
+  --vp-c-brand-3: #4d9aff;
+  --vp-c-brand-soft: rgba(77, 154, 255, 0.16);
+}
+
+/* 首页 hero 标题渐变 */
+.VPHero .name .clip {
+  background: linear-gradient(120deg, #0f6fff 30%, #7c3aed 70%, #f43f5e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* 首页自定义内容区居中收窄 */
+.home-extra {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.home-extra h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.home-extra .subtitle {
+  text-align: center;
+  color: var(--vp-c-text-2);
+  margin-bottom: 32px;
+}
+
+/* Mermaid 图容器留白 */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+}
+
+/* 提示块微调 */
+.custom-block {
+  border-width: 1px;
+}
+
+/* 状态标签 */
+.badge-done {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.badge-draft {
+  color: #d97706;
+  font-weight: 600;
+}
