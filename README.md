@@ -2,7 +2,7 @@
 
 一名云解决方案架构师的十年知识沉淀：从 OpenStack 云计算基座、全栈云产品（计算/存储/网络/数据库/大数据/云原生）到 AI 大模型应用的系统性个人知识库。
 
-> 🔗 站点地址：<https://yourname.github.io/cloud-ai-knowledge-base/>（建仓后替换为实际地址）
+> 🔗 站点地址：<https://shuifans.github.io/cloud-ai-knowledge-base/>
 
 ## 内容结构
 
@@ -36,8 +36,7 @@ npm run docs:preview
 首次部署需要：
 
 1. 仓库 Settings → Pages → Source 选择 **GitHub Actions**
-2. 若仓库不是 `<user>.github.io`，工作流已通过 `VITEPRESS_BASE` 自动注入仓库名前缀
-3. 全局替换代码与文档中的 `yourname` 占位符为你的 GitHub 用户名
+2. 仓库名不是 `<user>.github.io` 时，工作流已通过 `VITEPRESS_BASE` 自动注入仓库名前缀，无需手动配置
 
 ## 技术栈
 

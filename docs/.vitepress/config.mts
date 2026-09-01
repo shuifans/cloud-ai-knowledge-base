@@ -36,7 +36,7 @@ export default withMermaid(
     },
 
     sitemap: {
-      hostname: 'https://example.github.io',
+      hostname: 'https://shuifans.github.io',
     },
 
     themeConfig: {
@@ -157,11 +157,11 @@ export default withMermaid(
       },
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/yourname/cloud-ai-knowledge-base' },
+        { icon: 'github', link: 'https://github.com/shuifans/cloud-ai-knowledge-base' },
       ],
 
       editLink: {
-        pattern: 'https://github.com/yourname/cloud-ai-knowledge-base/edit/main/docs/:path',
+        pattern: 'https://github.com/shuifans/cloud-ai-knowledge-base/edit/main/docs/:path',
         text: '在 GitHub 上编辑此页',
       },
 
