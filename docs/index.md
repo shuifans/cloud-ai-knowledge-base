@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 云与 AI 知识体系
   text: 十年云实践 · 六浪技术变迁
-  tagline: 从 OpenStack 云计算基座到模型训练、推理与大模型应用，一名解决方案架构师的系统性知识沉淀
+  tagline: 从 OpenStack 云计算基座到模型架构、AI Infra 与 Agentic——一名解决方案架构师的完整知识体系
   actions:
     - theme: brand
       text: 从云计算开始
@@ -16,22 +16,32 @@ hero:
 features:
   - icon: ☁️
     title: 云计算
-    details: 基座 → 计算·存储·网络 → 数据 → 云原生：四层完整技术栈的原理、选型与实践
+    details: 基座 → 计算·存储·网络 → 数据 → 云原生：四层完整技术栈
     link: /cloud/
     linkText: 进入
-  - icon: 🤖
+  - icon: 🧬
     title: 人工智能
-    details: 训练 → 推理与算力 → 大模型应用：当前的主战场，成本与效果的双重工程
+    details: 模型架构演进（ML→大模型→多模态）+ AI Infra + 大模型应用
     link: /ai/
+    linkText: 进入
+  - icon: 🤖
+    title: Agentic
+    details: 智能体技术全景：热点编年史、开发框架对比与落地治理
+    link: /agentic/
     linkText: 进入
   - icon: 🧭
     title: 解决方案方法论
     details: 架构设计、上云迁移、高可用 —— SA 视角的方法沉淀
     link: /methodology/
     linkText: 进入
+  - icon: 🎯
+    title: 行业场景
+    details: 技术知识的行业落地：游戏行业云技术地图开篇
+    link: /industry/gaming
+    linkText: 进入
   - icon: 📜
     title: 技术编年史
-    details: 十年六浪与信创暗流：移动互联网到 AI 大模型的技术周期亲历观察
+    details: 十年六浪与信创暗流：技术周期的亲历观察
     link: /chronicle/
     linkText: 进入
 ---

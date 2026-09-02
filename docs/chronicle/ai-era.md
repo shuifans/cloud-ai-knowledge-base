@@ -26,7 +26,7 @@ outline: [2, 3]
 
 - 从 POC 到生产的第一道坎：不是效果，是成本与延迟
 - 知识库问答（RAG）的落地真相：检索质量决定上限，见 [RAG 架构设计](/ai/application/rag-architecture)
-- GPU 账单的震撼：见 [GPU 选型与推理成本测算](/ai/inference/gpu-sizing)
+- GPU 账单的震撼：见 [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
 
 ### 与过去四浪的对照
 

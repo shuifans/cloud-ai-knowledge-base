@@ -11,8 +11,8 @@ outline: [2, 3]
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [大模型推理部署实战](/ai/inference/llm-inference) | ✅ 已发布 | vLLM/Continuous Batching/量化/生产部署架构 |
-| [GPU 选型与推理成本测算](/ai/inference/gpu-sizing) | ✅ 已发布 | 从模型规格到卡数到单位成本的完整测算链 |
+| [大模型推理部署实战](/ai/infra/inference/llm-inference) | ✅ 已发布 | vLLM/Continuous Batching/量化/生产部署架构 |
+| [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | ✅ 已发布 | 从模型规格到卡数到单位成本的完整测算链 |
 
 ## 子域地图
 
@@ -68,7 +68,15 @@ flowchart LR
 
 - [打造高性能大模型推理平台之 Prefill、Decode 分离系列（一）：SplitWise](https://zhuanlan.zhihu.com/p/701772045) — PD 分离提高 GPU 利用率的原理与工程解读（2024 · 工程博客）
 - [大模型推理服务全景图](https://mp.weixin.qq.com/s/yQ6Xn3NAiE3CmCjUbtt8RQ) — 推理服务技术栈的全景梳理（2025 · 工程博客）
+- [Mooncake: A KVCache-centric Disaggregated Architecture](https://arxiv.org/abs/2407.00079) — PD 分离生产实践：同 SLO 下多承接 +107~115% 请求（2024 · 论文）
+
+## 2026-09 前沿速览
+
+- **PD 分离已成主流选项**：Mooncake 以 MooncakeConnector 集成进 vLLM，vLLM/SGLang/Dynamo 均支持；KV Cache 池化（跨实例共享、SSD 分层）是规模化关键
+- **精度路线**：FP8 已是生产主流（B200 上吞吐约为 H100 的 2.5–4×）；**FP4（NVFP4）是 2026–2027 主战场**（Rubin 单卡 50 PF sparse）
+- **投机解码生产化**：实测普遍 2–3× 提速（无损），最佳场景为自托管、延迟敏感的中低 QPS 服务
+- **推理经济学**：GPU 时价分层剧烈（同卡价差最高 13.8×）；按秒/按 token 的 Serverless GPU 兴起；prefill 池（高算力卡）与 decode 池（高带宽卡）分池部署成为新实践
 
 ## 衔接
 
-- 上游：[模型训练](/ai/training/) · 下游：[大模型应用](/ai/application/)
+- 上游：[模型训练](/ai/infra/training) · 下游：[大模型应用](/ai/application/)

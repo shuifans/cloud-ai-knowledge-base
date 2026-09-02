@@ -38,7 +38,7 @@ outline: [2, 3]
 ### 5. GPU 与异构计算
 
 - GPU 实例的定位：从"图形渲染"到"AI 训练/推理"的主力
-- 选型要点见 [GPU 选型与推理成本测算](/ai/inference/gpu-sizing)
+- 选型要点见 [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
 
 ## 计划补充
 

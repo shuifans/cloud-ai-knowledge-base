@@ -46,8 +46,8 @@ outline: [2, 3]
 
 - [ ] 主流视频生成模型能力对比（控制能力/时长/分辨率/成本）
 - [ ] ComfyUI 本地部署实践：从环境到出片
-- [ ] 视频生成的推理成本测算（方法复用 [GPU 选型与推理成本测算](/ai/inference/gpu-sizing)）
+- [ ] 视频生成的推理成本测算（方法复用 [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)）
 
 ## 衔接
 
-- 同层：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [Agent 与 MCP](/ai/application/agent)
+- 同层：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [Agent 与 MCP](/agentic/)

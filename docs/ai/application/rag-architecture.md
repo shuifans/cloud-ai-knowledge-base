@@ -127,4 +127,4 @@ flowchart LR
 
 - [Retrieval-Augmented Generation 综述](https://arxiv.org/abs/2312.10997)
 - [RAGAS 评测框架](https://docs.ragas.io/)
-- 站内相关：[大模型推理部署实战](/ai/inference/llm-inference) · [Agent 与 MCP](/ai/application/agent)
+- 站内相关：[大模型推理部署实战](/ai/infra/inference/llm-inference) · [Agent 与 MCP](/agentic/)

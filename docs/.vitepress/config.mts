@@ -9,7 +9,7 @@ export default withMermaid(
   defineConfig({
     title: '云与 AI 知识体系',
     description:
-      '一名云解决方案架构师的十年沉淀：从 OpenStack 云计算基座、全栈云产品到模型训练、推理与大模型应用的系统性知识体系。',
+      '一名云解决方案架构师的十年沉淀：从云计算基座、全栈云产品到模型架构、AI Infra 与 Agentic 的完整知识体系。',
     lang: 'zh-CN',
     base,
     cleanUrls: true,
@@ -25,7 +25,7 @@ export default withMermaid(
         'meta',
         {
           property: 'og:description',
-          content: '从 OpenStack 到大模型：一名云解决方案架构师的十年知识沉淀',
+          content: '从 OpenStack 到大模型：一名云解决方案架构师的完整知识体系',
         },
       ],
     ],
@@ -78,12 +78,13 @@ export default withMermaid(
         {
           text: '人工智能',
           items: [
-            { text: '人工智能全景', link: '/ai/' },
-            { text: '模型训练', link: '/ai/training/' },
-            { text: '推理与算力', link: '/ai/inference/' },
+            { text: 'AI 全景', link: '/ai/' },
+            { text: '模型架构演进', link: '/ai/models/' },
+            { text: 'AI Infra', link: '/ai/infra/' },
             { text: '大模型应用', link: '/ai/application/' },
           ],
         },
+        { text: 'Agentic', link: '/agentic/' },
         { text: '方法论', link: '/methodology/' },
         { text: '行业场景', link: '/industry/gaming' },
         { text: '编年史', link: '/chronicle/' },
@@ -130,26 +131,46 @@ export default withMermaid(
           },
         ],
         '/ai/': [
-          { text: '人工智能全景', link: '/ai/' },
+          { text: 'AI 全景', link: '/ai/' },
           {
-            text: '模型训练',
-            items: [{ text: '模型训练导读', link: '/ai/training/' }],
+            text: '模型架构演进',
+            items: [
+              { text: '演进总览', link: '/ai/models/' },
+              { text: '机器学习与深度学习经典', link: '/ai/models/ml-dl' },
+              { text: '大语言模型架构解析', link: '/ai/models/llm' },
+              { text: '视觉理解', link: '/ai/models/vision' },
+              { text: '图像生成', link: '/ai/models/image-gen' },
+              { text: '视频生成', link: '/ai/models/video-gen' },
+              { text: '语音识别与理解', link: '/ai/models/audio' },
+            ],
           },
           {
-            text: '推理与算力',
+            text: 'AI Infra',
             items: [
-              { text: '子域总览', link: '/ai/inference/' },
-              { text: '大模型推理部署实战', link: '/ai/inference/llm-inference' },
-              { text: 'GPU 选型与推理成本测算', link: '/ai/inference/gpu-sizing' },
+              { text: 'Infra 总览', link: '/ai/infra/' },
+              { text: 'GPU 集群与高速网络', link: '/ai/infra/cluster' },
+              { text: '训练工程', link: '/ai/infra/training' },
+              { text: '推理与算力总览', link: '/ai/infra/inference/' },
+              { text: '大模型推理部署实战', link: '/ai/infra/inference/llm-inference' },
+              { text: 'GPU 选型与推理成本测算', link: '/ai/infra/inference/gpu-sizing' },
             ],
           },
           {
             text: '大模型应用',
             items: [
-              { text: '子域总览', link: '/ai/application/' },
+              { text: '应用总览', link: '/ai/application/' },
               { text: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
-              { text: 'Agent 与 MCP（提纲）', link: '/ai/application/agent' },
-              { text: '多模态与视频生成（提纲）', link: '/ai/application/multimodal' },
+              { text: '多模态应用（提纲）', link: '/ai/application/multimodal' },
+            ],
+          },
+        ],
+        '/agentic/': [
+          {
+            text: 'Agentic',
+            items: [
+              { text: '智能体技术全景', link: '/agentic/' },
+              { text: 'Agent 热点编年史', link: '/agentic/history' },
+              { text: 'Agent 开发框架对比', link: '/agentic/frameworks' },
             ],
           },
         ],

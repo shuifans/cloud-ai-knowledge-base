@@ -35,6 +35,37 @@ flowchart TB
 | [微服务治理](/cloud/native/microservice) | 🚧 提纲 | 拆分粒度、注册配置、限流熔断、Mesh |
 | [可观测体系](/cloud/native/observability) | 🚧 提纲 | 指标/日志/链路三支柱与告警治理 |
 
+## 2026-09 更新：最新架构与组件
+
+### Kubernetes 版本线（选型基线建议 ≥ 1.35）
+
+| 版本 | 时间 | 关键特性 |
+| --- | --- | --- |
+| v1.33 | 2025-04 | Sidecar 容器 GA、In-place Resize 升 Beta |
+| v1.34 | 2025-08 | **DRA 核心 GA**（结构化设备分配）、Swap GA |
+| v1.35 | 2025-12 | **In-place Resize GA**：运行中 Pod 零停机改配 |
+| v1.36 | 2026-04 | Pod 级 User Namespaces、DRA 持续增强 |
+| v1.37 | 2026-08 | 当前稳定版，约 4 个月一版节奏延续 |
+
+**含义**：Sidecar / In-place Resize / DRA 三项相继 GA，"K8s 跑 AI 与有状态负载"的三大短板（边车生命周期、垂直伸缩重启、GPU 分配）基本补齐；Gateway API（v1.5，2026 年初，迄今最大版本）可正式替代 Ingress 成为南北向+东西向标准。GPU 调度应从 device plugin 转向 DRA 结构化参数。
+
+### 服务网格
+
+- **Istio Ambient**（v1.24 GA，2024-11）：ztunnel + waypoint 取代 per-pod sidecar，资源开销与升级复杂度显著下降——新网格项目优先评估
+- **Istio 现实考量**：≈3 个月一版、仅支持近两版（当前 1.30.x）——平台团队需具备季度升级能力，否则选托管版
+- **Cilium/eBPF**（1.20.x，2026）：无 sidecar eBPF 网格与多集群是主线；已重度使用 Cilium 的团队，L4-L7 基础网格能力可先由它覆盖，Istio 按需叠加
+
+### 虚机与 Serverless 容器
+
+- **KubeVirt v1.9**（2026-07，对齐 K8s 1.36）：v1.8 起支持多 hypervisor——"VM 存量 + K8s 增量"统一管控的成熟答案，VMware 替代场景门槛降低
+- **Knative 1.23**（2026-07）：Eventing 指标已迁移 OpenTelemetry；托管 Serverless 容器（Fargate 类）仍是"免节点运维 + 按 Pod 计费"主流，但启动延迟敏感的服务不宜 scale-to-zero
+
+### 平台工程（IDP）
+
+- 生产级开源事实标准栈：**Backstage（开发者门户）+ Crossplane 2.0（控制平面）+ Argo CD（GitOps）**
+- Crossplane 2.0（2025）重构控制平面模型：从"管基础设施"扩展到"管应用"
+- 趋势：Golden Paths 成熟化，AI 生成黄金路径开始出现
+
 ## 精选资源
 
 > 筛选标准：官方与一手来源优先，近两年内容优先，经典明确标注。更新于 2026-09-01。
