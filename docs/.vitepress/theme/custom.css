@@ -1,71 +1,348 @@
-/* 品牌色与中文排版优化 */
+/* =========================================================
+   设计语言：参考 apple.com
+   大字号排版 · 中性色 · 药丸按钮 · 磨砂导航 · 大圆角卡片
+   ========================================================= */
+
+/* ---------- 1. 设计令牌 ---------- */
 :root {
-  --vp-c-brand-1: #0f6fff;
-  --vp-c-brand-2: #2b7fff;
-  --vp-c-brand-3: #0f6fff;
-  --vp-c-brand-soft: rgba(15, 111, 255, 0.14);
+  /* 品牌蓝（Apple CTA 蓝） */
+  --vp-c-brand-1: #0071e3;
+  --vp-c-brand-2: #0077ed;
+  --vp-c-brand-3: #0071e3;
+  --vp-c-brand-soft: rgba(0, 113, 227, 0.1);
+
+  /* Apple 中性色 */
+  --vp-c-text-1: #1d1d1f;
+  --vp-c-text-2: #6e6e73;
+  --vp-c-text-3: #86868b;
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f5f5f7;
+  --vp-c-bg-mute: #ececee;
+  --vp-c-divider: rgba(0, 0, 0, 0.08);
+  --vp-c-gutter: rgba(0, 0, 0, 0.05);
+
+  --apple-link: #0066cc;
+
+  --vp-button-brand-bg: #0071e3;
+  --vp-button-brand-hover-bg: #0077ed;
+  --vp-button-brand-active-bg: #006edb;
 
   --vp-font-family-base:
-    'Inter var', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC',
-    system-ui, -apple-system, sans-serif;
+    'SF Pro Display', 'SF Pro SC', 'SF Pro Text', -apple-system, BlinkMacSystemFont,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
 }
 
 .dark {
-  --vp-c-brand-1: #4d9aff;
-  --vp-c-brand-2: #2b7fff;
-  --vp-c-brand-3: #4d9aff;
-  --vp-c-brand-soft: rgba(77, 154, 255, 0.16);
+  --vp-c-brand-1: #2997ff;
+  --vp-c-brand-2: #40a3ff;
+  --vp-c-brand-3: #2997ff;
+  --vp-c-brand-soft: rgba(41, 151, 255, 0.14);
+
+  --vp-c-text-1: #f5f5f7;
+  --vp-c-text-2: #a1a1a6;
+  --vp-c-text-3: #86868b;
+  --vp-c-bg: #000000;
+  --vp-c-bg-soft: #161617;
+  --vp-c-bg-mute: #1d1d1f;
+  --vp-c-divider: rgba(255, 255, 255, 0.1);
+  --vp-c-gutter: rgba(255, 255, 255, 0.06);
+
+  --apple-link: #2997ff;
+
+  --vp-button-brand-bg: #2997ff;
+  --vp-button-brand-hover-bg: #40a3ff;
+  --vp-button-brand-active-bg: #1f8df5;
 }
 
-/* 首页 hero 标题渐变 */
-.VPHero .name .clip {
-  background: linear-gradient(120deg, #0f6fff 30%, #7c3aed 70%, #f43f5e);
-  -webkit-background-clip: text;
-  background-clip: text;
+/* ---------- 2. 全局基础 ---------- */
+html {
+  scroll-behavior: smooth;
 }
 
-/* 首页自定义内容区居中收窄 */
-.home-extra {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-.home-extra h2 {
-  text-align: center;
-  margin-bottom: 8px;
+::selection {
+  background: rgba(0, 113, 227, 0.18);
+}
+
+.dark ::selection {
+  background: rgba(41, 151, 255, 0.25);
+}
+
+/* ---------- 3. 导航：细高 + 磨砂玻璃 ---------- */
+:root {
+  --vp-nav-height: 52px;
+}
+
+.VPNav .VPNavBar {
+  background: rgba(251, 251, 253, 0.82) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.dark .VPNav .VPNavBar {
+  background: rgba(22, 22, 23, 0.82) !important;
+}
+
+.VPNavBarTitle .title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBarMenu .VPLink {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.VPNavBarMenu .VPLink:hover {
+  color: var(--vp-c-brand-1);
+  transition: color 0.2s;
+}
+
+.VPNavBarSearch .DocSearch-Button {
+  border-radius: 999px;
+  height: 32px;
+  background: var(--vp-c-bg-soft);
   border: none;
 }
 
-.home-extra .subtitle {
-  text-align: center;
-  color: var(--vp-c-text-2);
-  margin-bottom: 32px;
+/* ---------- 4. 侧边栏 ---------- */
+.VPSidebar {
+  font-size: 13.5px;
 }
 
-/* Mermaid 图容器留白 */
+.VPSidebarItem.level-0 .text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.VPSidebarItem .indicator {
+  background: var(--vp-c-brand-1);
+}
+
+/* ---------- 5. 正文排版（Apple 大字号 + 紧字距） ---------- */
+.VPDoc .content-container {
+  max-width: 744px;
+}
+
+.vp-doc {
+  font-size: 16px;
+}
+
+.vp-doc h1 {
+  font-size: 38px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  margin: 0 0 16px;
+}
+
+.vp-doc h2 {
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.016em;
+  margin: 56px 0 18px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.vp-doc h3 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin: 36px 0 12px;
+}
+
+.vp-doc h4 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.vp-doc p {
+  line-height: 1.75;
+  margin: 14px 0;
+}
+
+.vp-doc li {
+  line-height: 1.7;
+}
+
+.vp-doc a {
+  color: var(--apple-link);
+  text-decoration: none;
+}
+
+.vp-doc a:hover {
+  text-decoration: underline;
+  color: var(--apple-link);
+}
+
+.vp-doc strong {
+  font-weight: 600;
+}
+
+.vp-doc blockquote {
+  border-left: 3px solid rgba(0, 0, 0, 0.14);
+  color: var(--vp-c-text-2);
+  font-size: 15.5px;
+}
+
+.dark .vp-doc blockquote {
+  border-left-color: rgba(255, 255, 255, 0.18);
+}
+
+.vp-doc hr {
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+  margin: 44px 0;
+}
+
+/* 表格：Apple 规格表风格 */
+.vp-doc table {
+  width: 100%;
+  font-size: 14.5px;
+  line-height: 1.6;
+  display: table;
+}
+
+.vp-doc th {
+  font-weight: 600;
+  text-align: left;
+  background: transparent;
+  border-bottom: 1px solid var(--vp-c-text-3);
+}
+
+.vp-doc td {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 10px 14px 10px 0;
+  border-left: none;
+}
+
+.vp-doc th:first-child,
+.vp-doc td:first-child {
+  padding-left: 0;
+}
+
+/* 行内代码与代码块 */
+.vp-doc :not(pre, h1, h2, h3) > code {
+  background: rgba(0, 0, 0, 0.048);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  color: inherit;
+}
+
+.dark .vp-doc :not(pre, h1, h2, h3) > code {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.vp-doc div[class*='language-'] {
+  border-radius: 14px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* 提示块：圆角 + 左侧色条 */
+.vp-doc .custom-block {
+  border: none;
+  border-radius: 14px;
+  border-left: 3px solid transparent;
+  padding: 16px 20px;
+}
+
+.vp-doc .custom-block.info {
+  border-left-color: #0071e3;
+}
+
+.vp-doc .custom-block.tip {
+  border-left-color: #34c759;
+}
+
+.vp-doc .custom-block.warning {
+  border-left-color: #ff9500;
+}
+
+.vp-doc .custom-block.danger {
+  border-left-color: #ff3b30;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  font-weight: 600;
+}
+
+/* ---------- 6. 按钮：药丸形 ---------- */
+.VPButton {
+  border-radius: 980px;
+  font-weight: 500;
+  border: none;
+}
+
+.VPButton.brand {
+  background: var(--vp-button-brand-bg);
+  color: #fff;
+}
+
+.VPButton.brand:hover {
+  background: var(--vp-button-brand-hover-bg);
+  color: #fff;
+}
+
+/* ---------- 7. 首页：去掉默认容器限制 ---------- */
+.VPHome {
+  padding-bottom: 0;
+}
+
+.VPHome .vp-doc {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- 8. Mermaid ---------- */
 .mermaid {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .mermaid svg {
   max-width: 100%;
 }
 
-/* 提示块微调 */
-.custom-block {
-  border-width: 1px;
+/* ---------- 9. 页脚 ---------- */
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+  background: transparent;
 }
 
-/* 状态标签 */
+.VPFooter .message,
+.VPFooter .copyright {
+  font-size: 12.5px;
+  color: var(--vp-c-text-2);
+}
+
+/* ---------- 10. 上一篇/下一篇 ---------- */
+.VPDocFooter .pager {
+  border-radius: 14px;
+}
+
+/* ---------- 11. 状态标签（文章内使用） ---------- */
 .badge-done {
-  color: #16a34a;
+  color: #34c759;
   font-weight: 600;
 }
 
 .badge-draft {
-  color: #d97706;
+  color: #ff9500;
   font-weight: 600;
 }

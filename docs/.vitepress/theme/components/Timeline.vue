@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+
+defineProps<{ dark?: boolean }>()
+
 interface Era {
   period: string
   title: string
@@ -54,14 +58,14 @@ const eras: Era[] = [
 </script>
 
 <template>
-  <div class="timeline">
+  <div class="timeline" :class="{ dark }">
     <div v-for="(era, i) in eras" :key="era.title" class="era" :class="{ last: i === eras.length - 1 }">
       <div class="era-node">
         <span class="dot"></span>
       </div>
       <div class="era-body">
         <div class="era-period">{{ era.period }}</div>
-        <a class="era-title" :href="era.link">{{ era.title }}</a>
+        <a class="era-title" :href="withBase(era.link)">{{ era.title }}</a>
         <p class="era-essence">{{ era.essence }}</p>
         <div class="era-keywords">
           <span v-for="kw in era.keywords" :key="kw" class="kw">{{ kw }}</span>
@@ -159,5 +163,36 @@ const eras: Era[] = [
   border-radius: 999px;
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
+}
+
+/* 深色区适配（首页编年史区） */
+.timeline.dark .era-title {
+  color: #f5f5f7;
+}
+
+.timeline.dark .era-title:hover {
+  color: #2997ff;
+}
+
+.timeline.dark .era-period {
+  color: #86868b;
+}
+
+.timeline.dark .era-essence {
+  color: #a1a1a6;
+}
+
+.timeline.dark .dot {
+  background: #2997ff;
+  box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.2);
+}
+
+.timeline.dark .era-node::before {
+  background: linear-gradient(180deg, #2997ff, rgba(255, 255, 255, 0.08));
+}
+
+.timeline.dark .kw {
+  background: rgba(41, 151, 255, 0.16);
+  color: #5eb1ff;
 }
 </style>
