@@ -64,6 +64,11 @@ flowchart LR
 - [阿里云百炼大模型服务平台官方文档](https://help.aliyun.com/zh/model-studio/) — 模型调用、应用编排与微调的一站式文档（持续更新 · 官方文档）
 - [火山方舟官方文档](https://www.volcengine.com/docs/82379) — 方舟 MaaS 平台的模型服务与应用开发文档（持续更新 · 官方文档）
 
+### Prefill-Decode 分离（2026-09-02 书签补充）
+
+- [打造高性能大模型推理平台之 Prefill、Decode 分离系列（一）：SplitWise](https://zhuanlan.zhihu.com/p/701772045) — PD 分离提高 GPU 利用率的原理与工程解读（2024 · 工程博客）
+- [大模型推理服务全景图](https://mp.weixin.qq.com/s/yQ6Xn3NAiE3CmCjUbtt8RQ) — 推理服务技术栈的全景梳理（2025 · 工程博客）
+
 ## 衔接
 
 - 上游：[模型训练](/ai/training/) · 下游：[大模型应用](/ai/application/)

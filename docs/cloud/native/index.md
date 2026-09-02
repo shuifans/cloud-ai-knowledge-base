@@ -44,6 +44,7 @@ flowchart TB
 - [Kubernetes v1.33: Octarine](https://kubernetes.io/blog/2025/04/23/kubernetes-v1-33-release/) — 官方博客详解增强与 API 变更，跟踪核心机制演进的第一手材料（2025 · 官方文档）
 - [阿里巴巴万级规模 K8s 控制平面深度性能优化方案](https://developer.aliyun.com/article/719079) — 万节点集群 apiserver 与 etcd 调优实战，大规模集群经典复盘（2019 · 工程博客）
 - [大规模 ACK Pro 集群使用建议](https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/suggestions-on-how-to-work-with-large-ack-pro-clusters) — 大规模集群配额上限与参数调优指南，生产避坑清单（持续更新 · 官方文档）
+- [OpenKruise](https://openkruise.io/) — 面向大规模场景的 K8s 工作负载增强引擎，阿里开源（2026-09-02 书签补充 · 开源项目）
 
 ### 服务网格
 

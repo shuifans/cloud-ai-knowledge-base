@@ -46,6 +46,7 @@ flowchart LR
 - [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) — 业界事实标准的架构评审框架，六大支柱与权衡清单（2024 · 官方文档）
 - [云上架构设计评估优化最佳实践（阿里云卓越架构）](https://help.aliyun.com/zh/document_detail/2362204.html) — 官方中文架构方法论，学习-度量-优化闭环（2025 · 官方文档）
 - [FinOps Framework](https://www.finops.org/framework/) — FinOps 基金会官方框架，三阶段六域能力全景（2024 · 官方文档）
+- [企业级 Agentic AI 架构设计](https://aws.amazon.com/cn/blogs/china/enterprise-level-agentic-ai-architecture-design/) — AWS 官方的企业级智能体架构方法论（2026-09-02 书签补充 · 官方文档）
 
 ### 上云迁移
 

@@ -96,6 +96,11 @@ flowchart TB
 
 - [FineWeb: decanting the web for the finest text data at scale](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1) — 15T token 预训练语料构建管线与消融实验全公开（2024 · 工程博客）
 
+### 架构与并行（2026-09-02 书签补充）
+
+- [The Big LLM Architecture Comparison](https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison) — 主流大模型架构差异的系统对比（2025 · 工程博客）
+- [【LLM 003】并行训练汇总](https://zhuanlan.zhihu.com/p/647133493) — 中文并行训练策略的体系化梳理（2023 · 工程博客）
+
 ## 参考与衔接
 
 - 训练完成后的下一站：[大模型推理部署实战](/ai/inference/llm-inference)

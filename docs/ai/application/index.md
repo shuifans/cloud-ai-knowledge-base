@@ -68,6 +68,18 @@ flowchart LR
 - [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM 应用十大风险权威清单（2025 · 行业报告）
 - [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — 点明提示注入风险三要素与防御思路（2025 · 工程博客）
 - [提示词注入攻击方法与多模型纵深防御架构](https://developer.aliyun.com/article/1667146) — 中文系统梳理攻击手法与纵深防御（2025 · 工程博客）
+- [你的 OpenClaw 真的在受控运行吗？](https://mp.weixin.qq.com/s/W1n69rhyOUVU5eKUAqGPnA) — Agent 受控运行与治理的实践探讨（2026 · 工程博客）
+
+### 评测与知识生态（2026-09-02 书签补充）
+
+- [LMArena Leaderboard](https://lmarena.ai/leaderboard) — 众包对战式模型评测榜单（持续更新 · 行业报告）
+- [通往 AGI 之路](https://waytoagi.feishu.cn/) — 社区共建的 AI 学习知识库（持续更新 · 课程教程）
+
+### 合规与备案（2026-09-02 书签补充）
+
+- [关于发布生成式人工智能服务已备案信息的公告](https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm) — 网信办大模型备案官方公告（2024 · 官方文档）
+- [互联网信息服务算法备案系统](https://beian.cac.gov.cn/) — 算法与大模型备案入口（持续更新 · 官方文档）
+- [大模型备案 VS 算法备案的区别和联系](https://cloud.tencent.com/developer/article/2538592) — 两类备案的适用边界解读（2025 · 工程博客）
 
 ## 衔接
 

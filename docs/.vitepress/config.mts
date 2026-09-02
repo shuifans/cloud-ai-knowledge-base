@@ -85,6 +85,7 @@ export default withMermaid(
           ],
         },
         { text: '方法论', link: '/methodology/' },
+        { text: '行业场景', link: '/industry/gaming' },
         { text: '编年史', link: '/chronicle/' },
         { text: '关于', link: '/about' },
       ],
@@ -160,6 +161,14 @@ export default withMermaid(
               { text: '解决方案架构设计方法论', link: '/methodology/architecture-design' },
               { text: '上云迁移方法论（6R）', link: '/methodology/cloud-migration' },
               { text: '高可用与容灾设计（提纲）', link: '/methodology/ha-dr' },
+            ],
+          },
+        ],
+        '/industry/': [
+          {
+            text: '行业场景',
+            items: [
+              { text: '游戏行业：云技术地图', link: '/industry/gaming' },
             ],
           },
         ],
