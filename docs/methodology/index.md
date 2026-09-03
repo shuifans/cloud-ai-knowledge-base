@@ -35,7 +35,7 @@ flowchart LR
 | --- | --- | --- |
 | [解决方案架构设计方法论](/methodology/architecture-design) | ✅ 已发布 | 种子文：从需求到架构的完整方法 |
 | [上云迁移方法论（6R）](/methodology/cloud-migration) | ✅ 已发布 | 种子文：迁移策略与执行框架 |
-| [高可用与容灾设计](/methodology/ha-dr) | 🚧 提纲 | SLA 分级、多活、容灾演练 |
+| [高可用与容灾设计](/methodology/ha-dr) | ✅ 已发布 | SLA 分级、多活、容灾演练 |
 
 ## 精选资源
 

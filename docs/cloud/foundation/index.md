@@ -44,8 +44,8 @@ mindmap
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
 | [OpenStack 架构与十年演进](/cloud/foundation/openstack) | ✅ 已发布 | 种子文：组件全景、数据流与基座的兴衰思考 |
-| [虚拟化与 KVM](/cloud/foundation/virtualization) | 🚧 提纲 | KVM/QEMU、virtio、性能开销 |
-| [SDN / NFV](/cloud/foundation/sdn-nfv) | 🚧 提纲 | 控制面/数据面分离、云网络实现 |
+| [虚拟化与 KVM](/cloud/foundation/virtualization) | ✅ 已发布 | KVM/QEMU、virtio、性能开销 |
+| [SDN / NFV](/cloud/foundation/sdn-nfv) | ✅ 已发布 | 控制面/数据面分离、云网络实现 |
 
 ## 精选资源
 

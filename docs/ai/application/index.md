@@ -13,7 +13,7 @@ outline: [2, 3]
 | --- | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | ✅ 已发布 | 解析/切分/混合检索/重排/评测全链路 |
 | [Agent 与 MCP](/agentic/) | 🚧 提纲 | Function Calling、工具编排、落地边界 |
-| [多模态模型与视频生成](/ai/application/multimodal) | 🚧 提纲 | 文生视频/图生视频、评测与本地部署路线 |
+| [多模态模型与视频生成](/ai/application/multimodal) | ✅ 已发布 | 文生视频/图生视频、评测与本地部署路线 |
 
 ## 子域地图
 

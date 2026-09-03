@@ -62,7 +62,7 @@ flowchart TB
 | 文章 | 状态 |
 | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | ✅ 已发布 |
-| [多模态模型与视频生成（应用视角）](/ai/application/multimodal) | 🚧 提纲 |
+| [多模态模型与视频生成（应用视角）](/ai/application/multimodal) | ✅ 已发布 |
 
 ## 一句话入门
 
