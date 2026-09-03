@@ -213,6 +213,8 @@ vni_ranges = 10:1000
 
 ## 参考资料
 
+<Refs>
+
 ### 文字来源
 
 - [Implementation Details — Open vSwitch FAQ（双层流表与快慢路径）](https://docs.openvswitch.org/en/stable/faq/design/)，访问日期：2026-09-02
@@ -230,3 +232,4 @@ vni_ranges = 10:1000
 - [File:Distributed Open vSwitch instance.svg — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Distributed_Open_vSwitch_instance.svg)，访问日期：2026-09-02
 - [File:NFV Architecture v15 Wiki.svg — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NFV_Architecture_v15_Wiki.svg)，访问日期：2026-09-02
 
+</Refs>

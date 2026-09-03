@@ -177,6 +177,8 @@ GPU 实例的定位已经从"图形渲染"彻底转向"AI 训练/推理主力"�
 
 ## 参考资料
 
+<Refs>
+
 文字来源（均访问 2026-09-02）：
 
 - [实例规格分类与命名 - 阿里云 ECS](https://help.aliyun.com/zh/ecs/user-guide/instance-specification-naming-and-classification)
@@ -206,3 +208,5 @@ GPU 实例的定位已经从"图形渲染"彻底转向"AI 训练/推理主力"�
 - [Nvidia DGX-B200-HGX.jpg](https://commons.wikimedia.org/wiki/File:Nvidia_DGX-B200-HGX.jpg)
 
 站内相关：[计算·存储·网络导读](/cloud/infra/) · [云存储](/cloud/infra/storage) · [云网络](/cloud/infra/network) · [虚拟化与云基座](/cloud/foundation/virtualization) · [Kubernetes 核心机制](/cloud/native/kubernetes) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
+
+</Refs>

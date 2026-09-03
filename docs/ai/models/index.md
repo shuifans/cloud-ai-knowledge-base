@@ -30,12 +30,12 @@ timeline
 
 | 板块 | 内容 | 入口 |
 | --- | --- | --- |
-| 🎓 机器学习与深度学习经典 | 传统 ML 到 DNN/CNN/RNN/LSTM/GAN/YOLO 的架构解析 | [进入](/ai/models/ml-dl) |
-| 📖 大语言模型 | Transformer → Decoder-only → MoE → 推理模型 | [进入](/ai/models/llm) |
-| 👁️ 视觉理解 | CLIP → VLM → 原生多模态 | [进入](/ai/models/vision) |
-| 🎨 图像生成 | Diffusion 原理：Stable Diffusion → DiT → 最新格局 | [进入](/ai/models/image-gen) |
-| 🎬 视频生成 | 时空建模：Sora 类 → 开源生态 | [进入](/ai/models/video-gen) |
-| 🎙️ 语音识别与理解 | ASR/TTS/实时语音大模型 | [进入](/ai/models/audio) |
+|  机器学习与深度学习经典 | 传统 ML 到 DNN/CNN/RNN/LSTM/GAN/YOLO 的架构解析 | [进入](/ai/models/ml-dl) |
+|  大语言模型 | Transformer → Decoder-only → MoE → 推理模型 | [进入](/ai/models/llm) |
+|  视觉理解 | CLIP → VLM → 原生多模态 | [进入](/ai/models/vision) |
+|  图像生成 | Diffusion 原理：Stable Diffusion → DiT → 最新格局 | [进入](/ai/models/image-gen) |
+|  视频生成 | 时空建模：Sora 类 → 开源生态 | [进入](/ai/models/video-gen) |
+|  语音识别与理解 | ASR/TTS/实时语音大模型 | [进入](/ai/models/audio) |
 
 ## 贯穿演进线的三个规律
 

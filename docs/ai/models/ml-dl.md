@@ -87,9 +87,13 @@ flowchart TB
 
 ## 参考资料
 
+<Refs>
+
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762) — Transformer 原论文（2017）
 - [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) — ResNet（2015）
 - [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) — GAN 原论文（2014）
 - [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754) — 表格数据之王（2016）
 - 《统计学习方法》（李航）· 《机器学习》（周志华，西瓜书）— 中文经典教材
 - 站内相关：[大语言模型架构解析](/ai/models/llm) · [模型架构演进总览](/ai/models/)
+
+</Refs>

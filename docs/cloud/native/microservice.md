@@ -160,6 +160,8 @@ flowchart TD
 
 ## 参考资料
 
+<Refs>
+
 访问日期均为 2026-09-02。
 
 **文字来源**
@@ -180,3 +182,5 @@ flowchart TD
 - Scale Cube 拆分维度图：Wikimedia Commons，[File:Scale Cube.png](https://commons.wikimedia.org/wiki/File:Scale_Cube.png)（CC BY-SA 4.0）
 - Istio Sidecar 架构图：Istio 官方文档，[Architecture 页 arch.svg](https://istio.io/latest/docs/ops/deployment/architecture/)
 - Database-per-service 示意图：Wikimedia Commons，[File:Microservice Databases.png](https://commons.wikimedia.org/wiki/File:Microservice_Databases.png)（CC BY-SA 4.0）
+
+</Refs>

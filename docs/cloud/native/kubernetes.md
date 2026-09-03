@@ -119,6 +119,10 @@ K8s 网络模型的要求是：**任意两个 Pod 可以不经 NAT 直接通信*
 
 ## 参考资料
 
+<Refs>
+
 - [Kubernetes 官方文档（中文）](https://kubernetes.io/zh-cn/docs/home/)
 - [CNCF 全景图](https://landscape.cncf.io/)
 - 站内相关：[微服务治理](/cloud/native/microservice) · [可观测体系](/cloud/native/observability) · [云计算基座](/cloud/foundation/)
+
+</Refs>

@@ -140,6 +140,8 @@ timeline
 
 ## 参考资料
 
+<Refs>
+
 以下为本文史料来源，均于 2026-09-02 访问核对。
 
 **论文（一手史料）**
@@ -179,3 +181,5 @@ timeline
 | gtx580.jpg | Wikimedia Commons：[File:EVGAGeforceGTX580.jpg](https://commons.wikimedia.org/wiki/File:EVGAGeforceGTX580.jpg)（CC BY-SA 4.0） |
 | transformer-paper-fig1.png | arXiv：[Attention Is All You Need](https://arxiv.org/abs/1706.03762) HTML 版论文 Figure 1 |
 | deepseek-v3-arch.png | arXiv：[DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437) HTML 版架构概览配图 |
+
+</Refs>

@@ -193,6 +193,8 @@ flowchart TD
 
 ## 参考资料
 
+<Refs>
+
 - AWS《Disaster recovery options in the cloud》白皮书（四级容灾策略对比）：https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html （访问日期 2026-09-02）
 - AWS Architecture Blog：DR on AWS Part III — Pilot Light and Warm Standby：https://aws.amazon.com/blogs/architecture/disaster-recovery-dr-architecture-on-aws-part-iii-pilot-light-and-warm-standby/ （访问日期 2026-09-02）
 - AWS Architecture Blog：DR on AWS Part IV — Multi-Site Active-Active：https://aws.amazon.com/blogs/architecture/disaster-recovery-dr-architecture-on-aws-part-iv-multi-site-active-active/ （访问日期 2026-09-02）
@@ -212,3 +214,5 @@ flowchart TD
 - 图片来源：Wikimedia Commons——[Racks Amravati Data Center](https://commons.wikimedia.org/wiki/File:Racks_Amravati_Data_Center.jpg)、[Optical fiber cable-07ASD](https://commons.wikimedia.org/wiki/File:Optical_fiber_cable-07ASD.jpg)、[Wikimedia racks ULSFO](https://commons.wikimedia.org/wiki/File:Wikimedia_racks_ULSFO_2013_06_20_06_servers.jpg)（访问日期 2026-09-02）
 
 站内相关：[方法论导读](/methodology/) · [架构设计方法论](/methodology/architecture-design) · [上云迁移](/methodology/cloud-migration) · [可观测体系](/cloud/native/observability) · [微服务治理](/cloud/native/microservice) · [云网络](/cloud/infra/network) · [云存储](/cloud/infra/storage)
+
+</Refs>

@@ -74,6 +74,10 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - [Learning Transferable Visual Models From Natural Language Supervision (CLIP)](https://arxiv.org/abs/2103.00020) — 图文对齐奠基（2021）
 - [Segment Anything](https://arxiv.org/abs/2304.02643) — 分割基础模型（2023）
 - 站内相关：[图像生成](/ai/models/image-gen) · [大语言模型架构解析](/ai/models/llm) · [多模态应用](/ai/application/multimodal)
+
+</Refs>

@@ -11,8 +11,8 @@ outline: [2, 3]
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [大模型推理部署实战](/ai/infra/inference/llm-inference) | ✅ 已发布 | vLLM/Continuous Batching/量化/生产部署架构 |
-| [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | ✅ 已发布 | 从模型规格到卡数到单位成本的完整测算链 |
+| [大模型推理部署实战](/ai/infra/inference/llm-inference) | 已发布 | vLLM/Continuous Batching/量化/生产部署架构 |
+| [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | 已发布 | 从模型规格到卡数到单位成本的完整测算链 |
 
 ## 子域地图
 

@@ -159,6 +159,8 @@ PC 时代的 CDN 主要伺候下载与视频站点；移动时代，"打开 App 
 
 ## 参考资料
 
+<Refs>
+
 > 以下为文字与图片来源全集，访问日期均为 2026-09-02。
 
 **终端与生态**
@@ -196,3 +198,5 @@ PC 时代的 CDN 主要伺候下载与视频站点；移动时代，"打开 App 
 22. [File:HTC Android T-Mobile G1.jpg（Wikimedia Commons，CC BY 2.0，Luis Alberto Arjona Chin）](https://commons.wikimedia.org/wiki/File:HTC_Android_T-Mobile_G1.jpg)
 
 > 数据口径说明：智能手机销量为 Gartner 2014-02 新闻稿；网民与手机网民为 CNNIC 历次《中国互联网络发展状况统计报告》；4G 用户为工信部口径（经国家发改委"十二五"回顾转引）；双 11 交易额与支付峰值为阿里巴巴公开披露（经官方媒体与开发者社区转引）。本文案例均已按站点合规要求泛化处理。
+
+</Refs>

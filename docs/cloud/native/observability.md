@@ -248,6 +248,8 @@ OTel 落地路线（四步，按此顺序几乎不会返工）：① 统一服�
 
 ## 参考资料
 
+<Refs>
+
 （以下均于 2026-09-02 访问）
 
 - Wikipedia — [Observability](https://en.wikipedia.org/wiki/Observability)（可观测性与控制理论的定义）
@@ -265,6 +267,7 @@ OTel 落地路线（四步，按此顺序几乎不会返工）：① 统一服�
 - [Prometheus 官方文档: Overview（architecture.svg）](https://prometheus.io/docs/introduction/overview/)（访问 2026-09-02）
 - [OpenTelemetry 官方文档: Collector（otel-collector.svg）](https://opentelemetry.io/docs/collector/)（访问 2026-09-02）
 
+</Refs>
 ## 站内相关
 
 - [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes)——可观测是 K8s 落地清单的第一公民

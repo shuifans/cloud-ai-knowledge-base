@@ -199,6 +199,8 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 > 以下均于 2026-09-02 访问。
 
 - [Apache Hadoop — HDFS Architecture](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)（HDFS 设计目标与 NameNode 元数据模型）
@@ -219,6 +221,7 @@ flowchart LR
 
 图片来源：Apache Hadoop/Spark/Kafka 项目 Logo 取自 Wikimedia Commons（[File:Hadoop_logo.svg](https://commons.wikimedia.org/wiki/File:Hadoop_logo.svg) · [File:Apache Spark logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Spark_logo.svg) · [File:Apache Kafka logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Kafka_logo.svg)）；Flink 无界/有界流示意图取自 Apache Flink 官网架构页（[flink.apache.org/what-is-flink/flink-architecture](https://flink.apache.org/what-is-flink/flink-architecture/)）。以上素材版权归 Apache Software Foundation。
 
+</Refs>
 ## 站内相关
 
 - [数据库·大数据导读](/cloud/data/) — 本域全景框架

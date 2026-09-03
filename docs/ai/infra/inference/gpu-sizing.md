@@ -133,5 +133,9 @@ GPU 选型不是硬件问题，是**容量规划问题**：模型定显存、带
 
 ## 参考资料
 
+<Refs>
+
 - [NVIDIA GPU 规格与对比](https://www.nvidia.com/)
 - 站内相关：[大模型推理部署实战](/ai/infra/inference/llm-inference) · [AI 与大模型导读](/ai/)
+
+</Refs>

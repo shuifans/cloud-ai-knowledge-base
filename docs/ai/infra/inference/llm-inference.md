@@ -113,6 +113,10 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - [vLLM 项目文档](https://docs.vllm.ai/)
 - [PagedAttention 论文（Efficient Memory Management for LLM Serving）](https://arxiv.org/abs/2309.06180)
 - 站内相关：[GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) · [企业级 RAG 架构设计](/ai/application/rag-architecture)
+
+</Refs>

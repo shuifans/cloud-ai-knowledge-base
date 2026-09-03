@@ -116,6 +116,10 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - 《架构整洁之道》《数据密集型应用系统设计》（DERTA/DDIA）
 - [AWS/阿里云官方架构框架（Well-Architected Framework）](https://www.aliyun.com/)
 - 站内相关：[上云迁移方法论](/methodology/cloud-migration) · [高可用与容灾设计](/methodology/ha-dr)
+
+</Refs>

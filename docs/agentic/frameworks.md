@@ -64,13 +64,13 @@ flowchart TB
 | --- | --- | --- | --- | --- |
 | 会话管理 | ★★★ 事件溯源+fork+回放 | ★★ rollout/compaction | ★★ checkpoint 多后端 | ★★ 多租户多会话 |
 | 审批 / HITL | fail-closed 三态缝 | approval modes | interrupt()（UI 自建） | 权限系统内置 |
-| 沙箱 | ⚠️ 仅文件效果 | 完整（Seatbelt/Landlock） | ❌ 核心库无 | Docker/E2B/K8s 多档 |
+| 沙箱 | 部分仅文件效果 | 完整（Seatbelt/Landlock） | 无 核心库无 | Docker/E2B/K8s 多档 |
 | MCP | 一等（tools） | server + client | 生态集成 | + mcp-hub |
 | 多 agent | 多 provider + Teams(实验) | 有限 | supervisor/swarm | agent-team 编排 |
 | RAG / 记忆 | 需第三方 | memories | store + 生态 | 一键分布式 RAG + Mem0/ReMe |
 | 可观测 | OTel（可导 SIEM） | OTel + 合规平台 | LangSmith | OTel 默认 + Dashboard |
-| 多租户 / 渠道 | ❌ | ❌ | 付费档 | ✅ 原生 + 官方渠道 |
-| 自建模型接入 | ✅ 一等公民 | ⚠️ experimental | ✅ 模型无关 | ✅ vLLM 兼容 |
+| 多租户 / 渠道 | 无 | 无 | 付费档 |  原生 + 官方渠道 |
+| 自建模型接入 |  一等公民 | 部分experimental |  模型无关 |  vLLM 兼容 |
 
 ## 选型框架
 
@@ -82,7 +82,11 @@ flowchart TB
 
 ## 参考资料
 
+<Refs>
+
 - [LangGraph 文档](https://docs.langchain.com/) · [AgentScope 生态门户](https://agentscope.io/)（官方架构图）
 - [OpenAI Codex 仓库](https://github.com/openai/codex) · [DeepSeek Harness 仓库](https://github.com/deepseek-ai/deepseek-harness)
 - [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/) · [Google ADK](https://adk.dev/) · [CrewAI](https://docs.crewai.com/)
 - 站内相关：[Agent 热点编年史](/agentic/history) · [Agentic 总览](/agentic/)
+
+</Refs>

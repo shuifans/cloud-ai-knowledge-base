@@ -106,7 +106,11 @@ outline: [2, 3]
 
 ## 参考资料
 
+<Refs>
+
 - [MegaScale: Scaling LLM Training to More Than 10,000 GPUs](https://arxiv.org/abs/2402.15627) — 万卡训练工程集大成（2024）
 - [DeepSeek 3FS 开源仓库](https://github.com/deepseek-ai/3FS) — AI 原生存储新范式
 - [The Ultra-Scale Playbook](https://huggingface.co/spaces/nanotron/ultrascale-playbook) — 大集群训练系统指南（2025）
 - 站内相关：[训练工程](/ai/infra/training) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
+
+</Refs>

@@ -138,6 +138,8 @@ timeline
 
 ## 参考资料
 
+<Refs>
+
 > 文字来源（访问日期均为 2026-09-02）：
 
 1. [Turning the page: The Facebook Company Is Now Meta](https://about.fb.com/news/2021/10/facebook-company-is-now-meta/) — Meta 官方新闻稿（2021-10-28），更名公告、Reality Labs 分部披露、Presence Platform。
@@ -167,3 +169,5 @@ timeline
 > - [File:Oculus Quest 2 - 2.jpg](https://commons.wikimedia.org/wiki/File:Oculus_Quest_2_-_2.jpg) — CC BY-SA 4.0（拍摄者：KKPCW）
 
 > 注：文中公司财务与行情数字均为公开报道口径（来源见上），"我的一线体感"段落为个人交付经验泛化，不涉及任何具体客户与未公开数据。
+
+</Refs>

@@ -31,9 +31,9 @@ flowchart TB
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) | ✅ 已发布 | 种子文：声明式/控制器/调度 + 企业落地清单 |
-| [微服务治理](/cloud/native/microservice) | ✅ 已发布 | 拆分粒度、注册配置、限流熔断、Mesh |
-| [可观测体系](/cloud/native/observability) | ✅ 已发布 | 指标/日志/链路三支柱与告警治理 |
+| [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) | 已发布 | 种子文：声明式/控制器/调度 + 企业落地清单 |
+| [微服务治理](/cloud/native/microservice) | 已发布 | 拆分粒度、注册配置、限流熔断、Mesh |
+| [可观测体系](/cloud/native/observability) | 已发布 | 指标/日志/链路三支柱与告警治理 |
 
 ## 2026-09 更新：最新架构与组件
 

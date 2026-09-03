@@ -346,3 +346,63 @@ body {
   color: #ff9500;
   font-weight: 600;
 }
+
+/* ---------- 12. 文章底部引用区（<Refs> 组件） ---------- */
+.vp-doc .refs {
+  margin-top: 3.5rem;
+  padding: 1.1rem 1.4rem 1.25rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .refs p {
+  margin: 0.45em 0;
+}
+
+.vp-doc .refs ul,
+.vp-doc .refs ol {
+  margin: 0.35em 0;
+  padding-left: 1.3em;
+}
+
+.vp-doc .refs li {
+  margin: 0.25em 0;
+}
+
+.vp-doc .refs li::marker {
+  color: var(--vp-c-text-3);
+}
+
+.vp-doc .refs h3 {
+  margin: 0.9em 0 0.25em;
+  padding-top: 0;
+  border-top: none;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .refs a {
+  color: var(--vp-c-text-2);
+  text-decoration: underline;
+  text-decoration-color: var(--vp-c-divider);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.vp-doc .refs a:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration-color: var(--vp-c-brand-1);
+}
+
+.vp-doc .refs strong {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+}
+
+.vp-doc .refs table {
+  font-size: 12.5px;
+}

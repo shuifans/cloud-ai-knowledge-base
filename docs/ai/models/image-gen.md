@@ -64,8 +64,12 @@ outline: [2, 3]
 
 ## 参考资料
 
+<Refs>
+
 - [Denoising Diffusion Probabilistic Models (DDPM)](https://arxiv.org/abs/2006.11239) — 扩散模型奠基（2020）
 - [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) — Stable Diffusion 论文（2021）
 - [Scalable Diffusion Models with Transformers (DiT)](https://arxiv.org/abs/2212.09748) — DiT 架构（2022）
 - [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747) — 流匹配（2022）
 - 站内相关：[视频生成](/ai/models/video-gen) · [视觉理解](/ai/models/vision) · [多模态应用](/ai/application/multimodal)
+
+</Refs>

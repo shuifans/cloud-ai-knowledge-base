@@ -181,6 +181,8 @@ flowchart TD
 
 ## 参考资料
 
+<Refs>
+
 > 更新于 2026-09-02，访问日期均为 2026-09-02。
 
 **文字来源**
@@ -200,3 +202,5 @@ flowchart TD
 - `wan21-architecture.jpg` ← [Wan-Video/Wan2.1 assets/video_dit_arch.jpg](https://github.com/Wan-Video/Wan2.1/blob/main/assets/video_dit_arch.jpg)（官方仓库开源发布，已缩宽至 1200px）
 - `comfyui-workflow-ui.png` ← [ComfyUI 官方仓库 README](https://github.com/comfyanonymous/ComfyUI) 工作流截图
 - `sd35-astronaut.jpg` ← [Wikimedia Commons: Astronaut Riding a Horse (SD3.5)](https://commons.wikimedia.org/wiki/File:Astronaut_Riding_a_Horse_(SD3.5).webp)（CC0）
+
+</Refs>

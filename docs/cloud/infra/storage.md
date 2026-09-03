@@ -168,6 +168,8 @@ S3 与 OSS 的分层结构高度一致，把"最低存储时长"和"取回时间
 
 ## 参考资料
 
+<Refs>
+
 访问日期均为 2026-09-02。
 
 - [S3 Storage Classes — AWS 官方](https://aws.amazon.com/s3/storage-classes/)（各存储类别持久性/可用性/最短时长）
@@ -196,3 +198,5 @@ S3 与 OSS 的分层结构高度一致，把"最低存储时长"和"取回时间
 - `raid-array.jpg` ← [File:Raid array.jpg](https://commons.wikimedia.org/wiki/File:Raid_array.jpg)
 - `raid5-parity.svg` ← [File:RAID 5.svg](https://commons.wikimedia.org/wiki/File:RAID_5.svg)
 - `ceph-object-pg-osd.png` ← [File:Ceph-Object-Placement-Group.png](https://commons.wikimedia.org/wiki/File:Ceph-Object-Placement-Group.png)
+
+</Refs>

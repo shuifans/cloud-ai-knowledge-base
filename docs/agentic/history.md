@@ -89,6 +89,8 @@ timeline
 
 ## 参考资料
 
+<Refs>
+
 - [OpenClaw 维基百科条目](https://en.wikipedia.org/wiki/OpenClaw) · [Fast Company：Steinberger 专访](https://www.fastcompany.com/91550800/how-peter-steinberger-built-openclaw)
 - [Anthropic：MCP 发布公告](https://www.anthropic.com/news/model-context-protocol) · [MCP 加入 Agentic AI Foundation](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation)
 - [OpenAI：Codex as a platform](https://developers.openai.com/blog/codex-as-a-platform) · [Codex 仓库](https://github.com/openai/codex)
@@ -96,3 +98,5 @@ timeline
 - [DeepSeek Harness](https://www.deepseek.com/harness/en/) · [InfoQ：DSH 发布报道](https://www.infoq.com/news/2026/08/deep-seek-harness/)
 - [Microsoft Agent Framework 公告](https://azure.microsoft.com/en-us/blog/introducing-microsoft-agent-framework/)
 - 站内相关：[Agent 开发框架对比](/agentic/frameworks) · [智能体技术全景](/agentic/)
+
+</Refs>

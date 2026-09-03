@@ -149,6 +149,8 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 **文字来源（访问日期均为 2026-09-02）**
 
 1. [TikTok - Wikipedia](https://en.wikipedia.org/wiki/TikTok) — 抖音上线时间（2016-09-20，原名 A.me）、TikTok 国际发布（2017-09）、Musical.ly 收购（2017-11-09）与合并（2018-08-02）、2020-04 下载破 20 亿、推荐机制
@@ -171,3 +173,5 @@ flowchart LR
 2. [File:Tik Tok logo.svg](https://commons.wikimedia.org/wiki/File:Tik_Tok_logo.svg)（CC BY-SA 3.0）
 3. [File:Kuaishou logo.png](https://commons.wikimedia.org/wiki/File:Kuaishou_logo.png)（Public domain）
 4. [File:YouTube Shorts icon 2024.svg](https://commons.wikimedia.org/wiki/File:YouTube_Shorts_icon_2024.svg)（Public domain）
+
+</Refs>

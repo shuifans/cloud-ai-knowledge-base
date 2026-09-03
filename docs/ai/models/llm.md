@@ -87,8 +87,12 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - [Language Models are Few-Shot Learners (GPT-3)](https://arxiv.org/abs/2005.14165) — 涌现能力的分水岭（2020）
 - [Mixtral of Experts](https://arxiv.org/abs/2401.04088) — 开源 MoE 引爆点（2024）
 - [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437) — MoE 工程化集大成（2024）
 - [DeepSeek-R1](https://arxiv.org/abs/2501.12948) — RLVR 与推理模型的开源里程碑（2025）
 - 站内相关：[机器学习与深度学习经典](/ai/models/ml-dl) · [训练工程](/ai/infra/training) · [推理部署实战](/ai/infra/inference/llm-inference)
+
+</Refs>

@@ -209,6 +209,8 @@ flowchart TD
 
 ## 参考资料
 
+<Refs>
+
 文字来源（访问日期均为 2026-09-02）：
 
 - Verbitski, Gupta et al. *Amazon Aurora: Design Considerations for High Throughput Cloud-Native Relational Databases*. SIGMOD 2017. [PDF](https://homepages.cwi.nl/~boncz/lsde/papers/aurora.pdf) · [Amazon Science 页面](https://www.amazon.science/publications/amazon-aurora-design-considerations-for-high-throughput-cloud-native-relational-databases)
@@ -230,3 +232,5 @@ flowchart TD
 - B+ 树结构示意：Wikimedia Commons, [File:B+-tree-organization.png](https://commons.wikimedia.org/wiki/File:B%2B-tree-organization.png)
 - MySQL 主从复制线程模型：Wikipedia, [File:Tony May's replication diagram.png](https://en.wikipedia.org/wiki/File:Tony_May%27s_replication_diagram.png)（源自 MySQL 复制文档原理图）
 - CAP 定理关系图：Wikimedia Commons, [File:CAP theorem diagram.png](https://commons.wikimedia.org/wiki/File:CAP_theorem_diagram.png)
+
+</Refs>

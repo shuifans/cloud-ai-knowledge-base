@@ -94,5 +94,9 @@ flowchart TD
 
 ## 参考资料
 
+<Refs>
+
 - 各云厂商官方迁移中心与最佳实践文档
 - 站内相关：[解决方案架构设计方法论](/methodology/architecture-design) · [云网络](/cloud/infra/network) · [高可用与容灾设计](/methodology/ha-dr)
+
+</Refs>

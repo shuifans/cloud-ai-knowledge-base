@@ -20,8 +20,8 @@ outline: [2, 3]
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [Agent 热点编年史](/agentic/history) | 🚧 撰写中 | OpenClaw 引爆 → Claude Code/Codex 商业化与开源 → 百花齐放 |
-| [Agent 开发框架对比](/agentic/frameworks) | ✅ 已发布 | 分层全景、核心四框架源码级审计摘要、选型框架 |
+| [Agent 热点编年史](/agentic/history) | 撰写中 | OpenClaw 引爆 → Claude Code/Codex 商业化与开源 → 百花齐放 |
+| [Agent 开发框架对比](/agentic/frameworks) | 已发布 | 分层全景、核心四框架源码级审计摘要、选型框架 |
 
 ## Function Calling 的工程要点
 

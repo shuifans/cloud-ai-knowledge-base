@@ -42,9 +42,9 @@ flowchart LR
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [弹性计算](/cloud/infra/compute) | ✅ 已发布 | 实例规格族、弹性伸缩、Serverless 边界 |
-| [云存储](/cloud/infra/storage) | ✅ 已发布 | 三类存储选型、成本优化、备份容灾 |
-| [云网络](/cloud/infra/network) | ✅ 已发布 | VPC 规划、负载均衡、混合云互联 |
+| [弹性计算](/cloud/infra/compute) | 已发布 | 实例规格族、弹性伸缩、Serverless 边界 |
+| [云存储](/cloud/infra/storage) | 已发布 | 三类存储选型、成本优化、备份容灾 |
+| [云网络](/cloud/infra/network) | 已发布 | VPC 规划、负载均衡、混合云互联 |
 
 ## 精选资源
 

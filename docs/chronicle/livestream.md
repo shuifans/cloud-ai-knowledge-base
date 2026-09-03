@@ -165,6 +165,8 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 > 以下资料均为公开来源，访问日期统一标注 2026-09-02。
 
 **文字来源**
@@ -187,3 +189,5 @@ flowchart LR
 - [File:Justin.tv - Justin Kan and Irina Slutsky.jpg](https://commons.wikimedia.org/wiki/File:Justin.tv_-_Justin_Kan_and_Irina_Slutsky.jpg)（Wikimedia Commons，CC BY 2.0）
 - [File:Twitch logo 2019.svg](https://commons.wikimedia.org/wiki/File:Twitch_logo_2019.svg)（Wikimedia Commons，公有领域）
 - [File:Eddie Codel runs the Ustream feed and encoders at Leweb.jpg](https://commons.wikimedia.org/wiki/File:Eddie_Codel_runs_the_Ustream_feed_and_encoders_at_Leweb.jpg)（Wikimedia Commons，CC BY 2.0）
+
+</Refs>

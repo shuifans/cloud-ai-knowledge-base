@@ -43,7 +43,7 @@ flowchart LR
 
 | 模型 | 机构 | 时间 | 能力上限与要点 | 开源 |
 | --- | --- | --- | --- | --- |
-| Sora 2 / Pro | OpenAI | 2025-09 | 音画同步、Cameo 人物植入；⚠️ 消费端 2026-03 起关停（App 4 月下线、API 9 月停服） | 否 |
+| Sora 2 / Pro | OpenAI | 2025-09 | 音画同步、Cameo 人物植入；部分消费端 2026-03 起关停（App 4 月下线、API 9 月停服） | 否 |
 | Veo 3.1 / Fast / Lite | Google | 2025-10 | 原生音频先行者；参考图生视频、首尾帧、对象插入、4K | 否 |
 | Wan2.1/2.2 → 2.5/2.6 | 通义 | 2025 全年 | 2.1/2.2 开源标杆（MoE 视频扩散）；2.5 起音画一体转闭源，2.6 加角色扮演与智能分镜 | 部分 |
 | Seedance 2.0 / 2.5 | 字节 Seed | 2026-02/07 | 原生多模态输入（文/图/视频/音频，最多 12 参考资产）、电影级物理真实 | 否 |
@@ -68,6 +68,10 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - [Sora 技术报告（Video generation models as world simulators）](https://openai.com/research/video-generation-models-as-world-simulators) — 范式定义（2024）
 - [Wan-Video 开源仓库](https://github.com/Wan-Video/Wan2.1) — 开源视频生成代表（持续更新）
 - 站内相关：[图像生成](/ai/models/image-gen) · [多模态应用](/ai/application/multimodal) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
+
+</Refs>

@@ -69,6 +69,10 @@ flowchart LR
 
 ## 参考资料
 
+<Refs>
+
 - [Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)](https://arxiv.org/abs/2212.04356) — 大规模弱监督范式（2022）
 - [CosyVoice 开源仓库](https://github.com/FunAudioLLM/CosyVoice) — 可控语音合成（持续更新）
 - 站内相关：[视觉理解](/ai/models/vision) · [模型架构演进总览](/ai/models/)
+
+</Refs>

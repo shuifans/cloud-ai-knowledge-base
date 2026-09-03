@@ -181,6 +181,8 @@ AI 负载下这是新高频问题：
 
 ## 参考资料
 
+<Refs>
+
 **文字来源**（访问日期：2026-09-02）：
 
 - [KVM — The Linux Kernel documentation](https://docs.kernel.org/virt/kvm/index.html) — 内核官方 KVM 文档索引（kernel.org）
@@ -203,3 +205,5 @@ AI 负载下这是新高频问题：
 - [File:Kernel-based Virtual Machine zh-CN.svg](https://commons.wikimedia.org/wiki/File:Kernel-based_Virtual_Machine_zh-CN.svg) — KVM/QEMU 架构示意图（中文标注版）
 
 **站内相关**：[基座导读](/cloud/foundation/) · [OpenStack 架构与十年演进](/cloud/foundation/openstack) · [SDN / NFV](/cloud/foundation/sdn-nfv) · [弹性计算](/cloud/infra/compute) · [块存储与云盘](/cloud/infra/storage) · [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes)
+
+</Refs>

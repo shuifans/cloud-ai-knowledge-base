@@ -196,6 +196,8 @@ CDN 的教科书定义是"地理上分布的代理服务器网络，靠把内容
 
 ## 参考资料
 
+<Refs>
+
 **云厂商官方文档（阿里云）**（访问日期 2026-09-02）
 
 - [专有网络 VPC 网络规划](https://help.aliyun.com/zh/vpc/vpc-network-planning) / [专有网络与交换机](https://help.aliyun.com/zh/vpc/vpc-and-vswitch) / [IP 子网规划](https://help.aliyun.com/zh/document_detail/2948830.html) / [专有网络 FAQ](https://help.aliyun.com/zh/vpc/frequently-asked-questions)
@@ -226,3 +228,5 @@ CDN 的教科书定义是"地理上分布的代理服务器网络，靠把内容
 > 说明：Cloudflare Learning Center 的 DNS/CDN/负载均衡/DDoS 科普页本次抓取被反爬拦截，未能引用；相关概念改以上述 Wikipedia 与官方文档为准。文中所有带宽/价格均为量级化表述，**以各云厂商官方计费页为准**。
 
 **站内相关**：[SDN 与 NFV](/cloud/foundation/sdn-nfv) · [弹性计算](/cloud/infra/compute) · [高可用与容灾设计](/methodology/ha-dr) · [Kubernetes](/cloud/native/kubernetes) · [计算·存储·网络导读](/cloud/infra/)
+
+</Refs>

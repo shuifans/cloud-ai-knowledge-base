@@ -220,6 +220,8 @@ BaaS（区块链即服务）在 2017–2019 年成为云厂商标配：一键部
 
 ## 参考资料
 
+<Refs>
+
 ### 文字来源（访问日期：2026-09-02）
 
 1. Satoshi Nakamoto. *比特币：一种点对点的电子现金系统*. bitcoin.org（2008-10-31 白皮书原文 PDF）. <https://bitcoin.org/bitcoin.pdf>
@@ -249,3 +251,5 @@ BaaS（区块链即服务）在 2017–2019 年成为云厂商标配：一键部
 2. 以太坊标志 — *File:Ethereum Logo.png*（Public domain）. <https://commons.wikimedia.org/wiki/File:Ethereum_Logo.png>
 3. 比特币区块数据字段示意 — *File:Bitcoin Block Data.svg*（CC BY-SA 3.0）. <https://commons.wikimedia.org/wiki/File:Bitcoin_Block_Data.svg>
 4. Hyperledger 对等网络示意 — *File:Hyperledger diagram.svg*（CC BY-SA 4.0）. <https://commons.wikimedia.org/wiki/File:Hyperledger_diagram.svg>
+
+</Refs>

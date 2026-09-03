@@ -34,13 +34,13 @@ flowchart TB
 
 ## 三个子域
 
-### 🧬 模型架构演进
+### 模型架构演进
 
 从机器学习经典到多模态大模型的完整谱系：ML/DL 基础、LLM、视觉理解、图像生成、视频生成、语音——每一代模型的架构解析与演进逻辑。
 
 → [模型架构演进](/ai/models/)
 
-### 🔧 AI Infra
+### AI Infra
 
 模型背后的系统工程：GPU 集群与高速网络（NVLink/RDMA/分布式存储）、训练工程（预训练/后训练/强化学习）、推理优化与算力成本。
 
@@ -48,12 +48,12 @@ flowchart TB
 
 | 文章 | 状态 |
 | --- | --- |
-| [GPU 集群与高速网络](/ai/infra/cluster) | 🚧 撰写中 |
-| [训练工程](/ai/infra/training) | ✅ 已发布（持续扩充） |
-| [大模型推理部署实战](/ai/infra/inference/llm-inference) | ✅ 已发布 |
-| [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | ✅ 已发布 |
+| [GPU 集群与高速网络](/ai/infra/cluster) | 撰写中 |
+| [训练工程](/ai/infra/training) | 已发布（持续扩充） |
+| [大模型推理部署实战](/ai/infra/inference/llm-inference) | 已发布 |
+| [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | 已发布 |
 
-### 🧩 大模型应用
+### 大模型应用
 
 把模型能力工程化为业务价值：RAG、多模态应用、评测与运营。
 
@@ -61,8 +61,8 @@ flowchart TB
 
 | 文章 | 状态 |
 | --- | --- |
-| [企业级 RAG 架构设计](/ai/application/rag-architecture) | ✅ 已发布 |
-| [多模态模型与视频生成（应用视角）](/ai/application/multimodal) | ✅ 已发布 |
+| [企业级 RAG 架构设计](/ai/application/rag-architecture) | 已发布 |
+| [多模态模型与视频生成（应用视角）](/ai/application/multimodal) | 已发布 |
 
 ## 一句话入门
 
