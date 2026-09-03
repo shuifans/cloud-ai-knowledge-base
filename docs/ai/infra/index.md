@@ -33,7 +33,7 @@ flowchart LR
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [GPU 集群与高速网络](/ai/infra/cluster) | 撰写中 | 加速器代际、NVLink、RDMA、拓扑与分布式存储 |
+| [GPU 集群与高速网络](/ai/infra/cluster) | 已发布 | 加速器代际、NVLink、RDMA、拓扑与分布式存储 |
 | [训练工程](/ai/infra/training) | 已发布 | 训练范式光谱、并行策略、微调决策与集群工程 |
 | [推理与算力（子域）](/ai/infra/inference/) | 已发布 | 推理框架、量化、GPU 选型与成本测算 |
 

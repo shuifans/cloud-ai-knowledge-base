@@ -48,7 +48,7 @@ flowchart TB
 
 | 文章 | 状态 |
 | --- | --- |
-| [GPU 集群与高速网络](/ai/infra/cluster) | 撰写中 |
+| [GPU 集群与高速网络](/ai/infra/cluster) | 已发布 |
 | [训练工程](/ai/infra/training) | 已发布（持续扩充） |
 | [大模型推理部署实战](/ai/infra/inference/llm-inference) | 已发布 |
 | [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | 已发布 |
