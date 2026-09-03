@@ -35,6 +35,13 @@ export default withMermaid(
       theme: { light: 'github-light', dark: 'github-dark' },
     },
 
+    // Mermaid：htmlLabels 渲染中文多行标签时行高测量不准导致文字裁切，
+    // 改用 SVG 原生 <text> 渲染（tspan 换行），测量与渲染同源不再裁切
+    mermaid: {
+      flowchart: { htmlLabels: false },
+      sequence: { htmlLabels: false },
+    },
+
     sitemap: {
       // 项目站点：hostname 需包含仓库路径并以 / 结尾，保证 URL 正确拼接
       hostname: 'https://shuifans.github.io/cloud-ai-knowledge-base/',
