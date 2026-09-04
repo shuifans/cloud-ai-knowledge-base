@@ -14,6 +14,7 @@ outline: [2, 3]
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | 已发布 | 解析/切分/混合检索/重排/评测全链路 |
 | [Agent 技术全景](/ai/agent/) | 已发布 | Agent 分级、热点编年演进、开发框架对比与选型 |
 | [多模态模型与视频生成](/ai/application/multimodal) | 已发布 | 文生视频/图生视频、评测与本地部署路线 |
+| [大模型评测](/ai/application/evaluation) | 已发布 | 基准全景、LLM-as-judge、评测集构建与生产监控 |
 
 ## 子域地图
 
@@ -29,7 +30,6 @@ flowchart LR
 ## 计划扩充方向
 
 - Prompt 工程的系统化方法（模板、版本化、回归测试）
-- 大模型应用的评测体系设计（离线评测集 + 线上质量监控）
 - 多模型路由与降级策略
 - AI 应用的安全基线（提示注入、数据泄露、内容合规）
 

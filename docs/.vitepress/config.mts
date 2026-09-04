@@ -159,6 +159,7 @@ export default withMermaid(
               { text: '推理与算力总览', link: '/ai/infra/inference/' },
               { text: '大模型推理部署实战', link: '/ai/infra/inference/llm-inference' },
               { text: 'GPU 选型与推理成本测算', link: '/ai/infra/inference/gpu-sizing' },
+              { text: 'Token 经济学：定价与成本', link: '/ai/infra/inference/token-economics' },
             ],
           },
           {
@@ -167,6 +168,7 @@ export default withMermaid(
               { text: '应用总览', link: '/ai/application/' },
               { text: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
               { text: '多模态应用', link: '/ai/application/multimodal' },
+              { text: '大模型评测', link: '/ai/application/evaluation' },
             ],
           },
           {

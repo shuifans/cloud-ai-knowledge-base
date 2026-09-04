@@ -201,6 +201,6 @@ GPU 选型不是硬件问题，是**容量规划问题**：模型定显存、带
 
 - [gb200-nvl72.jpg](/images/ai/inference/gb200-nvl72.jpg) ← NVIDIA GB200 NVL72 产品页配图
 
-**站内相关**：[大模型推理部署实战](/ai/infra/inference/llm-inference) · [GPU 集群与高速网络](/ai/infra/cluster) · [AI 与大模型导读](/ai/)
+**站内相关**：[大模型推理部署实战](/ai/infra/inference/llm-inference) · [Token 经济学：定价与成本的数学](/ai/infra/inference/token-economics) · [GPU 集群与高速网络](/ai/infra/cluster) · [AI 与大模型导读](/ai/)
 
 </Refs>

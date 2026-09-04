@@ -39,6 +39,54 @@ Sora 技术报告的核心洞察是模仿 LLM 的 token 化：先用一个视频
 
 *Sora 技术报告中的时空补丁示意（图源：[Video generation models as world simulators](https://openai.com/index/video-generation-models-as-world-simulators/)）*
 
+### 端到端：一句话怎么变成一段视频
+
+理解了时空补丁，完整管线就不再神秘。拿图像生成管线（文本编码器、去噪主干、VAE 的"三件套"，见[图像生成](/ai/models/image-gen)）逐步对照，视频管线是一一映射的，视频特化集中在三处：②的压缩对象、④的建模范围、⑥多出的一条音频分支。
+
+```mermaid
+flowchart LR
+  subgraph IMG[图像管线]
+    direction TB
+    I1[① 文本编码器] --> I2[② VAE 压缩单张图为潜变量]
+    I2 --> I3[③ cross-attention 注入文本条件]
+    I3 --> I4[④ UNet/DiT 迭代去噪]
+    I4 --> I5[⑤ VAE 解码为单张图]
+  end
+  subgraph VID[视频管线]
+    direction TB
+    V1[① 文本编码器 原样复用] --> V2[② 3D 因果 VAE 时空压缩再切补丁]
+    V2 --> V3[③ cross-attention/adaLN 注入]
+    V3 --> V4[④ 时空 DiT 全帧联合去噪]
+    V4 --> V5[⑤ VAE 解码为帧序列]
+    V5 --> V6[⑥ 音频分支 音画联合生成 新增]
+  end
+  I1 -.-> V1
+  I2 -.-> V2
+  I3 -.-> V3
+  I4 -.-> V4
+  I5 -.-> V5
+```
+
+逐步拆开看：
+
+**① 文本编码器：唯一可以完全照搬的一步。** 与图像生成相同，把提示词编码成语义向量序列（T5/CLIP 系），没有视频特化。
+
+**② 3D 因果 VAE：视频特化最大的一步。** 图像侧 VAE 压缩单张图；3D 因果 VAE 把时间与空间一起压缩，将整段片段压成潜空间的时空表示，再切出上一节的时空补丁。这里有个容易被忽略的不对称：推理时纯文生视频在这一步并不"编码"任何东西——它直接按时空补丁网格的形状构造纯噪声潜变量，只有当存在视觉条件（图生视频、参考主体）时，VAE 编码器才上场。记住这一点，后面讲条件注入要用。压缩比是成本的直接乘数，后文"VAE 的视频化"一节展开。
+
+**③ 条件注入：与图像 DiT 同款机制。** 文本向量经 cross-attention 或 adaLN（自适应层归一化：把条件信息写进每层归一化参数，而不是拼进输入）注入。区别只在视频模型的条件流更密——除文本外还可能有图像/视频潜变量与音频提示，注入机制本身没变。
+
+**④ 时空 DiT 去噪：算力与一致性都花在这一步。** 迭代去噪几十步，所有帧同时参与，时序上下文双向。这种"全局去噪"为什么对时序一致性是结构性优势，下一节"两条路线"展开；这里先记住，成本的所有乘数都发生在这一步。
+
+**⑤ VAE 解码：从潜空间回到像素。** 把去噪完成的时空潜变量解码成帧序列，与图像生成一样首尾呼应。
+
+**⑥ 音画一体模型再加一条音频分支。** Sora 2、Veo 3 一类旗舰在同一条管线内联合生成（或联合去噪）画面与音频，而非事后配音——后文"格局要点"里"2025 分水岭"的音画同步竞赛，技术正面就是这一步。
+
+**量级落到管线上就清楚了。** 一段 5 秒 720p 的片段，经 ② 的时空压缩后潜空间仍有数万级 token——比单张图的几千个高约一个数量级，按像素总量算则是约两个数量级的差距；④ 又要在每一步去噪里把这几万个 token 完整过一遍模型，重复几十步。两者相乘，单条视频的推理算力比单张图高 1-2 个数量级——这正是开篇"算力爆炸"那笔账，此处只是把它归因到具体步骤。采样侧的经验可以直接从图像迁移：CFG（Classifier-Free Guidance，无分类器引导：推理时同时跑条件与无条件两路，用引导强度放大两者差异）在视频扩散上同样是标配，HunyuanVideo 的论文直言 CFG 显著提升样本质量与运动稳定性；但引导强度同样是质量/动态的权衡旋钮——调高提升文本贴合度，过猛则伤运动稳定与画质，Wan 的官方文档同样提示更高引导通常以画质为代价。
+
+**可控性的阶梯，本质是条件注入点的阶梯。** 与后文"可控性演进"表对照：文生视频只有文本条件（③）；图生视频、首尾帧把图像经 VAE 编码后，作为起始潜变量与噪声潜变量拼接（Wan 的 I2V 即沿通道维拼接），让第一帧从起点就被钉死；参考主体把参考图特征编码后作为参考条件注入，约束跨镜头一致性。所以评估一个模型的可控能力，先问条件注入在管线的哪一步——注入点越靠里，约束越强，工程上的改造成本也越高。
+
+**最后回答"为什么一条视频要占用几分钟 GPU"。** 乘法发生在 ④：序列长度（数万 token）× 去噪步数（几十步）× 模型规模（参数量与激活量）。序列长度由 ② 的压缩比决定，步数由采样策略决定——于是所有降本手段都能钉在这条管线上：VAE 压缩比、蒸馏减步数、步间缓存复用，各对应一个乘数。这正是后文"成本结构"一节秒级计价的由来，也是选推理优化方案时先看它动了哪个乘数的原因。
+
 ### 两条路线：扩散主升，自回归未绝
 
 - **扩散路线（绝对主流）**：DiT 在潜空间迭代去噪生成整个片段，所有帧同时参与全局建模，时序上下文是双向的。画质与可控性上限高，所有头部商用模型（Sora、Veo、Kling、Seedance、Wan）都在此路线上。演进重点从"时序注意力插层"走向"原生时空联合注意力 + 更大容量"。
@@ -177,6 +225,8 @@ flowchart TD
 - [Artificial Analysis Text to Video Leaderboard](https://artificialanalysis.ai/video/leaderboard/text-to-video)（访问日期 2026-09-03）
 - [Artificial Analysis Video Model Comparisons（含每分钟成片采价）](https://artificialanalysis.ai/video/models)（访问日期 2026-09-03）
 - [VideoPoet: A Large Language Model for Zero-Shot Video Generation（arXiv:2312.14125）](https://arxiv.org/abs/2312.14125)（访问日期 2026-09-03）
+- [HunyuanVideo: A Systematic Framework For Large Video Generative Models（arXiv:2412.03603，CFG 对视频质量与运动稳定性的作用）](https://arxiv.org/abs/2412.03603)（访问日期 2026-09-04）
+- [Wan Pipeline（Hugging Face Diffusers 官方文档，含 guidance_scale 的质量/贴合度权衡说明）](https://huggingface.co/docs/diffusers/en/api/pipelines/wan)（访问日期 2026-09-04）
 - 图片来源：本页配图均下载自官方来源——`sora-spacetime-patches.webp` 来自 [OpenAI Sora 技术报告](https://openai.com/index/video-generation-models-as-world-simulators/)；`wan22-moe-architecture.png`、`wan22-vae.png` 来自 [Wan2.2 仓库](https://github.com/Wan-Video/Wan2.2) README 示意图（访问日期 2026-09-03）
 - 站内相关：[图像生成](/ai/models/image-gen) · [多模态应用](/ai/application/multimodal) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
 

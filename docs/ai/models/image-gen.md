@@ -65,7 +65,101 @@ outline: [2, 3]
 
 - **1.5**（2022）：生态之王，LoRA/ControlNet 资产存量至今仍在被消费；
 - **SDXL**（2023）：质量跃升，双文本编码器；
-- **SD3**（2024）：MM-DiT + 流匹配，架构换代（见下节）。
+- **SD3**（2024）：MM-DiT + 流匹配，架构换代（见下文"架构换代"节）。
+
+## 端到端生成流水线：一句话怎么变成一张图
+
+三件套定型之后，文生图的完整过程就可以画全了。无论是 SD 谱系、FLUX 还是 Qwen-Image，推理管线的骨架基本一致。我给人讲方案时习惯先画这张图：有了它，生产调优问题至少一半能定位到具体环节——是编码没编好，还是步数不够，还是解码丢细节，一目了然。
+
+```mermaid
+flowchart LR
+  P[提示词] --> T[分词器]
+  T --> E[文本编码器<br/>CLIP / T5]
+  N[纯随机噪声 z_T<br/>种子决定初始潜变量] --> L
+  E -.每一步都注入条件: cross-attention / adaLN.-> L
+  L{N 步迭代去噪循环}
+  L -->|UNet/DiT 前向: 预测噪声或速度场| S[调度器/采样器<br/>更新潜变量 z_t 到 z_t-1]
+  S -->|步数未到, 继续| L
+  S -->|循环结束, 得到 z_0| V[VAE 解码器]
+  V --> I[像素图像]
+  I --> F[可选: 安全过滤 / 水印]
+```
+
+逐步拆解：
+
+1. **① 分词**：提示词先被切分成 token 序列。提示词模板化约束的其实是这一步的输入；
+2. **② 文本编码**：文本编码器（CLIP/T5）把 token 序列编码成语义向量序列。这一步决定模型"看得见"的语义上限——CLIP 只接受 77 个 token，SD 1.x 的长提示词截断问题正出在这里；
+3. **③ 潜空间初始化**：在潜空间采样一份纯高斯噪声（尺寸 = 目标分辨率 ÷ VAE 压缩倍数），生成完全从这份噪声出发。种子决定初始噪声，"同种子同图"的可复现性来自这里；
+4. **④ N 步迭代去噪循环**：最贵的一步。每一轮去噪主干（UNet 或 DiT）做一次前向，预测当前潜变量中的噪声（或速度场，取决于训练目标），调度器/采样器据此更新到下一个潜变量；文本条件则经 cross-attention 或 adaLN（自适应层归一化，DiT 用调节归一化参数的方式注入条件的方法）在每一轮前向中注入。**条件注入不是一次性的，而是贯穿整个循环**——这是可控生成的机制根源；
+5. **⑤ VAE 解码**：最终潜变量 z_0 解码回像素空间，一次前向，计算量占全程的小头；
+6. **⑥ 可选安全过滤**：输出侧过合规审核、嵌水印。生产管线必有这一环，研究 demo 里常见省略。
+
+本质一句话点破：**生成 = 从噪声出发的迭代去噪 + 每一步的条件注入**。模型不是"一笔画出图"，而是每次前向只做一小步修正，出一张图就要跑 N 次完整主干前向——这就是扩散推理又慢又贵的根源，DDIM 跳步、蒸馏、缓存复用整条加速线，还的都是这笔债（见下文"成本结构与加速"节）。
+
+### 为什么预测噪声
+
+先看训练目标。训练时前向加噪过程按已知调度把图像加噪：`x_t = √ᾱ_t·x₀ + √(1−ᾱ_t)·ε`，其中 ε 是标准高斯噪声，ᾱ_t 是该步的信噪比系数。DDPM 的严格推导从 ELBO（证据下界：把生成过程的对数似然分解为逐步变分项之和）出发，化简后的结论是：让网络学每一步反向分布的均值，等价于让它回归该步加入的噪声 ε；Ho 等人进一步把各步的权重系数直接扔掉，用无加权的均方误差做损失（L_simple）。论文的消融实验表明，这个"不严格"的损失在样本质量上反而优于严格 ELBO 目标——代价是似然指标变差。
+
+"为什么预测噪声而不是直接预测图像"是高频面试陷阱题，我的答案分三层：
+
+- **目标的数值性质稳定**：ε 在任何时间步都从同一个标准正态分布采样，目标尺度前后一致；若直接回归目标图像 x₀，高噪声步的输入几乎全是噪声，从里面外推图像方差极大，训练不稳；
+- **隐含加权合理**：ε 参数化相当于给各时间步自动套上与信噪比相关的权重，让每一步对最终成图质量的贡献相对均衡——这正是 L_simple 简化的用意；
+- **参数化是选择，不是教条**：有模型直接预测 x₀（超分、编辑场景常见），有 v 预测（`v = αₜ·ε − σₜ·x₀`，由渐进蒸馏提出，更适合少步蒸馏），流匹配则预测速度场——它们是同一目标的等价表示。看懂这一层，再遇到流匹配"预测速度场"就不会觉得换了世界，只是换了个参数化。
+
+### 采样器与调度器：每一步怎么走到下一步
+
+主干网络只回答"当前潜变量里是什么噪声/该往哪走"，**从 z_t 走到 z_t-1 的具体走法由调度器（scheduler，前端常叫采样器）决定**——它把网络的预测按自己的离散化方案换算成潜变量更新。工程上常见的三代思路：
+
+| 思路 | 代表 | 特点 |
+| --- | --- | --- |
+| 祖先采样 | DDPM 原始采样 | 严格马尔可夫、每步注入随机性，约千步才可用，只在研究里见 |
+| 确定性跳步 | DDIM | 反向过程改为非马尔可夫的确定性轨迹，同一套权重几十步即可收敛；潜空间因此确定、可插值——不重训练减步数的第一刀 |
+| 高阶求解器 | DPM-Solver 家族、Euler/Heun 等 | 把反向过程当 ODE 用高阶方法近似，15-30 步成为 SD 时代的工程默认（经验值，按模型微调） |
+
+流匹配（下文"架构换代"节细讲）则把噪声到数据的路径本身拉直，轨迹越直，离散化误差越小，步数天然能压得更低。
+
+这里有两个衔接点值得记住：其一，调度器是"不重训练的减步"，同一套权重可换不同调度器，这就是前端 UI 允许自由切换采样器的工程原因；其二，蒸馏是"重训练的减步"——学生模型直接模仿教师多步采样的输出，渐进蒸馏每轮把步数减半，一路压到个位数。两者方向相同，下文"成本结构与加速"的第一板斧就建立在这个认知上。
+
+## Classifier-Free Guidance（CFG）：引导强度的权衡
+
+文生图有个天然毛病：模型学的是图文对的联合分布，采样时即使带着文本条件，也经常"沾边但不听话"。早期的分类器引导（"Diffusion Models Beat GANs" 一文采用的方法）靠额外分类器的梯度把采样拉向条件——效果好，但每种条件都要单训一个分类器，文本条件上根本不实用。Classifier-Free Guidance（CFG，Ho & Salimans，2021 年发表）把这个外部依赖去掉了，如今已是所有主流文生图模型的内置机制：界面与 API 上的 guidance / guidance scale 旋钮，就是它。
+
+机制两句话：
+
+- **训练时**：按一定概率（实践常见 10%-20%）随机把文本条件替换为空嵌入，同一个网络同时学会条件预测 ε(x, c) 与无条件预测 ε(x, ∅)，不增加任何结构；
+- **推理时**：每一步做双前向（带条件一次、不带一次），然后沿"无条件 → 条件"方向线性外推：
+
+  `ε̂ = ε(x, ∅) + s·(ε(x, c) − ε(x, ∅))`
+
+  其中 s 是引导强度（guidance scale）：s=1 就是普通条件预测，s>1 则放大条件的作用——直观理解是"宁可过头，也要听话"，等价于把条件似然的梯度加权放大。
+
+代价很直接：每步两次前向，推理算力翻倍（工程上通常拼成一个 batch 一次前向）。这也是蒸馏模型（如 FLUX.1 [schnell]）要把引导直接烘进权重的动机之一。
+
+![CFG 论文原图：ImageNet 64x64 上样本质量指标随引导强度变化的 IS/FID 曲线，每条曲线对应不同的无条件丢弃概率，质量随引导强度先升后付出多样性代价](/images/ai/models/image-gen/cfg-guidance-tradeoff.png)
+
+*图源：The AI Summer 的 CFG 综述文章引用，原图为 Ho & Salimans, Classifier-Free Diffusion Guidance 论文插图（[theaisummer.com](https://theaisummer.com/classifier-free-guidance/)）*
+
+权衡非常陡：
+
+- **过低**（SD 1.x/XL 时代经验，低于 4-5）：出图松弛、不听指令，提示词里的主体可能干脆不出现；
+- **过高**（经验值，高于 12-15）：过饱和、对比度炸裂、细节油画化、结构畸变，样本同时向少数模式坍缩、多样性丢失；
+- **中间区间是甜区**：上图的 IS/FID 曲线就是实证——质量随引导强度升到峰值，之后多样性持续买单。
+
+从业者的典型口径（经验值，跨模型不可照搬，任何模型都先从官方默认值起步）：
+
+| 模型代际 | 经验常用区间 | 官方/推荐锚点 |
+| --- | --- | --- |
+| SD 1.x / SDXL（UNet + CLIP） | 6-9 | diffusers 管线默认 7.5 |
+| SD3（MM-DiT + 流匹配） | 5-8 | 官方模型卡推荐 7.0、28 步 |
+| FLUX.1 [dev] | 3.5 附近 | BFL 官方推理参数 3.5、28-50 步 |
+| Qwen-Image | 4.0 附近 | QwenLM 官方示例 true_cfg_scale=4.0 |
+| 蒸馏少步模型（[schnell] 类） | 基本不需要 | 引导已烘进蒸馏，1-4 步出图 |
+
+三个判断：
+
+1. **引导强度跨模型不可比**。这个数字不是物理绝对量，与训练时的条件丢弃率、编码器、参数化都耦合——FLUX.1 [dev] 的 3.5 与 SD3 的 7.0 完全不是同一档"力度"。换模型别搬运旧参数，先按官方默认，再小幅微调；
+2. **guidance 正在被"烘进"权重**：FLUX.1 [dev] 把引导强度直接作为网络输入（引导蒸馏），每步只需单次前向；[schnell] 更进一步连步数一起蒸馏。"引导提质量、算力翻倍"的矛盾，蒸馏是目前的常规解法；
+3. **负向提示是 CFG 机制上的顺带功能**：它只是替换无条件分支的条件输入，"不要出现 XXX"靠的是同一套外推。DiT 时代（SD3/FLUX）官方口径转向直接正向描述后，负向提示的使用明显减少——与上文"提示词工程"节的判断一致。
 
 ## 架构换代：UNet → DiT
 
@@ -174,6 +268,15 @@ ComfyUI（GPL-3.0）是本地部署的事实标准：节点式工作流把"模�
 - [Scalable Diffusion Models with Transformers (DiT)](https://arxiv.org/abs/2212.09748) — DiT 架构（2022）（访问日期 2026-09-03）
 - [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747) — 流匹配（2022）（访问日期 2026-09-03）
 - [Scaling Rectified Flow Transformers for High-Resolution Image Synthesis](https://arxiv.org/abs/2403.03206) — SD3 / MM-DiT（访问日期 2026-09-03）
+- [Classifier-Free Diffusion Guidance](https://arxiv.org/abs/2207.12598) — CFG 机制，Ho & Salimans（2021）（访问日期 2026-09-04）
+- [Denoising Diffusion Implicit Models (DDIM)](https://arxiv.org/abs/2010.02502) — 确定性跳步采样（2020）（访问日期 2026-09-04）
+- [Progressive Distillation for Fast Sampling of Diffusion Models](https://arxiv.org/abs/2202.00512) — v 预测与逐步蒸馏（2022）（访问日期 2026-09-04）
+- [DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling](https://arxiv.org/abs/2206.00927) — 高阶采样求解器（2022）（访问日期 2026-09-04）
+- [diffusers — Stable Diffusion 管线源码](https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py) — SD 1.x/SDXL guidance_scale 默认 7.5（访问日期 2026-09-04）
+- [diffusers — Stable Diffusion 3 管线文档](https://huggingface.co/docs/diffusers/en/api/pipelines/stable_diffusion/stable_diffusion_3) — SD3 推荐参数：guidance 7.0、28 步（访问日期 2026-09-04）
+- [diffusers — Schedulers 总览](https://huggingface.co/docs/diffusers/en/api/schedulers/overview) — 调度器工程实现（访问日期 2026-09-04）
+- [QwenLM/Qwen-Image（GitHub）](https://github.com/QwenLM/Qwen-Image) — 官方推理示例，true_cfg_scale=4.0（访问日期 2026-09-04）
+- [An overview of classifier-free guidance for diffusion models (The AI Summer)](https://theaisummer.com/classifier-free-guidance/) — CFG 综述（访问日期 2026-09-04）
 - [Stability AI — Stable Diffusion Public Release](https://stability.ai/news-updates/stable-diffusion-public-release) — SD 开源发布公告（访问日期 2026-09-03）
 - [Announcing Black Forest Labs](https://bfl.ai/announcing-black-forest-labs/) — FLUX.1 发布与许可（访问日期 2026-09-03）
 - [black-forest-labs/flux（GitHub）](https://github.com/black-forest-labs/flux) — FLUX 官方推理仓库（访问日期 2026-09-03）
@@ -182,7 +285,7 @@ ComfyUI（GPL-3.0）是本地部署的事实标准：节点式工作流把"模�
 - [AUTOMATIC1111/stable-diffusion-webui（GitHub）](https://github.com/AUTOMATIC1111/stable-diffusion-webui) — A1111 WebUI，AGPL-3.0（访问日期 2026-09-03）
 - [OpenAI — Image generation guide](https://developers.openai.com/api/docs/guides/image-generation) — gpt-image API 官方文档（访问日期 2026-09-03）
 - [OpenAI — gpt-image-1 model card](https://developers.openai.com/api/docs/models/gpt-image-1) — 原生多模态生成模型（访问日期 2026-09-03）
-- 图片来源：DDPM 论文 HTML 版图 2（[arxiv.org/html/2006.11239](https://arxiv.org/html/2006.11239)）；latent-diffusion 仓库 assets/modelfigure.png 与 assets/txt2img-preview.png（[GitHub](https://github.com/CompVis/latent-diffusion)，MIT）
+- 图片来源：DDPM 论文 HTML 版图 2（[arxiv.org/html/2006.11239](https://arxiv.org/html/2006.11239)）；latent-diffusion 仓库 assets/modelfigure.png 与 assets/txt2img-preview.png（[GitHub](https://github.com/CompVis/latent-diffusion)，MIT）；CFG 论文 IS/FID 引导强度权衡图，经 [The AI Summer](https://theaisummer.com/classifier-free-guidance/) 转载（原图出自 Ho & Salimans 论文）
 - 站内相关：[视频生成](/ai/models/video-gen) · [视觉理解](/ai/models/vision) · [多模态应用](/ai/application/multimodal)
 
 </Refs>

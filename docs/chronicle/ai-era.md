@@ -135,7 +135,7 @@ timeline
 
 - 编年史总纲：[十年六浪](/chronicle/) · 上一浪：[元宇宙时代](/chronicle/metaverse)（GPU 算力的前传）· 暗流：[信创与国产化](/chronicle/xinchuang)
 - 模型演进详解：[大语言模型架构解析](/ai/models/llm) · [机器学习与深度学习经典架构](/ai/models/ml-dl)（2012–2017 的技术伏笔）
-- 基建实战：[GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [大模型推理部署实战](/ai/infra/inference/llm-inference) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
+- 基建实战：[GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [大模型推理部署实战](/ai/infra/inference/llm-inference) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) · [Token 经济学：定价与成本的数学](/ai/infra/inference/token-economics)
 - 应用落地：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [智能体技术全景](/ai/agent/)
 
 ## 参考资料

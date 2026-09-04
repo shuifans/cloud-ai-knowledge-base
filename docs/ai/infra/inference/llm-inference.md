@@ -46,7 +46,60 @@ vLLM 自 2025 年起切换到 V1 核心架构，重写了调度器与执行层�
 ### 其他值得了解的优化
 
 - **Prefix Caching**：相同系统提示词/知识库前缀的请求共享 KV Cache，多轮对话与 RAG 场景命中率很高
-- **Chunked Prefill**：把长上下文的预填充切碎与解码混跑，平滑首字延迟与吞吐的冲突。它是中小规模下缓解两阶段干扰的标配手段，也是评估 PD 分离前的前置动作（见下节）
+- **Chunked Prefill**：把长上下文的预填充切碎与解码混跑，平滑首字延迟与吞吐的冲突。它是中小规模下缓解两阶段干扰的标配手段，也是评估 PD 分离前的前置动作（见 PD 分离一节）
+
+## TTFT 与 TPOT：两段延迟的优化杠杆总览
+
+推理服务的"延迟"在生产上要拆成两个指标分别盯——它们由不同阶段决定，优化杠杆完全不同。定义按 NVIDIA 基准测试文档口径：
+
+| 指标 | 定义 | 决定什么 | 主要构成 |
+| --- | --- | --- | --- |
+| TTFT（Time to First Token） | 从请求发出到第一个输出 token 的耗时 | 等待体感：发出请求后多久开始出字 | 排队等待 + prefill 计算（分离架构下还有 KVCache 传输） |
+| TPOT（Time Per Output Token） | 后续每个输出 token 的平均间隔（也称 ITL） | 生成速度：出字流不流畅 | decode 单步耗时，由 batch 大小与显存带宽主导 |
+
+交互场景的经验目标值（业界经验口径，不是硬标准，按业务形态设定）：
+
+- **TTFT 数百毫秒量级**：对话类常以"500ms 以内算响应及时"为门槛（Modular 手册口径），代码补全弹窗类要求更严；超过秒级，用户会明显感到等待
+- **TPOT 约 50ms（≈20 tokens/s）**：持续 20 tokens/s 的输出已经超过绝大多数人的阅读速度，再压低 TPOT 在对话界面里用户感知不到（ClickHouse 口径）——省下的预算不如投给吞吐或 TTFT
+- 离线批处理没有这类约束，只看总吞吐
+
+两个阶段的资源画像差异（prefill 计算密集 vs decode 访存密集）与混跑时的互扰机制，下文 PD 分离一节的对照表已有展开，此处不重复，只列各自的杠杆：
+
+| TTFT 杠杆（prefill 侧） | 作用 | 备注 |
+| --- | --- | --- |
+| 前缀缓存 | 命中部分免重算，直接减少需计算的 prefill 量 | 多轮对话、RAG 命中率高，见上节 |
+| chunked prefill 调度 | 切碎长 prefill，避免单次长 prefill 阻塞全局 | 中小规模标配，见上节 |
+| 加大 TP | 并行压缩单请求的 prefill 耗时 | 代价是卡数与通信开销 |
+| PD 分离 | prefill 池独立扩容、独立优化并行策略 | 适用边界见下节 |
+| 排队治理 | 准入、限流、优先级调度，压缩排队等待 | TTFT 含排队时间，先治理再谈扩容 |
+
+| TPOT 杠杆（decode 侧） | 作用 | 备注 |
+| --- | --- | --- |
+| batch 策略 | 更大并发摊薄每步的权重加载成本 | 与单流延迟互相取舍，按 SLO 定 |
+| 显存带宽（选型） | decode 访存密集，HBM 带宽决定单步时延上限 | 选型看带宽而非算力，见 [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) |
+| 量化（FP8 / W4A16） | 每步要搬运的字节数变少 | 精度取舍见下文量化节 |
+| 投机解码 | 一次验证产出多个 token，摊薄每 token 成本 | 仅延迟敏感场景有意义，见下文 |
+| MoE 稀疏激活 | 每 token 只计算激活参数 | 显存账不减，见下文 MoE 专项 |
+
+延迟不达标时，先诊断是哪一段，再对号选杠杆：
+
+```mermaid
+flowchart TB
+  S[延迟不达标] --> W{哪一段超标?}
+  W -->|首字等待长| TT[TTFT 超标]
+  W -->|出字速度慢| TP[TPOT 超标]
+  TT --> TQ{排队时间长?<br/>看队列深度与等待耗时}
+  TQ -->|是| TQ1[排队治理: 准入/限流/优先级,<br/>扩容 prefill 侧容量]
+  TQ -->|否, prefill 本身慢| TC{前缀缓存命中率低?}
+  TC -->|低| TC1[提升前缀复用:<br/>缓存感知路由/统一前缀]
+  TC -->|不低| TC2[chunked prefill 调优/<br/>加大 TP/评估 PD 分离]
+  TP --> PB{batch 是否过大?<br/>看单卡并发}
+  PB -->|过大| PB1[降单卡并发或水平扩容:<br/>吞吐与单流延迟二选一]
+  PB -->|正常仍慢| TW[单步已触显存带宽上限]
+  TW --> TW1[量化 FP8/W4A16/投机解码/<br/>换更高带宽硬件]
+```
+
+一句经验：TTFT 差，先查排队等待——它最容易被忽略也最便宜；TPOT 差，先确认并发是不是压得太满——混部之下，吞吐与单流延迟本来就是同一份预算的两头。
 
 ## Prefill/Decode 分离（PD 分离）
 
@@ -152,6 +205,47 @@ DistServe 论文把这个矛盾讲得很透：混跑会把两个阶段的资源�
 - **只有 NVIDIA 卡且要压榨极限性能，看 TensorRT-LLM**。尤其在 NVL72 这类机架级新硬件上，NVIDIA 自家的内核与并行优化最深；代价是绑定 NVIDIA 生态，上手与运维成本相对高
 - 引擎迭代极快，**超过半年的 benchmark 数字不可信**，选型前务必用自己的负载重测
 
+## MoE 模型推理专项
+
+前沿开源模型（以 DeepSeek-V3/R1 为代表）普遍采用 MoE（Mixture of Experts，混合专家）架构。稀疏激活换来了效率，也把推理的显存账与通信账整个改写——稠密模型的经验在这里会失效。
+
+### 显存与带宽账：算得少、放得多、搬得多
+
+- **每 token 计算量 ≈ 激活参数**：路由器每个 token 只选少数专家。以 DeepSeek-V3 为例，总参数 671B、每 token 仅激活 37B（官方技术报告口径），单 token 算力需求只相当于一个数百亿级稠密模型
+- **显存占用 ≈ 总参数**：所有专家的权重都必须常驻才能被路由到，一个都省不掉
+- **搬运量也按总参数计**：decode 时每步要把被激活专家的权重从显存加载进计算单元，命中的虽是部分专家，权重池的底盘仍是全量模型
+
+与稠密模型的直觉对照：**稠密模型是"算多少放多少"，MoE 是"算一小部分、放全部、搬一大半"**。由此带来两个直接后果：一是不能用激活参数估卡数，显存必须按总参数估（见 [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)）；二是 decode 依旧访存密集，MoE 省的是算力，不是带宽。
+
+### 专家并行（EP）serving
+
+专家在多卡间怎么放，是 MoE 部署的第一决策：
+
+- **专家放置**：把专家分散到不同 GPU，每卡只存一部分专家权重。EP 规模越大，每卡专家越少——NVIDIA Wide-EP 的实践里，DeepSeek-R1 的 256 个路由专家放到 64 卡上，每层每卡仅 4 个专家，权重加载压力与 GroupGEMM 计算效率都随之改善
+- **每步两次 all-to-all**：每个 MoE 层，先按路由结果把 token 隐状态分发到目标专家所在卡（dispatch），算完再把结果收集合并回来（combine）。decode 本就访存紧张，all-to-all 很容易放大延迟，跨节点的大规模 EP 往往得不偿失
+- **热门专家热点**：路由并不均匀，被高频命中的"热门专家"若恰好集中在同一张卡，该卡过载而其余卡空转。TensorRT-LLM 用 EPLB（Expert Parallel Load Balancer）在卡间重新分布冷热专家，支持按历史分布预计算的静态模式与运行时动态调整的在线模式
+
+![MoE 专家并行的冷热专家再均衡（EPLB）](/images/ai/inference/moe-eplb-expert-balancing.gif)
+
+*EPLB 的冷热专家再均衡：均衡前热门专家集中在个别 GPU 上造成过载，在线再均衡后各卡负载恢复平均。图源：[NVIDIA Wide-EP 博客](https://developer.nvidia.com/blog/scaling-large-moe-models-with-wide-expert-parallelism-on-nvl72-rack-scale-systems/)。*
+
+- **专家 offloading**：显存装不下全部专家时，把热门专家留在 GPU、冷门专家下沉到 CPU 内存乃至磁盘，命中冷专家时再换入——用延迟换显存。KTransformers 是这条路线的代表，官方称单张 24GB 消费级显卡加大容量内存即可运行 DeepSeek-R1/V3 级模型。**适用边界要说清楚**：它适合离线、低并发、成本敏感的场景；高并发交互流量下冷专家的换入延迟藏不住，生产上要慎重
+
+### 为什么超大 MoE 与 NVL72 类大域硬件契合
+
+EP 的收益随域内卡数增多而放大，all-to-all 流量也同步放大——两头都押在互联带宽上。GB200 NVL72 把 72 个 GPU 放进一个一致的 NVLink 域，聚合带宽 130TB/s（NVIDIA 口径），单个域即可容纳超大模型的全部或大部分专家，token 分发与结果收集都在域内完成；同样的 EP 规模出了域、走集群网络，代价完全不同。NVIDIA 的实测（DeepSeek-R1，用户侧 100 tokens/s 口径）：EP32 相比 EP8，每 GPU 输出吞吐最高提升 1.8 倍。这与训练侧"域越大，EP 可铺开的专家数越多"的判断互为印证（见 [训练工程](/ai/infra/training)）；域与 scale-up / scale-out 网络的规划，见 [GPU 集群与高速网络](/ai/infra/cluster)。
+
+### MoE 部署要点
+
+| 维度 | 要点 |
+| --- | --- |
+| 显存估算 | 按总参数估显存（专家须全量常驻），按激活参数估算力需求 |
+| 并行策略 | 专家数多的大模型优先评估（宽）EP；专家数少的小 MoE 收益有限，通信开销可能反噬 |
+| 互联 | 每层两次 all-to-all，规模化依赖高带宽域（NVLink 级）；跨机柜做 EP 先算通信账 |
+| 负载均衡 | 监控各卡专家负载，用 EPLB 类机制再均衡热门专家 |
+| 显存不足 | 优先量化（专家权重是量化大头），再评估专家 offloading；交互流量慎用 |
+| 与 PD 分离组合 | 仍然适用：prefill 偏算力，decode 偏带宽与路由通信，两池可独立优化 |
+
 ## 生产部署架构
 
 一个能扛住生产的推理服务，远不止"起一个 vLLM 进程"：
@@ -193,6 +287,28 @@ flowchart LR
 - **队列、限流、配额与审计**：标配能力，审计要记录输入/输出 token，作为内部结算与成本分摊的依据
 - **降级与兜底**：主模型不可用或排队超阈值时自动切到备用模型或小模型，有答案比没有答案好
 - **可观测**：除了 TTFT/TPOT/队列深度，还要看前缀缓存命中率与单请求 token 成本——前者决定路由是否做对了，后者决定账单能否对得上
+
+### 系统设计题的打法
+
+"设计一个能扛 10 倍突发流量的推理服务"是面试与方案评审的高频题，我的答法按三层展开：
+
+**第一层：队列与背压，把过载显性化。** 突发到来时请求进显式队列并返回预计等待，而不是硬塞进实例；队列水位到阈值就快速拒绝——快失败优于慢失败。并发上限按显存与 KV Cache 容量核定，不按 CPU。队列与背压的机制前文已讲，答题的关键是把它画成显式组件、给出准入阈值，并说明阈值的来源。
+
+**第二层：扩容信号看队列与延迟，不看 GPU 利用率。** 推理实例在 continuous batching 下 GPU 利用率常年接近打满，这个指标既不能预警过载，也不指示还有余量；有效的扩容信号是队列深度与 TTFT（含排队时间）的 P95。且扩容是分钟级动作（权重加载慢），触发必须留出提前量，目标是把 TTFT 拉回 SLO 之内。
+
+**第三层：降级与弹性。** 降级方向前文网关一节已列（切备用/小模型），突发场景还要补两件事：一是面向用户的排队提示与预期管理；二是可预测的活动流量提前预热容量（预加载权重），不可预测的突发靠云上弹性 GPU 承接——镜像与权重预制好，接受分钟级冷启动，并为冷启动预留准入缓冲。
+
+**长时任务要另起一套调度。** 视频生成、长推理这类分钟到小时级的任务，不能与交互流量共用一套 serving 模型：
+
+| 要点 | 做法 |
+| --- | --- |
+| 队列隔离 | 异步任务队列与交互服务分池，避免长任务占卡挤掉实时流量 |
+| 状态检查点 | 中间状态定期落对象存储，失败后从检查点续跑而不是从头再来 |
+| 失败重试 | 有限次数 + 指数退避；反复失败的任务进死信队列人工处理 |
+| 超时取舍 | 超时定短了浪费已投入的算力，定长了占着卡不放；按任务价值分级设置超时与独占资源 |
+| 结果交付 | 产物存对象存储，回调或轮询交付，GPU 实例不承担长连接推送 |
+
+这套表不只适用于视频生成——凡是"GPU 上跑得久、中间状态有价值"的离线生成任务，调度骨架都一样。
 
 ## 自建推理 vs 模型 API
 
@@ -239,7 +355,13 @@ flowchart LR
 - [DistServe 论文：Disaggregating Prefill and Decoding for Goodput-optimized LLM Serving](https://arxiv.org/abs/2401.09670)（访问日期 2026-09-04）
 - [EAGLE 论文：Speculative Sampling Requires Rethinking Feature Uncertainty](https://arxiv.org/abs/2401.15077)（访问日期 2026-09-04）
 - [GPTQ 论文](https://arxiv.org/abs/2210.17323) · [AWQ 论文](https://arxiv.org/abs/2306.00978)（访问日期 2026-09-04）
-- 图片来源：vLLM V1 架构图取自 [vLLM 官方博客](https://blog.vllm.ai/2025/01/27/v1-alpha-release.html)，Mooncake 架构图取自 [Mooncake 官方仓库](https://github.com/kvcache-ai/Mooncake)（访问日期 2026-09-04）
-- 站内相关：[GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) · [推理与算力](/ai/infra/inference/) · [GPU 集群与高速网络](/ai/infra/cluster) · [企业级 RAG 架构设计](/ai/application/rag-architecture)
+- [NVIDIA NIM LLMs Benchmarking：Metrics（TTFT / TPOT 指标定义）](https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html)（访问日期 2026-09-04）
+- [Modular Handbook：Key metrics for LLM inference（对话类 TTFT 500ms 以内的体验口径）](https://handbook.modular.com/llm-inference-basics/llm-inference-metrics/)（访问日期 2026-09-04）
+- [ClickHouse：LLM inference latency——TTFT、tokens/s 与体感（20 tokens/s 超过人类阅读速度的口径）](https://clickhouse.com/resources/engineering/llm-inference-latency)（访问日期 2026-09-04）
+- [DeepSeek-V3 Technical Report（671B 总参数、每 token 激活 37B）](https://arxiv.org/abs/2412.19437)（访问日期 2026-09-04）
+- [NVIDIA 博客：Scaling Large MoE Models with Wide Expert Parallelism on NVL72 Rack Scale Systems](https://developer.nvidia.com/blog/scaling-large-moe-models-with-wide-expert-parallelism-on-nvl72-rack-scale-systems/)（访问日期 2026-09-04）
+- [KTransformers 官方仓库（CPU/GPU 混合 MoE 推理、专家 offloading）](https://github.com/kvcache-ai/ktransformers)（访问日期 2026-09-04）
+- 图片来源：vLLM V1 架构图取自 [vLLM 官方博客](https://blog.vllm.ai/2025/01/27/v1-alpha-release.html)，Mooncake 架构图取自 [Mooncake 官方仓库](https://github.com/kvcache-ai/Mooncake)，MoE 专家负载均衡图取自 [NVIDIA Wide-EP 博客](https://developer.nvidia.com/blog/scaling-large-moe-models-with-wide-expert-parallelism-on-nvl72-rack-scale-systems/)（访问日期 2026-09-04）
+- 站内相关：[GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) · [Token 经济学：定价与成本的数学](/ai/infra/inference/token-economics) · [推理与算力](/ai/infra/inference/) · [GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [企业级 RAG 架构设计](/ai/application/rag-architecture)
 
 </Refs>

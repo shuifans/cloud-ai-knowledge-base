@@ -61,9 +61,19 @@ KV Cache 就是"全部前文的记忆"：每一层注意力都要保存每个历
 今天的主流模型都是"Transformer + 一组补丁"：
 
 - **Pre-Norm 与残差**：深层稳定训练的基础；每层 = 注意力子层 + FFN 子层，均带残差与归一化
+- **RMSNorm 取代 LayerNorm**：LayerNorm 做两件事——减均值（中心化）与除以标准差（缩放）；RMSNorm 去掉中心化，只用均方根做缩放，少一组参数、少一步计算，深层网络下经验上更稳——LLaMA 系与此后几乎全部主流模型的标配，上面 Pre-Norm 里的归一化基本都用它
+- **注意力为什么除以 √d_k**：两个维度为 d_k、元素独立且零均值单位方差的向量做点积，结果的方差随 d_k 线性放大——维度越高，点积值越发失控。logits 失控后，softmax 把几乎全部概率压到单个 token 上、进入饱和区，梯度趋近于零，训练就推不动了。除以 √d_k 把方差拉回 1 附近，让 softmax 停留在有梯度的区间。这是原论文里的一行修正，但缺了它，深层 Transformer 基本训不起来
 - **RoPE 旋转位置编码**：相对位置的优雅表达，天然支持长度外推，是当前长上下文模型的标配（配 NTK/YaRN 类缩放进一步拉长）
+- **MHA → MQA → GQA：注意力的 KV 压缩光谱**：原始 MHA（多头注意力）给每个 Query 头配一组独享的 KV——表达力最强，KV Cache 也最大；MQA（多查询注意力，2019）走到另一极端，全体 Query 头共享一组 KV，把解码时 KV 读取压到最小，但能力损失明显；GQA 居中（见下条），组内共享。三者构成"以少量能力换 KV Cache"的光谱，再往后把压缩做到维度方向上的就是下文 MLA 一节
 - **GQA（分组查询注意力）**：多个 Query 头共享一组 KV，大幅压缩 KV Cache——上例中 KV 头从 64 减到 8 即 8 倍压缩，是推理成本优化的架构级手段
 - **FFN 的膨胀**：FFN 占模型参数的大头，也是知识存储的主要载体——MoE 动的正是这块
+- **SwiGLU 取代 ReLU**：经典 FFN 是"两层线性夹一个 ReLU"，SwiGLU 则引入门控结构——一路线性输出过 Swish 激活当"门"，与另一路线性输出逐元素相乘，让网络自己学每个维度该放行多少信息。门控用略多的参数（通常把隐层宽度缩到 2/3 以保持总参数量大致不变）换来明显更好的效果，2020 年的对比工作之后，成为 LLaMA、PaLM 等现代模型的 FFN 标配
+- **FlashAttention：注意力的瓶颈不在算力而在 IO**：标准注意力要把 N×N 注意力矩阵（N 为序列长度）在 HBM（GPU 显存）中实体化——点积后写出、softmax 读回、softmax 后再写出，HBM 读写量随 N² 增长，而 GPU 算力单元大量时间在等数据；片上 SRAM 快得多却只有几十 MB，装不下整块矩阵。FlashAttention（2022）重排计算：把 Q、K、V 切成能装进 SRAM 的小块，分块在片上算注意力、只把部分结果写回；关键技巧是**在线 softmax**——用运行统计量增量更新归一化分母，不必等整行 logits 算完；反向传播不保存注意力矩阵，而是从前向保存的统计量按块重算，用少量多余算力换 IO。全程 N×N 矩阵不落地 HBM，HBM 访问量从 O(N²) 降到 O(N²d²/M)（M 为 SRAM 容量），显存占用从序列长度的平方降为线性，A100 上实测快 2–4 倍，且与标准注意力逐位一致（精确算法，不是近似）。它因此成为所有训练与推理框架的必备内核——长上下文时代正是建立在这项改进之上
+- **FA2 / FA3 的后续方向**：FA2（2023）压低非矩阵乘操作（softmax 类逐元素运算）的比例、增加沿序列长度维度的并行、重排线程块分工，速度再翻倍，把 A100 算力利用率从 v1 的 25–40% 提到 50–70%；FA3（2024）针对 Hopper 架构，用 WGMMA 异步矩阵指令与 warp 分工（warp specialization）让矩阵乘与 softmax 重叠执行，H100 利用率从 35% 提到约 75%（FP16 峰值 740 TFLOPS），速度约为 FA2 的 1.5–2 倍，并支持 FP8 低精度。注意力的内核优化至此与硬件架构深度绑定，每一代 GPU 都要重写一遍
+
+![标准注意力与 FlashAttention 的数据流对比：前者要在 HBM 中读写 N×N 注意力矩阵，后者把 Q、K、V 分块载入片上 SRAM 计算，注意力矩阵全程不落地 HBM](/images/ai/models/llm/flashattention-hbm-sram.png)
+
+*图源：Tri Dao 的 FlashAttention-3 发布博客（[tridao.me](https://tridao.me/blog/2024/flash3/)）*
 
 ## 规模化律：从暴力堆参数到预算工具
 
@@ -92,6 +102,14 @@ KV Cache 就是"全部前文的记忆"：每一层注意力都要保存每个历
 
 - **对齐是杠杆率极高的投入**：InstructGPT 论文中，1.3B 的对齐模型在人类评估里胜过 175B 的原始 GPT-3——参数量差百倍，体验反超
 - RLHF（奖励模型 + PPO）成为标配后又分出一条谱系：**DPO** 跳过奖励模型直接用偏好对优化，工程更简单；**Constitutional AI（RLAIF）** 用 AI 反馈替代部分人工标注，解决无害性数据的规模与一致性问题；2025 年的推理模型浪潮再把 **RLVR**（可验证奖励的强化学习）推上前台——数学、代码等可自动判分的领域成为推理能力的训练场，这正是 o1/R1 的技术底座（详见 [训练工程](/ai/infra/training)）
+
+对齐强化学习阶段的主流算法，工程账差别很大，汇总对照：
+
+| 算法 | 奖励信号 | 是否需要奖励模型 | 关键机制 | 工程复杂度 |
+| --- | --- | --- | --- | --- |
+| PPO | 学习出的奖励模型打分 | 需要（另需参考模型做 KL 约束、价值网络估优势） | 策略梯度 + 裁剪目标；KL 惩罚防止模型偏离原模型太远 | 高：策略/奖励/参考/价值四个模型同时在手，超参敏感 |
+| DPO | 人类或 AI 偏好对 | 不需要 | 把 KL 约束 RL 目标的闭式解代入奖励函数，奖励隐式地由策略本身表示，RL 目标退化为偏好对上的二元分类损失 | 低：单模型直接当分类器训 |
+| GRPO | 规则可验证奖励为主 | 不需要 | 每题采样一组回答，用组内相对奖励（减组均值、除组标准差）充当优势，省掉 critic/价值网络 | 中：免训价值网络，但要成组采样并设计奖励函数 |
 
 ## MoE：稀疏激活的效率革命
 
@@ -128,12 +146,46 @@ MLA（Multi-head Latent Attention，DeepSeek-V2 于 2024 年首创）把所有�
 - **成本真相**：长上下文的瓶颈是 KV Cache 的显存与带宽，不是计算——"支持 1M 上下文"与"用得起 1M 上下文"是两回事
 - **与 RAG 的关系**：不是替代而是分工——长上下文管会话内，RAG 管知识库，两者在"上下文工程"里统一调度
 
+其中第一段的 RoPE 缩放值得单独展开：它是让已训好的模型获得长上下文最便宜的手段，三代方法回答的是同一个问题——训练没见过的长位置怎么处理：
+
+- **PI（位置插值）**：把位置索引线性压缩，将更长序列的位置映射回训练过的区间——实现最简单，但对所有维度无差别压缩，高频维度的局部分辨率被压坏
+- **NTK-aware 插值**：不动位置索引，改 RoPE 的基频，让各维度的旋转频率按不同幅度放慢——高频维度近似保持原转速，低频维度压缩更多
+- **YaRN**：把高低频显式分区处理（NTK-by-parts）——高频维度完全不插值（保护局部信息），低频维度完全插值，中频段平滑过渡，再补一个注意力温度补偿；以很少的继续预训练成本即可稳定支撑约 10 倍的上下文扩张，是开源长上下文模型的默认方案
+
+一句经验：旗舰模型的 1M 上下文，很少靠单一外推技巧，而是"大 RoPE 基频 + 分频段缩放 + 长数据继续训练"的组合拳——外推是放大器，不是无米之炊。
+
 ## 推理模型：推理时计算（Reasoning）
 
 - **范式转变**：从"训练时把能力压进权重"到"推理时用更多计算换更高质量"——OpenAI o1（2024-09，用大规模强化学习训练思维链）是开创者；DeepSeek-R1（2025-01，不依赖人工推理标注的纯 RL 路线并开源权重）是开源引爆点
 - **技术要点**：思考 token 就是生成在专门推理区里的普通文本，其长度即"思考时长"；RLVR 的奖励来自可自动判分的结果（答案对错、测试通过与否）；推理预算可按任务难度调节——Qwen3 的思考/非思考双模式（截至 2026-09）已是开源旗舰标配
 - **成本结构影响**：推理模型的输出 = 思考 token + 答案 token，单价与延迟都要按"思考预算"重新测算——传统的"输入/输出价格"模型被改写；思考区通常不完整展示给用户，但足额计费
 - **与 Agent 的合流**：长程推理能力是 Agent 处理复杂任务的前提，两条技术线在这里交汇（参见 [Agent 子域](/ai/agent/)）；V3.2 一类模型已把"推理 + 工具调用"的合成训练管线作为核心能力来建设
+
+## 解码与采样策略
+
+模型前向只产出下一个 token 的概率分布，**从分布里取哪个 token，是解码策略说了算**——也就是 API 里调的 `temperature`、`top_p` 这组参数。这一层不改变模型能力，却直接决定输出的稳定性与多样性，是工程调参里理解最不透彻的一环。
+
+常见机制，按从保守到放开排列：
+
+- **贪心（greedy）**：每步取概率最高的 token，完全确定；短视（每步局部最优不保证全局最优），开放任务上容易掉进重复循环
+- **束搜索（beam search）**：并行保留 B 条候选序列、逐步扩展，结束时取全局得分最高的一条；曾是机器翻译标配，但开放生成中输出偏单调重复，如今主要留在语音识别等受限生成场景
+- **top-k**：每步只保留概率最高的 k 个 token，重新归一化后采样；k 是固定值，不随分布形状自适应——模型很确定时候选集太宽，模型犹豫时候选集又太窄
+- **top-p（nucleus sampling，核采样）**：把 token 按概率从大到小累加，累到总概率恰好超过 p 时截断这个最小候选集，归一化后采样；候选集大小随分布熵自动伸缩——模型确定就只留少数几个，不确定就多留。当前主流 API 都以 top_p 为采样的主开关
+- **temperature**：不做截断，改分布形状——logits 先除以 T 再过 softmax。T < 1 让分布更尖、概率向头部 token 集中；T > 1 让分布更平、低概率 token 也有机会；T 趋近 0 时近似贪心
+
+工程含义有三条：
+
+- **确定性任务压低温度**：分类、信息抽取、JSON 等结构化输出、工具调用参数，这类任务只有唯一正确答案，采样就是噪声——低温度（0–0.3）或贪心 + 格式约束是标配，top_p 也应同步收紧
+- **创作类任务放开温度**：文案、故事、头脑风暴需要多样性，温度太低会让多次输出几乎雷同；同时配合重复惩罚（frequency/presence penalty 一类 logits 处理器，对已生成的 token 在 logits 上扣分）防循环
+- **推理模型时代，采样重新变得值钱**：思考链是一段长搜索过程，贪心解码会让推理掉进重复循环。DeepSeek-R1 的官方使用建议明确要求 temperature 0.5–0.7（推荐 0.6）、top_p 0.95，其论文也记录了贪心解码下长输出推理模型的重复率显著升高、评测结果不稳——用推理模型时，别照搬对话模型时代的低温度经验
+
+| 策略 | 机制 | 适用 | 主要风险 |
+| --- | --- | --- | --- |
+| 贪心 | 每步取 argmax | 抽取、分类、结构化输出 | 短视、重复、无多样性 |
+| 束搜索 | 保留 B 条候选、取全局最优 | 语音识别、受限翻译 | 输出单调、算力 × B |
+| top-k | 按概率留前 k 再采样 | 通用生成 | k 不自适应分布形状 |
+| top-p | 按累积概率 p 截断再采样 | 通用生成（当前默认） | 分布极平时候选集仍可能偏大 |
+| temperature | 用 T 重缩放 logits | 与上述组合调锐度 | 过低重复、过高失焦 |
 
 ## 开源权重谱系：从 LLaMA 到 DeepSeek
 
@@ -234,18 +286,32 @@ flowchart TD
 - [Qwen3 Technical Report](https://arxiv.org/abs/2505.09388) — 稠密 + MoE 全线与思考双模式（2025）（访问日期 2026-09-03）
 - [DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models](https://arxiv.org/abs/2512.02556) — DSA 稀疏注意力与智能体后训练（2025）（访问日期 2026-09-03）
 - [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180) — vLLM 论文，KV Cache 分页管理（2023）（访问日期 2026-09-03）
+- [Root Mean Square Layer Normalization](https://arxiv.org/abs/1910.07467) — RMSNorm，去中心化的归一化（2019）（访问日期 2026-09-04）
+- [Fast Transformer Decoding: One Write-Head is All You Need](https://arxiv.org/abs/1911.02150) — MQA 多查询注意力（2019）（访问日期 2026-09-04）
+- [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) — top-p/核采样的提出背景（2019）（访问日期 2026-09-04）
+- [GLU Variants Improve Transformer](https://arxiv.org/abs/2002.05202) — SwiGLU 门控 FFN（2020）（访问日期 2026-09-04）
+- [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135) — IO 感知注意力的起点（2022）（访问日期 2026-09-04）
+- [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290) — DPO 跳过奖励模型的对齐（2023）（访问日期 2026-09-04）
+- [GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints](https://arxiv.org/abs/2305.13245) — 分组查询注意力（2023）（访问日期 2026-09-04）
+- [Extending Context Window of Large Language Models via Positional Interpolation](https://arxiv.org/abs/2306.15595) — 位置插值（PI）扩展上下文（2023）（访问日期 2026-09-04）
+- [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) — 更好的并行与分工（2023）（访问日期 2026-09-04）
+- [YaRN: Efficient Context Window Extension of Large Language Models](https://arxiv.org/abs/2309.00071) — 高低频分区的 RoPE 外推（2023）（访问日期 2026-09-04）
+- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](https://arxiv.org/abs/2402.03300) — GRPO 组相对策略优化（2024）（访问日期 2026-09-04）
+- [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-Precision](https://arxiv.org/abs/2407.08608) — Hopper 异步与低精度（2024）（访问日期 2026-09-04）
 
 **官方博客与公告**
 
 - [OpenAI: Learning to Reason with LLMs](https://openai.com/index/learning-to-reason-with-llms/) — o1 发布公告（2024-09-12）（访问日期 2026-09-03）
 - [vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention](https://vllm.ai/blog/2023-06-20-vllm) — vLLM 发布博客（2023-06）（访问日期 2026-09-03）
 - [DeepSeek: Introducing DeepSeek-V3.2-Exp](https://api-docs.deepseek.com/news/news250929/) — DSA 首发公告（2025-09-29）（访问日期 2026-09-03）
+- [Tri Dao: FlashAttention-3](https://tridao.me/blog/2024/flash3/) — FA3 作者博客，技术细节与基准（2024-07）（访问日期 2026-09-04）
 
 **图片来源**
 
 - Transformer 架构图：Attention Is All You Need 图 1（[arXiv:1706.03762](https://arxiv.org/abs/1706.03762)）
 - 注意力结构对比图：DeepSeek-V2 图 3（[arXiv:2405.04434](https://arxiv.org/abs/2405.04434)）
 - DeepSeek-V3 架构图：DeepSeek-V3 Technical Report 图 2（[arXiv:2412.19437](https://arxiv.org/abs/2412.19437)）
+- FlashAttention 数据流对比图：Tri Dao 的 FlashAttention-3 发布博客（[tridao.me](https://tridao.me/blog/2024/flash3/)）
 
 站内相关：[机器学习与深度学习经典](/ai/models/ml-dl) · [GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [推理部署实战](/ai/infra/inference/llm-inference) · [多模态应用](/ai/application/multimodal) · [智能体技术全景](/ai/agent/)
 
