@@ -39,6 +39,8 @@ flowchart TB
 
 ### Kubernetes 版本线（选型基线建议 ≥ 1.35）
 
+各特性在 2026-09 的官方状态（alpha/beta/GA）已逐条核实并展开落地含义，见 [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) 的「2026 新特性」节。
+
 | 版本 | 时间 | 关键特性 |
 | --- | --- | --- |
 | v1.33 | 2025-04 | Sidecar 容器 GA、In-place Resize 升 Beta |

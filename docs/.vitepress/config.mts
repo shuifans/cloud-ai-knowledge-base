@@ -9,7 +9,7 @@ export default withMermaid(
   defineConfig({
     title: '云与 AI 知识体系',
     description:
-      '一名云解决方案架构师的十年沉淀：从云计算基座、全栈云产品到模型架构、AI Infra 与 Agentic 的完整知识体系。',
+      '一名云解决方案架构师的十年沉淀：从云计算基座、全栈云产品到模型架构、AI Infra 与 Agent 的完整知识体系。',
     lang: 'zh-CN',
     base,
     cleanUrls: true,
@@ -89,11 +89,9 @@ export default withMermaid(
             { text: '模型架构演进', link: '/ai/models/' },
             { text: 'AI Infra', link: '/ai/infra/' },
             { text: '大模型应用', link: '/ai/application/' },
+            { text: 'Agent', link: '/ai/agent/' },
           ],
         },
-        { text: 'Agentic', link: '/agentic/' },
-        { text: '方法论', link: '/methodology/' },
-        { text: '行业场景', link: '/industry/gaming' },
         { text: '编年史', link: '/chronicle/' },
         { text: '关于', link: '/about' },
       ],
@@ -124,6 +122,7 @@ export default withMermaid(
             items: [
               { text: '导读：数据层知识框架', link: '/cloud/data/' },
               { text: '数据库选型', link: '/cloud/data/database' },
+              { text: 'OLAP 引擎：StarRocks/Doris/ClickHouse', link: '/cloud/data/olap' },
               { text: '大数据体系', link: '/cloud/data/bigdata' },
             ],
           },
@@ -170,33 +169,12 @@ export default withMermaid(
               { text: '多模态应用', link: '/ai/application/multimodal' },
             ],
           },
-        ],
-        '/agentic/': [
           {
-            text: 'Agentic',
+            text: 'Agent',
             items: [
-              { text: '智能体技术全景', link: '/agentic/' },
-              { text: 'Agent 热点编年史', link: '/agentic/history' },
-              { text: 'Agent 开发框架对比', link: '/agentic/frameworks' },
-            ],
-          },
-        ],
-        '/methodology/': [
-          {
-            text: '解决方案方法论',
-            items: [
-              { text: '导读：SA 能力地图', link: '/methodology/' },
-              { text: '解决方案架构设计方法论', link: '/methodology/architecture-design' },
-              { text: '上云迁移方法论（6R）', link: '/methodology/cloud-migration' },
-              { text: '高可用与容灾设计', link: '/methodology/ha-dr' },
-            ],
-          },
-        ],
-        '/industry/': [
-          {
-            text: '行业场景',
-            items: [
-              { text: '游戏行业：云技术地图', link: '/industry/gaming' },
+              { text: '智能体技术全景', link: '/ai/agent/' },
+              { text: 'Agent 热点编年史', link: '/ai/agent/history' },
+              { text: 'Agent 开发框架对比', link: '/ai/agent/frameworks' },
             ],
           },
         ],

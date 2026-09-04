@@ -25,6 +25,8 @@ outline: [2, 3]
 
 最后这一类是近三两年才挤进选型桌的：大模型应用落地让"向量相似度检索"从冷门能力变成了标配需求。我的判断是：**向量库短期内不会取代任何一类数据库，但会长期寄生在它们身上**——中小规模场景 pgvector 这类扩展够用，十亿级向量、高 QPS 才值得上 Milvus 这类专用引擎。
 
+版图里还有半壁江山——**分析型（OLAP）引擎**：ClickHouse、StarRocks、Doris 这类为聚合分析而生的列存 MPP 数据库。它们的选型逻辑与本文讲的 OLTP 完全不同（不追求单行事务，追求扫描与聚合的吞吐），值得单独成篇，见 [OLAP 引擎：StarRocks、Doris 与 ClickHouse 的架构与选型](/cloud/data/olap)。
+
 ## 为什么重要：选错库的代价不对称
 
 云把"买错机器"的代价摊薄到了小时级，却没有摊薄"选错引擎"的代价，原因有三：
@@ -204,7 +206,8 @@ flowchart TD
 ## 站内相关
 
 - [数据库·大数据导读](/cloud/data/) — 本篇在知识体系中的位置
-- [大数据体系](/cloud/data/bigdata) — 分析型负载的另一半答案（OLAP 侧）
+- [OLAP 引擎：StarRocks、Doris 与 ClickHouse](/cloud/data/olap) — 分析型引擎的架构与选型，与本篇分工互补
+- [大数据体系](/cloud/data/bigdata) — 分析型负载在数据平台里的全景位置
 - [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) — 有状态服务（数据库）该不该上 K8s，先看那篇的存储结论
 
 ## 参考资料

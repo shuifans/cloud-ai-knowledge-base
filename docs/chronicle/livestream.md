@@ -161,7 +161,6 @@ flowchart LR
 - 上一浪：[移动互联网时代](/chronicle/mobile-internet)｜下一浪：[短视频时代](/chronicle/short-video)
 - 同期暗流：[暗流：信创与国产化](/chronicle/xinchuang)
 - 成本方法传承：[AI 大模型时代](/chronicle/ai-era) · [LLM 推理](/ai/infra/inference/llm-inference) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
-- 方法论：[上云迁移方法论](/methodology/cloud-migration) · [架构设计](/methodology/architecture-design)
 
 ## 参考资料
 

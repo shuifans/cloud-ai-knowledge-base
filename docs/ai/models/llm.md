@@ -133,7 +133,7 @@ MLA（Multi-head Latent Attention，DeepSeek-V2 于 2024 年首创）把所有�
 - **范式转变**：从"训练时把能力压进权重"到"推理时用更多计算换更高质量"——OpenAI o1（2024-09，用大规模强化学习训练思维链）是开创者；DeepSeek-R1（2025-01，不依赖人工推理标注的纯 RL 路线并开源权重）是开源引爆点
 - **技术要点**：思考 token 就是生成在专门推理区里的普通文本，其长度即"思考时长"；RLVR 的奖励来自可自动判分的结果（答案对错、测试通过与否）；推理预算可按任务难度调节——Qwen3 的思考/非思考双模式（截至 2026-09）已是开源旗舰标配
 - **成本结构影响**：推理模型的输出 = 思考 token + 答案 token，单价与延迟都要按"思考预算"重新测算——传统的"输入/输出价格"模型被改写；思考区通常不完整展示给用户，但足额计费
-- **与 Agent 的合流**：长程推理能力是 Agent 处理复杂任务的前提，两条技术线在这里交汇（参见 [Agentic 支柱](/agentic/)）；V3.2 一类模型已把"推理 + 工具调用"的合成训练管线作为核心能力来建设
+- **与 Agent 的合流**：长程推理能力是 Agent 处理复杂任务的前提，两条技术线在这里交汇（参见 [Agent 子域](/ai/agent/)）；V3.2 一类模型已把"推理 + 工具调用"的合成训练管线作为核心能力来建设
 
 ## 开源权重谱系：从 LLaMA 到 DeepSeek
 
@@ -247,6 +247,6 @@ flowchart TD
 - 注意力结构对比图：DeepSeek-V2 图 3（[arXiv:2405.04434](https://arxiv.org/abs/2405.04434)）
 - DeepSeek-V3 架构图：DeepSeek-V3 Technical Report 图 2（[arXiv:2412.19437](https://arxiv.org/abs/2412.19437)）
 
-站内相关：[机器学习与深度学习经典](/ai/models/ml-dl) · [GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [推理部署实战](/ai/infra/inference/llm-inference) · [多模态应用](/ai/application/multimodal) · [Agentic 支柱](/agentic/)
+站内相关：[机器学习与深度学习经典](/ai/models/ml-dl) · [GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [推理部署实战](/ai/infra/inference/llm-inference) · [多模态应用](/ai/application/multimodal) · [智能体技术全景](/ai/agent/)
 
 </Refs>

@@ -52,7 +52,7 @@ HDFS 是这一波大数据工业化的起点。它的官方设计目标今天读
 后来的演化路线也清晰：**对象存储（OSS/S3 类）接管持久化层，湖格式接管"表"的语义**。
 
 - **数据湖**（数据湖概念由 Pentaho 的 James Dixon 于 2011 年前后提出）：一切以原始格式（Parquet/JSON/日志/图片）躺在便宜的对象存储上。问题是早期湖没有事务、没有 Schema 约束、改错一批文件只能人肉回滚——"数据湖"很快有了绰号"数据沼泽"。
-- **开放表格式**补上了这一课。Apache Iceberg 官方定义它是"面向海量分析数据集的开放表格式"，核心能力我逐条都有体感：**Schema 演进不留暗坑**（改列不会误删旧数据）、**隐藏分区**（查询者不需要知道分区列长什么样，避免了"忘写分区条件扫全表"这类静默错误）、**时间旅行与回滚**（读一个快照，事故后可回滚到坏数据写入前）、**行级更新删除**（规范 v2 起，更新不再需要重写整个分区）。多个引擎（Spark/Trino/Flink/Hive 类）读写同一张表，这是"湖仓"成立的底层前提。
+- **开放表格式**补上了这一课。Apache Iceberg 官方定义它是"面向海量分析数据集的开放表格式"，核心能力我逐条都有体感：**Schema 演进不留暗坑**（改列不会误删旧数据）、**隐藏分区**（查询者不需要知道分区列长什么样，避免了"忘写分区条件扫全表"这类静默错误）、**时间旅行与回滚**（读一个快照，事故后可回滚到坏数据写入前）、**行级更新删除**（规范 v2 起，更新不再需要重写整个分区；v3 规范已定稿，deletion vectors 等让更新删除的写入效率再上一个台阶）。多个引擎（Spark/Trino/Flink/Hive 类）读写同一张表，这是"湖仓"成立的底层前提。
 - **为流而生的湖格式**：Apache Paimon 用 LSM 结构做湖上的**流式更新与 Changelog 生成**，把 CDC 数据（MySQL/Kafka 等）直接写进湖表、下游 Flink 流读——这是"批流一体"从口号变成可落地的关键一块。
 
 ### 计算：批和流是两种节奏，不是一个引擎的两种模式
@@ -128,9 +128,46 @@ flowchart LR
 
 我的落地原则：**下三层尽量复用、最上两层允许烟囱**。口径统一发生在 DWD/DWS；ADS 允许为业务快速定制——但如果发现大量逻辑在 ADS 里互相抄，说明 DWS 建薄了，该还的债迟早还。
 
-### 服务与检索：最后一公里的三种消费者
+### 调度与编排：批处理世界的中枢神经
 
-- **报表/自助分析**：OLAP 引擎直接查询，或数仓引擎加速查询。选 OLAP 引擎本质是选"查询模式 × 数据新鲜度 × 并发"的匹配度，不展开了（站内[数据库选型](/cloud/data/database)有分析型负载的讨论）。
+给数据平台画组件对照表时，调度常常不在表里——但它一挂，前面画的管线一条都跑不起来。**批处理世界的中枢神经不是计算引擎，而是调度器**：它决定每个任务几点起、等谁的结果、失败重跑什么、核心报表几点前必须产出。
+
+**调度对象是 DAG，不是单个任务。** 一个离线任务的产出是下一个任务的输入，一组任务按依赖连成 DAG（有向无环图：方向=依赖顺序，无环=不允许循环等待）。DAG 模型回答三件事：依赖（上游成功才起下游）、并行（互不依赖的分支全并发）、补数（口径改了或上游迟到，把指定历史时段整体重跑）。一条一线原则：**任务粒度按"产出表"切，不按"逻辑步骤"切**——每个任务对应一个可校验的产出，重跑才能定位到最小范围；切得太碎，调度器的元数据先垮。
+
+![Airflow Graph 视图渲染的 DAG 示例：ingest、analyze、check_integrity 等任务以依赖边相连，按"无错误/发现错误"条件分叉到两条下游路径，最终汇入 report](/images/cloud/bigdata/airflow-dag-graph.png)
+
+*Apache Airflow 官方文档的 DAG 渲染示例（Graph 视图）：任务是节点、依赖是边，边标签即分支条件。图源：Apache Airflow 官方文档（[Concepts Overview](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html)，访问日期 2026-09-04）*
+
+**Airflow** 是开源调度的事实标准，官方定位是"以代码方式编排、调度和监控工作流的平台"。心智模型就三个概念：**DAG**（Python 文件描述的依赖图）、**Operator**（任务模板，一个实例即一个任务）、**Sensor**（不做计算、只等条件的特殊 Operator——等上游分区就绪、等外部文件到达）。3.x 的架构由 Scheduler（触发与提交任务）、DAG Processor（解析 DAG 文件并序列化进元数据库）、API Server（承载 UI）、Metadata Database（PostgreSQL/MySQL）与执行任务的 Worker 组成；3.0 起引入 **Assets** 资产模型与**事件驱动调度**——DAG 不仅能按时间触发，还能被"某张表被外部系统更新"这样的事件触发，这是 Airflow 近年最实质的概念演进。
+
+![Airflow 基础架构：用户以 Python 编写 DAG 文件，Scheduler 读取并负责解析、调度与提交执行，API Server 提供 UI，两者共享同一个 Metadata DB](/images/cloud/bigdata/airflow-architecture.png)
+
+*Airflow 官方基础架构图：DAG 文件是唯一输入，Scheduler 与 API Server 各自独立成进程，元数据库是状态的心脏。图源：Apache Airflow 官方文档（[Concepts Overview](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html)，访问日期 2026-09-04）*
+
+Airflow 强在 **code-first**：DAG 是代码，就能进 Git 评审、动态生成、单测，对工程型团队是天作之合；Provider 生态的覆盖面也几乎没有对手。弱项同样清楚：它骨子里是批调度，别指望它跑秒级管线；状态全在元数据库，规模一大 DB 与 DAG 文件解析吞吐是第一瓶颈；"DAG 即代码"还意味着数据工程师得有一套 Python 工程规范，对分析型团队门槛不低。
+
+**DolphinScheduler** 是国产开源调度的代表：前身是易观内部的 EasyScheduler，2019 年进入 Apache 孵化器、2021 年毕业为顶级项目，是第一个国人主导的 Apache 调度类顶级项目。它和 Airflow 的差异很直观：**可视化 DAG 拖拽**（低代码，分析工程师也能搭管线）、去中心化的分布式架构、内置多租户与权限、中文社区资料充足。官方定位"现代数据编排平台"，强调日均千万级任务的处理能力。我的判断：团队工程化强、生态偏 Python 选 Airflow；要拖拽易用、租户隔离与中文生态，DolphinScheduler 是目前唯一值得认真评估的开源选项。
+
+**托管调度**也得提一句：云厂商普遍提供托管的工作流调度服务，卖点是和云上计算引擎预集成——批、流、湖表任务都是原生任务类型，基线告警、多租户配额、值班体系是标准产品能力而不是自建工程。对走全托管湖仓的团队这是默认项；追求跨云与混合云开放性的，再回到开源调度。
+
+**基线与 SLA 告警是调度的"操作系统"。** 实践与选型里成本治理一节讲的"跑批基线"，落点就在这里：给核心产出表设承诺完成时间，调度系统沿关键路径倒推每个上游任务的最晚起调时间，把告警从"产出已迟到"前移到"预计破线"。开源调度普遍只提供 SLA 违约回调一类能力，真正的基线管理往往靠自研或托管服务补齐——这一项的能力差距，是"开源 vs 托管"选型里的重要评估项。
+
+### 数据治理与质量：让数据"找得到、敢用、可信"
+
+采集、存储、计算三层解决"数据能不能算出来"，治理解决"算出来的数据有没有人敢用"。我把治理拆成四件事——**元数据、权限、质量、口径归属**——没有一件是宏大叙事，件件都是有明确交付物的工程体系。
+
+**元数据与血缘：先让资产"找得到"、血缘"追得动"。** 元数据平台（DataHub 类）干三件事：数据资产目录（表、字段、报表可搜索）、从任务到表到字段的血缘图谱、以及归属与质量标签的载体。DataHub 孵化自 LinkedIn，最新 v1.7.x 延续"发现、治理、可观测"的定位。更底层的一块是 **OpenLineage**：血缘元数据的开放标准，定义 Job、Dataset、Run 三类实体加可自由扩展的 facet 机制，调度器与引擎（Airflow、Spark、Flink、dbt 等）按标准发 lineage 事件，任何符合标准的元数据平台都能消费。标准的意义在于血缘不再锁死在单一厂商私有协议里——和开放表格式一个逻辑：**标准开放，生态自长**。
+
+**权限：谁能读哪张表，细到列和行。** Apache Ranger 仍是 Hadoop 生态的事实标准——官方定位"在 Hadoop 生态上启用、监控和管理全面数据安全的框架"，集中式策略管理加引擎侧插件，覆盖 Hive/Spark/Trino/HDFS 等的列级脱敏、行级过滤与访问审计。进了湖仓时代，权限的落点正从"引擎插件"向"目录层"迁移：开放表格式的 catalog 成为统一入口后，在 catalog 处执行一次权限、所有引擎生效，方向清楚，实现还在收敛。
+
+**质量监控：时效、完整、一致三类断言。** 时效即上一节的基线；完整看行数波动区间、分区是否按时到达、主键唯一性、空值率与枚举漂移；一致看跨层、跨链路对账（常见坑里讲的批流对数，做成质量断言就从人肉抽查变成按时跑的任务）。工程落点的关键是**把质量断言嵌进 DAG**：数据写湖后立刻跑断言任务，断言失败阻断下游并通知责任人——质量是管线的一部分，而不是另一套巡检。
+
+**口径归属治理：不解决"口径两套代码"，解决"口径没人负责"。** 口径不一致的病灶在常见坑里已拆解，治理侧的处方是四个组织机制：口径登记（任何指标有唯一登记条目与定义文本）、owner 制（每张 DWD/DWS 表唯一责任人，变更请求需责任人评审）、评审流程（口径变更像代码一样走评审、留版本）、消费入口统一（BI 与接口引用同一份 DWS 层产出，不允许各写口径）。这四件没有一件难，难的是有人执行——没有 owner 制的数据平台，半年就会回到混沌，我还没见过例外。
+
+### 服务与检索：最后一公里的四种消费者
+
+- **报表/自助分析**：高并发看板把数据装进 OLAP 引擎查（选型见站内 [OLAP 引擎：StarRocks、Doris 与 ClickHouse](/cloud/data/olap)，分析型负载的通用讨论在[数据库选型](/cloud/data/database)）；**交互式即席查询**则交给 Trino 类联邦查询引擎。Trino 官方定位是"面向大数据分析的快速分布式 SQL 查询引擎"：MPP 架构、内存中流水线执行，直接查对象存储上的 Parquet 与 Iceberg 表，经 connector 联邦 MySQL、Kafka、Elasticsearch 等异构源，数据不动、查询秒级到分钟级返回。它的主场是**湖仓的交互式分析入口**——数据科学探索、一次性取数、"多查一张表就少搬一次数据"的联邦场景；代价是没有本地数据缓存，高并发看板下延迟稳定性不如常驻 OLAP。**低并发交互用 Trino、高并发固定看板装进 OLAP**，这条分工线在生产里足够稳。
+- **点查/宽表服务**：容易被忽略的一类消费者——在线系统需要按 key 毫秒级取数（用户画像点查、订单历史、风控特征读取），OLAP 和湖表都接不住。HBase 类宽表存储仍是这场景的标准答案：row key 设计决定读性能、稀疏列族可无限扩展、写入吞吐高；若访问模式纯键值、没有列族与扫描诉求，云上 KV 类数据库同样顺手。
 - **日志/全文检索**：Elasticsearch 仍是事实标准——日志排障和搜索共享同一套倒排 + 分片机制。
 - **向量检索**：大模型时代的新增条目。多数 RAG 场景先用"通用引擎的向量扩展"解决，十亿级高并发才值得上专用引擎——判断框架见站内 [RAG 架构设计](/ai/application/rag-architecture)。
 
@@ -146,6 +183,8 @@ flowchart LR
 | 实时流 | 秒级指标、风控 | Flink | 实时计算 Flink 版 | 没有秒级需求别上流 |
 | 湖存储 | 一份数据多引擎 | Iceberg / Paimon / Hudi | OSS + EMR / MaxCompute OpenLake | 新表一律开放表格式，别再裸写 Hive 目录 |
 | 查询服务 | 报表、大屏 | Doris/StarRocks/ClickHouse | EMR Serverless StarRocks / Hologres 类 | 按并发和新鲜度选，不迷信跑分 |
+| 调度编排 | 跨任务依赖、补数、基线告警 | Airflow / DolphinScheduler | 云厂商托管工作流调度（DataWorks 类） | 工程化强 Airflow、低代码中文生态 DolphinScheduler；全托管湖仓直接用厂商调度 |
+| 数据治理 | 血缘、质量断言、权限 | DataHub + OpenLineage / Ranger | 云平台数据治理模块 | 先血缘、再质量、后权限，别想一次性买齐 |
 
 ### "真的需要多实时"：延迟档位的成本阶梯
 
@@ -201,7 +240,7 @@ flowchart LR
 
 <Refs>
 
-> 以下均于 2026-09-02 访问。
+> 以下除单独标注者外，均于 2026-09-02 访问。
 
 - [Apache Hadoop — HDFS Architecture](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)（HDFS 设计目标与 NameNode 元数据模型）
 - [Apache Kafka — Introduction](https://kafka.apache.org/intro)（事件流平台、topic/partition、副本）
@@ -212,6 +251,16 @@ flowchart LR
 - [Apache Flink Blog — End-to-End Exactly-Once Processing（with Kafka）](https://flink.apache.org/2018-02-28/an-overview-of-end-to-end-exactly-once-processing-in-apache-flink-with-apache-kafka-too/)（两阶段提交的端到端语义）
 - [Apache Iceberg — Documentation](https://iceberg.apache.org/docs/latest/) 与 [Iceberg Table Spec](https://iceberg.apache.org/spec/)（开放表格式、Schema 演进、隐藏分区、行级删除）
 - [Apache Paimon — 文档](https://paimon.apache.org/docs/master/)（流式湖仓、LSM、Changelog、多模态 AI 定位）
+- [Apache Airflow — 官网](https://airflow.apache.org/)（访问日期 2026-09-04，定位"以代码方式编排、调度与监控工作流"，最新版本 3.3.1）
+- [Apache Airflow — 文档 Concepts Overview](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html)（访问日期 2026-09-04，DAG/Operator/Sensor 心智模型、3.x 架构组件与官方架构图）
+- [Apache Airflow Blog — Airflow 3 Generally Available](https://airflow.apache.org/blog/airflow-three-point-oh-is-here/)（访问日期 2026-09-04，Assets 资产模型与事件驱动调度、Task SDK）
+- [Apache DolphinScheduler — 官网](https://dolphinscheduler.apache.org/)（访问日期 2026-09-04，国产开源调度，"现代数据编排平台"定位）
+- [Apache DolphinScheduler — GitHub Releases](https://github.com/apache/dolphinscheduler/releases)（访问日期 2026-09-04，最新版本 3.4.2）
+- [DataHub — Documentation](https://docs.datahub.com/docs/introduction)（访问日期 2026-09-04，LinkedIn 孵化的开源元数据平台，discovery/governance/observability 定位）
+- [DataHub — Releases](https://docs.datahub.com/docs/releases)（访问日期 2026-09-04，最新版本 v1.7.0.1）
+- [OpenLineage — 官方文档](https://openlineage.io/docs/)（访问日期 2026-09-04，血缘元数据开放标准，Job/Dataset/Run 模型，版本 1.53.0）
+- [Trino — 官网](https://trino.io/)（访问日期 2026-09-04，分布式 SQL 查询引擎定位，最新版本 483）
+- [Apache Ranger — 官网](https://ranger.apache.org/)（访问日期 2026-09-04，Hadoop 生态安全框架，稳定版 2.9.0）
 - [Wikipedia — Lakehouse](https://en.wikipedia.org/wiki/Lakehouse)（湖仓定义、Databricks 2021 CIDR 论文、medallion 分层）
 - [Wikipedia — Lambda architecture](https://en.wikipedia.org/wiki/Lambda_architecture)（三层模型、Marz 起源与 Kreps 的 Kappa 反思）
 - [Wikipedia — Data lake](https://en.wikipedia.org/wiki/Data_lake)（数据湖概念与 James Dixon 起源）
@@ -219,13 +268,14 @@ flowchart LR
 - [阿里云 MaxCompute 产品概述](https://www.alibabacloud.com/help/en/maxcompute/product-overview/what-is-maxcompute)（Serverless 云原生数仓、存算分离、OpenLake）
 - [阿里云 E-MapReduce 产品简介](https://help.aliyun.com/zh/emr/)（云上开源大数据平台与产品形态）
 
-图片来源：Apache Hadoop/Spark/Kafka 项目 Logo 取自 Wikimedia Commons（[File:Hadoop_logo.svg](https://commons.wikimedia.org/wiki/File:Hadoop_logo.svg) · [File:Apache Spark logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Spark_logo.svg) · [File:Apache Kafka logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Kafka_logo.svg)）；Flink 无界/有界流示意图取自 Apache Flink 官网架构页（[flink.apache.org/what-is-flink/flink-architecture](https://flink.apache.org/what-is-flink/flink-architecture/)）。以上素材版权归 Apache Software Foundation。
+图片来源：Apache Hadoop/Spark/Kafka 项目 Logo 取自 Wikimedia Commons（[File:Hadoop_logo.svg](https://commons.wikimedia.org/wiki/File:Hadoop_logo.svg) · [File:Apache Spark logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Spark_logo.svg) · [File:Apache Kafka logo.svg](https://commons.wikimedia.org/wiki/File:Apache_Kafka_logo.svg)）；Flink 无界/有界流示意图取自 Apache Flink 官网架构页（[flink.apache.org/what-is-flink/flink-architecture](https://flink.apache.org/what-is-flink/flink-architecture/)）；Airflow DAG Graph 视图渲染示例与基础架构图取自 Apache Airflow 官方文档 Concepts Overview 页（[airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html)）。以上素材版权归 Apache Software Foundation。
 
 </Refs>
 ## 站内相关
 
 - [数据库·大数据导读](/cloud/data/) — 本域全景框架
 - [数据库选型](/cloud/data/database) — 在线事务的另一半
+- [OLAP 引擎：StarRocks、Doris 与 ClickHouse](/cloud/data/olap) — 交互式查询与实时分析的服务层选型
 - [对象存储](/cloud/infra/storage) — 湖仓的底座
 - [Kubernetes 核心机制](/cloud/native/kubernetes) — Spark/Flink on K8s 的弹性化方向
 - [RAG 架构设计](/ai/application/rag-architecture) — 向量检索与大模型数据消费

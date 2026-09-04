@@ -176,7 +176,7 @@ flowchart TD
 
 ## 衔接
 
-- 同层：[企业级 RAG 架构设计](/ai/application/rag-architecture)（多模态检索是它的自然延伸）· [Agent 与 MCP](/agentic/)（Agent 操作多媒体管线的编排层）
+- 同层：[企业级 RAG 架构设计](/ai/application/rag-architecture)（多模态检索是它的自然延伸）· [智能体技术全景](/ai/agent/)（Agent 操作多媒体管线的编排层）
 - 下层：[GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)（视频推理的成本账框架）· [大模型应用总览](/ai/application/)
 
 ## 参考资料

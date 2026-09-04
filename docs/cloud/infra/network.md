@@ -25,7 +25,7 @@ outline: [2, 3]
 
 1. **网段（CIDR）一旦定错，改不动**。VPC 主网段创建后不可缩容或更换，只能靠附加网段（Secondary CIDR）续命，而附加网段会给路由和防火墙策略增加长期复杂度。两个网段重叠的 VPC 要互通，就得请出 VPC NAT 做地址转换——官方甚至专门有[《VPC间互通使用VPC NAT解决地址冲突》](https://help.aliyun.com/zh/cloud-network-well-architected-design/use-vpc-nat-to-resolve-address-conflicts-between-vpcs)这样的方案文档，说明这个坑踩的人有多普遍（AWS 侧同理，重叠网段互通要靠私有 NAT 网关兜底）。
 2. **网络结构决定了安全模型**。环境隔离（生产/预发/测试）、最小暴露面（谁允许有公网 IP）、南北向与东西向流量的控制点，全都长在 VPC 与子网的骨架上。骨架歪了，安全组写得再细也是在漏风的墙上贴胶带。
-3. **它直接写进你的可用性和账单**。跨可用区容灾从"每个可用区至少一个交换机"开始（阿里云[网络规划](https://help.aliyun.com/zh/vpc/vpc-network-planning)文档明确建议单 VPC 至少两个交换机、分布在不同可用区）；而公网带宽、负载均衡实例费、跨地域流量费，都在网络层决定。做[高可用与容灾](/methodology/ha-dr)设计时，网络拓扑是前置输入，不是事后附件。
+3. **它直接写进你的可用性和账单**。跨可用区容灾从"每个可用区至少一个交换机"开始（阿里云[网络规划](https://help.aliyun.com/zh/vpc/vpc-network-planning)文档明确建议单 VPC 至少两个交换机、分布在不同可用区）；而公网带宽、负载均衡实例费、跨地域流量费，都在网络层决定。做高可用与容灾设计时，网络拓扑是前置输入，不是事后附件。
 
 背景补一句：K8s 的 Pod 网段、Service 网段也要在 VPC 的 IP 预算里占坑（详见 [Kubernetes](/cloud/native/kubernetes) 那篇的网络模型一节），所以"先画 VPC、再谈一切"是有工程依据的——[弹性计算](/cloud/infra/compute)的实例规格可以随业务滚动升级，网络骨架不行。
 
@@ -227,6 +227,6 @@ CDN 的教科书定义是"地理上分布的代理服务器网络，靠把内容
 
 > 说明：Cloudflare Learning Center 的 DNS/CDN/负载均衡/DDoS 科普页本次抓取被反爬拦截，未能引用；相关概念改以上述 Wikipedia 与官方文档为准。文中所有带宽/价格均为量级化表述，**以各云厂商官方计费页为准**。
 
-**站内相关**：[SDN 与 NFV](/cloud/foundation/sdn-nfv) · [弹性计算](/cloud/infra/compute) · [高可用与容灾设计](/methodology/ha-dr) · [Kubernetes](/cloud/native/kubernetes) · [计算·存储·网络导读](/cloud/infra/)
+**站内相关**：[SDN 与 NFV](/cloud/foundation/sdn-nfv) · [弹性计算](/cloud/infra/compute) · [Kubernetes](/cloud/native/kubernetes) · [计算·存储·网络导读](/cloud/infra/)
 
 </Refs>

@@ -27,7 +27,7 @@ timeline
                    : 百花齐放（当下）
 ```
 
-![star-history 博客文章《OpenClaw 超越 React》的题图](/images/agentic/history/openclaw-surpasses-react.webp)
+![star-history 博客文章《OpenClaw 超越 React》的题图](/images/ai/agent/history/openclaw-surpasses-react.webp)
 
 *图源：star-history.com 博客（[来源页](https://www.star-history.com/blog/openclaw-surpasses-react-most-starred-software)，访问日期 2026-09-03）*
 
@@ -60,7 +60,7 @@ timeline
 - **2026-01-27**：因商标关切更名 **Moltbot**；**2026-01-30** 再更名 **OpenClaw**——"一周三个名字"（Clawdbot → Moltbot → OpenClaw）的戏剧性反而助推传播
 - **爆红峰值**：**2026-01-24** 前仓库仅约 1,000 星，此后垂直拉升；单日最高 +25,310 星（**2026-01-26**），创当时 GitHub 软件仓库的单日 star 纪录；爆红后约 60 天累计约 25 万星（这是 NVIDIA 等广泛引用的口径，从 1 月初爆红起算；若从 **2025-11-24** 首发起算约 4 个月）；**2026 年 3 月初**超越 React（约 24.3 万星）成为 GitHub 上 star 最多的**非聚合类**软件项目——star-history 于 **2026-03-01** 确认，部分媒体记为 **2026-03-03**（时值 250,829 星）。"史上最快破 5 万星"一说无权威来源可核实，当时被广泛引用的是前述单日纪录与"史上增长最快仓库"（首发 84 天破 20 万星），这两类纪录后来均被 DeepSeek Harness（约 2 天 10 万星）打破
 
-![OpenClaw、Linux、React 的 GitHub star 增长曲线对比](/images/agentic/history/openclaw-vs-react-star-history.svg)
+![OpenClaw、Linux、React 的 GitHub star 增长曲线对比](/images/ai/agent/history/openclaw-vs-react-star-history.svg)
 
 *图源：star-history.com 博客配图，openclaw/openclaw、torvalds/linux、facebook/react star 趋势（[来源页](https://www.star-history.com/blog/openclaw-surpasses-react-most-starred-software)，访问日期 2026-09-03）*
 
@@ -81,7 +81,7 @@ timeline
 
 - **被动论**：开源社区出现了用同款基础模型跑分超过 Codex 的第三方 harness，竞争压力真实存在；且实际开源范围与媒体宣传的落差引发源码级质疑
 - **主动论**：OpenAI 在开源前一个月已发文铺垫 "Harness engineering" 方法论，平台化是既定战略；开源当日即推出企业合规配套
-- **架构师视角的判断**：动机之争不重要，重要的是结果——**执行引擎的商品化让"模型可替换、运行时可选型"成为企业架构的现实选项**。详见 [Agent 开发框架对比](/agentic/frameworks)
+- **架构师视角的判断**：动机之争不重要，重要的是结果——**执行引擎的商品化让"模型可替换、运行时可选型"成为企业架构的现实选项**。详见 [Agent 开发框架对比](/ai/agent/frameworks)
 
 ## 当下：百花齐放（2026-09）
 
@@ -109,7 +109,7 @@ timeline
 - [Anthropic：Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) · [InfoQ：Claude Cowork](https://www.infoq.com/news/2026/01/claude-cowork/)
 - [DeepSeek Harness](https://www.deepseek.com/harness/en/) · [InfoQ：DSH 发布报道](https://www.infoq.com/news/2026/08/deep-seek-harness/)
 - [Microsoft Agent Framework 公告](https://azure.microsoft.com/en-us/blog/introducing-microsoft-agent-framework/)
-- 站内相关：[Agent 开发框架对比](/agentic/frameworks) · [智能体技术全景](/agentic/)
-- 图片来源：[star-history 博客配图（2 张）](https://www.star-history.com/blog/openclaw-surpasses-react-most-starred-software)，本地存于 `/images/agentic/history/`（访问日期 2026-09-03）
+- 站内相关：[Agent 开发框架对比](/ai/agent/frameworks) · [智能体技术全景](/ai/agent/)
+- 图片来源：[star-history 博客配图（2 张）](https://www.star-history.com/blog/openclaw-surpasses-react-most-starred-software)，本地存于 `/images/ai/agent/history/`（访问日期 2026-09-03）
 
 </Refs>

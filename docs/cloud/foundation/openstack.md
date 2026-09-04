@@ -57,6 +57,12 @@ OpenStack 的每个组件本质上都是一个"带状态机的 API 服务 + 消�
 | **Swift** | 对象存储 | 海量非结构化数据，架构上是独立的分布式系统 |
 | **Heat** | 编排 | 用模板声明式地拉起整套资源（IaC 的先声） |
 
+下面这张是官方的组件全景图（v2026.04.01，即 Gazpacho 版），可以当作上表的扩展版来读：除了 Horizon、Skyline 两个前端，表里没列的 Ironic（裸金属）、Cyborg（加速器）也在其中——后文 AI 场景会再提到它们。
+
+![OpenStack 官方组件全景图：计算、存储、网络、共享服务四大类核心服务，外围是客户端工具、集成使能、运维工具与生命周期管理工具](/images/cloud/openstack/openstack-map.png)
+
+*图：OpenStack 官方组件全景图（OpenStack Map，v2026.04.01），来源：[openstack.org Software Overview](https://www.openstack.org/software/)。*
+
 一个典型的"创建虚拟机"调用链，能看清组件间如何协作：
 
 ```mermaid
@@ -116,18 +122,47 @@ OpenStack 没有消失，而是完成了历史使命后的"退隐"：
 2. 它的 API 语义（实例、卷、网络、镜像）成了行业通用语言；
 3. 它的教训同样宝贵：控制面的复杂度管理、大规模状态机的工程化、升级兼容性——这些坑，后来的云厂商都绕着走或填得更平。
 
+## OpenStack 的 2026：现状与定位
+
+写完上面的"退场"，常有刚入行的同事问我："所以 OpenStack 死了？"没有。这一节用 2026 年的官网数据补上另一半图景——它不再是"全民热潮"，但早已在特定阵地里回到默认选项的位置。
+
+先核对几个事实：
+
+- **发布节奏没变，已走到第 33 个版本。** 官方维持约 6 个月一轮、一年两版的节奏：2026.1 'Gazpacho' 于 2026-04-01 发布，2026.2 'Hibiscus' 预计 2026 年 9 月底；每年有一个 SLURP（Skip Level Upgrade Release Process，允许跨版本跳级升级的长支持版）——Gazpacho 正是 SLURP 版，维护期预计到 2027 年 10 月，说明社区仍然把"长期运行环境的升级路径"当作头等大事。
+- **规模没有萎缩。** OpenInfra Foundation 官网披露：OpenStack 支撑全球 300+ 个公有云数据中心、部署在 5500 万+ 核心上，背后有 560+ 支持组织；Gazpacho 一个版本就有约 500 名贡献者、来自 100 个组织（含 Ericsson、Red Hat、Walmart、NVIDIA），半年合入近 9000 项变更。
+- **治理早已"去 OpenStack 化"。** OpenStack Foundation 更名为 OpenInfra Foundation（Open Infrastructure Foundation）后，又成为 Linux Foundation 旗下成员；OpenStack 只是其与 StarlingX（边缘/电信云）、Kata Containers、Zuul 并列的项目之一，遵循 Four Opens（开放源码、开放设计、开放开发、开放社区）原则，技术方向由社区选举的 Technical Committee 负责。
+
+![OpenStack 官方概念架构图：上层是 Kubernetes 集群、AI 训练、AI 推理、传统虚拟机四类工作负载，经 OpenStack API 统一供给下层的裸金属、虚拟机与容器](/images/cloud/openstack/openstack-conceptual-architecture.png)
+
+*图：OpenStack 官方概念架构图（2025 版）。注意上层工作负载：K8s 集群、AI 训练、AI 推理与传统虚拟机并列；底层把硬件统一抽象为裸金属/虚拟机/容器。来源：[openstack.org Software Overview](https://www.openstack.org/software/)。*
+
+结合官方材料，我对它 2026 年定位的判断有四条：
+
+- **私有云/专有云底座，"VMware 迁移"是新引擎。** 自 Broadcom 改变 VMware 授权策略以来，官方把 "VMware Migration to OpenStack" 列为独立用例，近几个版本的发布亮点里，并行热迁移、vTPM 热迁移等虚机迁移能力常居前列。对要自主可控、要管到硬件的客户，OpenStack 仍是最完整的开源答案。
+- **电信云没有退场，只是更聚焦。** OpenStack + StarlingX 仍是 NFV/边缘场景的主流开源组合，Ericsson 等电信厂商持续贡献——这也是下面实践观点里把电信云列在"还会遇到"第一位的原因。
+- **与 K8s 的关系已经定形：分层共存，而非谁替代谁。** 官方概念图把 Kubernetes 集群画成 OpenStack 之上的工作负载之一——K8s 管应用、OpenStack 管硬件；我见过的多数生产环境，最终形态都是"OpenStack 打底跑 K8s"。
+- **AI 基础设施是新增长点。** 官方开了 "OpenStack for AI" 专栏并发布白皮书 *Open Infrastructure for AI: OpenStack's Role in the Next Generation Cloud*；落点不是训练编排，而是 IaaS 打底——Ironic 做 GPU 集群的裸金属供给、Cyborg 加速器驱动（GPU/FPGA/QAT/网卡等）、PCI 直通与 NUMA 感知调度、多租户 GPU 调度。近年的 GPU 云、主权云项目，多数走的正是这条路。
+
+一句话总结：**2026 年的 OpenStack 不再试图做"所有人的云"，而是落定为私有云/专有云、电信云、AI/HPC 裸金属云三类场景的专业底座。** 上面写的"退场"，退的是大众市场；在这些阵地上，它仍在以一年两版的节奏积极迭代。
+
 ## 实践观点
 
 - **什么时候还会遇到 OpenStack**：电信云（NFV 场景）、部分政企私有云、科研机构。接手这类环境的同学，重点看 Neutron 的网络实现和 Cinder 的后端对接，这两处是故障高发区。
 - **学它的正确姿势**：不要学部署（部署细节已成历史），要学抽象——"如何把硬件变成 API"这个问题，OpenStack 给出的答案依然是最完整的公开教材。
 - **与今天公有云的对照**：ECS ≈ Nova + 更强的调度；云盘 ≈ Cinder 的工业化；VPC ≈ Neutron 模型的规模化实现。对照着看，能同时理解两边的设计取舍。
+- **OpenStack 作为 AI 打底**：以后接 GPU 集群建设任务，看到"Ironic 裸金属 + Cyborg/PCI 直通 + 上层 K8s"的组合不要惊讶——OpenStack 在其中的角色不是训练编排，而是"把硬件变成 API"（另见 [GPU 集群与高速网络](/ai/infra/cluster)）。
 
 ## 参考资料
 
 <Refs>
 
-- [OpenStack 官方架构文档](https://docs.openstack.org/)
-- [OpenStack 项目历史与治理结构](https://www.openstack.org/)
-- 站内相关：[虚拟化与 KVM](/cloud/foundation/virtualization) · [SDN / NFV](/cloud/foundation/sdn-nfv) · [上云迁移方法论](/methodology/cloud-migration)
+- [OpenStack Releases：发布系列状态表（2026.1 Gazpacho、2026.2 Hibiscus 等排期）](https://releases.openstack.org/)（访问日期 2026-09-04）
+- [OpenStack 2026.1 'Gazpacho' 发布页](https://www.openstack.org/software/openstack-gazpacho/)（访问日期 2026-09-04）
+- [OpenStack Software Overview（含概念架构图与 OpenStack Map）](https://www.openstack.org/software/)（访问日期 2026-09-04）
+- [OpenStack for AI: Scalable, Open Infrastructure for Next-Gen Workloads（含 Open Infrastructure for AI 白皮书）](https://www.openstack.org/openstack-for-ai/)（访问日期 2026-09-04）
+- [OpenInfra Foundation 官网](https://openinfra.dev/) · [The Four Opens](https://openinfra.dev/four-opens/)（访问日期 2026-09-04）
+- [OpenStack Docs 2026.1](https://docs.openstack.org/2026.1/)（访问日期 2026-09-04）
+- 图片来源：OpenStack 官方概念架构图（2025 版）与官方组件全景图 OpenStack Map（v2026.04.01），均下载自 [openstack.org Software Overview](https://www.openstack.org/software/)（访问日期 2026-09-04）
+- 站内相关：[虚拟化与 KVM](/cloud/foundation/virtualization) · [SDN / NFV](/cloud/foundation/sdn-nfv) · [Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) · [GPU 集群与高速网络](/ai/infra/cluster)
 
 </Refs>

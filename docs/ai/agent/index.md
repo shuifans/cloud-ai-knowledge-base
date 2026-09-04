@@ -1,11 +1,11 @@
 ---
-title: Agentic：智能体技术全景
+title: 智能体技术全景
 outline: [2, 3]
 ---
 
-# Agentic：智能体技术全景
+# 智能体技术全景
 
-> 2025–2026 年，Agent 从"对话助手的延伸"变成了独立的技术品类：它有自己的运行时（Harness）、自己的协议层（MCP/Skills/A2A）、自己的商业化路径与开源生态。这个支柱记录智能体的技术全景——从概念分级、热点演进到框架选型。
+> 2025–2026 年，Agent 从"对话助手的延伸"变成了独立的技术品类：它有自己的运行时（Harness）、自己的协议层（MCP/Skills/A2A）、自己的商业化路径与开源生态。这个子域记录智能体的技术全景——从概念分级、热点演进到框架选型。
 
 ## 从 Copilot 到 Agent 的分级
 
@@ -14,14 +14,14 @@ outline: [2, 3]
 - **L3 工作流**：多步规划 + 工具编排（ReAct、Plan-and-Execute）
 - **L4 自主体**：长任务、自我反思、多 Agent 协作——落地仍需人工确认点
 
-技术栈的分层现实：**编排框架**（怎么构建）与**运行时**（怎么跑）正在收敛为两个独立赛道，连接层（MCP/Skills/A2A）成为事实标准。详见 [Agent 开发框架对比](/agentic/frameworks)。
+技术栈的分层现实：**编排框架**（怎么构建）与**运行时**（怎么跑）正在收敛为两个独立赛道，连接层（MCP/Skills/A2A）成为事实标准。详见 [Agent 开发框架对比](/ai/agent/frameworks)。
 
-## 本支柱文章
+## 本子域文章
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [Agent 热点编年史](/agentic/history) | 已发布 | OpenClaw 引爆 → Claude Code/Codex 商业化与开源 → 百花齐放 |
-| [Agent 开发框架对比](/agentic/frameworks) | 已发布 | 分层全景、核心四框架源码级审计摘要、选型框架 |
+| [Agent 热点编年史](/ai/agent/history) | 已发布 | OpenClaw 引爆 → Claude Code/Codex 商业化与开源 → 百花齐放 |
+| [Agent 开发框架对比](/ai/agent/frameworks) | 已发布 | 分层全景、核心四框架源码级审计摘要、选型框架 |
 
 ## Function Calling 的工程要点
 

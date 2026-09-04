@@ -12,7 +12,7 @@ outline: [2, 3]
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | 已发布 | 解析/切分/混合检索/重排/评测全链路 |
-| [Agent 与 MCP](/agentic/) | 提纲 | Function Calling、工具编排、落地边界 |
+| [Agent 技术全景](/ai/agent/) | 已发布 | Agent 分级、热点编年演进、开发框架对比与选型 |
 | [多模态模型与视频生成](/ai/application/multimodal) | 已发布 | 文生视频/图生视频、评测与本地部署路线 |
 
 ## 子域地图
@@ -54,7 +54,7 @@ flowchart LR
 - [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — 点明提示注入风险三要素与防御思路（2025 · 工程博客）
 - [提示词注入攻击方法与多模型纵深防御架构](https://developer.aliyun.com/article/1667146) — 中文系统梳理攻击手法与纵深防御（2025 · 工程博客）
 
-> Agent 相关资源（MCP、框架、评测）统一收录于 [Agentic 支柱](/agentic/)。
+> Agent 相关资源（MCP、框架、评测）统一收录于 [Agent 子域](/ai/agent/)。
 
 ### 评测与知识生态（2026-09-02 书签补充）
 

@@ -12,16 +12,9 @@ const bigTiles = [
   {
     icon: '🧬',
     title: '人工智能',
-    desc: '模型架构演进 · AI Infra · 大模型应用。从机器学习经典到多模态前沿的完整谱系。',
+    desc: '模型架构演进 · AI Infra · 大模型应用 · Agent。从机器学习经典到智能体前沿的完整谱系。',
     link: '/ai/',
   },
-]
-
-const smallTiles = [
-  { icon: '🤖', title: 'Agentic', desc: '智能体热点编年史与开发框架对比', link: '/agentic/' },
-  { icon: '🧭', title: '方法论', desc: '架构设计 · 上云迁移 · 高可用', link: '/methodology/' },
-  { icon: '🎯', title: '行业场景', desc: '技术知识的行业落地，游戏开篇', link: '/industry/gaming' },
-  { icon: '📜', title: '编年史', desc: '十年六浪与信创暗流', link: '/chronicle/' },
 ]
 </script>
 
@@ -33,7 +26,7 @@ const smallTiles = [
       <p class="hero-tag">十年云实践 · 六浪技术变迁。</p>
       <p class="hero-sub">
         从 OpenStack 云计算基座，到模型架构、AI Infra 与
-        Agentic——一名解决方案架构师的完整知识图谱。
+        Agent——一名解决方案架构师的完整知识图谱。
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" :href="withBase('/cloud/')">从云计算开始</a>
@@ -45,14 +38,6 @@ const smallTiles = [
     <section class="tiles">
       <div class="grid grid-2">
         <a v-for="t in bigTiles" :key="t.title" class="tile tile-big" :href="withBase(t.link)">
-          <span class="tile-icon">{{ t.icon }}</span>
-          <span class="tile-title">{{ t.title }}</span>
-          <span class="tile-desc">{{ t.desc }}</span>
-          <span class="tile-more">进入 ›</span>
-        </a>
-      </div>
-      <div class="grid grid-4">
-        <a v-for="t in smallTiles" :key="t.title" class="tile" :href="withBase(t.link)">
           <span class="tile-icon">{{ t.icon }}</span>
           <span class="tile-title">{{ t.title }}</span>
           <span class="tile-desc">{{ t.desc }}</span>
@@ -169,11 +154,6 @@ const smallTiles = [
 
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-  margin-bottom: 0;
 }
 
 .tile {
@@ -293,18 +273,8 @@ const smallTiles = [
 }
 
 /* ---------- 响应式 ---------- */
-@media (max-width: 960px) {
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 640px) {
   .grid-2 {
-    grid-template-columns: 1fr;
-  }
-
-  .grid-4 {
     grid-template-columns: 1fr;
   }
 

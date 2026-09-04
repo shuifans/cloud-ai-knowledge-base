@@ -216,7 +216,6 @@ BaaS（区块链即服务）在 2017–2019 年成为云厂商标配：一键部
 - [十年六浪：技术编年史总纲](/chronicle/) —— 本篇在六浪周期中的位置与跨浪规律
 - [短视频时代](/chronicle/short-video)（第二浪并行侧翼）与 [元宇宙时代](/chronicle/metaverse)（第四浪，2021 年与 NFT 叙事合流）
 - [AI 大模型时代](/chronicle/ai-era) —— 可验证性、审计需求被重新激活的地方
-- [上云迁移方法论](/methodology/cloud-migration) —— "为链而链"的 POC 们，很多本该先用 6R 方法把中心化的版本做好
 
 ## 参考资料
 

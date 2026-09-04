@@ -46,7 +46,7 @@ flowchart TD
 
 （数据为 NVIDIA 官方公开口径；PF 为 dense/sparse 混合标注，量级对比用，精确值以官方白皮书为准。）
 
-机架级系统沿着"域扩张"这条线推进：GB200 NVL72（13.5 TB HBM 聚合，官方宣称万亿参数 LLM 实时推理 30 倍、MoE 10 倍于上代）→ GB300 NVL72（20.7 TB）→ **Vera Rubin NVL144**（NVLink 聚合 260 TB/s，宣称推理 token 成本最高降 10 倍）。路线图节奏已变成一年一代：Rubin 2026 下半年交付、Rubin Ultra（NVL576，整机架功耗进入 600 kW 量级）2027、Feynman 2028 以后；Scale-up 域从 8 卡 → 72 卡 → 144 卡 → 576 die，NVLink Fusion 还向第三方 XPU 开放了互联授权。**做容量规划时我的习惯是按"域"而不是按"卡"做单位**：买多少卡不重要，买多少个 NVLink 域、域间网络怎么接，才决定并行策略的可行空间。
+机架级系统沿着"域扩张"这条线推进：GB200 NVL72（13.4 TB HBM3e 聚合，官方宣称万亿参数 LLM 实时推理 30 倍、MoE 10 倍于上代）→ GB300 NVL72（20.7 TB）→ **Vera Rubin NVL144**（NVLink 聚合 260 TB/s，宣称推理 token 成本最高降 10 倍）。路线图节奏已变成一年一代：Rubin 2026 下半年交付、Rubin Ultra（NVL576，整机架功耗进入 600 kW 量级）2027、Feynman 2028 以后；Scale-up 域从 8 卡 → 72 卡 → 144 卡 → 576 die，NVLink Fusion 还向第三方 XPU 开放了互联授权。**做容量规划时我的习惯是按"域"而不是按"卡"做单位**：买多少卡不重要，买多少个 NVLink 域、域间网络怎么接，才决定并行策略的可行空间。
 
 ## 机间：RDMA 网络
 
@@ -195,7 +195,7 @@ Meta 在 2024 年为建设 Llama 3 训练集群做了业内最著名的对照实
 **NVIDIA 官方**（访问日期 2026-09-03）
 
 - [NVLink & NVLink Switch 产品页](https://www.nvidia.com/en-us/data-center/nvlink/) —— NVLink 5/6 带宽、域规模、NVL72 聚合带宽口径
-- [GB200 NVL72 产品页](https://www.nvidia.com/en-us/data-center/gb200-nvl72/) —— 72 GPU 域、13.5 TB HBM、推理倍数口径
+- [GB200 NVL72 产品页](https://www.nvidia.com/en-us/data-center/gb200-nvl72/) —— 72 GPU 域、13.4 TB HBM3e、推理倍数口径
 - [DGX SuperPOD Reference Architecture（H100）——Network Fabrics](https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/network-fabrics.html) —— rail-optimized 胖树、存储 fabric、收敛比
 
 **超大规模集群公开复盘**（访问日期 2026-09-03）

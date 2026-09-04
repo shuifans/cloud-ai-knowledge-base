@@ -53,7 +53,7 @@ timeline
 - **2023：百模大战，开源追赶闭源，Prompt 工程兴起。** 年初 LLaMA（2 月，研究协议）撕开权重公开的口子，[Llama 2](https://arxiv.org/abs/2307.09288)（7 月，可商用许可）与 Mistral 7B（9 月，Apache 2.0）把开源从"能玩"推向"能上线"；国内则是大模型备案与"百模大战"并行。应用层的第一个显学是 Prompt 工程——当时很多 POC 的交付物真的是一个精心维护的提示词文档。
 - **2024：RAG 成为企业落地标配，推理成本快速下降，小模型路线出现。** [Hugging Face 模型托管量突破 100 万](https://arstechnica.com/information-technology/2024/09/ai-hosting-platform-surpasses-1-million-models-for-the-first-time/)（9 月）——生态临界点。企业客户不再问"能不能聊"，改问"怎么接我们的知识库"，RAG（检索增强生成：先检索再让模型基于资料作答）从论文名词变成需求文档标配。9 月，OpenAI 发布 [o1](https://openai.com/index/learning-to-reason-with-llms/)：性能随**推理时计算**平滑提升——"多想一会儿"成为可以定价的能力。12 月 26 日，[DeepSeek-V3 上线并同步开源](https://api-docs.deepseek.com/zh-cn/news/news1226/)（MIT 协议）：671B 总参、37B 激活的 MoE 架构，[技术报告](https://arxiv.org/abs/2412.19437)里那串"完整训练仅需 278.8 万 H800 GPU 小时"按厂商自述的 $2/卡时折算约 550 多万美元，把"前沿能力 = 天文数字预算"的共识撕开了一道口子。
 - **2025：Agent 与工具生态（MCP）爆发，推理时计算改变成本结构。** 1 月 20 日 [DeepSeek-R1](https://api-docs.deepseek.com/news/news250120) 发布：开源推理模型，数学/代码能力对标 o1，附赠 6 个蒸馏小模型——从 Qwen 到 Llama 底座的"小口径思考模型"一周内长满各家集群。这一年工作负载的重心从"问答"转向"干活"：模型调用工具、多步执行、长任务托管，MCP 之类的协议把"连接企业系统"标准化。
-- **2026：应用分层清晰化。** 模型层收敛（旗舰数量远少于百模大战年份）、中间层标准化（评测、网关、可观测长出标准产品）、应用层百花齐放。这一层与本站 [Agentic 支柱](/agentic/)的编年记录直接衔接，旗舰模型的近况见[大语言模型架构解析](/ai/models/llm)。
+- **2026：应用分层清晰化。** 模型层收敛（旗舰数量远少于百模大战年份）、中间层标准化（评测、网关、可观测长出标准产品）、应用层百花齐放。这一层与本站 [Agent 子域的编年记录](/ai/agent/history)直接衔接，旗舰模型的近况见[大语言模型架构解析](/ai/models/llm)。
 
 ### 基建线：单位是"浪"，不是"卡"
 
@@ -136,7 +136,7 @@ timeline
 - 编年史总纲：[十年六浪](/chronicle/) · 上一浪：[元宇宙时代](/chronicle/metaverse)（GPU 算力的前传）· 暗流：[信创与国产化](/chronicle/xinchuang)
 - 模型演进详解：[大语言模型架构解析](/ai/models/llm) · [机器学习与深度学习经典架构](/ai/models/ml-dl)（2012–2017 的技术伏笔）
 - 基建实战：[GPU 集群与高速网络](/ai/infra/cluster) · [训练工程](/ai/infra/training) · [大模型推理部署实战](/ai/infra/inference/llm-inference) · [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing)
-- 应用落地：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [Agentic 智能体全景](/agentic/)
+- 应用落地：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [智能体技术全景](/ai/agent/)
 
 ## 参考资料
 
