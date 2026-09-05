@@ -26,7 +26,7 @@ timeline
                  : 2023-今
 ```
 
-## 六个板块
+## 七个板块
 
 | 板块 | 内容 | 入口 |
 | --- | --- | --- |
@@ -35,6 +35,7 @@ timeline
 |  视觉理解 | CLIP → VLM → 原生多模态 | [进入](/ai/models/vision) |
 |  图像生成 | Diffusion 原理：Stable Diffusion → DiT → 最新格局 | [进入](/ai/models/image-gen) |
 |  视频生成 | 时空建模：Sora 类 → 开源生态 | [进入](/ai/models/video-gen) |
+|  语音生成 | TTS 推理服务：GPT 自回归、HiFi-Decoder、DIT + DAV | [进入](/ai/models/speech-gen) |
 |  语音识别与理解 | ASR/TTS/实时语音大模型 | [进入](/ai/models/audio) |
 
 ## 贯穿演进线的三个规律
