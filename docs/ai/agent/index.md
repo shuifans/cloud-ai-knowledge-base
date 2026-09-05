@@ -20,8 +20,8 @@ outline: [2, 3]
 
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
-| [Agent 热点编年史](/ai/agent/history) | 已发布 | OpenClaw 引爆 → Claude Code/Codex 商业化与开源 → 百花齐放 |
-| [Agent 开发框架对比](/ai/agent/frameworks) | 已发布 | 分层全景、核心四框架源码级审计摘要、选型框架 |
+| [Agent 热点编年史](/ai/agent/history) | 已发布 | 从符号智能体、AutoGPT 到 MCP 与长程 Agent 的七十年编年 |
+| [Agent 开发框架对比](/ai/agent/frameworks) | 已发布 | 主流框架机制拆解、编排模式、MCP/A2A 协议与选型决策树 |
 
 ## Function Calling 的工程要点
 

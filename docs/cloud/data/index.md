@@ -42,7 +42,7 @@ flowchart TB
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
 | [数据库选型](/cloud/data/database) | 已发布 | 选型框架、读写分离、分库分表与云原生数据库 |
-| [OLAP 引擎](/cloud/data/olap) | 已发布 | StarRocks/Doris/ClickHouse 架构、湖上分析与选型 |
+| [OLAP 引擎](/cloud/data/olap) | 已发布 | 五大引擎谱系机制拆解、列存与向量化、实时湖仓与选型工程 |
 | [大数据体系](/cloud/data/bigdata) | 已发布 | 离线/实时/湖仓一体的典型架构与取舍 |
 
 ## 2026-09 更新：最新架构与组件

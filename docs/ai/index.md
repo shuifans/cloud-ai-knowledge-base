@@ -57,6 +57,7 @@ flowchart TB
 | [训练工程](/ai/infra/training) | 已发布（持续扩充） |
 | [大模型推理部署实战](/ai/infra/inference/llm-inference) | 已发布 |
 | [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | 已发布 |
+| [Token 经济学：定价与成本的数学](/ai/infra/inference/token-economics) | 已发布 |
 
 ### 大模型应用
 
@@ -67,7 +68,8 @@ flowchart TB
 | 文章 | 状态 |
 | --- | --- |
 | [企业级 RAG 架构设计](/ai/application/rag-architecture) | 已发布 |
-| [多模态模型与视频生成（应用视角）](/ai/application/multimodal) | 已发布 |
+| [多模态应用](/ai/application/multimodal) | 已发布 |
+| [大模型评测](/ai/application/evaluation) | 已发布 |
 
 ### Agent
 

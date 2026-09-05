@@ -38,6 +38,11 @@ export default withMermaid(
     // Mermaid：htmlLabels 渲染中文多行标签时行高测量不准导致文字裁切，
     // 改用 SVG 原生 <text> 渲染（tspan 换行），测量与渲染同源不再裁切
     mermaid: {
+      theme: 'base',
+      themeVariables: {
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif',
+      },
       flowchart: { htmlLabels: false },
       sequence: { htmlLabels: false },
     },
@@ -122,7 +127,7 @@ export default withMermaid(
             items: [
               { text: '导读：数据层知识框架', link: '/cloud/data/' },
               { text: '数据库选型', link: '/cloud/data/database' },
-              { text: 'OLAP 引擎：StarRocks/Doris/ClickHouse', link: '/cloud/data/olap' },
+              { text: 'OLAP 引擎：谱系机制拆解与选型', link: '/cloud/data/olap' },
               { text: '大数据体系', link: '/cloud/data/bigdata' },
             ],
           },
@@ -223,14 +228,6 @@ export default withMermaid(
       darkModeSwitchTitle: '切换到深色模式',
       sidebarMenuLabel: '菜单',
       returnToTopLabel: '返回顶部',
-    },
-
-    mermaid: {
-      theme: 'base',
-      themeVariables: {
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif',
-      },
     },
   })
 )
