@@ -147,6 +147,7 @@ export default withMermaid(
               { text: '视觉理解', link: '/ai/models/vision' },
               { text: '图像生成', link: '/ai/models/image-gen' },
               { text: '视频生成', link: '/ai/models/video-gen' },
+              { text: '语音生成', link: '/ai/models/speech-gen' },
               { text: '语音识别与理解', link: '/ai/models/audio' },
             ],
           },
