@@ -8,12 +8,18 @@ const bigTiles = [
     title: '云计算',
     desc: '基座 → 计算·存储·网络 → 数据 → 云原生。四层完整技术栈的原理、选型与实践。',
     link: '/cloud/',
+    cta: '进入云计算',
+    sub: '从基座开始',
+    subLink: '/cloud/foundation/',
   },
   {
     icon: '🧬',
     title: '人工智能',
     desc: '模型架构演进 · AI Infra · 大模型应用 · Agent。从机器学习经典到智能体前沿的完整谱系。',
     link: '/ai/',
+    cta: '进入人工智能',
+    sub: '从模型架构开始',
+    subLink: '/ai/models/',
   },
 ]
 </script>
@@ -37,17 +43,31 @@ const bigTiles = [
     <!-- 支柱磁贴 -->
     <section class="tiles">
       <div class="grid grid-2">
-        <a v-for="t in bigTiles" :key="t.title" class="tile tile-big" :href="withBase(t.link)">
+        <div v-for="t in bigTiles" :key="t.title" class="tile tile-big">
           <span class="tile-icon">{{ t.icon }}</span>
           <span class="tile-title">{{ t.title }}</span>
           <span class="tile-desc">{{ t.desc }}</span>
-          <span class="tile-more">进入 ›</span>
-        </a>
+          <div class="tile-ctas">
+            <a class="tile-cta-primary" :href="withBase(t.link)">{{ t.cta }}</a>
+            <a class="tile-cta-link" :href="withBase(t.subLink)">{{ t.sub }} ›</a>
+          </div>
+        </div>
+        <div class="tile tile-wide">
+          <span class="tile-icon">📜</span>
+          <span class="tile-title">技术编年史</span>
+          <span class="tile-desc">
+            六次技术浪潮的架构命题与破局之道——移动互联网、直播、短视频、区块链、元宇宙、AI 大模型。
+          </span>
+          <div class="tile-ctas">
+            <a class="tile-cta-primary" :href="withBase('/chronicle/')">进入编年史</a>
+            <a class="tile-cta-link" href="#home-timeline">看时间轴 ›</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 编年史：深色全宽区 -->
-    <section class="chronicle">
+    <section id="home-timeline" class="chronicle">
       <h2 class="sec-title">技术编年史</h2>
       <p class="sec-sub">每一浪技术周期，都有它独特的架构命题。</p>
       <Timeline :dark="true" />
@@ -139,10 +159,10 @@ const bigTiles = [
   text-decoration: underline;
 }
 
-/* ---------- 磁贴 ---------- */
+/* ---------- 磁贴（羊皮纸段，浅色区脉冲：白 → 羊皮纸 → 黑 → 白） ---------- */
 .tiles {
   padding: 12px 20px 84px;
-  background: var(--vp-c-bg);
+  background: var(--vp-c-bg-soft);
 }
 
 .grid {
@@ -161,19 +181,28 @@ const bigTiles = [
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: var(--vp-c-bg-soft);
-  border-radius: 24px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 18px;
   padding: 44px 26px 40px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+.dark .tile {
+  background: var(--vp-c-bg-mute);
 }
 
 .dark .tile:hover {
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tile-wide {
+  grid-column: 1 / -1;
+  min-height: 0;
 }
 
 .tile-big {
@@ -217,14 +246,39 @@ const bigTiles = [
   color: var(--vp-c-text-2);
 }
 
-.tile-more {
-  display: block;
-  margin-top: 16px;
+.tile-ctas {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.tile-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 980px;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.25s;
+}
+
+.tile-cta-primary:hover {
+  background: var(--vp-c-brand-2);
+  color: #fff;
+}
+
+.tile-cta-link {
   font-size: 14px;
   color: var(--apple-link, var(--vp-c-brand-1));
 }
 
-.tile:hover .tile-more {
+.tile-cta-link:hover {
   text-decoration: underline;
 }
 
@@ -232,6 +286,7 @@ const bigTiles = [
 .chronicle {
   background: #000;
   padding: 96px 24px 110px;
+  scroll-margin-top: calc(var(--vp-nav-height) + 16px);
 }
 
 .sec-title {
@@ -252,7 +307,7 @@ const bigTiles = [
 
 /* ---------- 宣言 ---------- */
 .manifesto {
-  background: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg);
   padding: 92px 24px;
   text-align: center;
 }

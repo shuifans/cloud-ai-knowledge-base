@@ -126,13 +126,23 @@ body {
   background: var(--vp-c-brand-1);
 }
 
+/* 激活项：羊皮纸底 + 加粗 + 圆角（提升当前位置感） */
+.VPSidebarItem.is-active > .item .VPLink {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+}
+
+.VPSidebarItem.is-active > .item .VPLink .text {
+  font-weight: 600;
+}
+
 /* ---------- 5. 正文排版（Apple 大字号 + 紧字距） ---------- */
 .VPDoc .content-container {
-  max-width: 744px;
+  max-width: 760px;
 }
 
 .vp-doc {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .vp-doc h1 {
@@ -148,7 +158,7 @@ body {
   line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.016em;
-  margin: 56px 0 18px;
+  margin: 72px 0 18px;
   padding-top: 0;
   border-top: none;
 }
@@ -166,8 +176,9 @@ body {
 }
 
 .vp-doc p {
-  line-height: 1.75;
-  margin: 14px 0;
+  line-height: 1.65;
+  letter-spacing: -0.2px;
+  margin: 20px 0;
 }
 
 .vp-doc li {
@@ -248,32 +259,16 @@ body {
 }
 
 .vp-doc div[class*='language-'] {
-  border-radius: 14px;
+  border-radius: 11px;
   border: 1px solid var(--vp-c-divider);
 }
 
-/* 提示块：圆角 + 左侧色条 */
+/* 提示块：圆角 + 羊皮纸底（去左侧色条，收敛装饰色） */
 .vp-doc .custom-block {
   border: none;
-  border-radius: 14px;
-  border-left: 3px solid transparent;
+  border-radius: 11px;
   padding: 16px 20px;
-}
-
-.vp-doc .custom-block.info {
-  border-left-color: #0071e3;
-}
-
-.vp-doc .custom-block.tip {
-  border-left-color: #34c759;
-}
-
-.vp-doc .custom-block.warning {
-  border-left-color: #ff9500;
-}
-
-.vp-doc .custom-block.danger {
-  border-left-color: #ff3b30;
+  background: var(--vp-c-bg-soft);
 }
 
 .vp-doc .custom-block .custom-block-title {
@@ -308,6 +303,15 @@ body {
   padding: 0;
 }
 
+/* ---------- 7.5 深色区链接：Apple on-dark 蓝（对比度可达性） ---------- */
+.chronicle a {
+  color: #2997ff;
+}
+
+.chronicle a:hover {
+  color: #40a3ff;
+}
+
 /* ---------- 8. Mermaid ---------- */
 .mermaid {
   display: flex;
@@ -333,7 +337,7 @@ body {
 
 /* ---------- 10. 上一篇/下一篇 ---------- */
 .VPDocFooter .pager {
-  border-radius: 14px;
+  border-radius: 11px;
 }
 
 /* ---------- 11. 状态标签（文章内使用） ---------- */
@@ -353,7 +357,7 @@ body {
   padding: 1.1rem 1.4rem 1.25rem;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 11px;
   font-size: 13.5px;
   line-height: 1.75;
   color: var(--vp-c-text-2);

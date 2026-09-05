@@ -126,7 +126,7 @@ const eras: Era[] = [
 }
 
 .era-period {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--vp-c-text-2);
   letter-spacing: 0.5px;
@@ -175,7 +175,9 @@ const eras: Era[] = [
 }
 
 .timeline.dark .era-period {
-  color: #86868b;
+  font-size: 17px;
+  font-weight: 700;
+  color: #f5f5f7;
 }
 
 .timeline.dark .era-essence {
