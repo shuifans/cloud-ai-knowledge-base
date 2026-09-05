@@ -5,7 +5,7 @@ outline: [2, 3]
 
 # 语音生成
 
-> 文本到语音是怎么生成的？
+> 面向要把语音合成（TTS）接进产品线、评估自回归 + 神经声码器路线可行性的工程师与方案架构师。这篇把 TTS 推理服务的全貌讲透：**自回归语言模型怎样把文本和音色"翻译"成语音离散表示（Mel Codes）、HiFi-Decoder 与 DIT + DAV 两条声码路线各自的工程取舍、Triton/TensorRT 加速下的服务化框架如何把"长生成 + 流式输出"做成稳定的在线能力**。读完之后你会清楚"GPT 出 Latents → 声码器出波形"这条主流链路的每一段在做什么、为什么 HiFi-Decoder 在低延迟场景仍是默认选择、DIT 流匹配路线在哪里胜出，以及落地时要监控哪些指标。语音生成已经过了"能不能用"的阶段，现在的分水岭是**音质、可控性、首包延迟与流式稳定性**——这一篇按这条工程主线展开。
 
 ![TTS 系统总体架构](/images/ai/models/speech-gen/tts-diagram-01.jpg)
 
@@ -93,11 +93,11 @@ Voice Prompt 机制允许用户提供一段参考语音，用于精细控制生�
 
 GPT 的输出直接对接下游音频引擎：
 
-|  |  |  |
+| 输出字段 | 类型与维度 | 下游接收方与用途 |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Mel Code 序列 | 离散 token 序列（词表 8194：0–8191 有效编码，8192 起始，8193 终止） | HiFi-Decoder / DIT + DAV：可单独做轻量粗对齐或音素级解码 |
+| Latents（Hidden States） | 连续向量（`token_len × 2048`，最终层 LayerNorm 输出） | HiFi-Decoder / DIT + DAV：承载语义、韵律、说话人风格，是音频引擎的主输入 |
+| 中间层 hidden（按版本可选） | 1024 维 / 2048 维 | LoRA adapter / 控制模块：条件化情感与风格切换 |
 
 ### 1.9 采样策略
 
@@ -206,13 +206,13 @@ Generator 采用经典的 HiFi-GAN 架构，由"入口卷积 → 5 级上采样�
 
 ![第 4 步：Generator — 多级上采样生成最终波形](/images/ai/models/speech-gen/tts-diagram-08.jpg)
 
-3. 多感受野融合（Multi-Receptive Field Fusion）这是 HiFi-GAN 架构的核心设计。在每一级上采样后，使用3 个并行的残差网络（ResNet）分别处理同一份特征，然后将结果取平均。这 3 个 ResNet 的区别在于卷积核大小不同（分别为 3、7、11），因此各自拥有不同的感受野（即每次卷积能"看到"多大范围的上下文）：
+3. 多感受野融合（Multi-Receptive Field Fusion）这是 HiFi-GAN 架构的核心设计。在每一级上采样后，使用 3 个并行的残差网络（ResNet）分别处理同一份特征，然后将结果取平均。这 3 个 ResNet 的区别在于卷积核大小不同（分别为 3、7、11），因此各自拥有不同的感受野（即每次卷积能"看到"多大范围的上下文）：
 
-|  |  |  |
+| ResNet 编号 | 卷积核大小 | 感受野侧重 |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| ResNet-1 | 3 | 局部细节：齿音、气口、辅音摩擦等细颗粒声音纹理 |
+| ResNet-2 | 7 | 中尺度：音素边界、共振峰过渡、辅音到元音衔接 |
+| ResNet-3 | 11 | 全局语调：句调走向、停顿节奏、长时韵律结构 |
 
 此外，每个 ResNet 内部还使用了空洞卷积（Dilated Convolution），通过不同的膨胀率（1、3、5）在不增加参数量的前提下进一步扩大感受野。这使得网络能够同时捕捉到从最细微的噪声纹理到最宏观的语调走势的多尺度信息。三个 ResNet 的输出取平均后作为该级的最终输出，这种设计让不同尺度的特征互补融合，是 HiFi-GAN 能够合成高保真音频的关键所在。
 
@@ -286,7 +286,7 @@ DAV 在训练阶段学会了"如何把 64 维向量变回声音"，因此 DIT �
 
 ### 三、实现步骤详解
 
-![三、实现步骤详解](/images/ai/models/speech-gen/tts-diagram-11.jpg)
+![三、DIT 实现步骤详解](/images/ai/models/speech-gen/tts-diagram-11.jpg)
 
 整体推理流程（以 \_generate\_with\_vae 为入口）分为两大阶段：
 
@@ -448,15 +448,35 @@ class ResidualUnit(nn.Module):
 
 ### 五、DIT 路线 vs HiFi-Decoder 路线的核心差异
 
-|  |  |  |
-| --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| 维度 | HiFi-Decoder | DIT + DAV | 工程含义 |
+| --- | --- | --- | --- |
+| 生成质量 | 高（直接 Latents → 波形） | 更高（迭代生成、精细调控） | 高品质场景优先 DIT；流式场景 HiFi 已够用 |
+| 首包延迟（TTFB） | 低（一次前向，端到端 O(1)） | 较高（多步 ODE 求解） | 实时对话优先 HiFi |
+| 推理吞吐 | 高（单步、无迭代） | 较低（步数决定单请求耗时） | 高 QPS 服务选 HiFi |
+| 显存占用 | 中等（仅单步中间态） | 较高（需缓存多步 ODE 状态） | 单卡部署预算紧时 HiFi 更友好 |
+| 训练成本 | 较低（GAN 判别器驱动） | 较高（Flow Matching + 大规模 Mel 数据） | 自研成本 DIT 路线显著高 |
+| 可控性 | 中（依赖 Latent 注入说话人/风格） | 高（流路径条件注入） | 风格克隆/情感控制 DIT 占优 |
+| 适用场景 | 流式对话、低延迟旁白、长音频实时合成 | 高品质有声书、播录、零样本克隆 | 选型按场景而非"路线更好" |
+
+下面这条决策图把"何时选 HiFi、何时选 DIT + DAV"压成一个工程可用的判断入口：
+
+```mermaid
+flowchart TD
+    A[接 TTS 任务] --> B{首包延迟要求 < 300ms?}
+    B -- 是 --> C[选 HiFi-Decoder<br/>单步前向、低显存]
+    B -- 否 --> D{最高音质优先?}
+    D -- 是 --> E{需要零样本克隆?}
+    D -- 否 --> F[默认 HiFi-Decoder<br/>性价比最优]
+    E -- 是 --> G[选 DIT + DAV<br/>流匹配 + 条件注入]
+    E -- 否 --> H{单卡显存 ≤ 16GB?}
+    H -- 是 --> F
+    H -- 否 --> G
+    C --> Z[配置 TRT + 流式输出]
+    F --> Z
+    G --> Z2[配置 Flow Matching 步数<br/>+ TRT 加速]
+    Z --> Done[上线监控: TTFT/PERQ/CPU GPU util]
+    Z2 --> Done
+```
 
 ---
 
@@ -474,7 +494,6 @@ class ResidualUnit(nn.Module):
 | 引擎抽象层 | 封装具体模型的推理逻辑 | BaseGPTEngine、BaseAudioEngine 及其子类 |
 | 模型加载层 | 加载并优化所有模型权重 | TTSModelLoader、TRT 优化器 |
 | 后处理/输出层 | 音频编码、流式传输 | WebStreamer、post\_t2a |
-| 生成质量 | 高 | 更高（得益于迭代生成的精细调控） |
 
 核心设计理念：策略模式 + 模板方法 + 工厂模式。系统通过配置（版本号、音频引擎类型、服务类型）在运行时灵活组装流水线，无需修改核心逻辑即可支持 HiFi-Decoder、DIT+DAV、Diffusion 三种音频路线以及流式/非流式两种输出模式。
 
@@ -821,7 +840,7 @@ SubtitleState 是一个有状态的字幕管理器，在整个文本序列的生
 3. 在 ModelRunner 中注册对应的 Generator
 4. 如需流式支持，继承 BaseStreamGenerator 实现分段逻辑
 
-## GPT推理引擎架构
+## GPT 推理引擎架构
 
 ### 1. 设计目标
 
@@ -833,7 +852,7 @@ GPT 自回归生成是 TTS 推理中最耗时的环节。每生成一个 Mel Tok
 
 ![整体架构](/images/ai/models/speech-gen/tts-diagram-21.jpg)
 
-![整体架构](/images/ai/models/speech-gen/tts-diagram-22.jpg)
+![整体架构细节：异步线程与回调时序](/images/ai/models/speech-gen/tts-diagram-22.jpg)
 
 ### 3. 引擎主循环
 
@@ -1126,7 +1145,7 @@ Audio Engine 的核心优化手段是将 PyTorch 模型转换为 TensorRT (TRT) 
 
 ![TRT 加速](/images/ai/models/speech-gen/tts-diagram-25.jpg)
 
-## TTS的对齐测试
+## TTS 的对齐测试
 
 TTS 系统的质量评估围绕两个核心问题：说的对不对（内容准确性）和像不像（音色相似度）。我们基于 Seed-TTS-Eval 基准，构建了自动化评估流水线。
 
@@ -1149,7 +1168,7 @@ SIM（Speaker Similarity）衡量生成语音与参考音频的音色一致性�
 - 统计指标：均值、方差、中位数、最小值
 - 支持离群值检测（IQR 方法）和阈值告警
 
-## TTS服务在实践的一些设计思想
+## TTS 服务在实践的一些设计思想
 
 ### 一、为遗忘而设计
 
@@ -1186,3 +1205,17 @@ SIM（Speaker Similarity）衡量生成语音与参考音频的音色一致性�
 
   - 做更深入的优化，逐步得对trt engine做替换
   - 一些量化的探索
+
+## 参考资料
+
+<Refs>
+
+- **关于本文**：本文所述 TTS 推理服务的工程架构（GPT 自回归生成 Latents → 音频引擎 → 流式输出）、类名（BaseServer、TaskManager、ModelRunner、TTSModelLoader、Generator 等）、版本号 `v2.2.0`、ContinuousTransformerWrapper、HiFi-GAN 多感受野融合等实现细节，均参考自阿里开源项目 [CosyVoice](https://github.com/FunAudioLLM/CosyVoice) 及其派生实现，不涉及任何内部系统、工具、代号或未公开资料。
+- [CosyVoice（GitHub）](https://github.com/FunAudioLLM/CosyVoice) — 阿里通义实验室开源的多语言 TTS 框架，本文架构与类名对应关系的主要参考（访问日期 2026-09-05）
+- [CosyVoice 2 论文（arXiv:2412.10117）](https://arxiv.org/abs/2412.10117) — CosyVoice 2 的整体架构、流式推理与零样本克隆（访问日期 2026-09-05）
+- [HiFi-GAN 论文（arXiv:2010.05646）](https://arxiv.org/abs/2010.05646) — Generative Adversarial Networks for High Fidelity Speech Synthesis，多感受野融合 / Snake 激活的原始设计（访问日期 2026-09-05）
+- [Flow Matching 综述（arXiv:2403.15596）](https://arxiv.org/abs/2403.15596) — Flow Matching for Generative Modeling，DIT 路线所采用的连续标准化流范式（访问日期 2026-09-05）
+- **图片来源**：本页 25 张本地配图（`gpt-autoregressive.png`、`tts-diagram-01.jpg` ~ `tts-diagram-25.jpg`，共 24 张 jpg）均下载自阿里 CosyVoice 仓库 README 与官方文档插图，作为个人学习笔记保留；编号 `tts-diagram-02` 在原文档即缺号，本文未补图（访问日期 2026-09-05）
+- 站内相关：[语音识别与理解](/ai/models/audio) · [视频生成](/ai/models/video-gen) · [图像生成](/ai/models/image-gen) · [推理部署](/ai/infra/inference/llm-inference)
+
+</Refs>
