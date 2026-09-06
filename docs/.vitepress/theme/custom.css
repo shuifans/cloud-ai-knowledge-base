@@ -313,14 +313,22 @@ body {
 }
 
 /* ---------- 8. Mermaid ---------- */
+/* 纸面卡片容器：浅色纸底 + 细边框 + 圆角，与正文图片节奏统一；
+   宽图在卡片内横向滚动（overflow-x），窄图由 svg margin auto 居中
+   （不用 flex 居中：内容超宽时 flex center 会裁掉左侧滚动区） */
 .mermaid {
-  display: flex;
-  justify-content: center;
   margin: 24px 0;
+  padding: 20px 16px;
+  background: #f6f6f7;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow-x: auto;
 }
 
 .mermaid svg {
-  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  max-width: none;
 }
 
 /* ---------- 9. 页脚 ---------- */
@@ -459,6 +467,6 @@ body.zoom-lock {
 }
 
 .zoom-stage svg {
-  background: var(--vp-c-bg);
+  background: #f6f6f7;
   border-radius: 8px;
 }

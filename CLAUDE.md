@@ -53,6 +53,7 @@ npm run docs:preview  # 预览构建产物
 - 本站为个人学习笔记，不对外发布：配图直接取自官方/权威网站，**无需顾虑版权，但必须下载到本地**（`docs/public/images/<域>/<文章>/`），禁止外链引用，避免失效
 - 优先官方文档/博客的架构图、Wikimedia Commons；下载后校验为图片格式，超过 1.5MB 压缩（`sips -Z 1200`）
 - 每张图正文下方用斜体图注标注来源页链接；参考资料的"图片来源"小节也要登记
+- Mermaid 治理：图容器统一为浅纸面卡片（`theme/custom.css` 的 `.mermaid`），svg 保持自然尺寸、宽图卡内横滚；全景/矩阵类图必须用 subgraph 内 `direction LR`（或 block-beta）让同层节点横排，禁止孤立节点直接挂 TB/TD 下由 dagre 逐列排 rank（会形成大空隙竖条）
 
 ## 写作风格
 

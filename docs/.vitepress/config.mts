@@ -42,9 +42,36 @@ export default withMermaid(
       themeVariables: {
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif',
+        fontSize: '14px',
+        // 纸面浅色令牌：与 custom.css 的 .mermaid 卡片底色统一为浅纸面，
+        // 暗色模式下整卡保持浅色，保证图内文字对比度（mermaid 仅客户端渲染一次，无法随暗色切换重初始化）
+        background: '#f6f6f7',
+        primaryColor: '#ffffff',
+        primaryTextColor: '#3c3c43',
+        primaryBorderColor: '#d7d9de',
+        secondaryColor: '#f0f3f9',
+        tertiaryColor: '#f6f6f7',
+        lineColor: '#8a8f98',
+        arrowheadColor: '#8a8f98',
+        textColor: '#3c3c43',
+        nodeTextColor: '#3c3c43',
+        mainBkg: '#ffffff',
+        nodeBorder: '#d7d9de',
+        clusterBkg: '#f0f4fb',
+        clusterBorder: '#c9d4e8',
+        edgeLabelBackground: '#f6f6f7',
+        actorBkg: '#ffffff',
+        actorBorder: '#d7d9de',
+        actorTextColor: '#3c3c43',
+        noteBkgColor: '#fdf6dd',
+        noteTextColor: '#3c3c43',
       },
-      flowchart: { htmlLabels: false },
-      sequence: { htmlLabels: false },
+      // useMaxWidth: false → svg 保持自然尺寸：宽图在卡片内横向滚动（与代码块同节奏），
+      // 窄图由 CSS margin auto 居中，不再被列宽拉伸/压缩导致"太大或太小"
+      flowchart: { htmlLabels: false, useMaxWidth: false, nodeSpacing: 32, rankSpacing: 40 },
+      sequence: { htmlLabels: false, useMaxWidth: false },
+      timeline: { useMaxWidth: false },
+      gantt: { useMaxWidth: false },
     },
 
     sitemap: {

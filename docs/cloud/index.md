@@ -12,23 +12,31 @@ outline: [2, 3]
 ```mermaid
 flowchart TB
   subgraph L4[云原生 · 应用平台层]
+    direction LR
     N1[Kubernetes]
     N2[微服务治理]
     N3[可观测]
+    N1 ~~~ N2 ~~~ N3
   end
   subgraph L3[数据层]
+    direction LR
     D1[数据库]
     D2[大数据]
+    D1 ~~~ D2
   end
   subgraph L2[资源层 · 三大件]
+    direction LR
     C1[计算]
     C2[存储]
     C3[网络]
+    C1 ~~~ C2 ~~~ C3
   end
   subgraph L1[基座层]
+    direction LR
     F1[虚拟化/KVM]
     F2[OpenStack]
     F3[SDN/NFV]
+    F1 ~~~ F2 ~~~ F3
   end
   L4 --> L3 --> L2 --> L1
 ```

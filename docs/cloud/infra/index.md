@@ -16,24 +16,30 @@ outline: [2, 3]
 ## 知识框架
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph 计算
+    direction LR
     A1[虚拟机 ECS]
     A2[容器 / K8s]
     A3[Serverless]
     A4[GPU / 异构]
+    A1 ~~~ A2 ~~~ A3 ~~~ A4
   end
   subgraph 存储
+    direction LR
     B1[块存储 云盘]
     B2[对象存储 OSS]
     B3[文件存储 NAS/CPFS]
     B4[备份与容灾]
+    B1 ~~~ B2 ~~~ B3 ~~~ B4
   end
   subgraph 网络
+    direction LR
     C1[VPC 规划]
     C2[负载均衡 SLB/ALB]
     C3[CDN 与边缘]
     C4[专线/VPN 混合云]
+    C1 ~~~ C2 ~~~ C3 ~~~ C4
   end
   计算 --- 存储 --- 网络
 ```

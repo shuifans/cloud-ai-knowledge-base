@@ -10,21 +10,27 @@ outline: [2, 3]
 ## 三层结构
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph 硬件层
+    direction LR
     H1[GPU/加速器代际]
     H2[互联: NVLink/IB/RoCE]
     H3[存储: 并行文件系统]
+    H1 ~~~ H2 ~~~ H3
   end
   subgraph 训练层
+    direction LR
     T1[预训练/后训练/RL]
     T2[并行策略与容错]
     T3[Checkpoint 工程]
+    T1 ~~~ T2 ~~~ T3
   end
   subgraph 推理层
+    direction LR
     I1[推理框架与优化]
     I2[PD 分离/量化/投机]
     I3[容量规划与成本]
+    I1 ~~~ I2 ~~~ I3
   end
   硬件层 --> 训练层 --> 推理层
 ```

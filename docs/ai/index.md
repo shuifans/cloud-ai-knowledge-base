@@ -12,23 +12,31 @@ outline: [2, 3]
 ```mermaid
 flowchart TB
   subgraph 模型层
+    direction LR
     M1[机器学习/深度学习经典]
     M2[大语言模型]
     M3[视觉理解/图像/视频/语音]
+    M1 ~~~ M2 ~~~ M3
   end
   subgraph 基础设施层
+    direction LR
     I1[GPU 集群与高速网络]
     I2[训练工程]
     I3[推理与算力]
+    I1 ~~~ I2 ~~~ I3
   end
   subgraph 应用层
+    direction LR
     A1[RAG 知识增强]
     A2[多模态应用]
     A3[评测与运营]
+    A1 ~~~ A2 ~~~ A3
   end
   subgraph 智能体层
+    direction LR
     G1[Agent 分级/编年演进]
     G2[开发框架与运行时选型]
+    G1 ~~~ G2
   end
   模型层 -->|权重| 基础设施层 -->|服务| 应用层
   应用层 -->|编排成智能体| 智能体层

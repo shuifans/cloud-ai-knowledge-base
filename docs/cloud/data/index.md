@@ -18,19 +18,25 @@ outline: [2, 3]
 ```mermaid
 flowchart TB
   subgraph 在线交易
+    direction LR
     R1[关系型 RDS/PolarDB]
     R2[缓存 Redis]
     R3[文档/宽表]
+    R1 ~~~ R2 ~~~ R3
   end
   subgraph 分析查询
+    direction LR
     A1[OLAP / ClickHouse 类]
     A2[离线数仓 MaxCompute]
     A3[实时计算 Flink]
+    A1 ~~~ A2 ~~~ A3
   end
   subgraph 底座
+    direction LR
     D1[数据集成/同步 DTS]
     D2[数据湖 / 湖仓一体]
     D3[检索 Elasticsearch]
+    D1 ~~~ D2 ~~~ D3
   end
   在线交易 -->|归档/分析| 分析查询
   底座 --> 在线交易
