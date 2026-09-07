@@ -4,7 +4,7 @@ import Timeline from './Timeline.vue'
 
 const bigTiles = [
   {
-    icon: '☁️',
+    icon: 'cloud',
     title: '云计算',
     desc: '基座 → 计算·存储·网络 → 数据 → 云原生。四层完整技术栈的原理、选型与实践。',
     link: '/cloud/',
@@ -13,7 +13,7 @@ const bigTiles = [
     subLink: '/cloud/foundation/',
   },
   {
-    icon: '🧬',
+    icon: 'ai',
     title: '人工智能',
     desc: '模型架构演进 · AI Infra · 大模型应用 · Agent。从机器学习经典到智能体前沿的完整谱系。',
     link: '/ai/',
@@ -22,6 +22,10 @@ const bigTiles = [
     subLink: '/ai/models/',
   },
 ]
+
+function openSearch() {
+  document.querySelector<HTMLButtonElement>('.DocSearch-Button')?.click()
+}
 </script>
 
 <template>
@@ -36,7 +40,7 @@ const bigTiles = [
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" :href="withBase('/cloud/')">从云计算开始</a>
-        <a class="btn btn-ghost" :href="withBase('/ai/')">直达人工智能 ›</a>
+        <button class="btn btn-ghost" type="button" @click="openSearch">搜索知识</button>
       </div>
     </section>
 
@@ -44,7 +48,16 @@ const bigTiles = [
     <section class="tiles">
       <div class="grid grid-2">
         <div v-for="t in bigTiles" :key="t.title" class="tile tile-big">
-          <span class="tile-icon">{{ t.icon }}</span>
+          <span class="tile-icon" aria-hidden="true">
+            <svg v-if="t.icon === 'cloud'" viewBox="0 0 64 64" fill="none">
+              <path d="M19 48h27a11 11 0 0 0 1-22 15 15 0 0 0-28-3A12 12 0 0 0 19 48Z" />
+              <path d="M20 53h24M24 58h16" />
+            </svg>
+            <svg v-else viewBox="0 0 64 64" fill="none">
+              <rect x="18" y="18" width="28" height="28" rx="6" />
+              <path d="M27 27h10v10H27zM32 12v6M32 46v6M12 32h6M46 32h6M19 19l4 4M41 41l4 4M45 19l-4 4M23 41l-4 4" />
+            </svg>
+          </span>
           <span class="tile-title">{{ t.title }}</span>
           <span class="tile-desc">{{ t.desc }}</span>
           <div class="tile-ctas">
@@ -53,14 +66,21 @@ const bigTiles = [
           </div>
         </div>
         <div class="tile tile-wide">
-          <span class="tile-icon">📜</span>
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M14 47h36M18 39V23M32 39V16M46 39V28" />
+              <circle cx="18" cy="20" r="4" />
+              <circle cx="32" cy="13" r="4" />
+              <circle cx="46" cy="25" r="4" />
+            </svg>
+          </span>
           <span class="tile-title">技术编年史</span>
           <span class="tile-desc">
             六次技术浪潮的架构命题与破局之道——移动互联网、直播、短视频、区块链、元宇宙、AI 大模型。
           </span>
           <div class="tile-ctas">
-            <a class="tile-cta-primary" :href="withBase('/chronicle/')">进入编年史</a>
-            <a class="tile-cta-link" href="#home-timeline">看时间轴 ›</a>
+            <a class="tile-cta-primary" :href="withBase('/chronicle/')">查看总纲</a>
+            <a class="tile-cta-link" :href="withBase('/chronicle/mobile-internet')">从移动互联网开始 ›</a>
           </div>
         </div>
       </div>
@@ -98,9 +118,9 @@ const bigTiles = [
 
 .hero-title {
   font-size: clamp(44px, 7vw, 68px);
-  line-height: 1.05;
+  line-height: 1.1;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   color: var(--vp-c-text-1);
   margin: 0;
 }
@@ -109,7 +129,7 @@ const bigTiles = [
   margin-top: 20px;
   font-size: clamp(20px, 3vw, 26px);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: var(--vp-c-text-2);
 }
 
@@ -157,6 +177,12 @@ const bigTiles = [
 
 .btn-ghost:hover {
   text-decoration: underline;
+}
+
+.btn:focus-visible,
+.tile a:focus-visible {
+  outline: 3px solid var(--vp-c-brand-1);
+  outline-offset: 3px;
 }
 
 /* ---------- 磁贴（羊皮纸段，浅色区脉冲：白 → 羊皮纸 → 黑 → 白） ---------- */
@@ -211,7 +237,8 @@ const bigTiles = [
 }
 
 .tile-big .tile-icon {
-  font-size: 52px;
+  width: 56px;
+  height: 56px;
 }
 
 .tile-big .tile-title {
@@ -225,8 +252,20 @@ const bigTiles = [
 }
 
 .tile-icon {
-  font-size: 38px;
-  line-height: 1;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--vp-c-brand-1);
+}
+
+.tile-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 .tile-title {
@@ -234,7 +273,7 @@ const bigTiles = [
   margin-top: 12px;
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: var(--vp-c-text-1);
 }
 
@@ -284,7 +323,7 @@ const bigTiles = [
 
 /* ---------- 编年史（深色区） ---------- */
 .chronicle {
-  background: #000;
+  background: #0d0d0f;
   padding: 96px 24px 110px;
   scroll-margin-top: calc(var(--vp-nav-height) + 16px);
 }
@@ -293,7 +332,7 @@ const bigTiles = [
   text-align: center;
   font-size: clamp(32px, 5vw, 44px);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #f5f5f7;
   margin: 0;
 }
