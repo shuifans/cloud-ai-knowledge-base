@@ -476,23 +476,9 @@ body {
   outline-offset: 4px;
 }
 
-@media (min-width: 1280px) {
-  .VPDoc:has(.VPDocOutlineItem:empty) .aside {
-    display: none;
-  }
-
-  .VPDoc:has(.VPDocOutlineItem:empty) .content {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .vp-doc table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
+/* 表格在窄屏的横向滚动交给 VitePress 默认的 .vp-doc table（display:block + overflow-x:auto）。
+   不要再加 white-space: nowrap——本站表格多是长句决策矩阵（单行可达 260+ 字符），
+   禁止换行会让一行宽到 1500px 以上，手机上读一行要横滑好几屏且上下行无法对照。 */
 
 body.zoom-lock {
   overflow: hidden;

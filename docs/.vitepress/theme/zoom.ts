@@ -14,7 +14,13 @@ export function setupImageZoom() {
     root.querySelectorAll<HTMLElement>('.vp-doc img, .vp-doc .mermaid svg').forEach((element) => {
       element.tabIndex = 0
       element.setAttribute('role', 'button')
-      element.setAttribute('aria-label', element.matches('img') ? '放大图片' : '放大图表')
+      // role=button + aria-label 会整体替换元素的无障碍名称，
+      // 只写「放大图片」会让读屏用户丢掉 alt 里的图注信息（本站 384 张图绝大多数 alt 都是有效图注），
+      // 因此把原名称保留在前、操作提示追加在后。
+      const isImage = element.matches('img')
+      const name = isImage ? (element.getAttribute('alt') ?? '').trim() : ''
+      const hint = isImage ? '图片' : '图表'
+      element.setAttribute('aria-label', `${name || hint}（点击放大）`)
     })
   }
 

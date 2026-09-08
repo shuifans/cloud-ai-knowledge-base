@@ -53,7 +53,8 @@ npm run docs:preview  # 预览构建产物
 - 本站为个人学习笔记，不对外发布：配图直接取自官方/权威网站，**无需顾虑版权，但必须下载到本地**（`docs/public/images/<域>/<文章>/`），禁止外链引用，避免失效
 - 优先官方文档/博客的架构图、Wikimedia Commons；下载后校验为图片格式，超过 1.5MB 压缩（`sips -Z 1200`）
 - 每张图正文下方用斜体图注标注来源页链接；参考资料的"图片来源"小节也要登记
-- Mermaid 治理：图容器统一为浅纸面卡片（`theme/custom.css` 的 `.mermaid`），svg 保持自然尺寸、宽图卡内横滚；全景/矩阵类图必须用 subgraph 内 `direction LR`（或 block-beta）让同层节点横排，禁止孤立节点直接挂 TB/TD 下由 dagre 逐列排 rank（会形成大空隙竖条）
+- Mermaid 治理：渲染配置在 `theme/components/MermaidDiagram.vue`（mermaid 按需动态 import，不进全站预加载），图容器为纸面卡片（`theme/custom.css` 的 `.mermaid`）——浅色模式浅纸面、暗色模式深纸面，切主题时由组件内 MutationObserver 触发重渲染；svg 保持自然尺寸、宽图卡内横滚；全景/矩阵类图必须用 subgraph 内 `direction LR`（或 block-beta）让同层节点横排，禁止孤立节点直接挂 TB/TD 下由 dagre 逐列排 rank（会形成大空隙竖条）
+- 面包屑（`theme/components/Breadcrumbs.vue`）由 `config.mts` 的 `nav` + `sidebar` 推导，无需手工维护；层级为「首页 > 支柱名（取自 nav）> 分组名（取自 sidebar 分组）> 页名」，因此 sidebar 分组命名会直接出现在面包屑中间层
 
 ## 写作风格
 
