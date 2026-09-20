@@ -2,13 +2,13 @@
 
 > 状态：`video-gen` 高密度方案 B 已采纳；其余 47 张信息图已完成生成、校验并插入对应页面。
 >
-> 统计：全站 50 个 Markdown 页面；48 个内容页均已配置 4K 总览图；`docs/index.md` 与 `docs/about.md` 按规划跳过。
+> 统计：全站 50 个 Markdown 页面；48 个内容页均已配置高清总览图；`docs/index.md` 与 `docs/about.md` 按规划跳过。
 
 ## 1. 已选视觉母版
 
 - 参考图：`docs/public/images/ai/models/video-gen/video-generation-overview-b.png`
 - 用例：`infographic-diagram`
-- 画布：3840×2160，16:9，横版，不透明背景。
+- 画布：1672×941，约 16:9，横版，不透明背景。这是生成模型的实际有效输出尺寸，不做无信息增益的 4K 插值。
 - 风格：与网站一致的浅灰背景、白色圆角卡片、深灰正文、网站蓝作为唯一主强调色；线性图标、细分隔线、克制阴影。
 - 信息层级：顶部标题与一句主线；中部唯一主骨架；底部 4–8 个辅助卡片；最底部可放一个公式、决策规则或边界提示。
 - 密度：专题页保留 25–45 个主要标签；索引页保留 12–24 个标签。避免长段落，以名词、短句、箭头和分组表达全文脉络。
@@ -24,7 +24,7 @@ Input images: Image 1 is the approved style reference only; do not copy its vide
 Primary request: Create a high-information-density overview infographic for the supplied article. The image must let a technical reader scan the article's complete logic, architecture, terminology, trade-offs, and decision boundaries before reading the body.
 Scene/backdrop: opaque warm light-gray background with white rounded cards, subtle separators and restrained shadows.
 Style/medium: clean vector-like technical infographic matching the current website and Image 1; precise, editorial, engineering-oriented.
-Composition/framing: 3840×2160 landscape. Top: exact article title plus a one-line thesis. Center: the page-specific primary structure. Bottom: supporting modules for trade-offs, evaluation, selection, operations, or legacy. Maintain generous gutters while keeping high information density.
+Composition/framing: 1672×941 landscape. Top: exact article title plus a one-line thesis. Center: the page-specific primary structure. Bottom: supporting modules for trade-offs, evaluation, selection, operations, or legacy. Maintain generous gutters while keeping high information density.
 Color palette: website blue #0071E3 for hierarchy and arrows; near-black #1D1D1F for headings; gray #59595C for secondary copy; white cards on #F5F5F7-like background. Small semantic accent colors are allowed only when needed.
 Typography: modern Chinese sans-serif; technical English, abbreviations, formulas, model names and protocol names must remain verbatim. Render every supplied label exactly once unless repetition is structurally necessary.
 Facts: use only the supplied article payload. Preserve dates, versions, quantities, formulas and qualification language exactly. Do not infer missing values, rankings, causality, performance, prices, market share or maturity.
@@ -57,14 +57,14 @@ Avoid: dark theme, neon, cyberpunk, glassmorphism, tiny illegible copy, fake cod
 - `docs/public/images/ai/application/evaluation/llm-evaluation-overview-calibration.png`
 - `docs/public/images/chronicle/index/chronicle-six-waves-overview-calibration.png`
 
-以上均使用内置图像生成工具分别生成，以已采纳的 `video-generation-overview-b.png` 作为纯风格参考；项目副本统一为 3840×2160 PNG。校准稿已复制为稳定正式文件并插入对应 Markdown 页面，原 `-calibration` 文件保留用于追溯。
+以上均使用内置图像生成工具分别生成，以已采纳的 `video-generation-overview-b.png` 作为纯风格参考；项目副本统一为 1672×941 PNG，与生成模型的实际有效分辨率一致。校准稿已复制为稳定正式文件并插入对应 Markdown 页面，原 `-calibration` 文件保留用于追溯。
 
 ### 2026-09-20 全量完成记录
 
 - `AI`：22/22 张完成；其中 5 张复用校准稿，17 张新生成。
 - `云计算`：17/17 张完成并插入页面。
 - `技术编年史`：8/8 张完成并插入页面。
-- 连同已采纳的 `video-gen` 方案 B，共覆盖 48 个内容页；所有正式首图均为 3840×2160 PNG。
+- 连同已采纳的 `video-gen` 方案 B，共覆盖 48 个内容页；所有正式首图均为 1672×941 PNG。
 - 事实与结构 QA 重点纠正了 FLOPs 口径、训练路线关系、CFG 条件/无条件分支、ASR 对齐方法并列关系、OpenStack 调用链与 Skyline 职责、计算实例状态机等问题。
 - 生成时使用本文件的统一母 Prompt、对应页面载荷，以及 `docs/public/images/ai/models/video-gen/video-generation-overview-b.png` 作为纯视觉风格参考。
 
@@ -366,12 +366,12 @@ Avoid: dark theme, neon, cyberpunk, glassmorphism, tiny illegible copy, fake cod
 - 输出路径：`docs/public/images/<页面目录>/<页面名>-overview.png`。
 - 页面引用：放在一级标题后、正文导语前。
 - Alt 文本：用一句话概括主骨架与关键模块，不堆叠完整术语表。
-- 图注统一说明：`本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。`
+- 图注统一说明：`本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。`
 - 不覆盖已有图片；迭代稿使用 `-v2`、`-v3`，用户确认后再替换正式文件。
 
 ## 9. 每张图的验收清单
 
-1. 尺寸为 3840×2160，PNG，不透明。
+1. 尺寸为 1672×941，PNG，不透明。
 2. 标题、技术名词、缩写、公式逐字核对；不得有错别字、乱码或伪字。
 3. 主骨架在缩放到网页宽度时仍可一眼识别；100% 查看时所有小字可读。
 4. 图中每个数字、日期、版本、价格、性能值都能在当前页面正文找到原文。

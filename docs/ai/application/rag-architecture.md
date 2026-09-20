@@ -8,7 +8,7 @@ lastVerified: 2026-09-20
 
 ![RAG 离线与在线双泳道端到端架构图](/images/ai/application/rag-architecture/rag-architecture-overview.png)
 
-*本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
+*本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > RAG 是企业落地大模型最成熟的路径，也是"Demo 与生产差距最大"的领域：一周能搭出一个问答原型，三个月未必能让它达到上线标准。差距不在模型，而在检索工程。这篇按完整链路拆解企业级 RAG 的设计要点——从解析切分、Embedding 与 ANN 索引的机制级原理、混合检索与重排的成本账，到 Naive→Advanced→Modular→Agentic→GraphRAG 的架构演进、长上下文与 RAG 的再分工、评测闭环与生产运营。读完你能拿到一张"每一环做什么、参数怎么调、坑在哪"的工程地图。
 

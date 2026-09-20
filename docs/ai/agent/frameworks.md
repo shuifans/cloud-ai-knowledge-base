@@ -8,7 +8,7 @@ lastVerified: 2026-09-20
 
 ![Agent 框架机制分组与参考部署拓扑图](/images/ai/agent/frameworks/frameworks-overview.png)
 
-*本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
+*本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > 面向要把 Agent 接进生产系统、正在编排框架与运行时之间做选型的工程师与方案架构师。这篇不做功能清单式的罗列，而是把每条框架谱系**拆到机制层**讲清：LangGraph 的图状态机与 checkpoint、AutoGen 的会话驱动与它的三分 lineage、CrewAI 的角色协作、OpenAI Agents SDK 的 handoff 语义、Claude Agent SDK 的 subagent/hook、Google ADK 的工作流图，再往上收拢到编排模式（单 agent 循环 / supervisor / 层级 / 群聊 / 流水线）的通信开销与失控风险对比、协议层（MCP / A2A）的机制与治理现状、记忆与状态的工程实现，最后给一棵可直接套用的选型决策树和一张常见坑表。全文版本与协议事实核实于 2026-09-04，配图与生态动态复核于 2026-09-05。
 

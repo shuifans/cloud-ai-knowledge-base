@@ -8,7 +8,7 @@ lastVerified: 2026-09-20
 
 ![从 Prefill 到 Decode 的请求生命周期与优化挂载图](/images/ai/infra/inference/llm-inference/llm-inference-overview.png)
 
-*本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
+*本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > 大模型落地，推理服务是绕不开的工程核心。这篇面向要把推理服务跑进生产的工程师与架构师，把现代推理引擎逐层拆开讲：**continuous batching 与 PagedAttention 到底优化了什么、前缀缓存如何变成账单上的折扣、投机解码各路线的接受率与适用边界、量化与 KV Cache 压缩的精度账、Prefill/Decode 分离为什么在长上下文时代成为主流**，以及从 Demo 到生产之间隔着哪些坑。全文主线只有一条：在保证延迟 SLO 的前提下，最大化单位显存的有效吞吐（goodput）。以自建推理服务为主线，模型 API（如百炼类服务）的取舍见文末。
 
