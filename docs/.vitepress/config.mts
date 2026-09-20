@@ -83,6 +83,7 @@ export default defineConfig({
           { text: '计算·存储·网络', link: '/cloud/infra/' },
           { text: '数据库·大数据', link: '/cloud/data/' },
           { text: '云原生', link: '/cloud/native/' },
+          { text: '架构与治理', link: '/cloud/architecture/' },
         ],
       },
       {
@@ -146,6 +147,24 @@ export default defineConfig({
             },
             { text: '微服务治理', link: '/cloud/native/microservice' },
             { text: '可观测体系', link: '/cloud/native/observability' },
+          ],
+        },
+        {
+          text: '架构与治理',
+          collapsed: true,
+          items: [
+            { text: '导读：架构与治理知识框架', link: '/cloud/architecture/' },
+            {
+              text: '卓越架构：从原则到持续评审',
+              link: '/cloud/architecture/well-architected',
+            },
+            {
+              text: '安全与身份治理',
+              link: '/cloud/architecture/security-governance',
+            },
+            { text: '可靠性与灾备', link: '/cloud/architecture/reliability-dr' },
+            { text: 'FinOps：云成本治理', link: '/cloud/architecture/finops' },
+            { text: '云迁移与现代化', link: '/cloud/architecture/migration' },
           ],
         },
       ],

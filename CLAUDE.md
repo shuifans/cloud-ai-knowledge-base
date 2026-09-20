@@ -7,7 +7,7 @@
 - 公开技术知识库：**云与 AI 知识体系**，不使用作者履历或个人项目经历为内容背书
 - 技术栈：VitePress 1.x + vitepress-plugin-mermaid，纯中文
 - 分类体系：三大支柱
-  - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）
+  - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）/ architecture（卓越架构·安全·可靠性·FinOps·迁移）
   - **人工智能** `docs/ai/`：models（模型架构演进）/ infra（集群/训练/推理）/ application（大模型应用）/ agent（智能体全景·编年史·框架对比）
   - **编年史** `docs/chronicle/`：技术浪潮与信创演进
 - 内容分级：完整文章（无标记）· 提纲页（🚧 提示块 + 要点大纲）

@@ -1,8 +1,8 @@
 # 全站信息图生成 Prompt 规格
 
-> 状态：`video-gen` 高密度方案 B 已采纳；其余 47 张信息图已完成生成、校验并插入对应页面。
+> 状态：`video-gen` 高密度方案 B 已采纳；原有 47 张信息图与“架构与治理”新增 7 张信息图已完成生成、校验并插入对应页面。
 >
-> 统计：全站 50 个 Markdown 页面；48 个内容页均已配置高清总览图；`docs/index.md` 与 `docs/about.md` 按规划跳过。
+> 统计：全站 56 个 Markdown 页面；54 个内容页均已配置高清总览图；`docs/index.md` 与 `docs/about.md` 按规划跳过。
 
 ## 1. 已选视觉母版
 
@@ -62,7 +62,7 @@ Avoid: dark theme, neon, cyberpunk, glassmorphism, tiny illegible copy, fake cod
 ### 2026-09-20 全量完成记录
 
 - `AI`：22/22 张完成；其中 5 张复用校准稿，17 张新生成。
-- `云计算`：17/17 张完成并插入页面。
+- `云计算`：24/24 张完成并插入页面（2026-09-20 新增“架构与治理”6 页，并更新云计算全景 v2）。
 - `技术编年史`：8/8 张完成并插入页面。
 - 连同已采纳的 `video-gen` 方案 B，共覆盖 48 个内容页；所有正式首图均为 1672×941 PNG。
 - 事实与结构 QA 重点纠正了 FLOPs 口径、训练路线关系、CFG 条件/无条件分支、ASR 对齐方法并列关系、OpenStack 调用链与 Skyline 职责、计算实例状态机等问题。
@@ -305,6 +305,48 @@ Avoid: dark theme, neon, cyberpunk, glassmorphism, tiny illegible copy, fake cod
 - 主骨架：以 Kubernetes 为中心的工作负载、网络、存储、治理、可观测与发布辐射图。
 - 必须逐字呈现：Deployment/StatefulSet/Job、Service/Ingress/CNI、CSI/PV/PVC、Prometheus/SLS/Tracing、注册发现、配置、限流熔断、金丝雀、蓝绿、灰度。
 - 事实边界：不写死当前版本；Service Mesh 和 IDP 不表达为必选项。
+
+### P1 · `docs/cloud/index.md`（v2）
+
+- 主骨架：基座、资源、数据、云原生四层纵向技术栈，外侧用“架构与治理”作为横切护栏与反馈闭环。
+- 必须逐字呈现：虚拟化/KVM、OpenStack、SDN/NFV、计算、存储、网络、数据库、大数据、Kubernetes、微服务治理、可观测、卓越架构、安全与身份、可靠性与灾备、FinOps、云迁移与现代化、AI。
+- 事实边界：架构与治理不是第五层；四层不是唯一严格依赖架构；不添加正文未出现的厂商产品。
+
+### P1 · `docs/cloud/architecture/index.md`
+
+- 主骨架：业务目标进入卓越架构评审，分流到安全与身份、可靠性与灾备、FinOps；迁移与现代化通过 Landing Zone 接入，最终汇入持续运营并反馈复评。
+- 必须逐字呈现：业务目标与约束、卓越架构评审、Landing Zone、安全与身份治理、可靠性与灾备、FinOps 成本治理、云迁移与现代化、持续运营与审计、度量、复盘、改进。
+- 事实边界：不把治理表达为集中审批；不补成熟度评分或产品能力承诺。
+
+### P0 · `docs/cloud/architecture/well-architected.md`
+
+- 主骨架：阿里云五支柱与 AWS 六支柱映射到“输入→提问→证据→风险→改进→验证→复评”闭环，底部展示六类权衡。
+- 必须逐字呈现：安全、稳定、成本、效率、性能、卓越运营、安全性、可靠性、性能效率、成本优化、可持续性、业务目标、SLO、证据、风险、Owner、验收标准、持续评审。
+- 事实边界：两套框架不画成逐字一一等价；不提供无来源评分；不把开通产品等同风险关闭。
+
+### P0 · `docs/cloud/architecture/security-governance.md`
+
+- 主骨架：责任共担为底座，多账号 Landing Zone 和身份优先为中心，组织身份、网络、数据、工作负载、安全运营六个控制面环绕，右侧形成检测响应闭环。
+- 必须逐字呈现：责任共担、Landing Zone、管理账号、安全/日志账号、生产、非生产、SSO、MFA、临时凭证、角色、最小权限、组织护栏、KMS、不可变备份、集中日志、检测、遏制、恢复、复盘。
+- 事实边界：组织护栏只限制权限上限、不授予权限；标签不画成强隔离；不列产品版本和漏洞数量。
+
+### P0 · `docs/cloud/architecture/reliability-dr.md`
+
+- 主骨架：业务影响分析产生 SLO/错误预算与 RTO/RPO，连接故障域、高可用、备份和四档 DR，最终用演练实测回馈目标。
+- 必须逐字呈现：SLI、SLO、错误预算、RTO、RPO、HA、备份恢复、DR、故障域、多可用区、跨地域、超时、重试、退避、幂等、隔离、限流、降级、Backup & Restore、Pilot Light、Warm Standby、Active-Active、切换、回切、演练。
+- 事实边界：不写固定 SLA 和恢复时间；四档只表达成本/复杂度与恢复潜力的相对关系；复制不等于备份。
+
+### P0 · `docs/cloud/architecture/finops.md`
+
+- 主骨架：分摊→可见→计划→优化→验证循环，四类优化旋钮围绕单位业务成本，底部放技术/财务/业务协作节奏。
+- 必须逐字呈现：账号、标签、共享成本、实际成本、摊销成本、预算、预测、异常、单位业务成本、资源效率、费率效率、架构效率、需求管理、Right-size、Savings Plan、预留、Spot/抢占式、覆盖率、利用率、技术、财务、业务。
+- 事实边界：不补折扣、价格或节省比例；不把总账单下降作为唯一目标；可靠性和安全是硬约束。
+
+### P0 · `docs/cloud/architecture/migration.md`
+
+- 主骨架：Assess→Mobilize→Migrate→Validate→Modernize 主流程，上方放 7R 决策，下方放迁移波次与切换/回退时间线。
+- 必须逐字呈现：Assess、Mobilize、Migrate、Validate、Modernize、Landing Zone、Retire、Retain、Rehost、Relocate、Repurchase、Replatform、Refactor/Re-architect、资产清单、依赖图、TCO、迁移波次、全量、增量、切换、回退、业务验收、观察期。
+- 事实边界：不宣称某个 R 是默认最优；迁移完成与现代化完成分开；不补迁移速度、工期或节省比例。
 
 ## 6. 技术编年史页面载荷（8 张）
 

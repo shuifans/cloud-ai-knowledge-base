@@ -1,6 +1,6 @@
 # 云与 AI 知识体系（cloud-ai-knowledge-base）
 
-围绕云计算与人工智能构建的公开技术知识库：从 OpenStack、计算、存储、网络、数据与云原生，到模型架构、AI Infra、应用工程与智能体。
+围绕云计算与人工智能构建的公开技术知识库：从 OpenStack、计算、存储、网络、数据、云原生与架构治理，到模型架构、AI Infra、应用工程与智能体。
 
 > 🔗 站点地址：<https://shuifans.github.io/cloud-ai-knowledge-base/>
 
@@ -10,7 +10,7 @@
 
 | 支柱 | 路径 | 主题 |
 | --- | --- | --- |
-| ☁️ 云计算 | `docs/cloud/` | 基座（虚拟化/OpenStack）· 计算·存储·网络 · 数据库·大数据（含 OLAP）· 云原生 |
+| ☁️ 云计算 | `docs/cloud/` | 基座（虚拟化/OpenStack）· 计算·存储·网络 · 数据库·大数据（含 OLAP）· 云原生 · 架构与治理 |
 | 🧬 人工智能 | `docs/ai/` | 模型（基础→理解→生成）· AI Infra（集群→训练→推理）· 应用（RAG→多模态→评测）· Agent |
 | 📜 技术编年史 | `docs/chronicle/` | 移动互联网→直播→短视频→区块链→元宇宙→AI，及信创暗流 |
 
