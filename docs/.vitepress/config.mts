@@ -7,7 +7,7 @@ const base = (process.env.VITEPRESS_BASE || '/').replace(/([^/])$/, '$1/')
 export default defineConfig({
   title: '云与 AI 知识体系',
   description:
-    '一名云解决方案架构师的十年沉淀：从云计算基座、全栈云产品到模型架构、AI Infra 与 Agent 的完整知识体系。',
+    '从云计算基座与云原生，到模型架构、AI Infra、应用工程与 Agent 的系统化技术知识库。',
   lang: 'zh-CN',
   base,
   cleanUrls: true,
@@ -23,7 +23,7 @@ export default defineConfig({
       'meta',
       {
         property: 'og:description',
-        content: '从 OpenStack 到大模型：一名云解决方案架构师的完整知识体系',
+        content: '从 OpenStack 到大模型：可检索、可核验、持续更新的云与 AI 知识体系',
       },
     ],
   ],
@@ -152,17 +152,32 @@ export default defineConfig({
       '/ai/': [
         { text: 'AI 全景', link: '/ai/' },
         {
-          text: '模型架构演进',
+          text: '模型：基础、理解与生成',
           collapsed: true,
           items: [
             { text: '演进总览', link: '/ai/models/' },
-            { text: '机器学习与深度学习经典', link: '/ai/models/ml-dl' },
-            { text: '大语言模型架构解析', link: '/ai/models/llm' },
-            { text: '视觉理解', link: '/ai/models/vision' },
-            { text: '图像生成', link: '/ai/models/image-gen' },
-            { text: '视频生成', link: '/ai/models/video-gen' },
-            { text: '语音生成', link: '/ai/models/speech-gen' },
-            { text: '语音识别与理解', link: '/ai/models/audio' },
+            {
+              text: '基础模型',
+              items: [
+                { text: '机器学习与深度学习经典', link: '/ai/models/ml-dl' },
+                { text: '大语言模型架构解析', link: '/ai/models/llm' },
+              ],
+            },
+            {
+              text: '多模态理解',
+              items: [
+                { text: '视觉理解', link: '/ai/models/vision' },
+                { text: '语音识别与理解', link: '/ai/models/audio' },
+              ],
+            },
+            {
+              text: '多模态生成',
+              items: [
+                { text: '图像生成', link: '/ai/models/image-gen' },
+                { text: '视频生成', link: '/ai/models/video-gen' },
+                { text: '语音生成', link: '/ai/models/speech-gen' },
+              ],
+            },
           ],
         },
         {
@@ -247,7 +262,7 @@ export default defineConfig({
     docFooter: { prev: '上一篇', next: '下一篇' },
 
     footer: {
-      message: '内容基于公开技术资料与脱敏后的实践总结',
+      message: '内容优先依据官方文档、原始论文与项目仓库',
       copyright: 'CC BY-NC-SA 4.0',
     },
 

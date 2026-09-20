@@ -1,9 +1,14 @@
 ---
 title: 语音生成
 outline: [2, 3]
+lastVerified: 2026-09-20
 ---
 
 # 语音生成
+
+![语音生成双路线与服务运行时总览图](/images/ai/models/speech-gen/speech-gen-overview.png)
+
+*本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > 面向要把语音合成（TTS）接进产品线、评估自回归 + 神经声码器路线可行性的工程师与方案架构师。这篇把 TTS 推理服务的全貌讲透：**自回归语言模型怎样把文本和音色"翻译"成语音离散表示（Mel Codes）、HiFi-Decoder 与 DIT + DAV 两条声码路线各自的工程取舍、Triton/TensorRT 加速下的服务化框架如何把"长生成 + 流式输出"做成稳定的在线能力**。读完之后你会清楚"GPT 出 Latents → 声码器出波形"这条主流链路的每一段在做什么、为什么 HiFi-Decoder 在低延迟场景仍是默认选择、DIT 流匹配路线在哪里胜出，以及落地时要监控哪些指标。语音生成已经过了"能不能用"的阶段，现在的分水岭是**音质、可控性、首包延迟与流式稳定性**——这一篇按这条工程主线展开。
 
@@ -131,7 +136,7 @@ GPT 支持多种采样策略以平衡生成质量与多样性：
 人的发声过程可以拆解为两个阶段：
 
 1. 声源（Source）：声带振动产生一个带有基础音高（即基频 F0）的周期性脉冲信号，类似于"嗡嗡声"。这个信号包含了音高信息，但听起来不像任何具体的语音。
-2. 滤波器（Filter）：这个原始信号经过口腔、鼻腔、舌头等构成的声道，被"塑形"成我们听到的元音、辅音等具体语音。声道的形状决定了共振峰（formant），也就决定了"a"和"o"听起来不同。
+2. 滤波器（Filter）：这个原始信号经过声道塑形为人耳听到的元音、辅音等具体语音。声道的形状决定了共振峰（formant），也就决定了"a"和"o"听起来不同。
 
 这一经典理论被称为 Source-Filter 模型，是语音学的基础。HiFi-Decoder 的设计正是受此启发。
 
@@ -216,7 +221,7 @@ Generator 采用经典的 HiFi-GAN 架构，由"入口卷积 → 5 级上采样�
 
 此外，每个 ResNet 内部还使用了空洞卷积（Dilated Convolution），通过不同的膨胀率（1、3、5）在不增加参数量的前提下进一步扩大感受野。这使得网络能够同时捕捉到从最细微的噪声纹理到最宏观的语调走势的多尺度信息。三个 ResNet 的输出取平均后作为该级的最终输出，这种设计让不同尺度的特征互补融合，是 HiFi-GAN 能够合成高保真音频的关键所在。
 
-4. 最终输出经过 5 级上采样后，通过一个卷积层将 16 通道压缩为 1 通道（即单声道音频），再经过 tanh 激活函数将幅值限制在 [-1, 1] 之间——这正是标准音频波形的幅度范围。至此，我们得到了可以直接播放的 WAV 波形。
+4. 最终输出经过 5 级上采样后，通过一个卷积层将 16 通道压缩为 1 通道（即单声道音频），再经过 tanh 激活函数将幅值限制在 [-1, 1] 之间——这正是标准音频波形的幅度范围。至此即可得到可以直接播放的 WAV 波形。
 
 ### 四、流程总结
 
@@ -1081,7 +1086,7 @@ std::atomic<int> external_lock_waiting_count_{0};  // 外部等待计数器
 
 // 音频引擎获取 GPU
 void acquire_gpu_lock() {
-    external_lock_waiting_count_.fetch_add(1);  // 先标记"我在等"
+    external_lock_waiting_count_.fetch_add(1);  // 先标记等待状态
     gpu_lock_.lock();                           // 再排队等锁
     external_lock_waiting_count_.fetch_sub(1);  // 拿到后取消标记
 }
@@ -1147,7 +1152,7 @@ Audio Engine 的核心优化手段是将 PyTorch 模型转换为 TensorRT (TRT) 
 
 ## TTS 的对齐测试
 
-TTS 系统的质量评估围绕两个核心问题：说的对不对（内容准确性）和像不像（音色相似度）。我们基于 Seed-TTS-Eval 基准，构建了自动化评估流水线。
+TTS 系统的质量评估围绕两个核心问题：说的对不对（内容准确性）和像不像（音色相似度）。可基于 Seed-TTS-Eval 基准构建自动化评估流水线。
 
 ### WER —— 内容准确性
 
@@ -1209,6 +1214,14 @@ SIM（Speaker Similarity）衡量生成语音与参考音频的音色一致性�
 ## 参考资料
 
 <Refs>
+
+**官方模型卡与权重**
+
+- [CosyVoice2-0.5B（Hugging Face）](https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B) — FunAudioLLM 官方权重与模型卡；使用时同时核验仓库代码版本和模型卡许可
+- [CosyVoice-300M-SFT（Hugging Face）](https://huggingface.co/FunAudioLLM/CosyVoice-300M-SFT) — 多语言 SFT checkpoint 与推理入口
+- [MeloTTS-English（Hugging Face）](https://huggingface.co/myshell-ai/MeloTTS-English) — MyShell 官方英文 checkpoint；其他语言需选择对应仓库而不是假定一个权重覆盖全部语言
+
+> 声音克隆与拟声能力还涉及说话人授权、平台条款和深度合成标识。模型权重的代码/模型许可证不能替代对训练素材、声音权利和输出使用范围的合规审查。
 
 - **关于本文**：本文所述 TTS 推理服务的工程架构（GPT 自回归生成 Latents → 音频引擎 → 流式输出）、类名（BaseServer、TaskManager、ModelRunner、TTSModelLoader、Generator 等）、版本号 `v2.2.0`、ContinuousTransformerWrapper、HiFi-GAN 多感受野融合等实现细节，均参考自阿里开源项目 [CosyVoice](https://github.com/FunAudioLLM/CosyVoice) 及其派生实现，不涉及任何内部系统、工具、代号或未公开资料。
 - [CosyVoice（GitHub）](https://github.com/FunAudioLLM/CosyVoice) — 阿里通义实验室开源的多语言 TTS 框架，本文架构与类名对应关系的主要参考（访问日期 2026-09-05）

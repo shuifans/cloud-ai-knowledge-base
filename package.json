@@ -1,7 +1,7 @@
 {
   "name": "cloud-ai-knowledge-base",
   "version": "1.0.0",
-  "description": "云与 AI 个人知识体系 —— 从云计算基座到大模型的十年沉淀",
+  "description": "云与 AI 知识体系 —— 从云计算基座到大模型的系统化知识库",
   "private": true,
   "type": "module",
   "scripts": {

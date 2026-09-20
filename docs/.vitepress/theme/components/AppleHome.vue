@@ -33,10 +33,10 @@ function openSearch() {
     <!-- Hero -->
     <section class="hero">
       <h1 class="hero-title">云与 AI 知识体系</h1>
-      <p class="hero-tag">十年云实践 · 六浪技术变迁。</p>
+      <p class="hero-tag">云计算基座 · AI 工程体系。</p>
       <p class="hero-sub">
         从 OpenStack 云计算基座，到模型架构、AI Infra 与
-        Agent——一名解决方案架构师的完整知识图谱。
+        Agent——一套持续校验、面向工程实践的技术知识图谱。
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" :href="withBase('/cloud/')">从云计算开始</a>
@@ -95,8 +95,8 @@ function openSearch() {
 
     <!-- 宣言 -->
     <section class="manifesto">
-      <p class="quote">把判断变成流程，<br />把经验变成体系。</p>
-      <p class="quote-sub">内容基于公开技术资料与脱敏后的实践总结 · 持续更新</p>
+      <p class="quote">把判断变成流程，<br />把知识变成体系。</p>
+      <p class="quote-sub">内容基于公开技术资料、原始论文与官方文档 · 持续更新</p>
     </section>
   </div>
 </template>

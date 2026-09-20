@@ -1,9 +1,14 @@
 ---
 title: 模型架构演进：总览
 outline: [2, 3]
+lastVerified: 2026-09-20
 ---
 
 # 模型架构演进：总览
+
+![模型演进主线、三层目录与三个规律总览图](/images/ai/models/models-overview.png)
+
+*本站生成的 4K 全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > 从统计机器学习到多模态大模型，二十年间的每一代模型都在回答同一个问题：**如何让机器以更通用的方式理解与生成**。这条演进线不是"新的替代旧的"，而是层层叠加——CNN 仍在视觉感知里服役，RNN 的思想活在序列建模中，Transformer 则统一了几乎所有模态。
 
@@ -26,17 +31,17 @@ timeline
                  : 2023-今
 ```
 
-## 七个板块
+## 三层目录
 
-| 板块 | 内容 | 入口 |
-| --- | --- | --- |
-|  机器学习与深度学习经典 | 传统 ML 到 DNN/CNN/RNN/LSTM/GAN/YOLO 的架构解析 | [进入](/ai/models/ml-dl) |
-|  大语言模型 | Transformer → Decoder-only → MoE → 推理模型 | [进入](/ai/models/llm) |
-|  视觉理解 | CLIP → VLM → 原生多模态 | [进入](/ai/models/vision) |
-|  图像生成 | Diffusion 原理：Stable Diffusion → DiT → 最新格局 | [进入](/ai/models/image-gen) |
-|  视频生成 | 时空建模：Sora 类 → 开源生态 | [进入](/ai/models/video-gen) |
-|  语音生成 | TTS 推理服务：GPT 自回归、HiFi-Decoder、DIT + DAV | [进入](/ai/models/speech-gen) |
-|  语音识别与理解 | ASR 端到端三路线/语音表征/全双工实时语音大模型 | [进入](/ai/models/audio) |
+| 层级 | 板块 | 内容 | 入口 |
+| --- | --- | --- | --- |
+| 基础模型 | 机器学习与深度学习经典 | 传统 ML 到 DNN/CNN/RNN/LSTM/GAN/YOLO | [进入](/ai/models/ml-dl) |
+| 基础模型 | 大语言模型 | Transformer → Decoder-only → MoE → 推理模型 | [进入](/ai/models/llm) |
+| 多模态理解 | 视觉理解 | CLIP → VLM → 原生多模态 | [进入](/ai/models/vision) |
+| 多模态理解 | 语音识别与理解 | ASR、语音表征与实时语音理解 | [进入](/ai/models/audio) |
+| 多模态生成 | 图像生成 | Diffusion → DiT → 可控生成 | [进入](/ai/models/image-gen) |
+| 多模态生成 | 视频生成 | 时空补丁 → 时空 DiT → 音画与控制 | [进入](/ai/models/video-gen) |
+| 多模态生成 | 语音生成 | 自回归、扩散与声码器 | [进入](/ai/models/speech-gen) |
 
 ## 贯穿演进线的三个规律
 
