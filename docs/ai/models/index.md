@@ -1,10 +1,10 @@
 ---
-title: 模型架构演进：总览
+title: 模型与算法：总览
 outline: [2, 3]
 lastVerified: 2026-09-20
 ---
 
-# 模型架构演进：总览
+# 模型与算法：总览 {#模型架构演进-总览}
 
 ![模型演进主线、三层目录与三个规律总览图](/images/ai/models/models-overview.png)
 

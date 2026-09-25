@@ -1,10 +1,10 @@
 ---
-title: 大模型应用
+title: 应用与评测
 outline: [2, 3]
 lastVerified: 2026-09-20
 ---
 
-# 大模型应用
+# 应用与评测 {#大模型应用}
 
 ![大模型应用已发布文章与计划扩充方向知识地图](/images/ai/application/application-overview.png)
 

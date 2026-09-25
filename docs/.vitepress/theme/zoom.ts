@@ -1,95 +1,75 @@
 export function setupImageZoom() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return
-
-  let overlay: HTMLElement | null = null
+  let overlay: HTMLDialogElement | null = null
   let trigger: HTMLElement | null = null
-  let lastScroll = 0
-
-  const getZoomTarget = (target: EventTarget | null) => {
-    if (!(target instanceof Element)) return null
-    return target.closest('.vp-doc img, .vp-doc .mermaid svg') as HTMLElement | null
-  }
-
+  const getTarget = (target: EventTarget | null) => target instanceof Element ? target.closest<HTMLElement>('.vp-doc img, .vp-doc .mermaid svg') : null
   const markZoomable = (root: ParentNode) => {
-    root.querySelectorAll<HTMLElement>('.vp-doc img, .vp-doc .mermaid svg').forEach((element) => {
+    root.querySelectorAll<HTMLElement>('.vp-doc img, .vp-doc .mermaid svg').forEach(element => {
       element.tabIndex = 0
       element.setAttribute('role', 'button')
-      // role=button + aria-label 会整体替换元素的无障碍名称，
-      // 只写「放大图片」会让读屏用户丢掉 alt 里的图注信息（本站 384 张图绝大多数 alt 都是有效图注），
-      // 因此把原名称保留在前、操作提示追加在后。
-      const isImage = element.matches('img')
-      const name = isImage ? (element.getAttribute('alt') ?? '').trim() : ''
-      const hint = isImage ? '图片' : '图表'
-      element.setAttribute('aria-label', `${name || hint}（点击放大）`)
+      element.setAttribute('aria-haspopup', 'dialog')
+      const name = (element.getAttribute('alt') || element.getAttribute('aria-label')?.replace(/（点击放大）$/, '') || '图表').trim()
+      element.setAttribute('aria-label', `${name}（点击放大）`)
     })
   }
-
   const close = () => {
     if (!overlay) return
-    overlay.remove()
-    overlay = null
+    overlay.close(); overlay.remove(); overlay = null
     document.body.classList.remove('zoom-lock')
-    window.scrollTo(0, lastScroll)
-    trigger?.focus({ preventScroll: true })
-    trigger = null
+    trigger?.focus({ preventScroll: true }); trigger = null
   }
-
   const open = (source: HTMLElement) => {
-    lastScroll = window.scrollY
     trigger = source
-    overlay = document.createElement('div')
+    overlay = document.createElement('dialog')
     overlay.className = 'zoom-overlay'
-    overlay.tabIndex = -1
-    overlay.setAttribute('role', 'dialog')
-    overlay.setAttribute('aria-modal', 'true')
-    overlay.setAttribute('aria-label', '放大预览，按 Escape 关闭')
-
+    overlay.setAttribute('aria-label', '知识图表预览')
+    const toolbar = document.createElement('div')
+    toolbar.className = 'zoom-toolbar'
     const stage = document.createElement('div')
     stage.className = 'zoom-stage'
+    stage.tabIndex = 0
+    stage.setAttribute('aria-label', '图表区域，放大后可滚动查看')
     const clone = source.cloneNode(true) as HTMLElement
-    clone.removeAttribute('style')
-    clone.removeAttribute('class')
-    clone.removeAttribute('role')
-    clone.removeAttribute('tabindex')
+    for (const attribute of ['style', 'class', 'role', 'tabindex', 'aria-label', 'aria-haspopup']) clone.removeAttribute(attribute)
     stage.appendChild(clone)
-    overlay.appendChild(stage)
-    overlay.addEventListener('click', close)
+    let scale = 1
+    const ratio = source.getBoundingClientRect().width / Math.max(1, source.getBoundingClientRect().height)
+    const fit = Math.min(window.innerWidth - 32, (window.innerHeight - 110) * ratio)
+    const resize = () => { clone.style.width = `${fit * scale}px` }
+    const button = (label: string, action: () => void) => {
+      const el = document.createElement('button'); el.type = 'button'; el.textContent = label
+      el.addEventListener('click', action); toolbar.appendChild(el); return el
+    }
+    const smaller = button('缩小', () => { scale = Math.max(1, scale / 1.5); update() })
+    const bigger = button('放大', () => { scale = Math.min(8, scale * 1.5); update() })
+    button('适合屏幕', () => { scale = 1; update(); stage.scrollTo(0, 0) })
+    const closeButton = button('关闭', close)
+    const update = () => { resize(); smaller.disabled = scale <= 1; bigger.disabled = scale >= 8 }
+    update()
+    overlay.append(toolbar, stage)
+    overlay.addEventListener('cancel', event => { event.preventDefault(); close() })
+    overlay.addEventListener('keydown', event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); close() } })
+    overlay.addEventListener('click', event => { if (event.target === overlay) close() })
     document.body.appendChild(overlay)
     document.body.classList.add('zoom-lock')
-    overlay.focus({ preventScroll: true })
+    overlay.showModal(); closeButton.focus()
   }
-
   markZoomable(document)
-
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach(({ addedNodes }) => {
-      addedNodes.forEach((node) => {
-        if (!(node instanceof Element)) return
-        if (node.matches('.vp-doc img, .vp-doc .mermaid svg')) markZoomable(node.parentElement ?? document)
-        markZoomable(node)
-      })
-    })
-  })
-  observer.observe(document.body, { childList: true, subtree: true })
-
-  document.addEventListener('click', (event) => {
-    if (overlay) return
-    const target = getZoomTarget(event.target)
-    if (!target) return
-    event.preventDefault()
-    open(target)
-  })
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      close()
-      return
+  new MutationObserver(mutations => {
+    for (const { addedNodes } of mutations) for (const node of addedNodes) {
+      if (!(node instanceof Element)) continue
+      if (node.matches('.vp-doc img, .vp-doc .mermaid svg')) markZoomable(node.parentElement ?? document)
+      markZoomable(node)
     }
-
-    if (overlay || (event.key !== 'Enter' && event.key !== ' ')) return
-    const target = getZoomTarget(event.target)
-    if (!target) return
-    event.preventDefault()
-    open(target)
+  }).observe(document.body, { childList: true, subtree: true })
+  document.addEventListener('click', event => {
+    if (overlay) return
+    const target = getTarget(event.target)
+    if (target) { event.preventDefault(); open(target) }
+  })
+  document.addEventListener('keydown', event => {
+    if (overlay || !['Enter', ' '].includes(event.key)) return
+    const target = getTarget(event.target)
+    if (target) { event.preventDefault(); open(target) }
   })
 }

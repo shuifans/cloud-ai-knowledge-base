@@ -18,7 +18,7 @@ const route = useRoute()
 const { site, theme, page } = useData()
 
 function normalizePath(path: string) {
-  return path.replace(/index\.html?$/, '').replace(/\/+$/, '') || '/'
+  return path.split('#')[0].replace(/index\.html?$/, '').replace(/\.html$/, '').replace(/\/+$/, '') || '/'
 }
 
 function samePath(first: string, second: string) {
@@ -80,7 +80,7 @@ const pillar = computed<Crumb | null>(() => {
   return null
 })
 
-/** 深度优先找出当前页，并带上沿途的分组名（分组自身无 link，渲染为不可点的中间层） */
+/** 深度优先找出当前页，真实目录的总览链接同时用于可返回的祖先层级。 */
 function findTrail(items: NavNode[], target: string, ancestors: Crumb[] = []): Crumb[] | null {
   for (const item of items) {
     if (!item) continue
@@ -119,7 +119,7 @@ const crumbs = computed<Crumb[]>(() => {
     if (dup !== -1) return [home, ...full.slice(0, dup + 1)]
   }
 
-  return [home, ...full]
+  return [home, ...full.filter((crumb, index) => crumb.link || index === full.length - 1)]
 })
 </script>
 

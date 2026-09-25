@@ -5,10 +5,10 @@
 ## 站点概况
 
 - 公开技术知识库：**云与 AI 知识体系**，不使用作者履历或个人项目经历为内容背书
-- 技术栈：VitePress 1.x + vitepress-plugin-mermaid，纯中文
-- 分类体系：三大支柱
+- 技术栈：VitePress 1.x + Mermaid（自定义组件），纯中文
+- 分类体系：两大技术领域 + 技术编年史
   - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）/ architecture（卓越架构·安全·可靠性·FinOps·迁移）
-  - **人工智能** `docs/ai/`：models（模型架构演进）/ infra（集群/训练/推理）/ application（大模型应用）/ agent（智能体全景·编年史·框架对比）
+  - **人工智能** `docs/ai/`：models（模型与算法）/ infra（集群/训练/推理）/ application（应用与评测）/ agent（智能体全景·编年史·框架对比）
   - **编年史** `docs/chronicle/`：技术浪潮与信创演进
 - 内容分级：完整文章（无标记）· 提纲页（🚧 提示块 + 要点大纲）
 
@@ -25,7 +25,8 @@ npm run docs:preview  # 预览构建产物
 1. 从 `templates/article-template.md` 复制，放入对应知识域目录，英文短横线文件名
 2. 在 `docs/.vitepress/config.mts` 的对应 `sidebar` 中注册条目（提纲页标注"（提纲）"）
 3. 若文章被域导读页的清单引用，同步更新导读页表格中的状态
-4. 跑 `npm run docs:build` 确认无死链
+4. 在 `docs/.vitepress/reading-guides.mjs` 补充摘要；适用读者与前置知识可继承领域导读
+5. 跑 `node --test tests/*.test.mjs` 和 `npm run docs:build` 确认行为与链接
 
 ## 文章结构标准
 
@@ -80,3 +81,13 @@ npm run docs:preview  # 预览构建产物
 
 - 推送到 GitHub 仓库 `main` 分支，GitHub Actions 自动构建并部署到 Pages
 - 提交信息用中文，格式：`新增/更新/修复: <文章或模块>`
+- 本机打包 Git bundle，上传 hkserver 后推送 main，再确认 GitHub Pages 工作流与线上页面；本机不直接 push
+
+## 导航与阅读体验维护
+
+- `config.mts` 是目录名称与层级的唯一来源；真实目录分组必须有总览 `link`。面包屑、总览入口从此配置推导；仅作分类标签的无链接分组不进入面包屑。
+- `reading-markdown.mjs` 在文章标题后统一插入导读，并将首张知识地图收纳为可展开卡片；后续技术配图保持正文位置。不要在每篇 Markdown 中重复手写这些组件。
+- `reading-guides.mjs` 管理编辑摘要、学习顺序及编年史技术互链；`theme/knowledge.mjs` 管理首页任务与跨领域专题，只引用既有主文。
+- `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。
+- 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、目录、手机菜单三处覆盖。
+- 新增知识地图沿用海岸配色与日夜模式思路，减少图内文字；详细结论优先留在可检索正文中。

@@ -702,6 +702,6 @@ sequenceDiagram
 - [cp-ring-attention.png](/images/ai/training/cp-ring-attention.png) ← Ring Attention 论文 Figure 2（arXiv:2310.01889）
 - [fp8-deepseek-framework.png](/images/ai/training/fp8-deepseek-framework.png) ← DeepSeek-V3 技术报告 Figure 6（arXiv:2412.19437）
 
-**站内相关**：[GPU 集群与高速网络](/ai/infra/cluster) · [推理与算力](/ai/infra/inference/) · [大模型推理部署实战](/ai/infra/inference/llm-inference) · [大模型架构与演进](/ai/models/llm) · [模型架构演进](/ai/models/)
+**站内相关**：[GPU 集群与高速网络](/ai/infra/cluster) · [推理与算力](/ai/infra/inference/) · [大模型推理部署实战](/ai/infra/inference/llm-inference) · [大模型架构与演进](/ai/models/llm) · [模型与算法](/ai/models/)
 
 </Refs>

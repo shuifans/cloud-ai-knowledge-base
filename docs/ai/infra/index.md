@@ -1,10 +1,10 @@
 ---
-title: AI Infra：总览
+title: AI 基础设施：总览
 outline: [2, 3]
 lastVerified: 2026-09-20
 ---
 
-# AI Infra：总览
+# AI 基础设施：总览 {#ai-infra-总览}
 
 ![硬件、训练与推理三层 AI Infra 知识地图](/images/ai/infra/ai-infra-overview.png)
 
@@ -56,4 +56,4 @@ flowchart TB
 
 ## 衔接
 
-- 上游：[模型架构演进](/ai/models/) · 下游：[大模型应用](/ai/application/)
+- 上游：[模型与算法](/ai/models/) · 下游：[应用与评测](/ai/application/)

@@ -1,4 +1,12 @@
 import { defineConfig } from 'vitepress'
+import { createRequire } from 'node:module'
+import { fileURLToPath } from 'node:url'
+import { getReadingGuide, pageKey, verifiedDate } from './reading-guides.mjs'
+import { readingMarkdown } from './reading-markdown.mjs'
+
+const require = createRequire(import.meta.url)
+const component = (name: string) => fileURLToPath(new URL(`./theme/components/${name}.vue`, import.meta.url))
+const miniSearchEntry = require.resolve('minisearch', { paths: [require.resolve('vitepress/package.json')] })
 
 // GitHub Pages 项目站点部署时需要设置仓库名作为 base。
 // 本地开发默认 '/'；CI 构建时通过环境变量注入，例如 /cloud-ai-knowledge-base/
@@ -14,6 +22,23 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   ignoreDeadLinks: false,
+
+  transformPageData(pageData) {
+    pageData.frontmatter.readingGuide = getReadingGuide(pageKey(pageData.relativePath))
+    pageData.frontmatter.lastVerified = verifiedDate(pageData.frontmatter.lastVerified)
+  },
+
+  vite: {
+    resolve: {
+      alias: [
+        { find: /^\.\/VPDocOutlineItem\.vue$/, replacement: component('KnowledgeOutline') },
+        { find: /^\.\/VPLocalSearchBox\.vue$/, replacement: component('KnowledgeSearch') },
+        { find: /^\.\/VPNavBarHamburger\.vue$/, replacement: component('KnowledgeMenuButton') },
+        // Use the exact MiniSearch version that wrote VitePress's local index.
+        { find: /^minisearch$/, replacement: miniSearchEntry.replace('/cjs/index.cjs', '/es/index.js') },
+      ],
+    },
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
@@ -33,6 +58,7 @@ export default defineConfig({
     lineNumbers: false,
     theme: { light: 'github-light', dark: 'github-dark' },
     config(markdown) {
+      readingMarkdown(markdown)
       const defaultFence = markdown.renderer.rules.fence?.bind(markdown.renderer.rules)
       if (!defaultFence) return
 
@@ -91,10 +117,10 @@ export default defineConfig({
         text: '人工智能',
         items: [
           { text: 'AI 全景', link: '/ai/' },
-          { text: '模型架构演进', link: '/ai/models/' },
-          { text: 'AI Infra', link: '/ai/infra/' },
-          { text: '大模型应用', link: '/ai/application/' },
-          { text: 'Agent', link: '/ai/agent/' },
+          { text: '模型与算法', link: '/ai/models/' },
+          { text: 'AI 基础设施', link: '/ai/infra/' },
+          { text: '应用与评测', link: '/ai/application/' },
+          { text: '智能体（Agent）', link: '/ai/agent/' },
         ],
       },
       { text: '编年史', link: '/chronicle/' },
@@ -106,6 +132,7 @@ export default defineConfig({
         { text: '云计算全景', link: '/cloud/' },
         {
           text: '云计算基座',
+          link: '/cloud/foundation/',
           collapsed: true,
           items: [
             { text: '导读：基座知识框架', link: '/cloud/foundation/' },
@@ -119,6 +146,7 @@ export default defineConfig({
         },
         {
           text: '计算 · 存储 · 网络',
+          link: '/cloud/infra/',
           collapsed: true,
           items: [
             { text: '导读：三大件知识框架', link: '/cloud/infra/' },
@@ -129,6 +157,7 @@ export default defineConfig({
         },
         {
           text: '数据库 · 大数据',
+          link: '/cloud/data/',
           collapsed: true,
           items: [
             { text: '导读：数据层知识框架', link: '/cloud/data/' },
@@ -139,6 +168,7 @@ export default defineConfig({
         },
         {
           text: '云原生',
+          link: '/cloud/native/',
           collapsed: true,
           items: [
             { text: '导读：云原生知识框架', link: '/cloud/native/' },
@@ -152,6 +182,7 @@ export default defineConfig({
         },
         {
           text: '架构与治理',
+          link: '/cloud/architecture/',
           collapsed: true,
           items: [
             { text: '导读：架构与治理知识框架', link: '/cloud/architecture/' },
@@ -172,10 +203,11 @@ export default defineConfig({
       '/ai/': [
         { text: 'AI 全景', link: '/ai/' },
         {
-          text: '模型：基础、理解与生成',
+          text: '模型与算法',
+          link: '/ai/models/',
           collapsed: true,
           items: [
-            { text: '演进总览', link: '/ai/models/' },
+            { text: '模型总览', link: '/ai/models/' },
             {
               text: '基础模型',
               items: [
@@ -201,29 +233,38 @@ export default defineConfig({
           ],
         },
         {
-          text: 'AI Infra',
+          text: 'AI 基础设施',
+          link: '/ai/infra/',
           collapsed: true,
           items: [
-            { text: 'Infra 总览', link: '/ai/infra/' },
+            { text: '基础设施总览', link: '/ai/infra/' },
             { text: 'GPU 集群与高速网络', link: '/ai/infra/cluster' },
             { text: '训练工程', link: '/ai/infra/training' },
-            { text: '推理与算力总览', link: '/ai/infra/inference/' },
             {
-              text: '大模型推理部署实战',
-              link: '/ai/infra/inference/llm-inference',
-            },
-            {
-              text: 'GPU 选型与推理成本测算',
-              link: '/ai/infra/inference/gpu-sizing',
-            },
-            {
-              text: 'Token 经济学：定价与成本',
-              link: '/ai/infra/inference/token-economics',
+              text: '推理与算力',
+              link: '/ai/infra/inference/',
+              collapsed: true,
+              items: [
+                { text: '推理与算力总览', link: '/ai/infra/inference/' },
+                {
+                  text: '大模型推理部署实战',
+                  link: '/ai/infra/inference/llm-inference',
+                },
+                {
+                  text: 'GPU 选型与推理成本测算',
+                  link: '/ai/infra/inference/gpu-sizing',
+                },
+                {
+                  text: 'Token 经济学：定价与成本',
+                  link: '/ai/infra/inference/token-economics',
+                },
+              ],
             },
           ],
         },
         {
-          text: '大模型应用',
+          text: '应用与评测',
+          link: '/ai/application/',
           collapsed: true,
           items: [
             { text: '应用总览', link: '/ai/application/' },
@@ -236,7 +277,8 @@ export default defineConfig({
           ],
         },
         {
-          text: 'Agent',
+          text: '智能体（Agent）',
+          link: '/ai/agent/',
           collapsed: true,
           items: [
             { text: '智能体技术全景', link: '/ai/agent/' },
@@ -248,6 +290,7 @@ export default defineConfig({
       '/chronicle/': [
         {
           text: '技术编年史',
+          link: '/chronicle/',
           collapsed: true,
           items: [
             { text: '十年六浪：总纲', link: '/chronicle/' },
@@ -275,7 +318,7 @@ export default defineConfig({
       text: '在 GitHub 上编辑此页',
     },
 
-    lastUpdated: { text: '最后更新于' },
+    lastUpdated: { text: '页面修订于' },
 
     outline: { level: [2, 3], label: '本页目录' },
 
@@ -289,7 +332,7 @@ export default defineConfig({
     darkModeSwitchLabel: '日夜模式',
     lightModeSwitchTitle: '切换到白天模式',
     darkModeSwitchTitle: '切换到夜间模式',
-    sidebarMenuLabel: '菜单',
+    sidebarMenuLabel: '知识目录',
     returnToTopLabel: '返回顶部',
   },
 })

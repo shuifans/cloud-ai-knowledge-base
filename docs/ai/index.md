@@ -52,17 +52,17 @@ flowchart TB
 
 ## 四个子域
 
-### 模型：基础、理解与生成
+### 模型与算法 {#模型-基础、理解与生成}
 
 按能力类型组织：基础模型（ML/DL、LLM）、多模态理解（视觉、语音识别）与多模态生成（图像、视频、语音生成）。
 
-→ [模型架构演进](/ai/models/)
+→ [模型与算法](/ai/models/)
 
-### AI Infra
+### AI 基础设施 {#ai-infra}
 
 模型背后的系统工程：GPU 集群与高速网络（NVLink/RDMA/分布式存储）、训练工程（预训练/后训练/强化学习）、推理优化与算力成本。
 
-→ [AI Infra 总览](/ai/infra/)
+→ [AI 基础设施总览](/ai/infra/)
 
 | 文章 | 状态 |
 | --- | --- |
@@ -72,11 +72,11 @@ flowchart TB
 | [GPU 选型与推理成本测算](/ai/infra/inference/gpu-sizing) | 已发布 |
 | [Token 经济学：定价与成本的数学](/ai/infra/inference/token-economics) | 已发布 |
 
-### 大模型应用
+### 应用与评测 {#大模型应用}
 
 把模型能力工程化为业务价值：RAG、多模态应用、评测与运营。
 
-→ [大模型应用](/ai/application/)
+→ [应用与评测](/ai/application/)
 
 | 文章 | 状态 |
 | --- | --- |
@@ -84,7 +84,7 @@ flowchart TB
 | [多模态应用](/ai/application/multimodal) | 已发布 |
 | [大模型评测](/ai/application/evaluation) | 已发布 |
 
-### Agent
+### 智能体（Agent） {#agent}
 
 把模型编排成能干活的智能体：概念分级、热点编年演进、开发框架与运行时选型。
 
