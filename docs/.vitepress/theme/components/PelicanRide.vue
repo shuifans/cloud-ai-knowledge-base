@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watchPostEffect } from 'vue'
 import { useData } from 'vitepress'
 import scene from '../assets/pelican-ride.svg?raw'
 import { mountPelicanRide } from './pelicanRide.js'
 
 const { isDark } = useData()
+const isNight = ref(false)
+watchPostEffect(() => { isNight.value = isDark.value })
 const card = ref<HTMLElement>()
 let dispose: (() => void) | undefined
 onMounted(() => { if (card.value) dispose = mountPelicanRide(card.value) })
@@ -15,9 +17,9 @@ onBeforeUnmount(() => dispose?.())
   <section ref="card" class="ride-card" aria-label="鹈鹕骑行动画与播放控制" aria-describedby="ride-shortcuts" tabindex="0">
     <div class="ride-stage">
       <div class="ride-caption"><span>COASTAL ROUTE · 01</span><strong>慢一点，知识自有风景。</strong></div>
-      <button class="scene-theme" type="button" :aria-label="isDark ? '切换日景' : '切换夜景'" :aria-pressed="isDark" @click="isDark = !isDark">
+      <button class="scene-theme" type="button" :aria-label="isNight ? '切换日景' : '切换夜景'" :aria-pressed="isNight" @click="isDark = !isDark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
-        <span>{{ isDark ? '日景' : '夜景' }}</span>
+        <span>{{ isNight ? '日景' : '夜景' }}</span>
       </button>
       <div class="ride-art" v-html="scene"></div>
       <div id="toast" class="ride-toast" aria-hidden="true">叮铃 ♪</div>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { onMounted, watch } from 'vue'
+import { onMounted, ref, watch, watchPostEffect } from 'vue'
 
 // VitePress persists this ref and applies the root .dark class on every route.
 const { isDark } = useData()
+// Keep server and hydration markup identical; update labels after hydration.
+const isNight = ref(false)
+watchPostEffect(() => { isNight.value = isDark.value })
 onMounted(() => {
   watch(isDark, (night) => {
     const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
@@ -17,14 +20,14 @@ onMounted(() => {
     class="coastal-theme-toggle"
     type="button"
     role="switch"
-    :aria-checked="isDark"
-    :aria-label="isDark ? '切换到白天模式' : '切换到夜间模式'"
-    :title="isDark ? '切换到白天模式' : '切换到夜间模式'"
+    :aria-checked="isNight"
+    :aria-label="isNight ? '切换到白天模式' : '切换到夜间模式'"
+    :title="isNight ? '切换到白天模式' : '切换到夜间模式'"
     @click="isDark = !isDark"
   >
     <span class="vpi-sun mode-day-icon" aria-hidden="true"></span>
     <span class="vpi-moon mode-night-icon" aria-hidden="true"></span>
-    <span class="mode-name">{{ isDark ? '夜晚' : '白天' }}</span>
+    <span class="mode-name">{{ isNight ? '夜晚' : '白天' }}</span>
   </button>
 </template>
 
