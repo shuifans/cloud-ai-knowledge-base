@@ -12,7 +12,7 @@ onBeforeUnmount(() => dispose?.())
 </script>
 
 <template>
-  <section ref="card" class="ride-card" :class="{ night: isDark }" aria-label="鹈鹕骑行动画与播放控制" aria-describedby="ride-shortcuts" tabindex="0">
+  <section ref="card" class="ride-card" aria-label="鹈鹕骑行动画与播放控制" aria-describedby="ride-shortcuts" tabindex="0">
     <div class="ride-stage">
       <div class="ride-caption"><span>COASTAL ROUTE · 01</span><strong>慢一点，知识自有风景。</strong></div>
       <button class="scene-theme" type="button" :aria-label="isDark ? '切换日景' : '切换夜景'" :aria-pressed="isDark" @click="isDark = !isDark">
@@ -45,11 +45,6 @@ onBeforeUnmount(() => dispose?.())
   background: var(--coast-card); overflow: hidden;
   box-shadow: 0 12px 45px #304b380a;
 }
-.ride-card.night {
-  --sky: #2b424b; --sea: #3c6668; --wave: #537e7b; --sand: #435955;
-  --sun: #efe0ad; --cloud: #678080; --gull: #9db5b0; --grass: #8ea994;
-  --road: #708b7d; --shadow: #304541;
-}
 .ride-stage { position: relative; background: var(--sky); }
 .ride-caption { position: absolute; z-index: 1; left: 24px; top: 22px; display: grid; gap: 4px; pointer-events: none; }
 .ride-caption span { font-size: 9px; letter-spacing: .17em; color: var(--coast-muted); }
@@ -58,8 +53,6 @@ onBeforeUnmount(() => dispose?.())
 .scene-theme svg { width: 14px; height: 14px; }
 .ride-art :deep(#ride) { display: block; width: 100%; height: auto; }
 .ride-art :deep(.stars), .ride-art :deep(.moon-cut) { opacity: 0; transition: opacity .4s; }
-.night .ride-art :deep(.stars), .night .ride-art :deep(.moon-cut) { opacity: 1; }
-.night .ride-art :deep(#clouds) { opacity: .3; }
 .ride-toolbar { border-top: 1px solid var(--coast-line); display: flex; align-items: center; gap: 16px; padding: 16px 20px; }
 .ride-toolbar button { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px; white-space: nowrap; border-radius: 99px; min-height: 38px; }
 .ride-toolbar svg { width: 17px; height: 17px; flex: none; }
@@ -92,4 +85,16 @@ button:focus-visible, input:focus-visible, .ride-card:focus-visible { outline: 3
   .ride-note { padding: 0 17px 14px; }
 }
 @media (prefers-reduced-motion: reduce) { *, :deep(*) { transition: none !important; } }
+</style>
+
+<style>
+/* The root theme is set before hydration, including on a saved night-mode reload. */
+html.dark .ride-card {
+  --sky: #2b424b; --sea: #3c6668; --wave: #537e7b; --sand: #435955;
+  --sun: #efe0ad; --cloud: #678080; --gull: #9db5b0; --grass: #8ea994;
+  --road: #708b7d; --shadow: #304541;
+}
+html.dark .ride-card .ride-art .stars,
+html.dark .ride-card .ride-art .moon-cut { opacity: 1; }
+html.dark .ride-card .ride-art #clouds { opacity: .3; }
 </style>

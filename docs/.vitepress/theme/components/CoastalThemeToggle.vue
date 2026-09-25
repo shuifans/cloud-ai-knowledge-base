@@ -22,7 +22,8 @@ onMounted(() => {
     :title="isDark ? '切换到白天模式' : '切换到夜间模式'"
     @click="isDark = !isDark"
   >
-    <span :class="isDark ? 'vpi-moon' : 'vpi-sun'" aria-hidden="true"></span>
+    <span class="vpi-sun mode-day-icon" aria-hidden="true"></span>
+    <span class="vpi-moon mode-night-icon" aria-hidden="true"></span>
     <span class="mode-name">{{ isDark ? '夜晚' : '白天' }}</span>
   </button>
 </template>
@@ -51,4 +52,10 @@ onMounted(() => {
 [class^='vpi-'] { font-size: 16px; }
 @media (max-width: 767px) { .coastal-theme-toggle { margin-left: 0; padding: 8px 10px; gap: 5px; } }
 @media (max-width: 380px) { .mode-name { display: none; } .coastal-theme-toggle { width: 36px; padding: 8px; } }
+</style>
+
+<style>
+.coastal-theme-toggle .mode-night-icon { display: none; }
+html.dark .coastal-theme-toggle .mode-day-icon { display: none; }
+html.dark .coastal-theme-toggle .mode-night-icon { display: block; }
 </style>

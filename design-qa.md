@@ -25,7 +25,7 @@ final result: passed
 
 ## 检查中修复的问题
 
-- P1：夜景作用域样式错误影响整页透明度。改为组件自身的 `.night` 状态；复核 html opacity=1、星星 opacity=1、天空色 #2b424b，原插画及整页夜景正常。
+- P1：夜景作用域样式错误影响整页透明度。将所有场景选择器限定在 `.ride-card` 内；复核 html opacity=1、星星 opacity=1、天空色 #2b424b，原插画及整页夜景正常。
 - P2：VitePress 正文规则覆盖首页标题字号、部分文章链接呈蓝色。提高首页排版选择器优先级，局部重置链接样式。最终标题为 56px，领域标题和推荐文章链接为 rgb(41,70,74)。证据：最终首屏、`home-routes-desktop.png` 和 `home-timeline-desktop.png`。
 - P2：暂停标记与 Vue 的主题 class 更新可能互相覆盖。改为独立 `data-playing` 属性；暂停后切换夜景，状态仍为 false，文案仍为“歇一会儿”。
 - P2：暗色 CTA 悬停色过浅。保持原按钮背景，仅轻微提亮。
@@ -33,6 +33,7 @@ final result: passed
 - P2：搜索组件延迟加载的作用域样式覆盖自定义圆角。提升根节点选择器优先级；实测弹层 24px、搜索框 99px、结果 12px，桌面与手机均生效。
 - P2：部分屏宽隐藏动画速度文案后滑杆缺少名称。添加独立 `aria-label="骑行速度"`。
 - P2：直播文章两处硬编码粉紫节点不随主题变化。改用语义类，深色实测分别为 rgb(83,73,50) 和 rgb(53,87,79)。
+- P1：线上静态页首次以夜间模式加载时，Vue 水合没有修正服务器输出的日景 class，导致插画和图标与页面主题不一致。场景夜色和日月图标改为直接响应 `html.dark`。生产构建预览刷新验证：天空 #2b424b、星星 opacity=1、月亮图标显示、太阳图标隐藏；切回白天为 #f7f2e5。
 - 已重新捕获并与参考同屏对照，无剩余 P0 / P1 / P2 视觉问题。
 
 ## 浏览器验证
@@ -62,10 +63,10 @@ final result: passed
 ## 构建
 
 - 默认路径构建通过。
-- 全站样式最终修订后，`VITEPRESS_BASE=/cloud-ai-knowledge-base/` 构建通过（13.02 秒），包含 VitePress 死链校验。
+- 全站样式和静态页日夜初始化修订后，`VITEPRESS_BASE=/cloud-ai-knowledge-base/` 构建通过（13.79 秒），包含 VitePress 死链校验。
 - `git diff --check` 通过。
 - 构建仍提示已有的 PromQL 语法高亮回退及部分大 bundle 提示，不影响产物生成。
 
 ## 剩余项
 
-无阻塞项。保留本地预览供用户查看；未执行发布。
+无阻塞项。按用户后续授权，通过 hk-server 中转推送 GitHub main，由现有 GitHub Actions 发布到 Pages。
