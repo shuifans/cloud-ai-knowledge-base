@@ -346,9 +346,10 @@ body {
 }
 
 /* ---------- 8. Mermaid ---------- */
-/* 纸面卡片容器：浅色纸底 + 细边框 + 圆角，与正文图片节奏统一；
-   宽图在卡片内横向滚动（overflow-x），窄图由 svg margin auto 居中
-   （不用 flex 居中：内容超宽时 flex center 会裁掉左侧滚动区） */
+/* 纸面卡片容器：浅色纸底 + 细边框 + 圆角，与正文图片节奏统一。
+   Mermaid 会为 timeline 等图表输出固定像素尺寸，因此必须在 CSS 层
+   把 SVG 等比例收进正文容器；否则大图只能依赖横向滚动，
+   用户会误以为右侧内容被截断。overflow-x 保留为异常 SVG 的兜底。 */
 .mermaid {
   margin: 24px 0;
   padding: 20px 16px;
@@ -361,7 +362,8 @@ body {
 .mermaid svg {
   display: block;
   margin: 0 auto;
-  max-width: none;
+  max-width: 100%;
+  height: auto;
 }
 
 .dark .mermaid {
