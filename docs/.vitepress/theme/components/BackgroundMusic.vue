@@ -59,7 +59,6 @@ onBeforeUnmount(() => player?.dispose())
         <path v-else-if="state.muted" d="m16 9 5 6m0-6-5 6" />
         <path v-else d="m16 8 5 4-5 4Z" />
       </svg>
-      <span class="music-state-dot" :class="{ active: audible }" aria-hidden="true"></span>
     </button>
   </div>
 </template>
@@ -77,7 +76,5 @@ audio { display: none; }
 .coastal-music-toggle:focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
 .coastal-music-toggle:disabled { cursor: default; }
 svg { width: 17px; height: 17px; }
-.music-state-dot { position: absolute; right: 1px; bottom: 1px; width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--coast-card); background: var(--coast-muted); }
-.music-state-dot.active { background: var(--coast-accent); }
 @media (max-width: 420px) { .coastal-music { margin-left: 6px; } }
 </style>
