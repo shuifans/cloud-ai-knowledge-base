@@ -1,6 +1,6 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import AppleHome from './components/AppleHome.vue'
+import CoastalHome from './components/CoastalHome.vue'
 import Timeline from './components/Timeline.vue'
 import Refs from './components/Refs.vue'
 import MermaidDiagram from './components/MermaidDiagram.vue'
@@ -12,7 +12,7 @@ export default {
   extends: DefaultTheme,
   Layout: KnowledgeLayout,
   enhanceApp({ app }) {
-    app.component('AppleHome', AppleHome)
+    app.component('CoastalHome', CoastalHome)
     app.component('Timeline', Timeline)
     app.component('Refs', Refs)
     app.component('Mermaid', MermaidDiagram)

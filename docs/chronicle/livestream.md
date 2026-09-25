@@ -169,8 +169,8 @@ flowchart LR
   end
   F & G -.->|"互动升维：弹幕/点赞"| H[IM 消息通道]
   F & G ==>|"连麦：WebRTC 链路 <500ms<br/>经 RTC 网关与旁路混流"| B
-  style C fill:#f9f,stroke:#333
-  style E fill:#bbf,stroke:#333
+  class C coast-node-warm
+  class E coast-node-sea
 ```
 
 注意决策含义：**同一个直播间往往同时存在三档延迟**。普通观众走 HLS 拿"稳"，粉丝 App 内走 FLV 拿"快"，连麦嘉宾走 WebRTC 拿"实时"——架构师的工作就是在观众面前把这三条链路缝合起来（旁路转推、音视频同步），而不是幻想一条链路通吃。

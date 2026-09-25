@@ -103,7 +103,7 @@ const eras: Era[] = [
   top: 22px;
   bottom: -6px;
   width: 2px;
-  background: linear-gradient(180deg, var(--vp-c-brand-2), var(--vp-c-divider));
+  background: var(--coast-line);
 }
 
 .era.last .era-node::before {
@@ -165,36 +165,4 @@ const eras: Era[] = [
   color: var(--vp-c-brand-1);
 }
 
-/* 深色区适配（首页编年史区） */
-.timeline.dark .era-title {
-  color: #f5f5f7;
-}
-
-.timeline.dark .era-title:hover {
-  color: #2997ff;
-}
-
-.timeline.dark .era-period {
-  font-size: 17px;
-  font-weight: 700;
-  color: #f5f5f7;
-}
-
-.timeline.dark .era-essence {
-  color: #a1a1a6;
-}
-
-.timeline.dark .dot {
-  background: #2997ff;
-  box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.2);
-}
-
-.timeline.dark .era-node::before {
-  background: linear-gradient(180deg, #2997ff, rgba(255, 255, 255, 0.08));
-}
-
-.timeline.dark .kw {
-  background: rgba(41, 151, 255, 0.16);
-  color: #5eb1ff;
-}
 </style>

@@ -9,6 +9,7 @@ export default defineConfig({
   description:
     '从云计算基座与云原生，到模型架构、AI Infra、应用工程与 Agent 的系统化技术知识库。',
   lang: 'zh-CN',
+  appearance: true,
   base,
   cleanUrls: true,
   lastUpdated: true,
@@ -16,7 +17,7 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
-    ['meta', { name: 'theme-color', content: '#0f6fff' }],
+    ['meta', { name: 'theme-color', content: '#f1f3eb' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '云与 AI 知识体系' }],
     [
@@ -285,9 +286,9 @@ export default defineConfig({
       copyright: 'CC BY-NC-SA 4.0',
     },
 
-    darkModeSwitchLabel: '外观',
-    lightModeSwitchTitle: '切换到浅色模式',
-    darkModeSwitchTitle: '切换到深色模式',
+    darkModeSwitchLabel: '日夜模式',
+    lightModeSwitchTitle: '切换到白天模式',
+    darkModeSwitchTitle: '切换到夜间模式',
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '返回顶部',
   },

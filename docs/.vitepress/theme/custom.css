@@ -1,523 +1,269 @@
-/* =========================================================
-   设计语言：参考 apple.com
-   大字号排版 · 中性色 · 药丸按钮 · 磨砂导航 · 大圆角卡片
-   ========================================================= */
-
-/* ---------- 1. 设计令牌 ---------- */
+/* 海风知识库：暖纸色与海盐绿，日夜共用同一套语义变量。 */
 :root {
-  /* 品牌蓝（Apple CTA 蓝） */
-  --vp-c-brand-1: #0071e3;
-  --vp-c-brand-2: #0077ed;
-  --vp-c-brand-3: #0071e3;
-  --vp-c-brand-soft: rgba(0, 113, 227, 0.1);
+  color-scheme: light;
+  --coast-page: #f1f3eb;
+  --coast-card: #fffdf5;
+  --coast-ink: #29464a;
+  --coast-muted: #63756e;
+  --coast-line: #dce2d5;
+  --coast-accent: #397e70;
+  --coast-button: #39796b;
+  --coast-wash: #e8eee3;
+  --coast-code: #edf1e8;
+  --coast-focus: #a17630;
+  --coast-shadow: 0 12px 45px #304b3808;
+  --coast-node: #e1ece1;
+  --coast-node-border: #7f9f90;
+  --coast-note: #f5e9c8;
+  --coast-note-ink: #6c562f;
+  --coast-series-1: #d5e7dc;
+  --coast-series-2: #e4ebd6;
+  --coast-series-3: #f1e4c8;
+  --coast-series-4: #dfebe9;
+  --coast-series-5: #edddd1;
+  --coast-series-6: #e3e4d4;
 
-  /* Apple 中性色 */
-  --vp-c-text-1: #1d1d1f;
-  --vp-c-text-2: #59595c;
-  --vp-c-text-3: #77777c;
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-soft: #f5f5f7;
-  --vp-c-bg-mute: #ececee;
-  --vp-c-divider: rgba(0, 0, 0, 0.08);
-  --vp-c-gutter: rgba(0, 0, 0, 0.05);
+  --vp-c-brand-1: var(--coast-accent);
+  --vp-c-brand-2: #2e695d;
+  --vp-c-brand-3: var(--coast-button);
+  --vp-c-brand-soft: #397e7012;
+  --vp-c-text-1: var(--coast-ink);
+  --vp-c-text-2: var(--coast-muted);
+  --vp-c-text-3: var(--coast-muted);
+  --vp-c-bg: var(--coast-page);
+  --vp-c-bg-alt: var(--coast-wash);
+  --vp-c-bg-elv: var(--coast-card);
+  --vp-c-bg-soft: var(--coast-wash);
+  --vp-c-bg-mute: var(--coast-code);
+  --vp-c-border: #b5c5b8;
+  --vp-c-divider: var(--coast-line);
+  --vp-c-gutter: var(--coast-line);
+  --vp-c-default-1: #c1cec1;
+  --vp-c-default-2: #d7e0d1;
+  --vp-c-default-3: var(--coast-wash);
+  --vp-c-default-soft: #63756e12;
+  --vp-c-green-1: #397e70;
+  --vp-c-green-soft: #397e7012;
+  --vp-c-yellow-1: #8c602a;
+  --vp-c-yellow-soft: #b8872912;
+  --vp-c-red-1: #a74b3d;
+  --vp-c-red-soft: #bc665412;
+  --vp-c-purple-1: #776081;
+  --vp-c-purple-soft: #77608112;
 
-  --apple-link: #0066cc;
-
-  --vp-button-brand-bg: #0071e3;
-  --vp-button-brand-hover-bg: #0077ed;
-  --vp-button-brand-active-bg: #006edb;
-
-  --vp-font-family-base:
-    'SF Pro Display', 'SF Pro SC', 'SF Pro Text', -apple-system, BlinkMacSystemFont,
-    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+  --vp-nav-height: 64px;
+  --vp-nav-bg-color: var(--coast-page);
+  --vp-local-nav-bg-color: var(--coast-page);
+  --vp-sidebar-width: 260px;
+  --vp-sidebar-bg-color: var(--coast-page);
+  --vp-backdrop-bg-color: #172d3299;
+  --vp-button-brand-bg: var(--coast-button);
+  --vp-button-brand-hover-bg: #306c5e;
+  --vp-button-brand-active-bg: #285c50;
+  --vp-button-brand-text: #fffdf5;
+  --vp-button-brand-hover-text: #fffdf5;
+  --vp-button-brand-active-text: #fffdf5;
+  --vp-code-bg: var(--coast-wash);
+  --vp-code-block-bg: var(--coast-code);
+  --vp-code-line-highlight-color: #397e7012;
+  --vp-code-copy-code-bg: var(--coast-card);
+  --vp-code-copy-code-hover-bg: var(--coast-wash);
+  --vp-local-search-bg: var(--coast-card);
+  --vp-local-search-result-bg: var(--coast-card);
+  --vp-local-search-result-selected-bg: var(--coast-wash);
+  --vp-local-search-highlight-bg: var(--coast-button);
+  --vp-local-search-highlight-text: #fffdf5;
+  --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
 .dark {
-  --vp-c-brand-1: #2997ff;
-  --vp-c-brand-2: #40a3ff;
-  --vp-c-brand-3: #2997ff;
-  --vp-c-brand-soft: rgba(41, 151, 255, 0.14);
-
-  --vp-c-text-1: #f5f5f7;
-  --vp-c-text-2: #b2b2b7;
-  --vp-c-text-3: #8f8f95;
-  --vp-c-bg: #111114;
-  --vp-c-bg-soft: #1a1a1e;
-  --vp-c-bg-mute: #222227;
-  --vp-c-divider: rgba(255, 255, 255, 0.1);
-  --vp-c-gutter: rgba(255, 255, 255, 0.06);
-
-  --apple-link: #2997ff;
-
-  --vp-button-brand-bg: #2997ff;
-  --vp-button-brand-hover-bg: #40a3ff;
-  --vp-button-brand-active-bg: #1f8df5;
-}
-
-/* ---------- 2. 全局基础 ---------- */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-::selection {
-  background: rgba(0, 113, 227, 0.18);
-}
-
-.dark ::selection {
-  background: rgba(41, 151, 255, 0.25);
-}
-
-/* ---------- 3. 导航：细高 + 磨砂玻璃 ---------- */
-:root {
-  --vp-nav-height: 52px;
-}
-
-.VPNav .VPNavBar {
-  background: rgba(251, 251, 253, 0.82) !important;
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-}
-
-.dark .VPNav .VPNavBar {
-  background: rgba(22, 22, 23, 0.82) !important;
-}
-
-.VPNavBarTitle .title {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.VPNavBarMenu .VPLink {
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.VPNavBarMenu .VPLink:hover {
-  color: var(--vp-c-brand-1);
-  transition: color 0.2s;
-}
-
-.VPNavBarSearch .DocSearch-Button {
-  border-radius: 999px;
-  height: 32px;
-  background: var(--vp-c-bg-soft);
-  border: none;
-}
-
-/* ---------- 4. 侧边栏 ---------- */
-.VPSidebar {
-  font-size: 13.5px;
-}
-
-.VPSidebarItem.level-0 .text {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-
-.VPSidebarItem .indicator {
-  background: var(--vp-c-brand-1);
-}
-
-/* 激活项：羊皮纸底 + 加粗 + 圆角（提升当前位置感） */
-.VPSidebarItem.is-active > .item .VPLink {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-}
-
-.VPSidebarItem.is-active > .item .VPLink .text {
-  font-weight: 600;
-}
-
-/* ---------- 5. 正文排版（Apple 大字号 + 紧字距） ---------- */
-.VPDoc .content-container {
-  max-width: 760px;
-}
-
-.vp-doc {
-  font-size: 17px;
-}
-
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc h4 {
-  scroll-margin-top: calc(var(--vp-nav-height) + 24px);
-}
-
-.vp-doc h1 {
-  font-size: 38px;
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0 0 16px;
-}
-
-.vp-doc h2 {
-  font-size: 26px;
-  line-height: 1.3;
-  font-weight: 600;
-  letter-spacing: 0;
-  margin: 64px 0 20px;
-  padding-top: 0;
-  border-top: none;
-}
-
-.vp-doc h3 {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0;
-  margin: 34px 0 14px;
-}
-
-.vp-doc h4 {
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.vp-doc p {
-  line-height: 1.8;
-  letter-spacing: 0;
-  margin: 20px 0;
-}
-
-.vp-doc li {
-  line-height: 1.8;
-}
-
-.vp-doc a {
-  color: var(--apple-link);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-.vp-doc a:hover {
-  color: var(--apple-link);
-  text-decoration-color: currentColor;
-}
-
-.vp-doc strong {
-  font-weight: 600;
-}
-
-.vp-doc blockquote {
-  border-left: 3px solid rgba(0, 0, 0, 0.14);
-  color: var(--vp-c-text-2);
-  font-size: 15.5px;
-}
-
-.dark .vp-doc blockquote {
-  border-left-color: rgba(255, 255, 255, 0.18);
-}
-
-.vp-doc hr {
-  border: none;
-  border-top: 1px solid var(--vp-c-divider);
-  margin: 44px 0;
-}
-
-/* 表格：Apple 规格表风格 */
-.vp-doc table {
-  width: 100%;
-  font-size: 14.5px;
-  line-height: 1.6;
-  display: table;
-}
-
-.vp-doc th {
-  font-weight: 600;
-  text-align: left;
-  background: transparent;
-  border-bottom: 1px solid var(--vp-c-text-3);
-}
-
-.vp-doc td {
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.vp-doc th,
-.vp-doc td {
-  padding: 10px 14px 10px 0;
-  border-left: none;
-}
-
-.vp-doc th:first-child,
-.vp-doc td:first-child {
-  padding-left: 0;
-}
-
-/* 行内代码与代码块 */
-.vp-doc :not(pre, h1, h2, h3) > code {
-  background: rgba(0, 0, 0, 0.048);
-  border-radius: 6px;
-  padding: 0.15em 0.4em;
-  font-size: 0.875em;
-  color: inherit;
-}
-
-.dark .vp-doc :not(pre, h1, h2, h3) > code {
-  background: rgba(255, 255, 255, 0.09);
-}
-
-.vp-doc div[class*='language-'] {
-  border-radius: 11px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-/* 提示块 */
-.vp-doc .custom-block {
-  border: none;
-  border-left: 3px solid var(--vp-c-text-3);
-  border-radius: 0 11px 11px 0;
-  padding: 16px 20px;
-  background: var(--vp-c-bg-soft);
-}
-
-.vp-doc .custom-block.info,
-.vp-doc .custom-block.note {
-  border-left-color: var(--vp-c-brand-1);
-}
-
-.vp-doc .custom-block.tip {
-  border-left-color: var(--vp-c-success-1);
-}
-
-.vp-doc .custom-block.important {
-  border-left-color: var(--vp-c-important-1);
-}
-
-.vp-doc .custom-block.warning {
-  border-left-color: var(--vp-c-warning-1);
-}
-
-.vp-doc .custom-block.danger,
-.vp-doc .custom-block.caution {
-  border-left-color: var(--vp-c-danger-1);
-}
-
-.vp-doc .custom-block .custom-block-title {
-  font-weight: 600;
-}
-
-/* ---------- 6. 按钮：药丸形 ---------- */
-.VPButton {
-  border-radius: 980px;
-  font-weight: 500;
-  border: none;
-}
-
-.VPButton.brand {
-  background: var(--vp-button-brand-bg);
-  color: #fff;
-}
-
-.VPButton.brand:hover {
-  background: var(--vp-button-brand-hover-bg);
-  color: #fff;
-}
-
-/* ---------- 7. 首页：去掉默认容器限制 ---------- */
-.VPHome {
-  padding-bottom: 0;
-}
-
-.VPHome .vp-doc {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* ---------- 7.5 深色区链接：Apple on-dark 蓝（对比度可达性） ---------- */
-.chronicle a {
-  color: #2997ff;
-}
-
-.chronicle a:hover {
-  color: #40a3ff;
-}
-
-/* ---------- 8. Mermaid ---------- */
-/* 纸面卡片容器：浅色纸底 + 细边框 + 圆角，与正文图片节奏统一。
-   Mermaid 会为 timeline 等图表输出固定像素尺寸，因此必须在 CSS 层
-   把 SVG 等比例收进正文容器；否则大图只能依赖横向滚动，
-   用户会误以为右侧内容被截断。overflow-x 保留为异常 SVG 的兜底。 */
-.mermaid {
-  margin: 24px 0;
-  padding: 20px 16px;
-  background: #f6f6f7;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  overflow-x: auto;
-}
-
-.mermaid svg {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-}
-
-.dark .mermaid {
-  background: #1a1b20;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ---------- 9. 页脚 ---------- */
-.VPFooter {
-  border-top: 1px solid var(--vp-c-divider);
-  background: transparent;
-}
-
-.VPFooter .message,
-.VPFooter .copyright {
-  font-size: 12.5px;
-  color: var(--vp-c-text-2);
-}
-
-/* ---------- 10. 上一篇/下一篇 ---------- */
-.VPDocFooter .pager {
-  border-radius: 11px;
-}
-
-/* ---------- 11. 状态标签（文章内使用） ---------- */
-.badge-done {
-  color: #34c759;
-  font-weight: 600;
-}
-
-.badge-draft {
-  color: #ff9500;
-  font-weight: 600;
-}
-
-/* ---------- 12. 文章底部引用区（<Refs> 组件） ---------- */
-.vp-doc .refs {
-  margin-top: 3.5rem;
-  padding: 1.1rem 1.4rem 1.25rem;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 11px;
-  font-size: 13.5px;
-  line-height: 1.75;
-  color: var(--vp-c-text-2);
-}
-
-.vp-doc .refs p {
-  margin: 0.45em 0;
-}
-
-.vp-doc .refs ul,
-.vp-doc .refs ol {
-  margin: 0.35em 0;
-  padding-left: 1.3em;
-}
-
-.vp-doc .refs li {
-  margin: 0.25em 0;
-}
-
-.vp-doc .refs li::marker {
-  color: var(--vp-c-text-3);
-}
-
-.vp-doc .refs h3 {
-  margin: 0.9em 0 0.25em;
-  padding-top: 0;
-  border-top: none;
-  font-size: 14px;
-  color: var(--vp-c-text-2);
-}
-
-.vp-doc .refs a {
-  color: var(--vp-c-text-2);
-  text-decoration: underline;
-  text-decoration-color: var(--vp-c-divider);
-  text-underline-offset: 3px;
-  transition: color 0.2s, text-decoration-color 0.2s;
-}
-
-.vp-doc .refs a:hover {
-  color: var(--vp-c-brand-1);
-  text-decoration-color: var(--vp-c-brand-1);
-}
-
-.vp-doc .refs strong {
-  color: var(--vp-c-text-1);
-  font-weight: 600;
-}
-
-.vp-doc .refs table {
-  font-size: 12.5px;
-}
-
-/* ---------- 13. 图片/图表：默认小图 + 点击放大灯箱 ---------- */
-.vp-doc img {
-  max-width: min(100%, 760px);
-  margin: 0 auto;
-  display: block;
-  cursor: zoom-in;
-  border-radius: 8px;
-}
-
-.vp-doc .mermaid svg {
-  cursor: zoom-in;
-}
-
-.vp-doc img:focus-visible,
-.vp-doc .mermaid svg:focus-visible {
-  outline: 3px solid var(--vp-c-brand-1);
-  outline-offset: 4px;
-}
-
-/* 表格在窄屏的横向滚动交给 VitePress 默认的 .vp-doc table（display:block + overflow-x:auto）。
-   不要再加 white-space: nowrap——本站表格多是长句决策矩阵（单行可达 260+ 字符），
-   禁止换行会让一行宽到 1500px 以上，手机上读一行要横滑好几屏且上下行无法对照。 */
-
-body.zoom-lock {
-  overflow: hidden;
-}
-
-.zoom-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  overflow: hidden;
-  background: rgba(20, 20, 22, 0.88);
-  backdrop-filter: blur(6px);
-}
-
-.zoom-stage {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  box-sizing: border-box;
-  padding: clamp(12px, 3vw, 40px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.zoom-stage img,
-.zoom-stage svg {
-  max-width: 100% !important;
-  max-height: 100% !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain;
-  margin: 0;
-  cursor: zoom-out;
-}
-
-.zoom-stage svg {
-  background: #f6f6f7;
-  border-radius: 8px;
+  color-scheme: dark;
+  --coast-page: #172d32;
+  --coast-card: #233b3e;
+  --coast-ink: #e7e9d8;
+  --coast-muted: #acbfb7;
+  --coast-line: #3a5354;
+  --coast-accent: #a3cab7;
+  --coast-button: #3d7165;
+  --coast-wash: #20373a;
+  --coast-code: #1b3337;
+  --coast-focus: #e2bc75;
+  --coast-shadow: 0 12px 45px #07171b20;
+  --coast-node: #35574f;
+  --coast-node-border: #7fa697;
+  --coast-note: #534932;
+  --coast-note-ink: #f0dfb8;
+  --coast-series-1: #35574f;
+  --coast-series-2: #4a5945;
+  --coast-series-3: #5c503a;
+  --coast-series-4: #35575d;
+  --coast-series-5: #614b42;
+  --coast-series-6: #505648;
+  --vp-c-brand-2: #bcd9c9;
+  --vp-c-brand-soft: #a3cab718;
+  --vp-c-border: #59756e;
+  --vp-c-default-1: #59756e;
+  --vp-c-default-2: #3a5354;
+  --vp-c-default-3: #294549;
+  --vp-c-default-soft: #acbfb712;
+  --vp-c-green-1: #a3cab7;
+  --vp-c-green-soft: #a3cab718;
+  --vp-c-yellow-1: #e2bc75;
+  --vp-c-yellow-soft: #e2bc7518;
+  --vp-c-red-1: #e9a28c;
+  --vp-c-red-soft: #e9a28c18;
+  --vp-c-purple-1: #c9b6cf;
+  --vp-c-purple-soft: #c9b6cf18;
+  --vp-button-brand-hover-bg: #467e71;
+  --vp-button-brand-active-bg: #508a7b;
+  --vp-code-line-highlight-color: #a3cab718;
+}
+
+/* 基础与全局导航 */
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+::selection { background: #aacaba70; }
+a, button, input { -webkit-tap-highlight-color: transparent; }
+:where(a, button, input, summary):focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
+.VPNav .VPNavBar { background: var(--coast-page) !important; backdrop-filter: none; }
+.VPNavBar .divider-line { background: var(--coast-line); }
+.VPNavBar.home .container { max-width: 1056px; }
+.VPNavBarTitle .title { font-size: 14px; font-weight: 600; letter-spacing: .035em; color: var(--coast-ink); }
+.VPNavBarMenu .VPLink { font-size: 13px; font-weight: 400; }
+.VPNavBarMenu .VPLink:hover { color: var(--coast-accent); }
+.VPNavBarSearch .DocSearch-Button { height: 34px; border-radius: 99px; background: var(--coast-card); border: 1px solid var(--coast-line); }
+.VPNavBarSearch .DocSearch-Button-Keys { border: 0; background: transparent; }
+.VPNavBarAppearance, .VPNavScreenAppearance, .VPNavBarExtra .group:has(.appearance) { display: none !important; }
+.VPNavBarExtra .group:has(.appearance) + .group { border-top: 0; padding-top: 0; }
+.VPNavBarSocialLinks::before { display: none !important; }
+.VPFlyout .menu .VPMenu { border-radius: 18px; border-color: var(--coast-line); background: var(--coast-card); box-shadow: var(--coast-shadow); }
+.VPNavScreen { background: var(--coast-page); }
+.VPLocalNav { border-bottom-color: var(--coast-line); }
+
+/* 侧边知识地图与页内目录 */
+.VPSidebar { font-size: 13px; border-right: 1px solid var(--coast-line); }
+.VPSidebar .group { border-color: var(--coast-line); }
+.VPSidebarItem.level-0 .text { font-size: 13px; font-weight: 550; letter-spacing: .01em; }
+.VPSidebarItem.is-active > .item > .indicator { background: var(--coast-accent); }
+.VPSidebarItem.is-active > .item > .link { background: var(--coast-wash); border-radius: 8px; padding-left: 9px; }
+.VPSidebarItem.is-active > .item > .link .text { color: var(--coast-accent); font-weight: 600; }
+.VPDocAsideOutline .content { border-color: var(--coast-line); }
+.VPDocAsideOutline .outline-title { font-size: 12px; letter-spacing: .04em; }
+.VPDocAsideOutline .outline-link { font-size: 12px; }
+.knowledge-breadcrumb { font-size: 11px !important; letter-spacing: .025em; }
+
+/* 文章：纸面阅读区 */
+.VPDoc .content-container { max-width: 760px; padding: 32px 36px; border: 1px solid var(--coast-line); border-radius: 24px; background: var(--coast-card); box-shadow: var(--coast-shadow); }
+.VPDoc.has-aside .content-container { max-width: 760px; }
+.vp-doc { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
+.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { scroll-margin-top: calc(var(--vp-nav-height) + 28px); }
+.vp-doc h1 { font-size: 34px; line-height: 1.45; font-weight: 600; letter-spacing: .025em; margin: 0 0 24px; }
+.vp-doc h2 { font-size: 25px; line-height: 1.5; font-weight: 550; letter-spacing: .02em; margin: 52px 0 22px; padding-top: 25px; border-top: 1px solid var(--coast-line); }
+.vp-doc h3 { font-size: 20px; line-height: 1.6; font-weight: 550; margin: 32px 0 14px; }
+.vp-doc h4 { font-size: 17px; font-weight: 550; }
+.vp-doc p { line-height: 1.95; margin: 20px 0; }
+.vp-doc li { line-height: 1.95; }
+.vp-doc li::marker { color: var(--coast-muted); }
+.vp-doc a { color: var(--coast-accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.vp-doc a:hover { color: var(--vp-c-brand-2); text-decoration-color: currentColor; }
+.vp-doc strong { font-weight: 600; }
+.vp-doc blockquote { margin: 24px 0; padding: 14px 20px; border: 1px solid var(--coast-line); border-left: 3px solid var(--coast-accent); border-radius: 0 14px 14px 0; background: var(--coast-wash); color: var(--coast-muted); font-size: 14px; }
+.vp-doc blockquote p { margin: 4px 0; }
+.vp-doc hr { border: 0; border-top: 1px solid var(--coast-line); margin: 40px 0; }
+
+/* 表格在容器内滚动，长句可换行，避免撑宽整页。 */
+.vp-doc table { display: block; max-width: 100%; width: 100%; overflow-x: auto; border: 1px solid var(--coast-line); border-radius: 14px; border-spacing: 0; font-size: 13px; line-height: 1.8; }
+.vp-doc th { font-weight: 600; text-align: left; background: var(--coast-wash); white-space: normal; }
+.vp-doc tr { background: var(--coast-card); border: 0; }
+.vp-doc tr:nth-child(2n) { background: color-mix(in srgb, var(--coast-wash) 45%, var(--coast-card)); }
+.vp-doc td, .vp-doc th { padding: 12px 14px; border: 0; border-bottom: 1px solid var(--coast-line); min-width: 100px; }
+.vp-doc tr:last-child td { border-bottom: 0; }
+
+/* 代码与语义提示：保留语法色，统一容器和状态色。 */
+.vp-doc :not(pre, h1, h2, h3) > code { background: var(--coast-wash); color: var(--coast-accent); border-radius: 5px; padding: .15em .4em; font-size: .85em; }
+.vp-doc div[class*='language-'] { margin: 24px 0; border: 1px solid var(--coast-line); border-radius: 14px; }
+.vp-doc .custom-block { padding: 16px 20px; border: 1px solid var(--coast-line); border-left: 3px solid var(--coast-accent); border-radius: 0 14px 14px 0; background: var(--coast-wash); }
+.vp-doc .custom-block.tip { border-left-color: var(--vp-c-success-1); background: var(--vp-c-success-soft); }
+.vp-doc .custom-block.important { border-left-color: var(--vp-c-important-1); background: var(--vp-c-important-soft); }
+.vp-doc .custom-block.warning { border-left-color: var(--vp-c-warning-1); background: var(--vp-c-warning-soft); }
+.vp-doc .custom-block.danger, .vp-doc .custom-block.caution { border-left-color: var(--vp-c-danger-1); background: var(--vp-c-danger-soft); }
+.vp-doc .custom-block .custom-block-title { font-weight: 600; }
+.vp-doc .custom-block.details { border-left-width: 1px; border-radius: 14px; }
+.badge-done { color: var(--vp-c-success-1); font-weight: 600; }
+.badge-draft { color: var(--vp-c-warning-1); font-weight: 600; }
+
+/* 图表与图片：完整缩放，点击放大。 */
+.mermaid { margin: 24px 0; padding: 20px 16px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 16px; overflow-x: auto; }
+.mermaid svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+:is(.mermaid, .zoom-stage) .coast-node-warm > rect { fill: var(--coast-note) !important; stroke: var(--coast-node-border) !important; }
+:is(.mermaid, .zoom-stage) .coast-node-warm .nodeLabel { fill: var(--coast-note-ink) !important; color: var(--coast-note-ink) !important; }
+:is(.mermaid, .zoom-stage) .coast-node-sea > path { fill: var(--coast-node) !important; stroke: var(--coast-node-border) !important; }
+.vp-doc img { display: block; max-width: min(100%, 760px); margin: 0 auto; cursor: zoom-in; border-radius: 12px; }
+.vp-doc .mermaid svg { cursor: zoom-in; }
+.vp-doc img:focus-visible, .vp-doc .mermaid svg:focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
+body.zoom-lock { overflow: hidden; }
+.zoom-overlay { position: fixed; inset: 0; z-index: 999; overflow: hidden; background: #10292ded; backdrop-filter: blur(6px); }
+.zoom-stage { width: 100%; height: 100vh; height: 100dvh; box-sizing: border-box; padding: clamp(12px, 3vw, 40px); display: flex; align-items: center; justify-content: center; }
+.zoom-stage img, .zoom-stage svg { max-width: 100% !important; max-height: 100% !important; width: auto !important; height: auto !important; object-fit: contain; margin: 0; cursor: zoom-out; }
+.zoom-stage svg { background: var(--coast-wash); border-radius: 14px; }
+
+/* 引用与文章底部 */
+.vp-doc .refs { margin-top: 48px; padding: 20px 24px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 16px; font-size: 13px; line-height: 1.85; color: var(--coast-muted); }
+.vp-doc .refs p { margin: .45em 0; }
+.vp-doc .refs ul, .vp-doc .refs ol { margin: .35em 0; padding-left: 1.3em; }
+.vp-doc .refs li { margin: .25em 0; }
+.vp-doc .refs h3 { margin: .9em 0 .25em; padding: 0; border: 0; font-size: 14px; color: var(--coast-ink); }
+.vp-doc .refs a { color: var(--coast-accent); }
+.vp-doc .refs strong { color: var(--coast-ink); }
+.vp-doc .refs table { font-size: 12px; }
+.VPDocFooter .pager-link { border-color: var(--coast-line); border-radius: 16px; background: var(--coast-wash); }
+.VPDocFooter .pager-link:hover { border-color: var(--coast-accent); }
+.VPDocFooter .edit-info, .VPDocFooter .prev-next { border-color: var(--coast-line); }
+.VPFooter { padding: 26px 24px; background: var(--coast-page); border-top: 1px solid var(--coast-line); }
+.VPFooter .message, .VPFooter .copyright { font-size: 11px; line-height: 1.9; color: var(--coast-muted); }
+.VPButton { border-radius: 99px; font-weight: 500; }
+
+/* 搜索弹层也从根节点继承日夜配色。 */
+:root .VPLocalSearchBox .shell { border: 1px solid var(--coast-line); border-radius: 24px; padding: 20px; box-shadow: var(--coast-shadow); }
+:root .VPLocalSearchBox .search-bar { border-radius: 99px; min-height: 46px; background: var(--coast-page); }
+:root .VPLocalSearchBox .result { border-radius: 12px; }
+:root .VPLocalSearchBox .search-keyboard-shortcuts { color: var(--coast-muted); }
+:root .VPLocalSearchBox .search-keyboard-shortcuts kbd { border-radius: 5px; background: var(--coast-wash); }
+
+/* 首页保持自己的构图，使用全站公共配色。 */
+.VPHome { padding-bottom: 0; }
+.VPHome .vp-doc { max-width: 100%; margin: 0; padding: 0; }
+
+@media (min-width: 960px) {
+  .VPDoc { padding: 32px 24px 0; }
+  .VPDoc .content { padding: 0 16px 64px; }
+}
+@media (min-width: 1280px) {
+  .VPDoc .content { min-width: 0; }
+  .VPDoc .aside { max-width: 208px; padding-left: 24px; }
+  .VPDoc .aside-container, .VPDoc .aside-curtain { width: 184px; }
+}
+@media (max-width: 959px) {
+  .VPDoc { padding: 24px 20px 48px; }
+  .VPDoc .content-container { padding: 28px; }
+}
+@media (max-width: 600px) {
+  .VPDoc { padding: 16px 12px 36px; }
+  .VPDoc .content-container { padding: 22px 18px; border-radius: 20px; }
+  .vp-doc { font-size: 15px; }
+  .vp-doc h1 { font-size: 27px; }
+  .vp-doc h2 { font-size: 22px; margin-top: 36px; padding-top: 20px; }
+  .vp-doc h3 { font-size: 18px; }
+  .vp-doc blockquote, .vp-doc .custom-block, .vp-doc .refs { padding: 13px 15px; }
+  .vp-doc th, .vp-doc td { padding: 10px; }
+  .mermaid { padding: 14px 10px; }
+  .VPNavBarTitle .title { font-size: 12px; letter-spacing: 0; }
+  .VPNavBarTitle .logo { height: 22px; margin-right: 7px; }
+}
+@media (max-width: 767px) {
+  :root .VPLocalSearchBox .shell { border: 0; border-radius: 0; padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; }
 }

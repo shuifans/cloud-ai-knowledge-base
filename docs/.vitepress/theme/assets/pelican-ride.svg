@@ -1,0 +1,126 @@
+<svg id="ride" xmlns="http://www.w3.org/2000/svg" viewBox="0 25 1000 750" fill="none" role="img" aria-labelledby="scene-title scene-desc">
+  <title id="scene-title">鹈鹕骑自行车的海边 2D 动画</title>
+  <desc id="scene-desc">白色鹈鹕系着绿色围巾，踩着珊瑚色自行车前行。车轮和踏板同步转动，双腿交替踩踏，海风吹动围巾，云朵和沿途花草向后移动。</desc>
+<defs>
+    <pattern id="grain" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r=".7" fill="#274653" opacity=".06" />
+      <circle cx="9" cy="9" r=".6" fill="#274653" opacity=".04" />
+    </pattern>
+    <g id="wheel">
+      <circle r="133" fill="#FFFBF0" stroke="#243E49" stroke-width="13" />
+      <circle r="121" stroke="#B4CEC8" stroke-width="3" />
+      <g stroke="#9BBAB7" stroke-width="2.5">
+        <path d="M0-117V117M-117 0H117M-83-83 83 83M-83 83 83-83M-45-108 45 108M-108-45 108 45M-108 45 108-45M-45 108 45-108" />
+      </g>
+      <circle r="12" fill="#F9F4E5" stroke="#243E49" stroke-width="5" />
+    </g>
+  </defs>
+
+
+
+  <defs>
+    <g id="cloud-shape" fill="var(--cloud)"><path d="M0 24C-8 5 13-6 27 6C30-17 66-20 74 4C94-3 110 9 104 24Z"/></g>
+    <g id="flower"><path d="M0 0 8-28M2-4 23-16" stroke="#74A493" stroke-width="3" stroke-linecap="round"/><circle cx="8" cy="-30" r="5" fill="#DFA561"/><circle cx="25" cy="-18" r="4" fill="#E9B371"/></g>
+    <g id="landscape-strip">
+      <use href="#flower" x="140" y="722"/><use href="#flower" x="540" y="744"/><use href="#flower" x="932" y="724"/>
+      <path d="M20 743H48M264 730H283M670 735H701M870 748H884M382 726l-5-13m9 14 5-8" stroke="var(--grass)" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="waves-strip" stroke="var(--wave)" stroke-width="3" stroke-linecap="round"><path d="M35 518h80m60 29h38m94-36h109m85 39h80m78-30h93m86 20h88m60-37h77"/></g>
+  </defs>
+  <rect x="0" y="25" width="1000" height="750" fill="var(--sky)"/>
+  <g id="sun"><circle cx="767" cy="176" r="87" fill="var(--sun)"/><circle class="moon-cut" cx="801" cy="144" r="78" fill="var(--sky)"/></g>
+  <g class="stars" fill="#FBE8BC"><circle cx="182" cy="139" r="2"/><circle cx="415" cy="91" r="2.5"/><circle cx="897" cy="312" r="2"/><circle cx="513" cy="184" r="2"/><path d="m348 233 2-8 2 8 8 2-8 2-2 8-2-8-8-2Z"/></g>
+  <g id="clouds" opacity=".75"><use href="#cloud-shape" x="130" y="116"/><use href="#cloud-shape" x="400" y="222" transform="translate(100 -35) scale(.8)"/><use href="#cloud-shape" x="1010" y="116"/><use href="#cloud-shape" x="1280" y="222" transform="translate(100 -35) scale(.8)"/><use href="#cloud-shape" x="1890" y="116"/></g>
+  <path d="M0 473C130 447 214 475 338 464S560 438 702 464 868 470 1000 448V654H0Z" fill="var(--sea)"/>
+  <path d="M0 491C120 475 220 500 351 486S588 477 713 489 874 480 1000 471" stroke="var(--wave)" stroke-width="2"/>
+  <g id="waves"><use href="#waves-strip"/><use href="#waves-strip" x="1000"/></g>
+  <g id="gulls" stroke="var(--gull)" stroke-width="3" stroke-linecap="round"><path id="gull-one" d="M182 226Q195 212 209 226Q222 212 236 226"/><path d="M275 164Q284 155 293 164Q302 155 311 164"/></g>
+  <path d="M0 653C187 640 283 664 465 648S823 659 1000 640V775H0Z" fill="var(--sand)"/>
+  <ellipse id="shadow" cx="511" cy="723" rx="331" ry="14" fill="var(--shadow)"/>
+  <path d="M0 719H1000" stroke="var(--road)" stroke-width="3"/>
+  <g id="landscape"><use href="#landscape-strip"/><use href="#landscape-strip" x="1000"/></g>
+  <g transform="translate(285 580)"><g id="rear-wheel"><use href="#wheel"/><path d="M-85-95-79-100" stroke="#E9A65B" stroke-width="5" stroke-linecap="round"/></g></g>
+  <g transform="translate(735 580)"><g id="front-wheel"><use href="#wheel"/><path d="M-85-95-79-100" stroke="#E9A65B" stroke-width="5" stroke-linecap="round"/></g></g>
+<g stroke="#243E49" stroke-linecap="round" stroke-linejoin="round">
+      <path id="far-crank" stroke-width="9"/>
+      <path id="far-outline" stroke-width="20"/>
+      <path id="far-leg" stroke="#CA923F" stroke-width="12"/>
+      <g id="far-foot">
+        <path d="M-24-24Q-14-17-6-14L24-7Q34-2 29 1H-16Q-26-1-26-12Z" fill="#CA923F" stroke-width="4"/>
+        <path d="M5-8 16-2M-7-8 0-2" stroke="#B67D35" stroke-width="2.5"/>
+        <path d="M-28 7H30" stroke-width="8"/>
+      </g>
+    </g><g stroke="#243E49" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M285 580 444 438 499 580Z" stroke="#243E49" stroke-width="15" />
+    <path d="M444 438H650L499 580" stroke="#243E49" stroke-width="15" />
+    <path d="M285 580 444 438 499 580Z" stroke="#E77157" stroke-width="9" />
+    <path d="M444 438H650L499 580" stroke="#E77157" stroke-width="9" />
+    <path d="M638 402 657 469 735 580" stroke="#243E49" stroke-width="15" />
+    <path d="M638 402 657 469 735 580" stroke="#E77157" stroke-width="9" />
+    <path d="M444 438 430 404" stroke-width="9" />
+    <path d="M401 402Q428 398 455 401Q466 404 460 412H407Q397 411 401 402Z" fill="#243E49" stroke-width="4" />
+    <path d="M638 401 626 370Q623 359 637 355L681 345Q696 342 701 354Q704 365 691 370" stroke-width="8" />
+    <path d="M676 346 688 344" stroke="#BA704B" stroke-width="12" />
+    <circle cx="657" cy="349" r="8" fill="#F2C15A" stroke-width="3" id="bike-bell" />
+  </g>
+
+
+  <g id="pelican"><g id="scarf-upper"><path d="M586 283C537 294 518 246 475 256L489 275 470 286C517 271 535 314 586 304Z" fill="#368E8D" stroke="#243E49" stroke-width="4" stroke-linejoin="round" />
+  </g><g id="scarf-lower"><path d="M576 293C542 302 523 315 493 307L502 326 489 338C541 342 560 305 585 309" fill="#5AAE9F" stroke="#243E49" stroke-width="4" stroke-linejoin="round" />
+
+
+  </g><path d="M574 177C559 198 558 227 574 254C595 289 581 318 546 343C520 363 507 343 483 330C437 303 375 317 349 347L300 340 321 367 296 365 338 397C337 438 365 463 408 471C466 483 507 459 530 425C547 400 551 384 579 362C622 329 640 295 622 259C612 239 610 225 629 217C650 208 655 186 644 166C635 149 616 142 598 149L580 135 582 153 562 148Z" fill="#FFFEF5" stroke="#243E49" stroke-width="5" stroke-linejoin="round" />
+
+<path d="M586 222C576 246 610 269 596 302C583 335 555 346 536 372C513 402 503 438 461 452C429 464 386 449 373 434C391 461 428 467 457 459C496 449 512 423 526 400C539 378 554 371 573 354C611 321 625 294 610 265C601 247 597 232 604 223Z" fill="#E0EBE5" />
+
+<path d="M311 352 352 371M317 376 348 385" stroke="#243E49" stroke-width="4" stroke-linecap="round" />
+
+
+
+<path d="M381 371C405 353 449 357 477 386C477 409 458 434 432 440C451 422 450 410 444 398C443 420 425 435 407 437C421 421 421 406 415 397C411 415 395 425 380 420C394 404 397 390 381 371Z" fill="#2D4854" />
+
+<path d="M390 353C427 337 462 353 487 378C523 405 574 395 628 356Q642 347 647 360C643 379 591 417 546 427C485 441 438 411 412 388C397 377 383 372 390 353Z" fill="#F6F8EC" stroke="#243E49" stroke-width="4.5" stroke-linejoin="round" />
+
+<path d="M419 368C456 404 494 419 538 411M429 389C455 410 475 420 496 423" stroke="#B1CCC4" stroke-width="4" stroke-linecap="round" />
+
+
+
+<path d="M623 205 865 221C831 251 759 295 702 285C659 278 638 251 623 225Z" fill="#EAA45B" stroke="#243E49" stroke-width="4.5" stroke-linejoin="round" />
+
+<path d="M642 224C667 258 711 274 751 266C788 259 821 241 839 230C799 264 749 286 710 278C678 272 656 252 642 224Z" fill="#F2BB76" />
+
+<path d="M628 189C677 185 786 199 872 216Q880 218 871 226C793 233 701 222 626 214Z" fill="#F7C452" stroke="#243E49" stroke-width="4.5" stroke-linejoin="round" />
+
+<path d="M647 199 847 217" stroke="#FFE296" stroke-width="4" stroke-linecap="round" />
+
+<path d="m858 217 14-1-1 10-16 1" fill="#E18645" />
+
+<path d="M645 213C712 218 798 228 865 223" stroke="#A87139" stroke-width="2.5" stroke-linecap="round" />
+
+<circle cx="615" cy="181" r="12" fill="#F4D889" />
+  <g id="eye"><circle cx="617" cy="181" r="6" fill="#243E49" />
+
+<circle cx="619" cy="179" r="2" fill="white" />
+  </g><path d="M601 162Q612 156 622 163" stroke="#243E49" stroke-width="3" stroke-linecap="round" />
+
+<path d="M600 211Q606 219 615 216" stroke="#243E49" stroke-width="3" stroke-linecap="round" />
+
+<path d="M575 271Q590 282 623 273L628 290Q600 301 582 289Z" fill="#368E8D" stroke="#243E49" stroke-width="4" stroke-linejoin="round" />
+
+<path d="M585 286 593 291" stroke="#8CC3AE" stroke-width="3" stroke-linecap="round" />
+
+
+  </g><circle cx="499" cy="580" r="25" fill="#F7F2E5" stroke="#243E49" stroke-width="5"/><g stroke="#243E49" stroke-linecap="round" stroke-linejoin="round">
+      <path id="near-crank" stroke-width="9"/>
+      <path id="near-outline" stroke-width="20"/>
+      <path id="near-leg" stroke="#F2B74F" stroke-width="12"/>
+      <g id="near-foot">
+        <path d="M-24-24Q-14-17-6-14L24-7Q34-2 29 1H-16Q-26-1-26-12Z" fill="#F2B74F" stroke-width="4"/>
+        <path d="M5-8 16-2M-7-8 0-2" stroke="#B67D35" stroke-width="2.5"/>
+        <path d="M-28 7H30" stroke-width="8"/>
+      </g>
+    </g><circle cx="499" cy="580" r="9" fill="#243E49"/>
+  <g id="wind" stroke="var(--gull)" stroke-width="3" stroke-linecap="round"><path id="wind-a" d="M125 354H225"/><path id="wind-b" d="M109 383H181"/><path id="wind-c" d="M139 410H205"/></g>
+  <g id="bell-waves" stroke="#D39B46" stroke-width="3" stroke-linecap="round" opacity="0"><path d="M679 316q17 10 13 26M688 303q26 14 23 39"/></g>
+  <rect x="0" y="25" width="1000" height="750" fill="url(#grain)" pointer-events="none"/>
+</svg>
