@@ -1,0 +1,532 @@
+{
+  "date": "2026-09-26",
+  "baselineCommit": "dd270f8d6c3c09b3025929e96b546c3cb60a4fb5",
+  "originalPages": 56,
+  "currentPages": 58,
+  "scopedPages": 27,
+  "scopePolicy": "全站结构与高风险表述筛查；仅明确列出的范围完成专项处理。不是全站逐句外部认证，不把链接可访问等同于事实正确。",
+  "pages": [
+    {
+      "path": "docs/about.md",
+      "url": "/about",
+      "title": "关于",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "内容复核范围与日期规则、更新记录入口",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/agent/frameworks.md",
+      "url": "/ai/agent/frameworks",
+      "title": "Agent 开发框架对比",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "框架比较表结构与无依据排名、MCP 授权和副作用恢复；版本号保留旧快照",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/agent/history.md",
+      "url": "/ai/agent/history",
+      "title": "Agent 编年史：从符号智能体到 OpenClaw 的七十年",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/agent/index.md",
+      "url": "/ai/agent/",
+      "title": "智能体技术全景",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "补充 Agent 安全入口，移除无来源的 80% 覆盖率",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/agent/security.md",
+      "url": "/ai/agent/security",
+      "title": "Agent 安全与可靠执行",
+      "lastVerified": "2026-09-26",
+      "lastReviewed": "",
+      "scope": "MCP 2026-07-28 授权要求与安全边界；其余为明确标注的工程设计建议",
+      "status": "本轮重写 / 新增"
+    },
+    {
+      "path": "docs/ai/application/evaluation.md",
+      "url": "/ai/application/evaluation",
+      "title": "大模型评测：从基准到生产监控",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "移除无来源工具收益倍数，补充模型升级与安全回归口径",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/application/index.md",
+      "url": "/ai/application/",
+      "title": "应用与评测",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/application/multimodal.md",
+      "url": "/ai/application/multimodal",
+      "title": "多模态应用",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/application/rag-architecture.md",
+      "url": "/ai/application/rag-architecture",
+      "title": "企业级 RAG 架构设计",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "向量降维的存储口径、知识更新与权限撤销链路",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/index.md",
+      "url": "/ai/",
+      "title": "人工智能：知识全景",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/infra/cluster.md",
+      "url": "/ai/infra/cluster",
+      "title": "GPU 集群与高速网络",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/infra/index.md",
+      "url": "/ai/infra/",
+      "title": "AI 基础设施：总览",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/infra/inference/gpu-sizing.md",
+      "url": "/ai/infra/inference/gpu-sizing",
+      "title": "GPU 选型与推理成本测算",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "KV 单位与容量复算、A100 精度口径、MoE 与 TP 适用边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/infra/inference/index.md",
+      "url": "/ai/infra/inference/",
+      "title": "推理与算力",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/infra/inference/llm-inference.md",
+      "url": "/ai/infra/inference/llm-inference",
+      "title": "大模型推理部署实战",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "KV 单位、分页容量及 PD 分离传输算例",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/infra/inference/token-economics.md",
+      "url": "/ai/infra/inference/token-economics",
+      "title": "Token 经济学：定价与成本的数学",
+      "lastVerified": "2026-09-26",
+      "lastReviewed": "",
+      "scope": "API 计费快照、缓存算例、成本公式与适用边界",
+      "status": "本轮重写 / 新增"
+    },
+    {
+      "path": "docs/ai/infra/training.md",
+      "url": "/ai/infra/training",
+      "title": "训练工程：从预训练到强化学习",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/models/audio.md",
+      "url": "/ai/models/audio",
+      "title": "语音识别与理解",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "CTC 时间戳适用边界与 TTS 互链说明",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/models/image-gen.md",
+      "url": "/ai/models/image-gen",
+      "title": "图像生成：从 Stable Diffusion 到 DiT 时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "移除扩散多样性保证、唯一工业路线与可控性排他结论",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/models/index.md",
+      "url": "/ai/models/",
+      "title": "模型与算法：总览",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/ai/models/llm.md",
+      "url": "/ai/models/llm",
+      "title": "大语言模型架构解析",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "KV 与 MoE 容量算例、当前 OpenAI/Claude/Qwen/DeepSeek API 目录；其他历史参数未全量重核",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/models/ml-dl.md",
+      "url": "/ai/models/ml-dl",
+      "title": "机器学习与深度学习经典架构",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "CNN 等变性与逻辑回归系数解释边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/models/speech-gen.md",
+      "url": "/ai/models/speech-gen",
+      "title": "语音生成",
+      "lastVerified": "2026-09-26",
+      "lastReviewed": "",
+      "scope": "CosyVoice 2、F5-TTS、HiFi-GAN 与 BigVGAN 的公开架构；服务与评测为工程建议",
+      "status": "本轮重写 / 新增"
+    },
+    {
+      "path": "docs/ai/models/video-gen.md",
+      "url": "/ai/models/video-gen",
+      "title": "视频生成：时空建模的技术线",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "去噪阶段 MoE 的激活计算与权重显存分离",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/ai/models/vision.md",
+      "url": "/ai/models/vision",
+      "title": "视觉理解：从 CLIP 到原生多模态",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "ViT 归纳偏置、视觉 token 路线和训练成本边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/chronicle/ai-era.md",
+      "url": "/chronicle/ai-era",
+      "title": "AI 大模型时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/blockchain.md",
+      "url": "/chronicle/blockchain",
+      "title": "区块链时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/index.md",
+      "url": "/chronicle/",
+      "title": "十年六浪：从移动互联网到 AI 大模型",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/livestream.md",
+      "url": "/chronicle/livestream",
+      "title": "直播时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "IBM 收购 Ustream 的日期；其他行业数字保留原统计期",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/chronicle/metaverse.md",
+      "url": "/chronicle/metaverse",
+      "title": "元宇宙时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/mobile-internet.md",
+      "url": "/chronicle/mobile-internet",
+      "title": "移动互联网时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/short-video.md",
+      "url": "/chronicle/short-video",
+      "title": "短视频时代",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/chronicle/xinchuang.md",
+      "url": "/chronicle/xinchuang",
+      "title": "暗流：信创与国产化",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/finops.md",
+      "url": "/cloud/architecture/finops",
+      "title": "FinOps：云成本治理",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/index.md",
+      "url": "/cloud/architecture/",
+      "title": "导读：架构与治理知识框架",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/migration.md",
+      "url": "/cloud/architecture/migration",
+      "title": "云迁移与现代化",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/reliability-dr.md",
+      "url": "/cloud/architecture/reliability-dr",
+      "title": "可靠性与灾备",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/security-governance.md",
+      "url": "/cloud/architecture/security-governance",
+      "title": "安全与身份治理",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/architecture/well-architected.md",
+      "url": "/cloud/architecture/well-architected",
+      "title": "卓越架构：从原则到持续评审",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/data/bigdata.md",
+      "url": "/cloud/data/bigdata",
+      "title": "大数据体系",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "流处理端到端精确一次与可见延迟边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/data/database.md",
+      "url": "/cloud/data/database",
+      "title": "数据库选型",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "半同步提交顺序、副本与备份、DynamoDB 一致性与 CAP 边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/data/index.md",
+      "url": "/cloud/data/",
+      "title": "导读：数据库·大数据知识框架",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "PostgreSQL 19 Beta 4 状态、一致性与湖格式兼容边界",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/data/olap.md",
+      "url": "/cloud/data/olap",
+      "title": "OLAP 引擎：谱系机制拆解与选型工程",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "收窄湖格式互操作结论，移除未经验证的通用兼容推断",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/foundation/index.md",
+      "url": "/cloud/foundation/",
+      "title": "导读：云计算基座知识框架",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/foundation/openstack.md",
+      "url": "/cloud/foundation/openstack",
+      "title": "OpenStack 架构与十年演进",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/foundation/sdn-nfv.md",
+      "url": "/cloud/foundation/sdn-nfv",
+      "title": "SDN / NFV：云网络的软件化",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/foundation/virtualization.md",
+      "url": "/cloud/foundation/virtualization",
+      "title": "虚拟化与 KVM",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "纠正虚拟机逃逸必须突破两层的错误保证",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/index.md",
+      "url": "/cloud/",
+      "title": "云计算：知识全景",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/infra/compute.md",
+      "url": "/cloud/infra/compute",
+      "title": "弹性计算",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "vCPU 计量边界与无证据的固定节省比例",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/infra/index.md",
+      "url": "/cloud/infra/",
+      "title": "导读：计算·存储·网络知识框架",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/infra/network.md",
+      "url": "/cloud/infra/network",
+      "title": "云网络",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "区分阿里云与 AWS 安全组的规则模型",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/infra/storage.md",
+      "url": "/cloud/infra/storage",
+      "title": "云存储",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "EBS 快照删除、S3 前缀与条件写语义；其余报价保留原快照日期",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/native/index.md",
+      "url": "/cloud/native/",
+      "title": "导读：云原生知识框架",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/native/kubernetes.md",
+      "url": "/cloud/native/kubernetes",
+      "title": "Kubernetes 核心机制与企业级落地",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "2026-09-26",
+      "scope": "受支持分支、计划与已发布的区别、IPVS 弃用时间线",
+      "status": "专项修正与复核"
+    },
+    {
+      "path": "docs/cloud/native/microservice.md",
+      "url": "/cloud/native/microservice",
+      "title": "微服务治理",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/cloud/native/observability.md",
+      "url": "/cloud/native/observability",
+      "title": "可观测体系",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/index.md",
+      "url": "/",
+      "title": "云与 AI 知识体系",
+      "lastVerified": "2026-09-20",
+      "lastReviewed": "",
+      "scope": "",
+      "status": "筛查，未做专项复核"
+    },
+    {
+      "path": "docs/updates.md",
+      "url": "/updates",
+      "title": "核验与更新记录",
+      "lastVerified": "2026-09-26",
+      "lastReviewed": "",
+      "scope": "本轮修正清单、资料范围与逐页处理状态",
+      "status": "核验记录"
+    }
+  ]
+}

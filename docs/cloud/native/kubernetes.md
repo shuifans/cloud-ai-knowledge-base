@@ -1,6 +1,8 @@
 ---
 title: Kubernetes 核心机制与企业级落地
 lastVerified: 2026-09-20
+lastReviewed: 2026-09-26
+reviewScope: 受支持分支、计划与已发布的区别、IPVS 弃用时间线
 outline: [2, 3]
 ---
 
@@ -11,6 +13,10 @@ outline: [2, 3]
 *本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
 
 > 面向已经在用 K8s、但想从"会用 kubectl"进阶到"理解机制、能做架构决策"的工程师与方案架构师。这篇按一条主线把 K8s 讲透：**声明式 API 与 level-triggered 调谐循环为什么是它的灵魂 → 控制面四大组件怎么分工 → 一个 Pod 从 apply 到 Running 的完整旅程 → 调度器、kubelet、网络、存储的机制级拆解 → 弹性、多集群、AI 负载这些 2025–26 年的真实战场**。读完你会清楚每个 API 对象背后的控制循环在做什么、企业落地时课本之外的五件事（多租户、升级、弹性、安全、可观测）怎么决策，以及生产集群里最常见的坑长什么样、根因是什么。文中所有特性状态均按 2026-09 的 kubernetes.io 官方文档与博客核实，不凭记忆。
+
+## 版本与升级边界（2026-09-26）
+
+官方发布页列出的活动分支为 1.37、1.36、1.35；具体补丁以发布记录为准，计划日期不等于补丁已经发布。托管服务支持窗口可能不同于上游。升级时同时核对 API 移除、组件版本偏差、CNI/CSI、操作系统与 feature gate。[上游发布页](https://kubernetes.io/releases/) · [版本偏差策略](https://kubernetes.io/releases/version-skew-policy/)
 
 ## 是什么：一个声明式控制系统
 
@@ -276,7 +282,7 @@ Service 的 ClusterIP 是个"不存在"的虚拟 IP——没有任何网卡持�
 
 *图源：同上，Virtual IPs and Service Proxies 页 IPVS 小节（[kubernetes.io/docs/reference/networking/virtual-ips](https://kubernetes.io/docs/reference/networking/virtual-ips/)，访问日期 2026-09-05）*
 
-工程判断：**2026 年新集群的选择实际上收敛为两条路——nftables 模式的 kube-proxy（保守稳妥），或 Cilium 类 eBPF 方案（性能与可观测性上限高，且顺手解决 NetworkPolicy 的完整实现）**。IPVS 不再是选项，存量 IPVS 集群应在 v1.40 前完成迁移。eBPF 路线的额外红利是把 Service 负载均衡从"报文进内核后重写"提前到"socket 层直接选址"（socket-level LB），省掉整段 netfilter 开销。
+工程建议：新 Linux 集群评估 nftables 或合适的 eBPF 数据面，并确认内核、CNI 与平台支持。IPVS 自 v1.35 弃用，官方计划 v1.40 默认禁用、v1.43 移除；“弃用”不等于当前版本已经不能运行。旧内核仍可评估 iptables，迁移需验证 NodePort、连接跟踪与策略行为。[官方代理模式说明](https://kubernetes.io/docs/reference/networking/virtual-ips/)（2026-09-26）
 
 CNI 数据面选型的完整对比：
 

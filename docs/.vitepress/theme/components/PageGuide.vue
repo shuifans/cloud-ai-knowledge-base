@@ -14,11 +14,14 @@ const titleFor = (route: string) => findNode(nodes.value, `/${route}`)?.text || 
 const sequence = computed(() => learningPaths[key.value] || children.value.map(item => item.link.slice(1)).slice(0, 4))
 const connections = computed(() => historyConnections[key.value] || [])
 const date = computed(() => String(frontmatter.value.lastVerified || '').slice(0, 10))
+const reviewed = computed(() => String(frontmatter.value.lastReviewed || '').slice(0, 10))
+const scope = computed(() => frontmatter.value.reviewScope || frontmatter.value.verificationScope)
 </script>
 
 <template>
   <section v-if="guide" class="page-guide" aria-label="阅读指南">
-    <div class="guide-meta"><span>{{ children.length ? '领域导读' : '阅读指南' }}</span><span v-if="date">内容复核于 <time :datetime="date">{{ date }}</time></span></div>
+    <div class="guide-meta"><span>{{ children.length ? '领域导读' : '阅读指南' }}</span><span v-if="reviewed || date">{{ reviewed ? '专项复核' : '内容复核记录' }} <time :datetime="reviewed || date">{{ reviewed || date }}</time></span></div>
+    <p v-if="scope" class="guide-review">本次范围：{{ scope }}。<a v-if="key !== 'updates'" :href="withBase('/updates')">查看核验记录</a></p>
     <p class="guide-summary">{{ guide.summary }}</p>
     <dl class="guide-context"><div><dt>适合谁读</dt><dd>{{ guide.audience }}</dd></div><div><dt>前置知识</dt><dd>{{ guide.prerequisites }}</dd></div></dl>
     <template v-if="children.length">
@@ -34,6 +37,7 @@ const date = computed(() => String(frontmatter.value.lastVerified || '').slice(0
 <style scoped>
 .page-guide { margin: 0 0 26px; padding: 22px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 18px; }
 .guide-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; color: var(--coast-muted); font-size: 12px; }
+.vp-doc .guide-review { margin: 10px 0 0; color: var(--coast-muted); font-size: 12px; line-height: 1.7; }
 .vp-doc .guide-summary { margin: 12px 0 16px; font-size: 16px; font-weight: 500; line-height: 1.8; color: var(--coast-ink); }
 .guide-context { margin: 0; font-size: 12px; line-height: 1.8; display: grid; gap: 7px; }
 .guide-context > div { display: grid; grid-template-columns: 64px 1fr; gap: 10px; }

@@ -2,6 +2,8 @@
 title: Agent 开发框架对比
 outline: [2, 3]
 lastVerified: 2026-09-20
+lastReviewed: 2026-09-26
+reviewScope: 框架比较表结构与无依据排名、MCP 授权和副作用恢复；版本号保留旧快照
 ---
 
 # Agent 开发框架对比
@@ -78,14 +80,14 @@ while not done and steps < max_steps:
 
 ## 三、版本与活跃度全景（截至 2026-09）
 
-成熟度排序（2026-09 口径，版本状态核实于 2026-09-04）：LangGraph（1.0 发布于 2025-10，生产案例最多）≈ AgentScope 2.0（v2.0.7，企业级全栈）＞ Codex Harness（内核产品级，SDK 开源仅数周）＞ DSH（架构最激进，早期 prerelease 0.1.2-rc）。
+成熟度不能从版本号、Star 数或品牌直接排序。以下版本保留原 2026-09-04 快照，并非本次确认的最新版；生产选型应锁定依赖，验证持久化、权限与恢复行为。
 
 | 框架 | 版本（2026-09-04） | 类别 | 语言 | 一句话定位 | 突出能力 | 主要缺口 |
 | --- | --- | --- | --- | --- | --- | --- |
 | **LangGraph + LangChain/Deep Agents** | LangGraph 1.2.11 / LangChain 1.4.0 | 编排框架 | Python | 图/状态机编排事实标准 | checkpoint/HITL/时间旅行；LangSmith 部署四形态 | 沙箱/审批 UI/审计需 Deep Agents 或自建 |
 | **AgentScope（+Service 控制面）** | 2.0.7 | 框架+控制面 | Python+Java+TS | 企业级全栈，多租户一等公民 | 一键分布式 RAG、权限体系、飞书/钉钉渠道、异构 agent 注册 | 阿里云外生态相对年轻 |
-| **Codex Harness** | rust 0.153.2 | 运行时 | Rust 内核 | 产品同款内核开源（Apache-2.0） | 内核最稳、沙箱完整、Compliance Platform | 为 OpenAI 模型深度调优，第三方模型有折扣 |
-| **DeepSeek Harness（DSH）** | 0.1.2-rc.1 | 运行时 | TypeScript | "Everything is a Plugin" | 会话事件溯源最强（fork/回放/全文检索）、模型无关、全链路可审计 | 早期 prerelease；办公连接器/RAG/多租户全自建 |
+| **Codex Harness** | rust 0.153.2（原快照） | 运行时 | Rust | 编码任务运行内核 | 会话与执行控制 | 模型、平台与沙箱支持按具体版本验证 |
+| **DeepSeek Harness（DSH）** | 0.1.2-rc.1（原快照） | 运行时 | TypeScript | 插件式运行时 | 会话、回放与工具接入 | 预发布 API 和权限行为需验证 |
 
 其他主流框架扫描（同口径）：
 
@@ -97,16 +99,16 @@ while not done and steps < max_steps:
 | Claude Agent SDK | 运行时 SDK | Python 0.2.152 / TS 0.3.260，0.x 高频迭代 | 深度定制编码/办公 agent（云推理） |
 | Google ADK | 编排 | 2.8.0（2.0 发布于 2026-05，1.39 系并行维护），主推 A2A 协议 | GCP/Gemini 系 + 跨框架互操作 |
 | CrewAI | 编排 | 1.15.18 | 快速上手角色化多 agent（Crews + Flows 双层） |
-| Dify | 低代码平台 | 1.17.0，150k+ star 量级 | 业务侧低代码/原型；注意修改版 Apache-2.0 的多租户条款 |
+| Dify | 低代码平台 | 1.17.0，Star 数不作为成熟度依据 | 业务侧低代码/原型；注意修改版 Apache-2.0 的多租户条款 |
 | Coze Studio | 低代码平台 | 开源（2025 年开源） | 国内生态开箱即用 |
-| Pydantic AI（首次收录） | 编排 | 2.38.0（2026-09），19.7k★ | Python 类型安全、模型无关的轻量编排，LangChain 系之外首选 |
+| Pydantic AI（首次收录） | 编排 | 2.38.0（2026-09）（原版本快照） | Python 类型安全、模型无关的轻量编排，LangChain 系之外首选 |
 | Mastra（首次收录） | 编排 | @mastra/core 1.63.0，TypeScript | JS/TS 全栈团队的 agent 框架 |
 
-关键维度对比（核心四框架，★ 为同口径相对评分）：
+关键维度对比（原版本快照的功能线索，不作为实测排名；支持范围按部署版本验收）：
 
 | 维度 | DSH | Codex Harness | LangGraph 系 | AgentScope 系 |
 | --- | --- | --- | --- | --- |
-| 会话管理 | ★★★ 事件溯源+fork+回放 | ★★ rollout/compaction | ★★ checkpoint 多后端 | ★★ 多租户多会话 |
+| 会话管理 | 事件溯源+fork+回放 | rollout/compaction | checkpoint 多后端 | 多租户多会话 |
 | 审批 / HITL | fail-closed 三态缝 | approval modes | interrupt()（UI 自建） | 权限系统内置 |
 | 沙箱 | 部分仅文件效果 | 完整（Seatbelt/Landlock） | 无 核心库无 | Docker/E2B/K8s 多档 |
 | MCP | 一等（tools） | server + client | 生态集成 | + mcp-hub |
@@ -134,7 +136,7 @@ LangGraph 的核心赌注是：**把 agent 的控制流显式建模为一张带�
 - `interrupt()` 在任意节点边界暂停图执行，状态已落盘，等人审批后 `resume` 继续——审批 UI 要自建，但"暂停-恢复"的语义是内核级的，不是补丁；
 - 崩溃恢复 = 从最近 checkpoint 重启，长任务（几十分钟的多步 agent）因此才敢上生产。
 
-2026 年的演进主线是**容错与规模化**：1.0（2025-10）冻结核心 API；1.2（2026-05）加入节点级 timeout（`add_node(timeout=...)`，超时抛 `NodeTimeoutError`）、节点错误处理器、graceful shutdown（当前 superstep 完成后协作式停机并保存状态）、以及一种显著缩小 checkpoint 体积的新 channel 类型；1.2.11（2026-08）为当前稳定版。平台侧 LangGraph Platform 已更名为 LangSmith Deployment，观测与部署收拢到 LangSmith 一条线。活跃度：GitHub 约 41k star，PyPI 月下载量级在千万级，是安装量最大的编排框架（star 数反而低于 LangChain 主仓与 Dify，说明它更多被当作库而非话题）。
+2026 年的演进主线是**容错与规模化**：1.0（2025-10）冻结核心 API；1.2（2026-05）加入节点级 timeout（`add_node(timeout=...)`，超时抛 `NodeTimeoutError`）、节点错误处理器、graceful shutdown（当前 superstep 完成后协作式停机并保存状态）、以及一种显著缩小 checkpoint 体积的新 channel 类型；1.2.11（2026-08）为原资料记录版本，本轮未将其认定为最新版。平台侧 LangGraph Platform 已更名为 LangSmith Deployment，观测与部署收拢到 LangSmith 一条线。活跃度需另看近期维护、问题响应和版本兼容；没有统一采样口径时不做安装量排名。
 
 ```python
 from langgraph.graph import StateGraph, START, END
@@ -211,7 +213,7 @@ crew = Crew(
 result = crew.kickoff(inputs={"topic": "..."})  # 任务产出按序传递（context= 显式声明依赖）
 ```
 
-状态与记忆：Crew 内置短期/长期/实体记忆（默认 SQLite + 向量存储）与任务间上下文传递（`context=` 显式声明依赖）。版本 1.15.x（2026-09 为 1.15.18），1.0 于 2025-10 发布；GitHub star 各来源口径不一（2026 年内报道在 44k–57k 区间），取"5 万量级"。使用边界：CrewAI 上手是全家桶里最快的（半天能跑通带记忆的三 agent 流水线），但**角色隐喻在复杂分支场景会漏**——一旦需要"第 3 步失败回退到第 1 步并重放"，你会发现自己是在和隐喻打架，这时该换图状态机。
+状态与记忆：Crew 内置短期/长期/实体记忆（默认 SQLite + 向量存储）与任务间上下文传递（`context=` 显式声明依赖）。版本 1.15.x（2026-09 为 1.15.18），1.0 于 2025-10 发布；社区热度不作为生产适用性的直接证据。使用边界：CrewAI 上手是全家桶里最快的（半天能跑通带记忆的三 agent 流水线），但**角色隐喻在复杂分支场景会漏**——一旦需要"第 3 步失败回退到第 1 步并重放"，你会发现自己是在和隐喻打架，这时该换图状态机。
 
 ### 4.4 OpenAI Agents SDK：轻量原语与 handoff
 
@@ -291,9 +293,9 @@ ADK 同时也是 A2A 协议的原生载体：`RemoteA2aAgent` 自动处理 Agent
 
 | 平台 | 形态本质 | 强项 | 边界 | 开源与许可（2026-09） |
 | --- | --- | --- | --- | --- |
-| Dify | LLMOps 原生：模型管理 + RAG 知识库 + Workflow/Agent 编排 + 观测一体化 | 企业级私有部署、知识库工程化、交付给业务方自助运营 | 深度定制要改平台代码；多租户 SaaS 化受许可条款约束 | 开源，1.17.0，150k+ star；修改版 Apache-2.0（多租户 SaaS 条款注意） |
+| Dify | LLMOps 原生：模型管理 + RAG 知识库 + Workflow/Agent 编排 + 观测一体化 | 企业级私有部署、知识库工程化、交付给业务方自助运营 | 深度定制要改平台代码；多租户 SaaS 化受许可条款约束 | 开源，1.17.0，不按 Star 排名；修改版 Apache-2.0（多租户 SaaS 条款注意） |
 | Coze（扣子）/ Coze Studio | Bot 工厂：零代码搭 bot + 插件市场 + 渠道分发 | 国内渠道与插件生态开箱即用，非开发者可用 | 开源版（2025 年开源）生态尚新，复杂状态流转表达力弱 | coze-studio 开源 |
-| n8n | 自动化平台长出的 AI 能力：节点式工作流，AI Agent 是其中一类节点 | 集成面最广（数百连接器）、可写 JS/Python 节点、社区与公司化支持最稳 | AI 原生能力（记忆/多 agent）是后加的，深度不如原生框架 | fair-code（源码可见，非 OSI 开源） |
+| n8n | 自动化平台长出的 AI 能力：节点式工作流，AI Agent 是其中一类节点 | 集成面最广（数百连接器）、可写 JS/Python 节点、社区与商业支持需按需求核对 | AI 原生能力（记忆/多 agent）是后加的，深度不如原生框架 | fair-code（源码可见，非 OSI 开源） |
 
 选型经验：**验证期与业务自助期用低代码，进入生产治理期把核心链路迁回代码框架**——低代码平台最难补的是版本化（工作流 JSON 的 diff/评审/回滚）与测试（编排逻辑的自动化回归），这两项恰是代码框架的舒适区。具体到痛点：画布产出的 DSL 进 Git 后 diff 几乎不可读，评审只能靠截图；节点逻辑散在画布配置里，写单元测试没有稳定入口；平台升级偶有节点语义变化，回归只能全量手点。这三项任何一项成为团队日常负担，就是迁移信号。也有反向路径：n8n 做集成胶水 + 代码框架做核心 agent，用 MCP/HTTP 节点互连，是不少团队的实际形态。
 
@@ -369,6 +371,10 @@ sequenceDiagram
 
 这张序列图里有两条工程含义：**其一**，supervisor 模式下子 agent 只拿"必要上下文"，这是它相对群聊的成本优势来源（群聊里每轮发言全员可见）；**其二**，所有结果经中心聚合，审计点唯一——合规场景要的"谁批准了这一步"在星型拓扑里是一个确定答案，在群聊拓扑里是一段需要回溯的对话。LangChain 自己对 supervisor 路线的基准测试报告了约 50% 的任务完成度提升（相对其早期多 agent 实现），这也是 2026 年 supervisor 成为企业默认模式的实证背景。
 
+## 上线前补齐的安全与恢复验证
+
+MCP HTTP 授权需要验证 token 受众与目标资源，会话 ID 不能替代身份。checkpoint 能恢复状态，但不能消除“外部动作已成功、结果尚未保存”的重复执行窗口。新增[Agent 安全与可靠执行](/ai/agent/security)给出权限、提示注入、幂等与未知结果的验收方法；这些保证必须在工具端和业务层实现。
+
 ## 六、协议层：MCP 与 A2A
 
 编排框架解决"一个应用内的 agent 怎么协作"，协议层解决"跨应用、跨厂商的 agent 与工具怎么互连"。2026 年的治理格局是：**两条协议同归 Linux Foundation 下的 Agentic AI Foundation（AAIF）共治**——Anthropic 于 2025-12-09 将 MCP 捐赠给 AAIF（基金会由 Anthropic、Block、OpenAI 共同创立，Block 的 goose 与 OpenAI 的 AGENTS.md 同为创始项目），A2A 亦归入其下；Linux Foundation 2026-04-09 公告 A2A 参与组织超 150 家、已进入企业生产使用。"MCP 管工具/上下文、A2A 管 agent 互通"的分工被官方明确。
@@ -441,7 +447,7 @@ stateDiagram-v2
 | 跨框架（LangGraph 调 ADK agent） | 部分（工具级） | 是（agent 级黑盒互调） |
 | 数据敏感场景私有化 | server 私有部署，协议出网面可控 | 任务粒度出网，Artifact 内容需审查 |
 
-工程建议：**内部系统连接器一律走 MCP**（工具粒度细、鉴权面小、审计点明确），**跨组织协作才启用 A2A**（任务粒度粗，但换来黑盒隔离与框架无关）。两条协议都在 AAIF 下快速演进，网关层留版本适配缝是必须的。
+工程建议：已有可靠 HTTP/OpenAPI 接口不必为了协议统一全部改写。使用 MCP/A2A 时按互操作需求选择，并锁定双方支持版本；协议连接不替代资源授权、租户隔离与业务幂等。
 
 ## 七、记忆与状态
 
@@ -462,7 +468,7 @@ stateDiagram-v2
 | Claude Agent SDK | 上下文管理内核级（含 1M 上下文） | Skills 渐进披露 + 外部记忆工具 | session 续跑与 fork |
 | CrewAI | 任务间 context 传递 | 短期/长期/实体记忆内置（SQLite+向量默认） | Flow 状态持久化 |
 | AgentScope | 多租户多会话 | 一键分布式 RAG + Mem0/ReMe | Workspace 级隔离 |
-| DSH | 事件溯源（全会话事件流） | 需第三方 | fork/回放/全文检索最强；prerelease |
+| DSH | 事件溯源（全会话事件流） | 需第三方 | fork/回放/全文检索；prerelease |
 
 经验值（适用边界：中等规模生产、单会话几十到几百步）：**checkpoint 频率取"每 superstep"**（LangGraph 默认）在 Postgres 后端下存储成本可接受；事件溯源全量留存的存储量级约为快照方案的数倍，但排查线上事故时"回放出事那一刻"的价值远超这点存储费。跨进程恢复的验收标准只有一条：**杀掉进程后从外部存储恢复，任务从中断点继续且副作用不重复**——副作用幂等（工具侧重试安全）要和状态恢复一起设计，只恢复状态不处理幂等等于把事故推迟到重试那一刻。
 

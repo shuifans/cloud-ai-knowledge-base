@@ -1,0 +1,9 @@
+{
+  "gqaBytes": 327680,
+  "gqa4KiBGiB": 1.25,
+  "gqa64ConcurrentGiB": 80,
+  "moe671BF16GB": 1342,
+  "min80GBcards": 17,
+  "cacheOff": 0.87,
+  "cacheOn": 0.45640000000000003
+}

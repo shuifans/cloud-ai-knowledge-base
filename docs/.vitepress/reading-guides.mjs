@@ -35,7 +35,7 @@ const entries = {
   'ai/models/audio': ['沿声学表示、识别与理解链路，梳理语音模型的任务边界与工程条件。'],
   'ai/models/image-gen': ['串联扩散、潜空间、DiT 与可控生成，再讨论评估、部署与算力成本。'],
   'ai/models/video-gen': ['围绕时空建模、一致性和计算代价，理解视频生成的主要技术路线。'],
-  'ai/models/speech-gen': ['从声学建模、音色与流式合成入手，理解语音生成的质量和延迟取舍。'],
+  'ai/models/speech-gen': ['基于公开 TTS 论文区分语音表示、声学模型与声码器，再验证流式质量和延迟。'],
   'ai/infra/cluster': ['把 GPU、互联、拓扑和存储视为整体，分析训练与推理集群的系统瓶颈。'],
   'ai/infra/training': ['从预训练、后训练到强化学习，连接训练范式、并行策略与集群工程。'],
   'ai/infra/inference/llm-inference': ['从服务框架到量化、缓存和调度，组织可验证的大模型部署方案。'],
@@ -55,6 +55,8 @@ const entries = {
   'chronicle/ai-era': ['连接模型、算力与应用工程，回看 AI 浪潮中的关键阶段与技术栈变化。'],
   'chronicle/xinchuang': ['按软硬件生态、迁移与兼容性，理解信创和国产化的长期工程命题。'],
   'about': ['了解本站的内容边界、来源原则、维护方式与使用约定。', '所有读者', '无'],
+  'updates': ['查看本轮修正、知识补充和逐页核验范围，区分筛查与事实复核。', '使用本站进行学习或选型的读者', '无'],
+  'ai/agent/security': ['把身份、工具授权、提示注入与执行恢复落到可验收的边界。'],
 }
 
 export const learningPaths = {

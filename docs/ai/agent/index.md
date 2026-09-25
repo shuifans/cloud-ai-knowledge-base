@@ -2,6 +2,8 @@
 title: 智能体技术全景
 outline: [2, 3]
 lastVerified: 2026-09-20
+lastReviewed: 2026-09-26
+reviewScope: 补充 Agent 安全入口，移除无来源的 80% 覆盖率
 ---
 
 # 智能体技术全景
@@ -26,6 +28,7 @@ lastVerified: 2026-09-20
 | 文章 | 状态 | 说明 |
 | --- | --- | --- |
 | [Agent 热点编年史](/ai/agent/history) | 已发布 | 从符号智能体、AutoGPT 到 MCP 与长程 Agent 的七十年编年 |
+| [Agent 安全与可靠执行](/ai/agent/security) | 已发布 | 权限边界、提示注入、幂等与故障恢复的上线验收 |
 | [Agent 开发框架对比](/ai/agent/frameworks) | 已发布 | 主流框架机制拆解、编排模式、MCP/A2A 协议与选型决策树 |
 
 ## Function Calling 的工程要点
@@ -37,7 +40,7 @@ lastVerified: 2026-09-20
 
 ## Agent 应用的架构模式
 
-- 单 Agent + 工具箱：覆盖 80% 场景，先做这个
+- 单 Agent + 工具箱：可作为复杂度较低的起点，是否够用由业务任务集验证
 - 路由 + 专家 Agent：意图分发，各域独立迭代
 - 多 Agent 协作：复杂任务分解——注意协作开销可能大于收益
 - 上线清单：动作白名单、预算上限（token/调用次数）、审计日志、回滚路径

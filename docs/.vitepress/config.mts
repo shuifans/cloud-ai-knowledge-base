@@ -26,6 +26,7 @@ export default defineConfig({
   transformPageData(pageData) {
     pageData.frontmatter.readingGuide = getReadingGuide(pageKey(pageData.relativePath))
     pageData.frontmatter.lastVerified = verifiedDate(pageData.frontmatter.lastVerified)
+    pageData.frontmatter.lastReviewed = verifiedDate(pageData.frontmatter.lastReviewed)
   },
 
   vite: {
@@ -124,6 +125,7 @@ export default defineConfig({
         ],
       },
       { text: '编年史', link: '/chronicle/' },
+      { text: '更新记录', link: '/updates' },
       { text: '关于', link: '/about' },
     ],
 
@@ -284,6 +286,7 @@ export default defineConfig({
             { text: '智能体技术全景', link: '/ai/agent/' },
             { text: 'Agent 热点编年史', link: '/ai/agent/history' },
             { text: 'Agent 开发框架对比', link: '/ai/agent/frameworks' },
+            { text: 'Agent 安全与可靠执行', link: '/ai/agent/security' },
           ],
         },
       ],

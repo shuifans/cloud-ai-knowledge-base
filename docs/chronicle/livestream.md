@@ -2,6 +2,8 @@
 title: 直播时代
 outline: [2, 3]
 lastVerified: 2026-09-20
+lastReviewed: 2026-09-26
+reviewScope: IBM 收购 Ustream 的日期；其他行业数字保留原统计期
 ---
 
 # 直播时代（约 2016–2018）
@@ -106,7 +108,7 @@ timeline
 
 - **2007 年 3 月**：Ustream 与 Justin.tv 几乎同时上线（[SoftBank 新闻稿](https://group.softbank/news/press/20100202)记载 Ustream 于 2007 年 3月开始事业，[Wikipedia: Justin.tv](https://en.wikipedia.org/wiki/Justin.tv)记载 Justin.tv 上线于 2007 年 3 月 19 日）。这一代平台的架构还是"Flash 推拉一体的玩具"，但证明了普通人对着摄像头这件事有观众
 - **2011 年 6–8 月**：Justin.tv 把游戏频道拆分为独立品牌 **Twitch**（6 月 Beta，8 月 29 日正式上线，[Wikipedia: Twitch](https://en.wikipedia.org/wiki/Twitch_(service))）——垂直品类跑通了"高频开播 + 弹幕社区"的模式，这是后来所有直播平台产品形态的原型
-- **2014 年**：Twitch 被收购的同一月，Justin.tv 本体于 2014 年 8 月关停（[Wikipedia: Justin.tv](https://en.wikipedia.org/wiki/Justin.tv)，[Wikipedia: Twitch](https://en.wikipedia.org/wiki/Twitch_(service)) 亦记载 "Justin.tv was getting shut down in August 2014"）；Ustream 则在前一年 1 月被 IBM 收编、后并入 IBM Cloud Video（[日经中文网报道](https://www.nikkei.com/article/DGXLASDZ05HGL_V00C17A4TI1000/)）——第一代先驱全部退场，技术管线被行业继承
+- **时间线更正**：Justin.tv 于 2014 年关闭；IBM 宣布收购 Ustream 的日期是 **2016-01-21**，不是 2013 年。IBM 的当年材料明确记录了该日期。[IBM 2015 年报：期后事项](https://www.ibm.com/investor/att/pdf/IBM_Annual_Report_2015.pdf)（核对日期 2026-09-26）
 - **2016 年 11 月 4 日**：国家网信办发布《互联网直播服务管理规定》（12 月 1 日施行，[官网全文](https://www.cac.gov.cn/2016-11/04/c_1119847629.htm)），叠加此前文化部门的整治（2016 年 7 月曾公示查处 26 家平台，[光明文摘报](https://epaper.gmw.cn/wzb/html/2016-07/19/nw.D110000wzb_20160719_6-02.htm)），野蛮生长的窗口开始关闭
 - **2017 年 3 月**：那张著名的"千播大战"平台全景图里，已有近 1/6 的 App 无法登录、无更新或下架（[每日经济新闻](https://www.nbd.com.cn/articles/2017-03-08/1082818.html)）——出清比大多数人预期的来得快
 
