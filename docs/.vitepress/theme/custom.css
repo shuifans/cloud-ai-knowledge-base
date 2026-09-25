@@ -263,6 +263,11 @@ body.zoom-lock { overflow: hidden; }
 @media (max-width: 767px) {
   :root .VPLocalSearchBox .shell { border: 0; border-radius: 0; padding: 14px; }
 }
+@media (max-width: 420px) {
+  .VPNavBar .wrapper { padding-left: 12px; }
+  .VPNavBarSearch .DocSearch-Button { width: 36px; margin-right: 6px; }
+  .VPNavBar .VPNavBarHamburger { width: 36px; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0s !important; }

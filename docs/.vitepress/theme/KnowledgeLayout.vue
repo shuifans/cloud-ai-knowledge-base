@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import Breadcrumbs from './components/Breadcrumbs.vue'
 import ReadingProgress from './components/ReadingProgress.vue'
 import CoastalThemeToggle from './components/CoastalThemeToggle.vue'
+import BackgroundMusic from './components/BackgroundMusic.vue'
 
 const { Layout } = DefaultTheme
 </script>
@@ -11,6 +12,7 @@ const { Layout } = DefaultTheme
   <Layout>
     <template #nav-bar-content-after>
       <CoastalThemeToggle />
+      <BackgroundMusic />
     </template>
     <template #layout-top>
       <ReadingProgress />

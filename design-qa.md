@@ -71,3 +71,16 @@ final result: passed
 ## 剩余项
 
 无阻塞项。按用户后续授权，通过 hk-server 中转推送 GitHub main，由现有 GitHub Actions 发布到 Pages。
+
+## 全站背景音乐验收（2026-09-25）
+
+- 百炼 `fun-music-v1` 生成《海边慢骑》，使用纯器乐参数，返回歌词为空。原音频约 184.88 秒，发布版为 90 秒、44.1 kHz 双声道、160 kbps MP3，1,801,554 字节。
+- 发布片段做 3.4 秒首尾交叉淡化及固定增益调整。解码后实测 90 秒；响度 -19.43 LUFS、峰值 -4.96 dBTP，无削波样本；循环边界采样差 -58.27 dBFS。播放器初始音量 24%。
+- 音频由共享布局持有。首页点击“开始探索”后从浏览器拦截状态转为播放；云计算页进入关于页时，进度从 23.456 秒连续到 23.526 秒，始终只有一个音频元素；切换夜间模式后继续播放。
+- 经过完整 90 秒后，进度自动回到 8.174 秒，`loop=true`、`paused=false`、状态仍为 playing。
+- 右上角静音按钮在静音后暂停并保留位置；刷新后 muted=true、paused=true；Enter 可操作按钮。自动化覆盖手势重试、静音偏好、异步播放竞态、失败重试、跨标签页同步和存储不可用，共 6 项通过。
+- 320 × 740 夜间文章页 scrollWidth=320，标题、搜索、主题、音乐和菜单按钮不重叠。证据：`/tmp/coastal-music-qa/night-mobile-muted.png`。
+- 使用 4176 新端口验证生产构建，资源正确加载于 `/cloud-ai-knowledge-base/audio/coastal-ride.mp3`，时长 90 秒、可播放；日夜模式及刷新均无 console error / warning。日间截图：`/tmp/coastal-music-qa/production-day-desktop.png`。
+- `VITEPRESS_BASE=/cloud-ai-knowledge-base/` 构建通过（13.88 秒），包含死链检查。保留既有 PromQL 回退与大 bundle 提示。
+- 浏览器可能限制有声自动播放：页面默认尝试播放，被拦截时在第一次真实点击或按键后启动。已保存的静音偏好优先。此限制不通过改变浏览器安全设置绕过。
+- 凭证仅从用户提供的仓库外文件读取并用于官方接口鉴权；代码和发布资源不包含密钥。

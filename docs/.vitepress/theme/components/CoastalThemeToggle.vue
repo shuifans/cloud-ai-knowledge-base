@@ -54,7 +54,7 @@ onMounted(() => {
 .coastal-theme-toggle:focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
 [class^='vpi-'] { font-size: 16px; }
 @media (max-width: 767px) { .coastal-theme-toggle { margin-left: 0; padding: 8px 10px; gap: 5px; } }
-@media (max-width: 380px) { .mode-name { display: none; } .coastal-theme-toggle { width: 36px; padding: 8px; } }
+@media (max-width: 420px) { .mode-name { display: none; } .coastal-theme-toggle { width: 36px; padding: 8px; } }
 </style>
 
 <style>
