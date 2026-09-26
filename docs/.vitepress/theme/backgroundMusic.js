@@ -2,7 +2,7 @@ export const MUSIC_PREFERENCE_KEY = 'coastal-background-music-muted'
 
 // Owned by the shared layout, so changing articles never creates a second player.
 export function createBackgroundMusicPlayer({ audio, gestures, storageEvents, storage, onChange }) {
-  let muted = false
+  let muted = true
   let status = 'idle'
   let disposed = false
   let attempt = 0
@@ -19,7 +19,8 @@ export function createBackgroundMusicPlayer({ audio, gestures, storageEvents, st
     onChange({ muted, status })
   }
 
-  try { muted = storage?.getItem(MUSIC_PREFERENCE_KEY) === 'true' } catch { /* Private browsing. */ }
+  // Silence is the default; only an explicit saved opt-in may enable playback.
+  try { muted = storage?.getItem(MUSIC_PREFERENCE_KEY) !== 'false' } catch { /* Private browsing stays muted. */ }
   audio.loop = true
   audio.preload = 'none'
   audio.volume = 0.24
@@ -78,7 +79,7 @@ export function createBackgroundMusicPlayer({ audio, gestures, storageEvents, st
   listen(gestures, 'pointerup', onGesture)
   listen(gestures, 'keydown', onGesture)
   listen(storageEvents, 'storage', (event) => {
-    if (event.key === MUSIC_PREFERENCE_KEY) setMuted(event.newValue === 'true', false)
+    if (event.key === MUSIC_PREFERENCE_KEY || event.key === null) setMuted(event.newValue !== 'false', false)
   })
   listen(audio, 'playing', () => {
     if (muted) audio.pause()

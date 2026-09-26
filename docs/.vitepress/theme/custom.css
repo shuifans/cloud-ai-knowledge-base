@@ -56,6 +56,7 @@
   --vp-nav-bg-color: var(--coast-page);
   --vp-local-nav-bg-color: var(--coast-page);
   --vp-sidebar-width: 260px;
+  --vp-layout-max-width: clamp(1440px, 100vw, 1760px);
   --vp-sidebar-bg-color: var(--coast-page);
   --vp-backdrop-bg-color: #172d3299;
   --vp-button-brand-bg: var(--coast-button);
@@ -160,8 +161,10 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .knowledge-breadcrumb { font-size: 11px !important; letter-spacing: .025em; }
 
 /* 文章：纸面阅读区 */
-.VPDoc .content-container { max-width: 760px; padding: 32px 36px; border: 1px solid var(--coast-line); border-radius: 24px; background: var(--coast-card); box-shadow: var(--coast-shadow); }
-.VPDoc.has-aside .content-container { max-width: 760px; }
+.VPDoc .content-container { padding: 32px 36px; border: 1px solid var(--coast-line); border-radius: 24px; background: var(--coast-card); box-shadow: var(--coast-shadow); }
+/* Override the default theme's scoped width cap and use the space between both menus. */
+.VPDoc > .container > .content > .content-container,
+.VPDoc.has-aside > .container > .content > .content-container { max-width: 1120px; }
 .vp-doc { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
 .vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { scroll-margin-top: calc(var(--vp-nav-height) + 28px); }
 .vp-doc h1 { font-size: 34px; line-height: 1.45; font-weight: 600; letter-spacing: .025em; margin: 0 0 24px; }
@@ -246,12 +249,11 @@ body.zoom-lock { overflow: hidden; }
 .VPHome .vp-doc { max-width: 100%; margin: 0; padding: 0; }
 
 @media (min-width: 960px) {
-  .VPDoc { padding: 32px 24px 0; }
-  .VPDoc .content { padding: 0 16px 64px; }
+  .VPContent > .VPDoc { padding: 32px 24px 0; }
+  .VPDoc > .container > .content { min-width: 0; padding: 0 0 64px; }
 }
 @media (min-width: 1280px) {
-  .VPDoc .content { min-width: 0; }
-  .VPDoc .aside { max-width: 208px; padding-left: 24px; }
+  .VPDoc > .container > .aside { flex: 0 0 208px; max-width: 208px; padding-left: 24px; }
   .VPDoc .aside-container, .VPDoc .aside-curtain { width: 184px; }
 }
 @media (max-width: 959px) {

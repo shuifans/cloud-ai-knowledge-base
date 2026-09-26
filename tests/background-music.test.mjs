@@ -42,8 +42,8 @@ function setup({ preference, blocked = false, unavailableStorage = false } = {})
   return { audio, gestures, storageEvents, data, player, get state() { return state } }
 }
 
-test('tries audible looping autoplay, then retries only after a real interaction', async () => {
-  const t = setup({ blocked: true })
+test('saved opt-in tries audible looping autoplay, then retries only after a real interaction', async () => {
+  const t = setup({ preference: false, blocked: true })
   await tick()
   assert.equal(t.state.status, 'blocked')
   assert.equal(t.audio.loop, true)
@@ -59,19 +59,23 @@ test('tries audible looping autoplay, then retries only after a real interaction
   t.player.dispose()
 })
 
-test('saved mute prevents autoplay and arbitrary interactions from enabling music', async () => {
-  const t = setup({ preference: true })
-  t.gestures.emit('pointerup', { isTrusted: true })
-  assert.equal(t.audio.plays, 0)
-  assert.equal(t.audio.autoplay, false)
-  assert.equal(t.state.status, 'muted')
-  t.player.toggle()
-  await tick()
-  assert.equal(t.state.status, 'playing')
-  assert.equal(t.data.get(MUSIC_PREFERENCE_KEY), 'false')
-  assert.equal(t.audio.currentTime, 25, 'unmuting preserves the playback position')
-  t.player.dispose()
-})
+for (const preference of [undefined, true, 'invalid']) {
+  test(`default or saved mute (${preference}) prevents autoplay until explicitly enabled`, async () => {
+    const t = setup({ preference })
+    t.gestures.emit('pointerup', { isTrusted: true })
+    t.gestures.emit('keydown', { isTrusted: true, key: 'Enter' })
+    assert.equal(t.audio.plays, 0)
+    assert.equal(t.audio.muted, true)
+    assert.equal(t.audio.autoplay, false)
+    assert.equal(t.state.status, 'muted')
+    t.player.toggle()
+    await tick()
+    assert.equal(t.state.status, 'playing')
+    assert.equal(t.data.get(MUSIC_PREFERENCE_KEY), 'false')
+    assert.equal(t.audio.currentTime, 25, 'unmuting preserves the playback position')
+    t.player.dispose()
+  })
+}
 
 test('muting during an unresolved play request cannot be undone by that request', async () => {
   const t = setup({ preference: true })
@@ -106,7 +110,7 @@ test('a playback failure offers explicit retry without retrying on every page cl
 })
 
 test('mute synchronizes across tabs and cleanup detaches all handlers', async () => {
-  const t = setup()
+  const t = setup({ preference: false })
   await tick()
   t.storageEvents.emit('storage', { key: MUSIC_PREFERENCE_KEY, newValue: 'true' })
   assert.equal(t.state.status, 'muted')
@@ -119,9 +123,26 @@ test('mute synchronizes across tabs and cleanup detaches all handlers', async ()
 
 test('denied browser storage does not prevent playback or mute controls', async () => {
   const t = setup({ unavailableStorage: true })
+  assert.equal(t.state.status, 'muted')
+  assert.equal(t.audio.plays, 0)
+  t.player.toggle()
   await tick()
   assert.equal(t.state.status, 'playing')
   t.player.toggle()
   assert.equal(t.state.status, 'muted')
   t.player.dispose()
 })
+
+for (const key of [MUSIC_PREFERENCE_KEY, null]) {
+  test(`removing the preference (${key}) restores the muted default across tabs`, async () => {
+    const t = setup({ preference: false })
+    await tick()
+    assert.equal(t.state.status, 'playing')
+    t.storageEvents.emit('storage', { key, newValue: null })
+    t.gestures.emit('pointerup', { isTrusted: true })
+    assert.equal(t.state.status, 'muted')
+    assert.equal(t.audio.autoplay, false)
+    assert.equal(t.audio.plays, 1)
+    t.player.dispose()
+  })
+}

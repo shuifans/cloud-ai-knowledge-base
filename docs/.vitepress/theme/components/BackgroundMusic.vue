@@ -4,7 +4,7 @@ import { withBase } from 'vitepress'
 import { createBackgroundMusicPlayer } from '../backgroundMusic.js'
 
 const audio = ref<HTMLAudioElement>()
-const state = ref({ muted: false, status: 'idle' })
+const state = ref({ muted: true, status: 'muted' })
 const mounted = ref(false)
 let player: ReturnType<typeof createBackgroundMusicPlayer> | undefined
 const audible = computed(() => state.value.status === 'playing' && !state.value.muted)
