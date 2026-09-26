@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>顺着海风 · 鹈鹕骑行</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f1e8;color:#263f49;font-family:system-ui,-apple-system,"PingFang SC",sans-serif;min-height:100vh;display:grid;place-items:center;padding:32px 20px}main{width:min(100%,900px)}header{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}h1{font-size:clamp(26px,5vw,40px);letter-spacing:.06em;margin:8px 0}p{margin:0;color:#74817b;font-size:14px}.eyebrow{font-size:11px;letter-spacing:.24em;color:#648b83}.badge{font-size:12px;border:1px solid #ccd4c6;padding:8px 13px;border-radius:30px;white-space:nowrap}.canvas{border-radius:24px;overflow:hidden;border:1px solid #e0dfd0;box-shadow:0 18px 60px #354d3a0a}.scene{display:block;width:100%;height:auto;max-height:68vh;background:#fff5df}footer{display:flex;gap:22px;align-items:center;padding:20px 2px;flex-wrap:wrap}button{border:0;border-radius:30px;background:#285f59;color:white;padding:12px 23px;cursor:pointer;font:inherit;font-size:13px}button:hover{background:#1d4843}button:focus-visible,input:focus-visible{outline:3px solid #df9950;outline-offset:4px}label{display:flex;gap:12px;align-items:center;font-size:13px}input{accent-color:#285f59;width:120px}output{font-variant-numeric:tabular-nums;min-width:35px}footer p{margin-left:auto;font-size:12px}@media(max-width:520px){body{padding:22px 14px}.badge{display:none}footer{gap:16px}footer p{margin-left:0;width:100%}.scene{max-height:none}}
+</style></head><body><main><header><div><div class="eyebrow">A LITTLE COASTAL ESCAPE</div><h1>顺着海风</h1><p>一只鹈鹕，一辆单车，一段不赶时间的旅程。</p></div><span class="badge">☀ 海边骑行日</span></header><div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" class="scene" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">鹈鹕的海边骑行</title>
+  <desc id="desc">A cheerful white pelican with a long orange bill pedals a teal bicycle beside the sea.</desc>
+  <rect width="900" height="760" fill="#fff5df"/>
+<g id="clouds" fill="#fffdf6"><path d="M90 158q-25-35 11-43 8-36 43-22 27-6 32 24 40 1 31 30Z"/><path d="M650 300q-20-28 10-35 8-28 33-17 25-5 30 21 28 0 23 23Z"/></g>
+<path d="M0 473q180-30 360 0t360 0t360 0v165H0Z" fill="#d9eae0"/>
+<path d="M0 638H900V760H0Z" fill="#eee4cb"/>
+<g id="road" stroke="#fff8e8" stroke-width="5" stroke-linecap="round"><path d="M-300 704h85m95 0h85m95 0h85m95 0h85m95 0h85m95 0h85m95 0h85m95 0h85"/></g>
+  <circle cx="704" cy="158" r="66" fill="#ffd879"/>
+  <path d="M80 476 Q230 451 385 477 T820 476" fill="none" stroke="#b7deda" stroke-width="4"/>
+  <path d="M95 505h105m480-2h112M119 525h43m570-1h75" stroke="#b7deda" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="460" cy="648" rx="316" ry="23" fill="#e6ddc5"/>
+  <g stroke="#263f49" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Wheels and spokes -->
+    <g fill="#fffaf0" stroke-width="12">
+      <circle cx="264" cy="526" r="115"/>
+      <circle cx="664" cy="526" r="115"/>
+    </g>
+    <g stroke="#9db9b7" stroke-width="2.5">
+<g id="rear-spokes"><path d="M264 417v218m-109-109h218m-186-77 154 154m-154 0 154-154"/><circle cx="264" cy="423" r="5" fill="#e76c53" stroke="none"/></g>
+<g id="front-spokes"><path d="M664 417v218m-109-109h218m-186-77 154 154m-154 0 154-154"/><circle cx="664" cy="423" r="5" fill="#e76c53" stroke="none"/></g></g>
+    <g fill="none" stroke="#249b98" stroke-width="13">
+      <path d="m264 526 104-170 81 170H264l305-170H368m201 0 95 170M449 526l-92-197"/>
+    </g>
+    <path d="m569 356-18-67 49-27" fill="none" stroke-width="10"/>
+    <path d="m592 267 29-15q17-7 21 8" fill="none" stroke-width="13"/>
+    <path d="M322 326h75" stroke-width="16"/>
+    <circle cx="449" cy="526" r="21" fill="#f7d77c" stroke-width="6"/>
+    <path id="cranks" fill="none" stroke-width="7"/>
+<path id="pedals" fill="none" stroke-width="9"/>
+    <g fill="#f7d77c" stroke-width="5">
+      <circle cx="264" cy="526" r="9"/>
+      <circle cx="664" cy="526" r="9"/>
+    </g>
+<path id="far-leg" fill="none" stroke="#d88a37" stroke-width="15"/>
+<path id="far-foot" fill="#e9a345" stroke-width="5"/>
+<g id="bird">
+    <!-- Tail and plump body -->
+    <path d="m311 265-74-41 29 65 63 24" fill="#e2ebe6" stroke-width="6"/>
+    <path d="M468 196c-33 23-58 26-108 24-53-3-84 21-81 62 3 48 60 72 116 65 51-6 89-42 100-85l26-67" fill="#fffdf2" stroke-width="6"/>
+    <!-- Long curved neck and head -->
+    <path d="M433 276c-6-42 15-63 32-88 13-20 6-43 11-67 6-30 29-44 55-38 30 7 45 36 31 61-9 17-29 21-43 24-2 38-8 81-29 108" fill="#fffdf2" stroke-width="6"/>
+    <!-- Wing -->
+    <path d="M315 270c32-34 82-30 121 7-29 41-78 41-108 17" fill="#e1eae5" stroke-width="5"/>
+    <path d="m337 278 55 14m-44-28 53 18" fill="none" stroke="#a8c1bc" stroke-width="4"/>
+    <!-- Beak and throat pouch -->
+    <path d="m546 128 207 28c-38 49-136 67-205 9l-13-23" fill="#f4bc61" stroke-width="6"/>
+    <path d="m548 123 217 34-218-6" fill="#f49a39" stroke-width="6"/>
+    <path d="M563 162q67 35 130 5" fill="none" stroke="#df923c" stroke-width="3"/>
+    <circle cx="528" cy="116" r="7" fill="#263f49" stroke="none"/>
+    <circle cx="530" cy="114" r="2" fill="white" stroke="none"/>
+    <path d="M513 98q10-7 19-2" fill="none" stroke-width="4"/>
+    <path d="m484 91-13-14m23 10-4-18" fill="none" stroke-width="5"/>
+    <!-- Jaunty scarf -->
+    <path d="m464 196 52 18-8 22-54-20Z" fill="#e76c53" stroke-width="5"/>
+    <path id="scarf" d="m460 205-64-24 12 26-23 10 71 4" fill="#e76c53" stroke-width="5"/>
+    <!-- Wing reaching the handlebar -->
+    <path d="M454 251q44 5 68 33l78-21" fill="none" stroke-width="24"/>
+    <path d="M454 251q44 5 68 33l78-21" fill="none" stroke="#fffdf2" stroke-width="14"/>
+</g>
+<path id="near-outline" fill="none" stroke-width="19"/>
+<path id="near-leg" fill="none" stroke="#eeaa49" stroke-width="11"/>
+<path id="near-foot" fill="#f3ae49" stroke-width="5"/>
+</g>
+  <!-- A little sense of speed -->
+  <g fill="none" stroke="#92b8b0" stroke-width="5" stroke-linecap="round">
+    <path d="M130 330h72m-96 24h59m-48 24h83"/>
+  </g>
+</svg>
+</div><footer><button id="toggle" type="button" aria-pressed="false">暂停骑行</button><label for="speed">骑行速度 <input id="speed" type="range" min="0.4" max="2" step="0.1" value="1"><output id="speed-value" for="speed">1.0×</output></label><p>让海风带走一点忙碌。</p></footer></main>
+<script>
+const el=id=>document.getElementById(id);
+let running=!matchMedia('(prefers-reduced-motion: reduce)').matches,phase=0,last=0;
+const speed=el('speed');
+function sync(){el('toggle').textContent=running?'暂停骑行':'继续骑行';el('toggle').setAttribute('aria-pressed',String(!running));}
+el('toggle').addEventListener('click',()=>{running=!running;sync()});
+speed.addEventListener('input',()=>{el('speed-value').textContent=Number(speed.value).toFixed(1)+'×'});
+function leg(prefix,x,y,hipX,hipY,bend){
+const dx=x-hipX,dy=y-hipY,dist=Math.hypot(dx,dy),length=128;
+const offset=Math.sqrt(Math.max(0,length*length-dist*dist/4));
+const kx=(hipX+x)/2+bend*dy/dist*offset,ky=(hipY+y)/2-bend*dx/dist*offset;
+const d=`M${hipX} ${hipY} L${kx} ${ky} L${x} ${y-8}`;
+el(prefix+'-leg').setAttribute('d',d);
+if(prefix==='near')el('near-outline').setAttribute('d',d);
+el(prefix+'-foot').setAttribute('d',`M${x-6} ${y-16} L${x-12} ${y-2} L${x+28} ${y-2} L${x+15} ${y-12} L${x+5} ${y-10} Z`);
+}
+function draw(){
+const a=phase*Math.PI*2,bob=Math.sin(a*2)*2.2;
+const x=449+49*Math.cos(a),y=526+49*Math.sin(a),fx=898-x,fy=1052-y;
+for(const [id,cx] of [['rear-spokes',264],['front-spokes',664]])el(id).setAttribute('transform',`rotate(${phase*360*1.65} ${cx} 526)`);
+el('cranks').setAttribute('d',`M${fx} ${fy} L${x} ${y}`);
+el('pedals').setAttribute('d',`M${x-15} ${y}h35 M${fx-15} ${fy}h35`);
+leg('far',fx,fy,398,325+bob,1);leg('near',x,y,391,334+bob,-1);
+el('bird').setAttribute('transform',`translate(0 ${bob})`);
+el('scarf').setAttribute('transform',`rotate(${Math.sin(a*2)*4} 460 205)`);
+el('road').setAttribute('transform',`translate(${-((phase*180)%180)} 0)`);
+el('clouds').setAttribute('transform',`translate(${ -((phase*7+250)%1200)+250} 0)`);
+}
+function frame(now){if(last&&running)phase+=Math.min((now-last)/1000,.05)*Number(speed.value)*.7;last=now;draw();requestAnimationFrame(frame)}
+sync();draw();requestAnimationFrame(frame);
+</script></body></html>

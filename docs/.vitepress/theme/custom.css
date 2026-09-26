@@ -139,6 +139,12 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPNavBarSocialLinks::before { display: none !important; }
 .VPFlyout .menu .VPMenu { border-radius: 18px; border-color: var(--coast-line); background: var(--coast-card); box-shadow: var(--coast-shadow); }
 .VPNavScreen { background: var(--coast-page); }
+/* The gallery adds a sixth destination; use the existing menu before labels collide. */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .VPNavBarMenu, .VPNavBarExtra, .VPNavBarSocialLinks { display: none !important; }
+  .VPNavBarHamburger { display: flex !important; }
+  .VPNavScreen { display: block !important; }
+}
 .VPLocalNav { border-bottom-color: var(--coast-line); }
 
 /* 侧边知识地图与页内目录 */

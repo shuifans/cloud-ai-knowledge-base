@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useRoute } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 
 const route = useRoute()
+const { frontmatter } = useData()
 const progress = ref(0)
 let frameId = 0
 
-const isDocument = computed(() => route.path !== '/')
+const isDocument = computed(() => !['home', 'page'].includes(frontmatter.value.layout) && frontmatter.value.readingProgress !== false)
 
 function updateProgress() {
   frameId = 0

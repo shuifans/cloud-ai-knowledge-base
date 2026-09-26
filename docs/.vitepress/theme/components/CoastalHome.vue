@@ -36,7 +36,7 @@ function openSearch() {
         <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a href="#task-start">按任务开始</a></nav>
         <p class="hero-footnote">公开资料为起点 · 工程实践为方向 · 持续校验</p>
       </div>
-      <PelicanRide />
+      <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
     </section>
 
     <section id="knowledge-map" class="knowledge-section" aria-labelledby="knowledge-title">
@@ -82,6 +82,9 @@ function openSearch() {
 .eyebrow { margin: 0 0 14px; font-size: 10px; line-height: 1.6; font-weight: 500; letter-spacing: .18em; color: var(--coast-muted); }
 .coastal-hero { display: grid; grid-template-columns: .88fr 1.12fr; gap: 46px; align-items: center; padding: 40px 0 42px; }
 .hero-copy { padding: 8px 0; }
+.hero-pelican { min-width: 0; }
+.pelican-gallery-link { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--coast-accent) !important; font-size: 12px; min-height: 44px; margin-top: 6px; }
+.pelican-gallery-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .coastal-home h1 { font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; letter-spacing: .025em; line-height: 1.3; margin: 22px 0 0; }
 h1 span { color: var(--coast-accent); }
 .hero-tagline { font-size: 21px; font-weight: 500; letter-spacing: .08em; margin: 22px 0 14px; }

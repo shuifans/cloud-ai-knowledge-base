@@ -1,5 +1,6 @@
 // Editorial summaries describe the existing content; verification dates remain in each page.
 const entries = {
+  'playground/pelican/': ['用同一条提示词，浏览不同模型与 reasoning effort 的鹈鹕骑车 SVG 动画。', '对模型绘图与动画编程感兴趣的读者', '无需前置知识'],
   'cloud/': ['先认识云的底层抽象，再连接资源、数据、平台与生产治理。', '建立云计算知识框架的技术读者', '了解应用、服务器与网络的基本概念'],
   'cloud/foundation/': ['从虚拟化、资源池和软件定义网络，理解云服务如何成立。', '希望理解 IaaS 底层的工程师', 'Linux、进程与基本网络知识'],
   'cloud/infra/': ['围绕算力、数据和流量，建立云资源的选型与组合方法。', '设计或运行云上系统的工程师', '虚拟机、磁盘与 IP 网络基础'],

@@ -1,0 +1,235 @@
+{
+  "status": "design-inventory-not-published",
+  "inspectedOn": "2026-09-26",
+  "prompt": "创建一个HTML，内容是SVG绘制一个鹈鹕骑自行车的2D动画。",
+  "promptVersion": "v1",
+  "totalResults": 13,
+  "totalModels": 9,
+  "results": [
+    {
+      "sourceFilename": "pelican-bicycle-deepseek-v4.1-flash-max.html",
+      "modelId": "deepseek-v4.1-flash",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 19524,
+      "sha256": "9f550ed09c96faf4d95c002fc0d56bea01c0bcb5f1c8039ee93286dd042037f7",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": true,
+      "hasRequestAnimationFrame": false,
+      "svgViewBoxes": [
+        "0 0 900 500"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-glm-5.3-flash-max.html",
+      "modelId": "glm-5.3-flash",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 9621,
+      "sha256": "52c50afac1dee01b357f83e5140cb66453be37c3478a13d53be5a84b2d6ef27d",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 800 500"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-glm-5.3-max.html",
+      "modelId": "glm-5.3",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 16459,
+      "sha256": "39a6bc20f532dbf68eb1ab28d6fb9fd532efbca138ce80aa342e620be5f1019d",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": true,
+      "hasSmil": true,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 900 520"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-astra-medium.html",
+      "modelId": "gpt6-astra",
+      "reasoningEffort": "medium",
+      "effortSource": "filename",
+      "bytes": 8552,
+      "sha256": "ffef61d215ca4a4a2e6b56a5404cadb119d6977cb35f61759b74086f2ffa0344",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 900 760"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-astra-xhigh.html",
+      "modelId": "gpt6-astra",
+      "reasoningEffort": "xhigh",
+      "effortSource": "filename",
+      "bytes": 24664,
+      "sha256": "65a84c78e0f37b903aa235a5383a27dbb76431ebac18f8cb1ce1b51796af6c5b",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 24 24",
+        "0 0 24 24",
+        "0 25 1000 750",
+        "0 0 24 24",
+        "0 0 24 24"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-luna-max.html",
+      "modelId": "gpt6-luna",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 14335,
+      "sha256": "3c55fa56ad8e4436703fa2cc6c95e50b2b4018ab8d1d713007e1183eb41d9524",
+      "testedAt": null,
+      "hasScript": false,
+      "hasCssKeyframes": true,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": false,
+      "svgViewBoxes": [
+        "0 0 1200 760"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-sol-high.html",
+      "modelId": "gpt6-sol",
+      "reasoningEffort": "high",
+      "effortSource": "filename",
+      "bytes": 17554,
+      "sha256": "142faf5016358c4544903e13538bc1c082db225cf8e8cfc2d7d881094f781c9c",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 1200 680"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-sol-max.html",
+      "modelId": "gpt6-sol",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 20395,
+      "sha256": "cdd292d46f53b95c4a7542a5584ce2654693a619d01664104cf52339a43320c1",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 1200 675"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-sol-medium.html",
+      "modelId": "gpt6-sol",
+      "reasoningEffort": "medium",
+      "effortSource": "filename",
+      "bytes": 9469,
+      "sha256": "6444aa72cf8e4aa2e589dc7d1b172cd89c536acf206791289995dda25e9f937a",
+      "testedAt": null,
+      "hasScript": false,
+      "hasCssKeyframes": true,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": false,
+      "svgViewBoxes": [
+        "0 0 1200 800"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-gpt6-sol-xhigh.html",
+      "modelId": "gpt6-sol",
+      "reasoningEffort": "xhigh",
+      "effortSource": "filename",
+      "bytes": 14779,
+      "sha256": "8bc3706476b2ffe12af18c2d8cddf8fed1f782e94703c8195d3428ef7431f269",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 1200 800"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-kimi-k3-max.html",
+      "modelId": "kimi-k3",
+      "reasoningEffort": "max",
+      "effortSource": "filename",
+      "bytes": 10709,
+      "sha256": "417d62905954723a12f25d522ab1b522522580aa3a2786050ba4d6a409ad7332",
+      "testedAt": null,
+      "hasScript": false,
+      "hasCssKeyframes": false,
+      "hasSmil": true,
+      "hasRequestAnimationFrame": false,
+      "svgViewBoxes": [
+        "0 0 800 600"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-qwen3.8-flash-xhigh.html",
+      "modelId": "qwen3.8-flash",
+      "reasoningEffort": "xhigh",
+      "effortSource": "filename",
+      "bytes": 20098,
+      "sha256": "627b48a69677dbfc5200c2f0122dacc89f137802fe296d58c9918a83489fbc64",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": false,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 960 540"
+      ],
+      "externalSrcOrHref": []
+    },
+    {
+      "sourceFilename": "pelican-bicycle-qwen3.8-max-xhigh.html",
+      "modelId": "qwen3.8-max",
+      "reasoningEffort": "xhigh",
+      "effortSource": "filename",
+      "bytes": 18387,
+      "sha256": "29578df5a61348f3ec95ca9f21609ed9ef8fe13746fbdd56dd1fa78bc576ceb6",
+      "testedAt": null,
+      "hasScript": true,
+      "hasCssKeyframes": true,
+      "hasSmil": false,
+      "hasRequestAnimationFrame": true,
+      "svgViewBoxes": [
+        "0 0 800 500"
+      ],
+      "externalSrcOrHref": []
+    }
+  ]
+}

@@ -78,7 +78,9 @@ test('real site config exposes every hub and keeps inference articles inside the
   for (const page of pages) {
     const path = `/${pageKey(page)}`
     assert.ok(findNode(nodes,path), `Missing navigation: ${page}`)
-    if (page.endsWith('index.md')) assert.ok(overviewChildren(sidebar,path).length, `Empty hub: ${page}`)
+    // Standalone galleries are navigable pages, not article-directory hubs.
+    const standalone = /^layout: page$/m.test(readFileSync(`docs/${page}`, 'utf8'))
+    if (page.endsWith('index.md') && !standalone) assert.ok(overviewChildren(sidebar,path).length, `Empty hub: ${page}`)
   }
   const inference = findNode(nodes,'/ai/infra/inference/')
   assert.ok(inference.items.some(item=>item.link === '/ai/infra/inference/gpu-sizing'))

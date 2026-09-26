@@ -125,6 +125,7 @@ export default defineConfig({
         ],
       },
       { text: '编年史', link: '/chronicle/' },
+      { text: '鹈鹕测试', link: '/playground/pelican/' },
       { text: '更新记录', link: '/updates' },
       { text: '关于', link: '/about' },
     ],
