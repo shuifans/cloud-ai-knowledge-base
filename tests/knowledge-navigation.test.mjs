@@ -77,9 +77,15 @@ test('real site config exposes every hub and keeps inference articles inside the
   const pages = readdirSync('docs', {recursive:true}).filter(p=>p.endsWith('.md') && !p.startsWith('.vitepress') && p !== 'index.md')
   for (const page of pages) {
     const path = `/${pageKey(page)}`
+    const source = readFileSync(`docs/${page}`, 'utf8')
+    const redirect = source.match(/^redirect:\s*(\S+)/m)?.[1]
+    if (redirect) {
+      assert.ok(findNode(nodes, redirect.split('#')[0]), `Missing redirect destination: ${page}`)
+      continue
+    }
     assert.ok(findNode(nodes,path), `Missing navigation: ${page}`)
     // Standalone galleries are navigable pages, not article-directory hubs.
-    const standalone = /^layout: page$/m.test(readFileSync(`docs/${page}`, 'utf8'))
+    const standalone = /^layout: page$/m.test(source)
     if (page.endsWith('index.md') && !standalone) assert.ok(overviewChildren(sidebar,path).length, `Empty hub: ${page}`)
   }
   const inference = findNode(nodes,'/ai/infra/inference/')

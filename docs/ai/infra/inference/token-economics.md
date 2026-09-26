@@ -149,6 +149,6 @@ DeepSeek 峰时为周一至周五 UTC 01:00–04:00、06:00–10:00（排除中�
 - [DeepSeek Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing/)
 - 其他取价入口（需另选定地区与档位）：[百炼](https://help.aliyun.com/zh/model-studio/model-pricing) · [火山方舟](https://www.volcengine.com/product/ark) · [Bedrock](https://aws.amazon.com/bedrock/pricing/) · [Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/pricing)
 - 原理：[NVIDIA 推理优化](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/) · [Chinchilla](https://arxiv.org/abs/2203.15556)
-- 站内相关：[GPU 选型](/ai/infra/inference/gpu-sizing) · [推理服务](/ai/infra/inference/llm-inference) · [应用评测](/ai/application/evaluation) · [核验与更新记录](/updates)
+- 站内相关：[GPU 选型](/ai/infra/inference/gpu-sizing) · [推理服务](/ai/infra/inference/llm-inference) · [应用评测](/ai/application/evaluation) · [核验与更新记录](/about#updates)
 
 </Refs>

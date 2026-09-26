@@ -13,7 +13,7 @@ const modelSearch = ref('')
 const visibleIds = ref(new Set<string>())
 const pageVisible = ref(false)
 const detail = ref<Result | null>(null)
-const fitWindow = ref(true)
+const fitWindow = ref(false)
 const announcement = ref('')
 const copyLabel = ref('复制提示词')
 const downloadBusy = ref(false)
@@ -73,7 +73,7 @@ function dismissMenu(event: Event) {
 function onVisibility() { pageVisible.value = !document.hidden }
 async function openDetail(result: Result, event?: Event) {
   detail.value = result
-  fitWindow.value = true
+  fitWindow.value = false
   if (!dialog.value?.open) {
     returnFocus = event?.currentTarget instanceof HTMLElement ? event.currentTarget : document.activeElement as HTMLElement
     await nextTick()
@@ -285,6 +285,7 @@ summary::-webkit-details-marker { display: none; }
 .card-preview { position: relative; overflow: hidden; border-radius: 9px; aspect-ratio: 16 / 10; background: var(--coast-wash); }
 .card-animation { position: absolute; inset: 0; }
 .card-preview :deep(.preview-message) { z-index: 2; }
+.card-preview :deep(.preview-message[role='status']) { pointer-events: none; }
 .cover-button { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; }
 .cover-button:focus-visible { outline-offset: -4px; }
 .cover-button img { display: block; width: 100%; height: 100%; object-fit: contain; }
