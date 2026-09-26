@@ -209,6 +209,14 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 :is(.mermaid, .zoom-stage) .coast-node-warm .nodeLabel { fill: var(--coast-note-ink) !important; color: var(--coast-note-ink) !important; }
 :is(.mermaid, .zoom-stage) .coast-node-sea > path { fill: var(--coast-node) !important; stroke: var(--coast-node-border) !important; }
 .vp-doc img { display: block; max-width: min(100%, 760px); margin: 0 auto; cursor: zoom-in; border-radius: 12px; }
+/* Keep inline previews within half the viewport; the zoom dialog uses its own sizing. */
+.VPDoc .vp-doc img, .VPDoc .vp-doc .mermaid svg {
+  width: auto;
+  height: auto;
+  max-height: 50vh;
+  max-height: 50dvh;
+  object-fit: contain;
+}
 .vp-doc .mermaid svg { cursor: zoom-in; }
 .vp-doc img:focus-visible, .vp-doc .mermaid svg:focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
 body.zoom-lock { overflow: hidden; }
