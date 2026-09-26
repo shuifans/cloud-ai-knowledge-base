@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { withBase } from 'vitepress'
 import { fetchOriginal, previewDocument } from '../pelican.mjs'
 
-const props = defineProps<{ source: string; title: string; fit?: boolean; viewport?: { width: number; height: number } }>()
+const props = defineProps<{ source: string; title: string; fit?: boolean; passive?: boolean; viewport?: { width: number; height: number } }>()
 const emit = defineEmits<{ ready: []; error: [] }>()
 const host = ref<HTMLElement>()
 const srcdoc = ref('')
@@ -49,7 +49,7 @@ onBeforeUnmount(() => { ++generation; request?.abort(); clearTimeout(timeout); r
 
 <template>
   <div ref="host" class="pelican-preview" :class="{ 'fit-window': fit }" :aria-busy="loading">
-    <iframe v-if="srcdoc" :key="source" :srcdoc="srcdoc" :title="title" sandbox="allow-scripts" referrerpolicy="no-referrer" :style="fit ? undefined : frameStyle" @load="ready" @error="fail"></iframe>
+    <iframe v-if="srcdoc" :key="source" :srcdoc="srcdoc" :title="title" :tabindex="passive ? -1 : undefined" :aria-hidden="passive ? true : undefined" sandbox="allow-scripts" referrerpolicy="no-referrer" :style="fit ? undefined : frameStyle" @load="ready" @error="fail"></iframe>
     <div v-if="loading" class="preview-message" role="status">正在打开作品…</div>
     <div v-if="failed" class="preview-message" role="alert"><span>预览未能加载</span><button type="button" @click="load">重新尝试</button></div>
   </div>

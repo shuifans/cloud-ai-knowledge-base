@@ -10,10 +10,10 @@ const models = ref<string[]>([])
 const efforts = ref<string[]>([])
 const sort = ref('model')
 const modelSearch = ref('')
-const activeId = ref<string | null>(null)
+const visibleIds = ref(new Set<string>())
+const pageVisible = ref(false)
 const detail = ref<Result | null>(null)
-const detailPlaying = ref(false)
-const fitWindow = ref(false)
+const fitWindow = ref(true)
 const announcement = ref('')
 const copyLabel = ref('复制提示词')
 const downloadBusy = ref(false)
@@ -39,9 +39,8 @@ const modelCount = (id: string) => filterResults(catalog.results, { models: [id]
 const effortCount = (effort: string) => filterResults(catalog.results, { models: models.value, efforts: [effort] }).length
 const toggle = (values: string[], value: string) => values.includes(value) ? values.filter(item => item !== value) : [...values, value]
 
-function stopPreviews() { activeId.value = null; detailPlaying.value = false }
+function isCardPlaying(id: string) { return pageVisible.value && !detail.value && visibleIds.value.has(id) }
 function applyFilters(next: { models?: string[]; efforts?: string[]; sort?: string }) {
-  stopPreviews()
   if (next.models) models.value = next.models
   if (next.efforts) efforts.value = next.efforts
   if (next.sort) sort.value = next.sort
@@ -50,7 +49,6 @@ function applyFilters(next: { models?: string[]; efforts?: string[]; sort?: stri
   nextTick(observeCards)
 }
 function restoreFilters() {
-  stopPreviews()
   dialog.value?.close()
   const state = readFilters(window.location.search, catalog.results)
   models.value = state.models
@@ -61,9 +59,9 @@ function restoreFilters() {
 function clearFilters() { applyFilters({ models: [], efforts: [], sort: 'model' }); modelSearch.value = '' }
 function observeCards() {
   visibility?.disconnect()
+  visibleIds.value = new Set()
   grid.value?.querySelectorAll('[data-result-id]').forEach(card => visibility?.observe(card))
 }
-function play(result: Result) { activeId.value = activeId.value === result.id ? null : result.id }
 function dismissMenu(event: Event) {
   if (event.type === 'keydown' && (event as KeyboardEvent).key !== 'Escape') return
   if (event.type === 'pointerdown' && modelMenu.value?.contains(event.target as Node)) return
@@ -72,12 +70,10 @@ function dismissMenu(event: Event) {
     if (event.type === 'keydown') modelMenu.value.querySelector('summary')?.focus()
   }
 }
-function onVisibility() { if (document.hidden) stopPreviews() }
+function onVisibility() { pageVisible.value = !document.hidden }
 async function openDetail(result: Result, event?: Event) {
-  activeId.value = null
   detail.value = result
-  detailPlaying.value = true
-  fitWindow.value = false
+  fitWindow.value = true
   if (!dialog.value?.open) {
     returnFocus = event?.currentTarget instanceof HTMLElement ? event.currentTarget : document.activeElement as HTMLElement
     await nextTick()
@@ -89,7 +85,6 @@ async function openDetail(result: Result, event?: Event) {
 }
 function closeDetail() { dialog.value?.close() }
 function onClose() {
-  detailPlaying.value = false
   detail.value = null
   downloadRequest?.abort()
   if (previousOverflow !== null) document.body.style.overflow = previousOverflow
@@ -98,7 +93,7 @@ function onClose() {
 }
 function stepDetail(step: number) {
   const next = shown.value[detailIndex.value + step]
-  if (next) { detail.value = next; detailPlaying.value = true }
+  if (next) detail.value = next
 }
 function sameModel() {
   if (!detail.value) return
@@ -138,8 +133,15 @@ async function downloadOriginal() {
 }
 
 onMounted(() => {
+  onVisibility()
   visibility = new IntersectionObserver(entries => {
-    for (const entry of entries) if (!entry.isIntersecting && activeId.value === (entry.target as HTMLElement).dataset.resultId) activeId.value = null
+    const next = new Set(visibleIds.value)
+    for (const entry of entries) {
+      const id = (entry.target as HTMLElement).dataset.resultId!
+      if (entry.isIntersecting) next.add(id)
+      else next.delete(id)
+    }
+    visibleIds.value = next
   }, { threshold: 0 })
   restoreFilters()
   document.addEventListener('visibilitychange', onVisibility)
@@ -201,23 +203,22 @@ onBeforeUnmount(() => {
     <div v-if="shown.length" ref="grid" class="pelican-grid">
       <article v-for="(result, index) in shown" :key="result.id" class="pelican-card" :data-result-id="result.id" :aria-label="`${result.modelLabel} · ${result.reasoningEffort}`">
         <div class="card-preview">
-          <PelicanPreview v-if="activeId === result.id" :source="result.artifactPath" :viewport="result.previewViewport" :title="`${result.modelLabel} ${result.reasoningEffort} 的鹈鹕骑车动画`" />
-          <button v-else class="cover-button" type="button" :aria-label="`放大查看 ${result.modelLabel} ${result.reasoningEffort}`" @click="openDetail(result, $event)"><img :src="withBase(result.thumbnailPath)" :alt="`${result.modelLabel} · ${result.reasoningEffort} 原始作品截图`" width="1280" height="800" :loading="index < 3 ? 'eager' : 'lazy'" decoding="async" /></button>
-          <button type="button" class="play-button" :aria-label="`${activeId === result.id ? '停止预览' : '播放'} ${result.modelLabel} ${result.reasoningEffort}`" :aria-pressed="activeId === result.id" @click="play(result)">{{ activeId === result.id ? '停止预览' : '播放动画' }}</button>
+          <PelicanPreview v-if="isCardPlaying(result.id)" class="card-animation" :source="result.artifactPath" :viewport="result.previewViewport" :title="`${result.modelLabel} ${result.reasoningEffort} 的鹈鹕骑车动画`" passive />
+          <button class="cover-button" type="button" :aria-label="`放大查看 ${result.modelLabel} ${result.reasoningEffort}`" @click="openDetail(result, $event)"><img v-if="!isCardPlaying(result.id)" :src="withBase(result.thumbnailPath)" :alt="`${result.modelLabel} · ${result.reasoningEffort} 原始作品截图`" width="1280" height="800" :loading="index < 3 ? 'eager' : 'lazy'" decoding="async" /></button>
         </div>
         <div class="card-caption"><div><h2>{{ result.modelLabel }}</h2><span class="effort-tag">{{ result.reasoningEffort }}</span></div><button type="button" :aria-label="`查看 ${result.modelLabel} ${result.reasoningEffort} 的详情`" @click="openDetail(result, $event)">放大查看 <span class="vpi-arrow-right" aria-hidden="true"></span></button></div>
       </article>
     </div>
     <section v-else class="empty-state"><h2>没有符合条件的作品</h2><p>试试其他模型或 effort，新的骑行作品也会持续加入。</p><button class="primary-button" type="button" @click="clearFilters">查看全部作品</button></section>
 
-    <footer class="collection-footer"><p>同一条提示词，各自的想象力。</p><p>模型与 effort 按收录文件标注；同名档位不代表相同计算预算。<br />最近收录 {{ lastImported }} <span>·</span> 封面来自原始作品，点击即可观看动画。</p></footer>
+    <footer class="collection-footer"><p>同一条提示词，各自的想象力。</p><p>模型与 effort 按收录文件标注；同名档位不代表相同计算预算。<br />最近收录 {{ lastImported }} <span>·</span> 动画自动播放，点击作品即可放大查看。</p></footer>
     <p v-if="announcement" class="gallery-notice" role="status">{{ announcement }}</p>
 
     <dialog ref="dialog" class="pelican-dialog" aria-labelledby="detail-title" @close="onClose" @click="($event.target === dialog) && closeDetail()">
       <div v-if="detail" class="detail-content">
         <header class="detail-heading"><div><p class="eyebrow">PELICAN LAB <span>·</span> {{ detailIndex + 1 }} / {{ shown.length }}</p><h2 id="detail-title">{{ detail.modelLabel }} <span class="effort-tag">{{ detail.reasoningEffort }}</span></h2></div><button class="quiet-button" type="button" autofocus @click="closeDetail">关闭</button></header>
-        <div class="detail-stage"><PelicanPreview v-if="detailPlaying" :key="detail.id" :source="detail.artifactPath" :viewport="detail.previewViewport" :title="`${detail.modelLabel} ${detail.reasoningEffort} 完整原始作品`" :fit="fitWindow" /><button v-else class="detail-cover" type="button" aria-label="重新播放当前作品" @click="detailPlaying = true"><img :src="withBase(detail.thumbnailPath)" :alt="`${detail.modelLabel} 原始作品封面，点击重新播放`" width="1280" height="800" /></button></div>
-        <div class="detail-toolbar"><div><button class="primary-button" type="button" @click="detailPlaying = !detailPlaying">{{ detailPlaying ? '停止预览' : '重新播放' }}</button><button class="quiet-button" type="button" :aria-pressed="fitWindow" @click="fitWindow = !fitWindow">{{ fitWindow ? '恢复完整画面' : '适应窗口' }}</button></div><div><button class="quiet-button" type="button" :disabled="detailIndex <= 0" @click="stepDetail(-1)">上一个</button><button class="quiet-button" type="button" :disabled="detailIndex >= shown.length - 1" @click="stepDetail(1)">下一个</button></div></div>
+        <div class="detail-stage"><PelicanPreview v-if="pageVisible" :key="detail.id" :source="detail.artifactPath" :viewport="detail.previewViewport" :title="`${detail.modelLabel} ${detail.reasoningEffort} 完整原始作品`" :fit="fitWindow" /></div>
+        <div class="detail-toolbar"><div><button class="quiet-button" type="button" :aria-pressed="fitWindow" @click="fitWindow = !fitWindow">{{ fitWindow ? '恢复完整画面' : '适应窗口' }}</button></div><div><button class="quiet-button" type="button" :disabled="detailIndex <= 0" @click="stepDetail(-1)">上一个</button><button class="quiet-button" type="button" :disabled="detailIndex >= shown.length - 1" @click="stepDetail(1)">下一个</button></div></div>
         <div class="detail-info"><p>{{ catalog.prompt }}</p><div><span>{{ batchLabel(detail.batchId) }} <span>·</span> {{ detail.promptVersion }} <span>·</span> 收录于 {{ detail.importedAt.slice(0, 10) }}</span><div class="detail-actions"><button type="button" @click="copyPrompt">{{ copyLabel }}</button><button type="button" @click="sameModel">只看该模型</button><button type="button" :disabled="downloadBusy" @click="downloadOriginal">{{ downloadBusy ? '准备下载…' : '下载原始 HTML' }}</button></div></div></div>
       </div>
     </dialog>
@@ -282,10 +283,11 @@ summary::-webkit-details-marker { display: none; }
 .pelican-card { min-width: 0; padding: 7px; border-radius: 14px; border: 1px solid var(--coast-line); background: var(--coast-card); transition: border-color .18s; }
 .pelican-card:hover { border-color: var(--coast-accent); }
 .card-preview { position: relative; overflow: hidden; border-radius: 9px; aspect-ratio: 16 / 10; background: var(--coast-wash); }
-.cover-button { display: block; width: 100%; height: 100%; }
+.card-animation { position: absolute; inset: 0; }
+.card-preview :deep(.preview-message) { z-index: 2; }
+.cover-button { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; }
+.cover-button:focus-visible { outline-offset: -4px; }
 .cover-button img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.play-button { position: absolute; bottom: 12px; left: 12px; padding: 8px 14px; border: 1px solid #ffffff40; border-radius: 99px; font-size: 12px; color: #fffdf5; background: #29464af0; box-shadow: 0 2px 8px #0000000a; }
-.play-button:hover { background: #39796b; }
 .card-caption { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 12px 6px 5px; }
 .card-caption > div { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
 .card-caption h2 { font-size: 15px; line-height: 1.45; font-weight: 550; margin: 0; overflow-wrap: anywhere; }
@@ -308,8 +310,6 @@ summary::-webkit-details-marker { display: none; }
 .detail-heading h2 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0; font-size: 22px; font-weight: 550; line-height: 1.4; overflow-wrap: anywhere; }
 .detail-stage { background: var(--coast-wash); }
 .detail-stage :deep(.pelican-preview) { max-height: calc(100dvh - 260px); }
-.detail-cover { display: block; width: 100%; }
-.detail-cover img { display: block; width: 100%; height: auto; }
 .detail-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 22px; border-top: 1px solid var(--coast-line); }
 .detail-toolbar > div { display: flex; gap: 9px; }
 .detail-info { padding: 0 22px 20px; font-size: 12px; line-height: 1.8; color: var(--coast-muted); }
@@ -324,7 +324,7 @@ summary::-webkit-details-marker { display: none; }
   .pelican-gallery { padding: 26px 18px 36px; }.gallery-heading { padding: 0 2px 22px; }h1 { font-size: 32px; max-width: 12em; line-height: 1.45; margin-bottom: 12px; }.eyebrow { font-size: 10px; margin-bottom: 10px; }.heading-foot p { font-size: 12px; }.heading-foot p span { padding: 0 3px; }
   .prompt-bar { flex-wrap: wrap; gap: 8px 12px; padding: 14px 16px; }.prompt-bar .field-label { order: 0; }.prompt-bar p { order: 2; flex-basis: 100%; font-size: 14px; }.copy-button { order: 1; margin-left: auto; font-size: 12px; min-height: 36px; padding: 6px 11px; }
   .filter-bar { padding: 14px; gap: 15px; }.model-control { flex: 1; min-width: 0; }.model-menu { flex: 1; min-width: 0; }.model-menu summary { width: 100%; gap: 8px; }.model-options { left: -44px; }.effort-control { order: 3; flex-basis: 100%; }.effort-options { gap: 5px; }.effort-options button { padding: 8px 11px; font-size: 12px; min-height: 40px; }.sort-control select { font-size: 12px; padding-right: 6px; }.results-bar { flex-wrap: wrap; gap: 6px; font-size: 11px; padding: 13px 1px; }.results-bar > span { flex-basis: 100%; }
-  .pelican-grid { grid-template-columns: 1fr; gap: 16px; }.card-caption { padding: 10px 7px 4px; }.card-caption h2 { font-size: 16px; }.card-caption > button { min-height: 40px; font-size: 12px; }.play-button { min-height: 40px; }.collection-footer { display: block; margin-top: 28px; }.collection-footer p:last-child { text-align: left; margin-top: 9px; font-size: 11px; }
+  .pelican-grid { grid-template-columns: 1fr; gap: 16px; }.card-caption { padding: 10px 7px 4px; }.card-caption h2 { font-size: 16px; }.card-caption > button { min-height: 40px; font-size: 12px; }.collection-footer { display: block; margin-top: 28px; }.collection-footer p:last-child { text-align: left; margin-top: 9px; font-size: 11px; }
   .pelican-dialog { width: 100vw; max-height: 100dvh; height: 100dvh; border: 0; border-radius: 0; }.detail-heading { padding: 13px 16px; }.detail-heading h2 { font-size: 18px; gap: 8px; }.detail-toolbar { flex-wrap: wrap; padding: 13px 16px; gap: 10px; }.detail-toolbar > div { flex: 1; justify-content: space-between; }.detail-toolbar .quiet-button, .detail-toolbar .primary-button { padding: 8px 13px; min-height: 44px; }.detail-info { padding: 3px 16px 25px; }.detail-info > div { gap: 14px; }.detail-actions { width: 100%; gap: 16px; }.detail-actions button { min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { .pelican-card { transition: none; } }
