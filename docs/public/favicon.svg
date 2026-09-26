@@ -1,5 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#397e70"/>
-  <path d="M18 40c-4 0-7-3-7-7 0-3.6 2.6-6.6 6-7.2C18.3 20.4 23 16 29 16c5 0 9.2 3 10.8 7.3C44.5 23.6 48 27 48 31.5c0 4.7-3.8 8.5-8.5 8.5H18z" fill="#fffdf5"/>
-  <path d="M26 44l4 6 4-6M30 50v-6" stroke="#fffdf5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="pelican-title">
+  <title id="pelican-title">绿色围巾鹈鹕</title>
+  <style>.field{fill:#e5ede1}@media(prefers-color-scheme:dark){.field{fill:#507572}}</style>
+  <rect class="field" x="1" y="1" width="62" height="62" rx="16" fill="#e5ede1"/>
+  <!-- Portrait adapted from theme/assets/pelican-ride.svg. -->
+  <g transform="translate(-64 -13) scale(.142)" stroke="#243E49" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M586 283C537 294 518 246 475 256L489 275 470 286C517 271 535 314 586 304Z" fill="#368E8D" stroke-width="6"/>
+    <path d="M576 293C542 302 523 315 493 307L502 326 489 338C541 342 560 305 585 309Z" fill="#5AAE9F" stroke-width="6"/>
+    <path d="M574 177C559 198 558 227 574 254C595 289 581 318 546 343C516 367 505 416 514 459Q566 489 634 459C614 423 598 390 617 359C643 324 643 295 622 259C612 239 610 225 629 217C650 208 655 186 644 166C635 149 616 142 598 149L580 135 582 153 562 148Z" fill="#FFFEF5" stroke-width="6"/>
+    <path d="M586 222C576 246 610 269 596 302C583 335 555 346 536 372C522 397 522 429 533 450Q565 466 598 460C574 427 577 387 603 351C631 315 625 294 610 265C601 247 597 232 604 223Z" fill="#E0EBE5" stroke="none"/>
+    <path d="M623 205 865 221C831 251 759 295 702 285C659 278 638 251 623 225Z" fill="#EAA45B" stroke-width="6"/>
+    <path d="M642 224C667 258 711 274 751 266C788 259 821 241 839 230C799 264 749 286 710 278C678 272 656 252 642 224Z" fill="#F2BB76" stroke="none"/>
+    <path d="M628 189C677 185 786 199 872 216Q880 218 871 226C793 233 701 222 626 214Z" fill="#F7C452" stroke-width="6"/>
+    <path d="M647 199 847 217" stroke="#FFE296" stroke-width="4"/>
+    <circle cx="615" cy="181" r="12" fill="#F4D889" stroke="none"/>
+    <circle cx="617" cy="181" r="7" fill="#243E49" stroke="none"/>
+    <circle cx="619" cy="179" r="2" fill="#fff" stroke="none"/>
+    <path d="M601 162Q612 156 622 163" stroke-width="4"/>
+    <path d="M575 271Q590 282 623 273L628 290Q600 301 582 289Z" fill="#368E8D" stroke-width="6"/>
+  </g>
 </svg>

@@ -42,7 +42,7 @@ export default defineConfig({
   },
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg?v=pelican` }],
     ['meta', { name: 'theme-color', content: '#f1f3eb' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '云与 AI 知识体系' }],
@@ -79,7 +79,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: { light: '/logo.svg?v=pelican', dark: '/logo-dark.svg?v=pelican', alt: '鹈鹕' },
     siteTitle: '云与 AI 知识体系',
 
     search: {

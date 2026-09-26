@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="pelican-title">
   <title id="pelican-title">绿色围巾鹈鹕</title>
-  <rect class="field" x="1" y="1" width="62" height="62" rx="16" fill="#e5ede1"/>
+  <rect class="field" x="1" y="1" width="62" height="62" rx="16" fill="#507572"/>
   <!-- Portrait adapted from theme/assets/pelican-ride.svg. -->
   <g transform="translate(-64 -13) scale(.142)" stroke="#243E49" stroke-linecap="round" stroke-linejoin="round">
     <path d="M586 283C537 294 518 246 475 256L489 275 470 286C517 271 535 314 586 304Z" fill="#368E8D" stroke-width="6"/>

@@ -1,6 +1,7 @@
 /* 海风知识库：暖纸色与海盐绿，日夜共用同一套语义变量。 */
 :root {
   color-scheme: light;
+  --vp-nav-logo-height: 30px;
   --coast-page: #f1f3eb;
   --coast-card: #fffdf5;
   --coast-ink: #29464a;
@@ -262,7 +263,7 @@ body.zoom-lock { overflow: hidden; }
   .vp-doc th, .vp-doc td { padding: 10px; }
   .mermaid { padding: 14px 10px; }
   .VPNavBarTitle .title { font-size: 12px; letter-spacing: 0; }
-  .VPNavBarTitle .logo { height: 22px; margin-right: 7px; }
+  .VPNavBarTitle .logo { height: 26px; margin-right: 7px; }
 }
 @media (max-width: 767px) {
   :root .VPLocalSearchBox .shell { border: 0; border-radius: 0; padding: 14px; }
