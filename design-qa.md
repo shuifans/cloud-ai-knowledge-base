@@ -2,7 +2,18 @@
 
 final result: passed
 
-## 最新：完整画面与导航合并调整（2026-09-26）
+## 最新：补充 4 个鹈鹕测试作品（2026-09-30）
+
+final result: passed
+
+- 第二批新增 `gpt6.1-sol / medium、high、xhigh` 与 `gpt6-astra / high`，总数为 17 个作品、10 个模型。按最近收录排序，新增 4 个作品位于最前。
+- 4 个原始 HTML 与用户文件逐字节一致；真实 Chromium 截图生成 WebP 封面。参考视口宽 1280 px，medium 高 840 px，sol high / xhigh 高 1000 px，astra high 高 1050 px，原页面与底部控件完整保留。
+- 正式 base 构建预览逐个打开 4 个隔离 iframe，SVG、原页底部文字均正常；前后读取车轮变换确认四个动画实际运动。总览新增作品默认播放，详情默认完整画面。
+- 模型筛选得到 sol 的 3 个结果，叠加 high 得到 1 个，再选 astra 得到 2 个；刷新保留筛选。下载 sol high 原始 HTML，在宿主 Downloads 核对字节与 SHA-256 一致。
+- 桌面 1440 × 1000、手机 393 × 852 无横向溢出；手机 astra high 详情保留完整画面。浏览器无 error / warning。17 个原件与封面校验、22 项测试及正式 base 构建通过（15.28 秒），包括死链检查；既有 PromQL 与大 bundle 提示不变。
+- 验收截图：`design/pelican-lab/qa/second-batch-desktop.jpg`、`second-batch-mobile.png`。收录日期与未知测试时间分开，技术文章事实复核日期保持原记录。
+
+## 完整画面与导航合并调整（2026-09-26）
 
 final result: passed
 
