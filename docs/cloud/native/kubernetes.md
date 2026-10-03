@@ -679,4 +679,6 @@ K8s 约每四个月一个小版本，社区同时维护最近三个小版本（2
 
 - 站内相关：[微服务治理](/cloud/native/microservice) · [可观测体系](/cloud/native/observability) · [云原生导读](/cloud/native/) · [云上网络](/cloud/infra/network) · [云计算基座](/cloud/foundation/) · [AI 集群基础设施](/ai/infra/cluster) · [分布式训练](/ai/infra/training) · [LLM 推理部署](/ai/infra/inference/llm-inference) · [GPU 容量规划](/ai/infra/inference/gpu-sizing)
 
+- 应用工程入口：[容器镜像与打包](/software/delivery/containers-images) · [环境与 IaC](/software/delivery/environments-iac) · [发布与回滚](/software/delivery/release-rollback)
+
 </Refs>

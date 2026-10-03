@@ -711,4 +711,6 @@ flowchart TD
 
 站内相关：[大模型推理部署实战](/ai/infra/inference/llm-inference) · [智能体技术全景](/ai/agent/) · [多模态应用](/ai/application/multimodal) · [大模型应用评测](/ai/application/evaluation) · [大模型架构演进](/ai/models/llm)
 
+- 软件工程入口：[AI 应用工程](/software/specialized/ai-applications) · [应用身份与权限](/software/backend/authentication-authorization) · [隐私与数据生命周期](/software/security/privacy-lifecycle)
+
 </Refs>

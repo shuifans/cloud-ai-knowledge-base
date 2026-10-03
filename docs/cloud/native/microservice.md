@@ -609,6 +609,8 @@ flowchart TD
 - Istio Ambient 架构图：Istio 官方博客《Introducing Ambient Mesh》 → `istio-ambient-waypoint.png`
 - Database-per-service 示意图：Wikimedia Commons，[File:Microservice Databases.png](https://commons.wikimedia.org/wiki/File:Microservice_Databases.png)（CC BY-SA 4.0）→ `microservice-databases.png`
 
-站内相关：[Kubernetes 核心机制](/cloud/native/kubernetes) · [可观测性体系](/cloud/native/observability) · [云原生导读](/cloud/native/)
+站内相关：[Kubernetes 核心机制](/cloud/native/kubernetes) · [可观测性体系](/cloud/native/observability) · [云原生导读](/cloud/native/) · [应用项目与交付全景](/software/guide/software-project-overview) · [工程目录与配置边界](/software/toolchain/project-structure)
+
+- 应用设计入口：[单体与服务边界](/software/architecture/monolith-services) · [分布式部分失败](/software/architecture/distributed-failure) · [HTTP API 契约](/software/backend/http-api-contracts)
 
 </Refs>

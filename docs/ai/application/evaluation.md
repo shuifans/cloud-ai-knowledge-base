@@ -663,4 +663,6 @@ BrowseComp 一类"单题深挖"基准在 2025 年确立后迅速饱和并出现�
 
 站内相关：[企业级 RAG 架构设计](/ai/application/rag-architecture) · [大模型应用总览](/ai/application/) · [智能体技术全景](/ai/agent/) · [智能体框架对比](/ai/agent/frameworks) · [大语言模型](/ai/models/llm)
 
+- 软件工程入口：[AI 研发评测与成本](/software/ai-assisted/evaluation-cost) · [生成代码验证](/software/ai-assisted/generated-code-verification) · [AI 应用工程入口](/software/specialized/ai-applications)
+
 </Refs>

@@ -603,6 +603,6 @@ sequenceDiagram
 - tidb-architecture.png：TiDB 官方文档架构图（[文档页](https://docs.pingcap.com/tidb/stable/tidb-architecture/)，图片取自 pingcap/docs 仓库 media 目录）
 - hnsw.png：HNSW 分层结构示意，Wikimedia Commons [File:Hierarchical Navigable Small World (HNSW).png](https://commons.wikimedia.org/wiki/File:Hierarchical_Navigable_Small_World_(HNSW).png)
 
-站内相关：[OLAP 引擎](/cloud/data/olap) · [大数据体系](/cloud/data/bigdata) · [RAG 架构](/ai/application/rag-architecture) · [Kubernetes 核心机制](/cloud/native/kubernetes)
+站内相关：[OLAP 引擎](/cloud/data/olap) · [大数据体系](/cloud/data/bigdata) · [RAG 架构](/ai/application/rag-architecture) · [Kubernetes 核心机制](/cloud/native/kubernetes) · [应用中的接口与数据职责](/software/guide/software-project-overview) · [数据正确性的验收标准](/software/requirements/acceptance-criteria)
 
 </Refs>

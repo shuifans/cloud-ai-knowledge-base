@@ -1,0 +1,959 @@
+{
+  "schemaVersion": 1,
+  "completedOn": "2026-10-03",
+  "status": "complete",
+  "delivery": "local-review",
+  "executionMode": "并行作者写作、独立交叉全文审阅、根会话统一集成和验证",
+  "authorConfiguration": {
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh"
+  },
+  "counts": {
+    "newCompleteArticles": 109,
+    "newGuideArticles": 12,
+    "newProfessionalArticles": 97,
+    "newOverviewPages": 13,
+    "addedMarkdownPages": 122,
+    "totalGuideArticles": 16,
+    "totalProfessionalArticles": 105,
+    "professionalSubdomains": 17,
+    "totalCompleteArticles": 121,
+    "totalOverviewPages": 20,
+    "totalReferencePages": 3,
+    "totalMarkdownPages": 144,
+    "mermaidDiagrams": 122,
+    "outlines": 0,
+    "unfinishedTopics": 0
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "name": "导览与工程主线",
+      "status": "complete",
+      "totalCompleteArticles": 37,
+      "newCompleteArticlesThisRun": 25,
+      "topics": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8",
+        "G9",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16",
+        "F1",
+        "F3",
+        "F4",
+        "F5",
+        "T1",
+        "T3",
+        "T4",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "R1",
+        "R2",
+        "B2",
+        "DB1",
+        "Q2",
+        "Q7",
+        "DL1",
+        "DL6",
+        "AI1",
+        "AI4"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 2,
+      "name": "程序设计、算法与工具协作",
+      "status": "complete",
+      "totalCompleteArticles": 22,
+      "newCompleteArticlesThisRun": 22,
+      "topics": [
+        "F2",
+        "F6",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "T2",
+        "T5",
+        "T6",
+        "C5",
+        "C6",
+        "AI2",
+        "AI3",
+        "AI5",
+        "AI6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 3,
+      "name": "架构与应用工程",
+      "status": "complete",
+      "totalCompleteArticles": 26,
+      "newCompleteArticlesThisRun": 26,
+      "topics": [
+        "R3",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "B1",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "DB2",
+        "DB3",
+        "DB4",
+        "DB5",
+        "DB6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 4,
+      "name": "质量、交付与生产治理",
+      "status": "complete",
+      "totalCompleteArticles": 20,
+      "newCompleteArticlesThisRun": 20,
+      "topics": [
+        "Q1",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "DL2",
+        "DL3",
+        "DL4",
+        "DL5",
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 5,
+      "name": "管理、维护与专项开发",
+      "status": "complete",
+      "totalCompleteArticles": 16,
+      "newCompleteArticlesThisRun": 16,
+      "topics": [
+        "R4",
+        "R5",
+        "R6",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "X1",
+        "X2",
+        "X3",
+        "X4",
+        "X5",
+        "X6",
+        "X7",
+        "X8"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    }
+  ],
+  "integration": [
+    "144 页注册到导航及阅读摘要，真实子域均可进入总览",
+    "16 章导览和各专业子域维护阅读顺序与重要前置知识",
+    "术语、任务场景及技术工具三个索引链接负责核心机制的主文",
+    "首页任务、跨领域入口、桌面和手机菜单及搜索范围同步",
+    "既有云与 AI 主文增加互链，不刷新其技术事实复核日期"
+  ],
+  "reuse": [
+    "cloud/data/database",
+    "cloud/data/bigdata",
+    "cloud/data/olap",
+    "cloud/native/microservice",
+    "cloud/native/kubernetes",
+    "cloud/native/observability",
+    "cloud/architecture/reliability-dr",
+    "cloud/architecture/security-governance",
+    "cloud/architecture/finops",
+    "ai/application/rag-architecture",
+    "ai/application/evaluation",
+    "ai/agent/security",
+    "ai/agent/frameworks",
+    "ai/infra/inference/token-economics"
+  ],
+  "contentReview": {
+    "newFullArticlesIndependentlyRead": 109,
+    "newArticleReviewGroups": [
+      [
+        "G5–G16",
+        "AI1–AI6"
+      ],
+      [
+        "F2/F4/F5/F6",
+        "P1–P6",
+        "A1–A5",
+        "T2/T4/T5/T6"
+      ],
+      [
+        "C2/C3/C5/C6",
+        "R3–R6",
+        "D1–D7",
+        "M1–M5"
+      ],
+      [
+        "W1–W7",
+        "B1–B7",
+        "DB1–DB6"
+      ],
+      [
+        "Q1–Q7",
+        "DL1–DL6",
+        "O1–O5"
+      ],
+      [
+        "S1–S6",
+        "X1–X8"
+      ]
+    ],
+    "overviewPagesIndependentlyRead": 19,
+    "referenceLeavesIndependentlyRead": 3,
+    "correctedFindings": [
+      "TypeScript 数值类型与整数运行约束",
+      "技术债包含非刻意形成的设计或实现负担",
+      "CORS、预检、自定义请求头与 CSRF 的适用边界",
+      "EXPLAIN ANALYZE 与统计收集 ANALYZE 的区别",
+      "无锁读取屏障与行锁并发测试的同步点",
+      "AI 任务成本使用互斥类别，返工不重复计费",
+      "普通备份与独立密钥恢复材料的区别",
+      "MQTT 入站与出站 QoS 的分别处理",
+      "参考资料标题、Markdown 加粗与官方引用入口"
+    ]
+  },
+  "checks": [
+    {
+      "check": "node --test tests/*.test.mjs",
+      "passed": true,
+      "tests": 23,
+      "failures": 0
+    },
+    {
+      "check": "node scripts/check-pelicans.mjs",
+      "passed": true,
+      "originalWorks": 17
+    },
+    {
+      "check": "vitepress build docs",
+      "passed": true,
+      "deadLinksChecked": true,
+      "note": "系统 PATH 未配置 npm，使用现有内置 Node 完整执行 docs:build 中的资源校验与 VitePress 构建；未安装或更换依赖。最后两篇范围修订后重新构建。"
+    },
+    {
+      "check": "全文结构、题名、引用和站内目标",
+      "passed": true,
+      "articles": 121,
+      "missing": 0,
+      "structuralIssues": 0,
+      "brokenInternalTargets": 0
+    },
+    {
+      "check": "浏览器实际 Mermaid 渲染",
+      "passed": true,
+      "articles": 121,
+      "diagrams": 122,
+      "errors": 0,
+      "width": 1280,
+      "note": "逐篇导航并滚动触发按需渲染，检查 SVG 存在、错误状态及图卡容纳宽度；手机点击放大和关闭通过。"
+    },
+    {
+      "check": "手机全量页面布局",
+      "passed": true,
+      "pages": 144,
+      "width": 393,
+      "height": 852,
+      "horizontalOverflowPages": 0,
+      "note": "每页实际导航核对标题、文档宽度及仅一份自动导读。"
+    },
+    {
+      "check": "桌面及手机交互",
+      "passed": true,
+      "viewports": [
+        [
+          1280,
+          720
+        ],
+        [
+          393,
+          852
+        ],
+        [
+          320,
+          740
+        ]
+      ],
+      "observations": [
+        "首页四个领域入口桌面两列、手机一列",
+        "软件研发菜单七个快捷入口，手机侧栏可进入专项子域",
+        "幂等、SBOM、验收搜索可检索新正文与索引，领域筛选和同篇章节聚合有效",
+        "320px 搜索弹窗宽 300px，筛选按钮高 44px 并正常换行",
+        "手机图表放大可关闭返回正文",
+        "最后构建中的密钥备份与 MQTT 修订已重新加载核对"
+      ]
+    },
+    {
+      "check": "浏览器错误日志",
+      "passed": true,
+      "errors": 0
+    },
+    {
+      "check": "git diff --check",
+      "passed": true
+    },
+    {
+      "check": "最终完成状态与源码快照一致",
+      "passed": true,
+      "publishedTopics": 121,
+      "nextBatch": null,
+      "contentUnchangedSinceFinalBuild": true
+    }
+  ],
+  "buildWarnings": [
+    "PromQL 高亮回退为文本",
+    "部分压缩分包超过 500 kB；构建成功"
+  ],
+  "evidenceLimits": [
+    "案例和代码是未执行的教学示意；没有开发、运行或验收真实报名应用，也没有实测模型、性能和生产故障。",
+    "各新文章列出实际来源、访问日期及有限复核范围；交叉审阅针对疑点另查一手资料，未声称二次打开所有参考链接。",
+    "IEEE 主入口访问受限时使用官方完整 PDF；ISO 25010 仅使用可公开阅读的摘要；ACM 主正文受限及替代可读原则在主文说明。",
+    "专项开发为工程模型与额外约束入口，不代表完成八个平台的实操项目。",
+    "Git 提交、推送、PR 和公开站点部署均未执行。"
+  ],
+  "resources": {
+    "newExternalImages": 0,
+    "diagrams": "自制 Mermaid，随正文维护",
+    "note": "没有新增需登记来源许可的转载图片。"
+  },
+  "sourceSnapshot": [
+    {
+      "path": "docs/software/ai-assisted/agent-collaboration.md",
+      "sha256": "bb819bf225d83d38babf69b1933c6e938fdd339003489a869dc701c745d3d1d0"
+    },
+    {
+      "path": "docs/software/ai-assisted/ai-development.md",
+      "sha256": "4a18fe96d9cc18e45733ce53f6a086c409cf676d76ae493b86f88c353f8b3644"
+    },
+    {
+      "path": "docs/software/ai-assisted/context-constraints.md",
+      "sha256": "8a3ab920a9fd9093c5a5e35952fd49ecd5de4ea360e35036b2e53116414d0754"
+    },
+    {
+      "path": "docs/software/ai-assisted/evaluation-cost.md",
+      "sha256": "3a830c5a82b7ab36bd251e48922ae08982890a4ca0e548b218c96dc6f1b6f19e"
+    },
+    {
+      "path": "docs/software/ai-assisted/generated-code-verification.md",
+      "sha256": "81d83165b01f7bdf3171999646bf76b37d9022d403542332f124162bd448053c"
+    },
+    {
+      "path": "docs/software/ai-assisted/index.md",
+      "sha256": "205c10ec02855d0ff0e6493b6269543e230a230529e401a855301fe0f1d569bd"
+    },
+    {
+      "path": "docs/software/ai-assisted/sandbox-permissions.md",
+      "sha256": "e5a97d90d67adae7fe931484f895326eefbed9e2857030a4a26eecaa1e4827a5"
+    },
+    {
+      "path": "docs/software/algorithms/complexity.md",
+      "sha256": "1d83ee84f2b822083d2ec97c604574896ece384473bdc10dd2804c17fbda03f0"
+    },
+    {
+      "path": "docs/software/algorithms/correctness-optimization.md",
+      "sha256": "0e361b25346f0a0e7f1d868197c6c0caefa0f7fb2e03a813c9d8764931fa67a0"
+    },
+    {
+      "path": "docs/software/algorithms/data-structures.md",
+      "sha256": "f4f53b322560495a89b436de6cf024c51a436813fb7ee918f5ec1993a390f5a8"
+    },
+    {
+      "path": "docs/software/algorithms/index.md",
+      "sha256": "7d74c606229b07b291dec7d75fe8a3e2207b25629559bba31352036f2ffcfa24"
+    },
+    {
+      "path": "docs/software/algorithms/search-sort-strings.md",
+      "sha256": "f737430ce604c9ffc8ae02c26acfdb38f90373e0c4cb0986a2c41e625aded227"
+    },
+    {
+      "path": "docs/software/algorithms/trees-graphs.md",
+      "sha256": "2502571d5048d3e86740539dc5387d7bcf699b84534426ea8fcd9d1d1e3b14a9"
+    },
+    {
+      "path": "docs/software/architecture/architecture-decisions.md",
+      "sha256": "076da96afbe4d6a8c76990110db11965442a178523b308b8d8a8b59a8308a70c"
+    },
+    {
+      "path": "docs/software/architecture/architecture-modeling.md",
+      "sha256": "55bcb5d4f86384102b82da823d170528ed4656d40ebbbb7904258073998567cc"
+    },
+    {
+      "path": "docs/software/architecture/distributed-failure.md",
+      "sha256": "4f2807ca18dac7ba74d4bfbc821eba09e9f8828b5ad81a6c0fd63c7f0e040fde"
+    },
+    {
+      "path": "docs/software/architecture/events-workflows.md",
+      "sha256": "a18a82f52c77d791b784cce6b8e923bf349fc18071c3b2ee125af951ca05ac4d"
+    },
+    {
+      "path": "docs/software/architecture/index.md",
+      "sha256": "894f022154b889ab47062433064c93c19892529d059de16fe64cf34b19d53229"
+    },
+    {
+      "path": "docs/software/architecture/modules-interfaces.md",
+      "sha256": "2fb7141da8f16f32bd94801b16d858ced461663b38191afc6080e645deccfaaa"
+    },
+    {
+      "path": "docs/software/architecture/monolith-services.md",
+      "sha256": "7873e62c7697a4f8fa03223959e9858c408e471664155b65176aaf2e9144c898"
+    },
+    {
+      "path": "docs/software/architecture/principles-patterns.md",
+      "sha256": "0cdc50329794f7d2bcdefefc8cb7eeac699e443c00cab39b8717881d5b23c87f"
+    },
+    {
+      "path": "docs/software/backend/authentication-authorization.md",
+      "sha256": "9b099700c159628df924c1150d410b43b5a83d9820df39503e01f648c2bf58e3"
+    },
+    {
+      "path": "docs/software/backend/backend-frameworks-performance.md",
+      "sha256": "f9bf1bb617067792e3cdbaa01f1b82a0256d8ac652d5dafb24ba8db487a61a9a"
+    },
+    {
+      "path": "docs/software/backend/business-state-machines.md",
+      "sha256": "3f522e16811b3f82506f94faf00b0229dad38702f94d9095861b8b628349c49d"
+    },
+    {
+      "path": "docs/software/backend/http-api-contracts.md",
+      "sha256": "25a6d51d94812aaf4d8e159b1d011ea84dc88d0fc0a5e0b811622f3354b0818a"
+    },
+    {
+      "path": "docs/software/backend/index.md",
+      "sha256": "eed29a9f5617fac2fee280b478df4b32f18443756f0a414986b2f83b05fb8e95"
+    },
+    {
+      "path": "docs/software/backend/integrations-webhooks.md",
+      "sha256": "9c202d8666dba70d43b777ec466e925b39403f3e244a66975d744cd3ab7bf741"
+    },
+    {
+      "path": "docs/software/backend/messages-jobs-idempotency.md",
+      "sha256": "efa3d50fe6e7be846f00beb1c510e68a2821d8aa82b3a20f619919d44d22c799"
+    },
+    {
+      "path": "docs/software/backend/service-lifecycle.md",
+      "sha256": "d16c2d47a819073f961f5a02e5e30bfed62a2e3ab3ae4f25eb2233e62e13e33d"
+    },
+    {
+      "path": "docs/software/collaboration/branches-merges-conflicts.md",
+      "sha256": "93d2fc7d6c238e855f94666ee21999c0329cc9b17a59224b0608e06438d1a070"
+    },
+    {
+      "path": "docs/software/collaboration/code-review-evidence.md",
+      "sha256": "8bf19ffaa01b738cec3289a3db974b7a7367a89cdc36c4c5c200d7a6b8c8089d"
+    },
+    {
+      "path": "docs/software/collaboration/commits-history-undo.md",
+      "sha256": "bb7b84534761a392d3b7498a7955312af227ef6b0ce0e6059d5b07d85b9d8698"
+    },
+    {
+      "path": "docs/software/collaboration/git-repository-model.md",
+      "sha256": "9611e68f86725ce8a1a6714f46792f035b44ffcd0be08238654f64184f4690d5"
+    },
+    {
+      "path": "docs/software/collaboration/index.md",
+      "sha256": "8a56c6a4cfa2b36b45348666e39fc8da15c448d9c4635f98caf8b4fc5e76646e"
+    },
+    {
+      "path": "docs/software/collaboration/pull-request-workflow.md",
+      "sha256": "fb0b0f8dc45c47e520afc2b1ed03187f2265dac3105db5cee2c4e195fd3c9538"
+    },
+    {
+      "path": "docs/software/collaboration/tags-versions-baselines.md",
+      "sha256": "71c9218b5ca77a5a249644f52a53588e6dbc8591a1506128822ace6bf22c92d9"
+    },
+    {
+      "path": "docs/software/data/cache-search-storage.md",
+      "sha256": "742418b8857d8d5efbdab1bc6a809c903b465410f921f9e41624fef94befa3c0"
+    },
+    {
+      "path": "docs/software/data/data-models.md",
+      "sha256": "90fbf3245323340cfd23021224e9f75204e1cd1c0d2d5efb88c43df1171bf0c9"
+    },
+    {
+      "path": "docs/software/data/data-quality-recovery.md",
+      "sha256": "948bb45d0403465e75090583f3c6528cdb7e39b0d8c9ca2e3bc7681984702c81"
+    },
+    {
+      "path": "docs/software/data/index.md",
+      "sha256": "a633403b5b8092ba7544ffb5ac0d8fa131281f63bd40cb1e1daf83757a6aa595"
+    },
+    {
+      "path": "docs/software/data/orm-migrations.md",
+      "sha256": "0c90420e7afcae6a2b11d55b1ef48db82fa7a820163115411472d31cae70c67f"
+    },
+    {
+      "path": "docs/software/data/sql-query-plans.md",
+      "sha256": "5ba9624664d028b3fe6c524045452c06a0e92ccff3cb6e1b633be33871b81d47"
+    },
+    {
+      "path": "docs/software/data/transactions-indexes.md",
+      "sha256": "74d92e21e98250a0ed29813e21030db45837b1396438437d9ec29d9f4574bb85"
+    },
+    {
+      "path": "docs/software/delivery/build-ci.md",
+      "sha256": "3b1f45cf08e6f6c55d1db88e7ca1c700a30a9351b1c938513d1c13a66b9c7e1a"
+    },
+    {
+      "path": "docs/software/delivery/containers-images.md",
+      "sha256": "0691eade6caaf41d0f35542e8dc0420e32f11b876089378012e09ee01c71e4bd"
+    },
+    {
+      "path": "docs/software/delivery/dns-https.md",
+      "sha256": "258b2a1a74662e3eb3e6a1328a807d5797b26d52ffa378aa86c171dd33dacf88"
+    },
+    {
+      "path": "docs/software/delivery/environments-iac.md",
+      "sha256": "90900dd684aec20c55d47ebbe42d2824782a92b0ae5b5d38a29803d8966d1db7"
+    },
+    {
+      "path": "docs/software/delivery/hosting-platforms.md",
+      "sha256": "418807a8506b2348f9b2e89a67c7f225275e1767ce6675e39fe4a890fed88b9c"
+    },
+    {
+      "path": "docs/software/delivery/index.md",
+      "sha256": "1b567d8cb36a2d983ffe8b7eae3ac8c6e30a76537a2840d9b590e180d5c5d042"
+    },
+    {
+      "path": "docs/software/delivery/release-rollback.md",
+      "sha256": "8c8dbab94aa7dc20e5e31377c9f5795b63fb68641acc820a40b8fcc251412075"
+    },
+    {
+      "path": "docs/software/foundations/engineering-math-measurement.md",
+      "sha256": "c2fecd2c9c67ad4b16b44fbe651bdf3d2ccf384901c3938cc6193db11a8308a1"
+    },
+    {
+      "path": "docs/software/foundations/files-paths-permissions.md",
+      "sha256": "0b1ca9ecc84fd4685f4cb04615dc3a930f110e306b6c7bfb62446e1087299a78"
+    },
+    {
+      "path": "docs/software/foundations/index.md",
+      "sha256": "1a7486a3c5274ad0d2dbf5f2a5f147cd1f23daf7fd247f1df5b40a310ec3129d"
+    },
+    {
+      "path": "docs/software/foundations/network-addresses-ports.md",
+      "sha256": "ef4f4f8d7ee1c0deee749cc69fbfc10f46afa3dd06ce0631e3bbb5c3fcba63ba"
+    },
+    {
+      "path": "docs/software/foundations/operating-systems-processes-memory.md",
+      "sha256": "ddf2c8cfd425472b158d3951800376217bc981567b9207e38906745cf1a0703d"
+    },
+    {
+      "path": "docs/software/foundations/source-to-runtime.md",
+      "sha256": "f4268dfadbf495872423b26e47ded9c7d719c0c7d7a18cc001ec182ad64c8686"
+    },
+    {
+      "path": "docs/software/foundations/terminal-shell.md",
+      "sha256": "c8e66aafed496b445f3ae1d22a1fa7bd338760016e9c53bf3df4572db74f8f53"
+    },
+    {
+      "path": "docs/software/frontend/accessibility-internationalization.md",
+      "sha256": "03e6fe1d2033e18446a5076daefa3f2ef137e6f7d3947e861dfe95c13546b064"
+    },
+    {
+      "path": "docs/software/frontend/components-state-routing.md",
+      "sha256": "30de67175739f1a5fa07a0c3e03f2fe516c86e38216b562b36a83ea6fde736f2"
+    },
+    {
+      "path": "docs/software/frontend/frontend-performance.md",
+      "sha256": "b5a523ab52d49fccd98b46904e87fa7531aacfd29689a9cf34351360080c1fe3"
+    },
+    {
+      "path": "docs/software/frontend/html-css-responsive.md",
+      "sha256": "c2d0d5369359d5b70683d3cb0a9afa0bbf6ec80ce9d95e4726274b1809f4b723"
+    },
+    {
+      "path": "docs/software/frontend/index.md",
+      "sha256": "30360a617ca2c1312258b768d9950f9d655c9008b4c9b18b937da7e4033f8fdf"
+    },
+    {
+      "path": "docs/software/frontend/javascript-browser-apis.md",
+      "sha256": "70a292f3a24f2c7277aaff5f7f0677bd50fac1e7c1e57d380a92cf822e555f55"
+    },
+    {
+      "path": "docs/software/frontend/rendering-frameworks.md",
+      "sha256": "2e12c8eb9ed11c39f8cca7b53c72a6912a376924a4ebb422c8bf69ca58f64711"
+    },
+    {
+      "path": "docs/software/frontend/web-browser.md",
+      "sha256": "54cf1dc15cb8d9dead62127a85f0d6efaf6c316a93e728c660d1b93a32ab43f0"
+    },
+    {
+      "path": "docs/software/guide/ai-coding-responsibility.md",
+      "sha256": "72e34676bf1d44c764aa4ad2cdc88bc43130afa3fc0ed34e74b7d10e42cd5675"
+    },
+    {
+      "path": "docs/software/guide/ai-context-boundaries.md",
+      "sha256": "50ac613a46699ac09f9c6992d096c0e9b65684185cd01c3ae6508ec77f41674c"
+    },
+    {
+      "path": "docs/software/guide/branches-review-merge.md",
+      "sha256": "420ddba6805f5ca29c3e0b848338dca3ac5fae065bea301ebc6c1853eff8c07c"
+    },
+    {
+      "path": "docs/software/guide/changes-and-versions.md",
+      "sha256": "7d789ddd00355b56e67ad72fdc51730e06393d5fbc7a1b93f001a6229116c329"
+    },
+    {
+      "path": "docs/software/guide/configuration-secrets-data.md",
+      "sha256": "293188ad629d5210a98dccc4f014b23daa553dc38edb31496c1eee022b7448bf"
+    },
+    {
+      "path": "docs/software/guide/diagnosis-repair.md",
+      "sha256": "9953c0cd9cbf10498ebcb9f9166013ed4091f739383083581058a18a3902d465"
+    },
+    {
+      "path": "docs/software/guide/files-directories-repositories.md",
+      "sha256": "d277212a414b5af05e8e929501cfec247788a62a8af4bd83e6ccba49bb265fa6"
+    },
+    {
+      "path": "docs/software/guide/index.md",
+      "sha256": "ca4724bba2769263f81b45cc2ed5b4f208cd301578e6a5d40589af66747ba4f6"
+    },
+    {
+      "path": "docs/software/guide/languages-frameworks-dependencies.md",
+      "sha256": "35c40a88d26790a9660b169c50bf17c741a6aeee823a4d8cdc1587187b5fcf95"
+    },
+    {
+      "path": "docs/software/guide/local-to-production.md",
+      "sha256": "9dee3ba0ce61d3343ac5346a0a83c592c7a1bbcb018ab6defc9e9b978027bbf1"
+    },
+    {
+      "path": "docs/software/guide/maintenance-takeover.md",
+      "sha256": "76fe330556074d317b0786519fb8bf6b4d4bcb674322d003d7de72c61a48e98c"
+    },
+    {
+      "path": "docs/software/guide/release-observe-rollback.md",
+      "sha256": "e6c62fe513a175b04eaa89ee04b1323379f67058c748ed769e55805927cb058c"
+    },
+    {
+      "path": "docs/software/guide/request-through-system.md",
+      "sha256": "f179105e28fd4854a1ea1f18514a3716f9320718c2ce79017c8155bddac5626c"
+    },
+    {
+      "path": "docs/software/guide/requirements-and-acceptance.md",
+      "sha256": "5721d41cd761b670ef72467f11892d63cf36f38fe8d2d5661f34963eb6a13776"
+    },
+    {
+      "path": "docs/software/guide/running-locally.md",
+      "sha256": "932a816c0d8ba30c6b76aea53ae97024f8b5ccce4494e8136291f51311fc1ef9"
+    },
+    {
+      "path": "docs/software/guide/software-project-overview.md",
+      "sha256": "438456af835812a85f95999d538c63e08dcce515d8d71a90b02d7942e0ef9dcd"
+    },
+    {
+      "path": "docs/software/guide/verification-acceptance.md",
+      "sha256": "a38dfb5067c578c4f475b4b5705c4f222572cd27d61cb01875ed4de310be05c6"
+    },
+    {
+      "path": "docs/software/index.md",
+      "sha256": "41d330faf9cf5516464925ec1d0d4edcb8cb2e797bef2fd459db67a2e4b9bc0a"
+    },
+    {
+      "path": "docs/software/maintenance/index.md",
+      "sha256": "ecaa232d42afabb0e059b007873c7f4252cb815e435f28d69543f2df7614da38"
+    },
+    {
+      "path": "docs/software/maintenance/maintenance-changes.md",
+      "sha256": "f6a452ffcd3e490f9ffdbecfb9ad76cfa18f541fafcef9901bf4b44b1b5c9dd2"
+    },
+    {
+      "path": "docs/software/maintenance/refactoring-debt.md",
+      "sha256": "19f7c7edd822432b4ec824fc761bc60274b51f6134a429a8018123bd8a255dcd"
+    },
+    {
+      "path": "docs/software/maintenance/retirement-sustainability.md",
+      "sha256": "2a8e069169c58d46b7d6036062268c26c5e3759238cb61ee9beee1f037ee0b95"
+    },
+    {
+      "path": "docs/software/maintenance/system-takeover.md",
+      "sha256": "7a1d21250e967be36f60deb45120b9390e98e91192cef1c38be2e8291e315289"
+    },
+    {
+      "path": "docs/software/maintenance/upgrades-compatibility.md",
+      "sha256": "79be2a634fea74f637e7ecdf463eb3703a76fc0e5ff0b3479beb7e8bc83f0e31"
+    },
+    {
+      "path": "docs/software/operations/application-observability.md",
+      "sha256": "dbad24e82374049ca1e0a708c1bc81b9dcad1aa6599c44d44321efa567dde698"
+    },
+    {
+      "path": "docs/software/operations/capacity-performance-cost.md",
+      "sha256": "f63f321bfcbd97026908deeb147a5f77d6340cfe4cef1d32bf9b9af9d0b9fcc3"
+    },
+    {
+      "path": "docs/software/operations/incident-response.md",
+      "sha256": "462319b1eab4cd463efd748cd8fe2d075d5bec498329aae018f808aa985850a5"
+    },
+    {
+      "path": "docs/software/operations/index.md",
+      "sha256": "a10ccd2ef44ed8ebd027a201cd3b3dac01af080901e9da4e5025bff31decae52"
+    },
+    {
+      "path": "docs/software/operations/recovery-reconciliation.md",
+      "sha256": "34937e6a22cc769c6e5bf1fb0ca157869040b8c52cc392ac87bef29b77c6a8de"
+    },
+    {
+      "path": "docs/software/operations/slo-health-oncall.md",
+      "sha256": "60123cc106954e27122524246fec892e2d8f3c952df34a35aa49014efc461b5d"
+    },
+    {
+      "path": "docs/software/programming/abstraction-paradigms.md",
+      "sha256": "fc6fb32108d651028e8b48e67bb056764396877cb936a7637c2da7c126cc60e8"
+    },
+    {
+      "path": "docs/software/programming/async-concurrency.md",
+      "sha256": "053de7866f33ec9d1d4d7553b7f6ab0d8d5686849abbbdc60027ada483890fe4"
+    },
+    {
+      "path": "docs/software/programming/errors-resource-management.md",
+      "sha256": "2b7011af78cb107083201df23f30c1d37efaba1f48f42b418a4642d202ef3ab4"
+    },
+    {
+      "path": "docs/software/programming/functions-modules.md",
+      "sha256": "7f9e3c85382930d76a9076686f1812b42911c6b37b40ea4084e88176107761e8"
+    },
+    {
+      "path": "docs/software/programming/index.md",
+      "sha256": "27d1bd0f111c7072b27d7a83f79d37d887a3777cf2d2c7d2099914450ae7eab7"
+    },
+    {
+      "path": "docs/software/programming/languages-runtimes.md",
+      "sha256": "0a0c736f47b80a34585a5f3d19ce7c2a31ee7f9063ddc6ede1b40b1f8e1e1dfc"
+    },
+    {
+      "path": "docs/software/programming/types-control-flow.md",
+      "sha256": "a75687162cd282cac0ed8f9a9d43c4c1383e9c715ef20010125cfb928a4d787b"
+    },
+    {
+      "path": "docs/software/quality/acceptance-regression.md",
+      "sha256": "77a0f51ad0381b6a59780d1101db8f9250819007eb8bf1391b32d2d64339bf15"
+    },
+    {
+      "path": "docs/software/quality/debugging-defects.md",
+      "sha256": "b65206f0109cc10cec2f91aff1bc5141dd1ded3a351060c670308185885903b2"
+    },
+    {
+      "path": "docs/software/quality/index.md",
+      "sha256": "1b1c9afc9814f88dd74189692bebc45fa6743278f7b09945cbbbd4f98eec4067"
+    },
+    {
+      "path": "docs/software/quality/performance-reliability-tests.md",
+      "sha256": "9b93c19a75a93a00e11ea7d35316d040b1211a46ac825a3fa8decc1de87887df"
+    },
+    {
+      "path": "docs/software/quality/quality-strategy.md",
+      "sha256": "87c60edb9256b1570fcee7f686043357e2ab8a8ac9f09f31d1fb9a60cbfd50dc"
+    },
+    {
+      "path": "docs/software/quality/static-analysis.md",
+      "sha256": "31a371de82070e7a5c2dcc9f9da966f2991c19873c494b3c4490404f9b49aca2"
+    },
+    {
+      "path": "docs/software/quality/test-cases.md",
+      "sha256": "8509beefd7a4cd2c61021fff34a7677d5f0369514afae1d6736f9a79692686b0"
+    },
+    {
+      "path": "docs/software/quality/test-levels.md",
+      "sha256": "f374852bae67e9b236d501bcb65ba3bb98636dd53a65f82842caec47dd70bcfb"
+    },
+    {
+      "path": "docs/software/reference/index.md",
+      "sha256": "f4bd62c85339bde6a1aa767cdec19ba5414430393f80734567b1547e4f2c909b"
+    },
+    {
+      "path": "docs/software/reference/scenarios.md",
+      "sha256": "c939a773f88d9085d4e49fccfe83fa73de4f52f2564808489b07d917ac445665"
+    },
+    {
+      "path": "docs/software/reference/technologies-tools.md",
+      "sha256": "f63b14b4cd49aa4372f66d531d925e86cd9516226cfdb7e19c4c3758f9bd557b"
+    },
+    {
+      "path": "docs/software/reference/terms.md",
+      "sha256": "5138da0e68fa68bdff50aa71879fb8279f0e6fce63a7c7256c32b17523c006ba"
+    },
+    {
+      "path": "docs/software/requirements/acceptance-criteria.md",
+      "sha256": "bd527a20bc7c955a39c94f414d104ece4fde504b6cc8555d222e93de23cd1d75"
+    },
+    {
+      "path": "docs/software/requirements/documentation-responsibility.md",
+      "sha256": "9fd2cb19ace5ea84d366acb83966369402da1fe2fffc4556f83a2f39434d5c49"
+    },
+    {
+      "path": "docs/software/requirements/estimation-risk-economics.md",
+      "sha256": "9491557cad84ab89e9178c69a69886716b07a1b547228bba64d1445bbb03157b"
+    },
+    {
+      "path": "docs/software/requirements/index.md",
+      "sha256": "3c3e9cf27fb5e4d6306228a7a74a92abdd1cac4f92cb3633ace97783d3a608a7"
+    },
+    {
+      "path": "docs/software/requirements/lifecycle-process.md",
+      "sha256": "8d75d21ee252cf0c95755feb7cc6c37a456684d10074bebaeb1419e0e20fee24"
+    },
+    {
+      "path": "docs/software/requirements/problem-scope.md",
+      "sha256": "5a8eeade6d3e6df1aa19c06b0df066c5bb7bec53a2ea754ba8164e51225d4c25"
+    },
+    {
+      "path": "docs/software/requirements/requirements-analysis.md",
+      "sha256": "4840dd0c01c204267d7242fe2ba4bad047b2265a2ab5692f95bee763ef07ea79"
+    },
+    {
+      "path": "docs/software/security/application-security.md",
+      "sha256": "a306fa8343109154026c441c97845af2ba6d260d39b14b58134d7dd0a14e15eb"
+    },
+    {
+      "path": "docs/software/security/index.md",
+      "sha256": "d86ee75283461255cdc0b28af824ebad0d8d61a17a289fa834f0d526d8a04291"
+    },
+    {
+      "path": "docs/software/security/licenses-professional-practice.md",
+      "sha256": "ba460645dc43cc75311f0db6f4080c2710d551efa2c68a9ea12cc0c2cbb60dfa"
+    },
+    {
+      "path": "docs/software/security/privacy-lifecycle.md",
+      "sha256": "3814e6ff58ebdb9eb27c9ead6d54f9ec871d72a1d0f1cc25ebfa3f4cf071977d"
+    },
+    {
+      "path": "docs/software/security/secrets-permissions.md",
+      "sha256": "69d8b2fa130d9051644a4526221ae885522e847bf740f47cf59ebbbb6b430413"
+    },
+    {
+      "path": "docs/software/security/supply-chain.md",
+      "sha256": "2fab2a9c4f003d4694404fb205f1a35fc53b912c2c742923ee219946935b95c2"
+    },
+    {
+      "path": "docs/software/security/threat-modeling.md",
+      "sha256": "9a6d675298ef7446ca615318894ae2c70a63e37230b830099ce69727bf7f3d6b"
+    },
+    {
+      "path": "docs/software/specialized/ai-applications.md",
+      "sha256": "68b3fc975e87a2f35046c1a312ca8536b76c42e6b1a1df609854f6903d0a7979"
+    },
+    {
+      "path": "docs/software/specialized/browser-extensions.md",
+      "sha256": "d9f3575fe870b695c45942e6da43928a70a8f84239f556a2e4f256fc045601dc"
+    },
+    {
+      "path": "docs/software/specialized/cli-automation.md",
+      "sha256": "2c72f5fa07f077acf4b0e9fc37231b226922f501079df3db1ca3dcc1ed2c2930"
+    },
+    {
+      "path": "docs/software/specialized/desktop.md",
+      "sha256": "3f53de51e2677eb3e83e0c3b4754d2b8e40378f0adc7e4a0cdd3f89cf86ff898"
+    },
+    {
+      "path": "docs/software/specialized/embedded-iot.md",
+      "sha256": "960c9b0eeaf7c811f29e98522d5e386e4d8db23ed0bb8aa62078c74590dbdba5"
+    },
+    {
+      "path": "docs/software/specialized/games.md",
+      "sha256": "e7a0f204b98cf26ca6b5ee5428c0dc52e2025efcc4402cfc5373d9d5330c0862"
+    },
+    {
+      "path": "docs/software/specialized/index.md",
+      "sha256": "eca6230c5cce9699a44a201cf6725dfaacdc78491ecfe874e5889e08d1e31156"
+    },
+    {
+      "path": "docs/software/specialized/mobile.md",
+      "sha256": "0462c5bde40a6ad9897ec480bb4aa2732441f2021b010f6263e1589b0c9502c0"
+    },
+    {
+      "path": "docs/software/specialized/realtime-media.md",
+      "sha256": "2096d05a9eaf5188a2f83b5f8645283cf1a50065c064a8f031aa17babc1af876"
+    },
+    {
+      "path": "docs/software/toolchain/build-artifacts.md",
+      "sha256": "512518a4b3a47773a63d1e618ba253087d1573d254eb274544a9351b5439fbe7"
+    },
+    {
+      "path": "docs/software/toolchain/dependencies-lockfiles.md",
+      "sha256": "256673d9d5dc3cad794d6d953a50adcd18973b48cf23cc3018c9bf7ad657df09"
+    },
+    {
+      "path": "docs/software/toolchain/environment-configuration.md",
+      "sha256": "880e7d1655df98bcdd7191b09ad3a2797d2f1d72999c0836cd135a33eb6b5c26"
+    },
+    {
+      "path": "docs/software/toolchain/ide-debugging.md",
+      "sha256": "34d376c12ecc833c2eaac8343629752c8a2d1c254740848d92a1b193c34cecce"
+    },
+    {
+      "path": "docs/software/toolchain/index.md",
+      "sha256": "2ef2081645d2fe3f89713cb3172adc4363a6b8f6e00181b8dfe62c5e02d4758a"
+    },
+    {
+      "path": "docs/software/toolchain/project-structure.md",
+      "sha256": "14cba5bde4243d668afc6799f79e760ff4de30c6b69273be1d1b2f1b35a67d67"
+    },
+    {
+      "path": "docs/software/toolchain/reproducible-development.md",
+      "sha256": "31c90b5f7c0d574f4195842eb0744826acd4e20816c86954313a10dd8886cfc3"
+    }
+  ],
+  "remainingWork": []
+}

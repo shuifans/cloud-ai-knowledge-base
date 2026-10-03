@@ -96,6 +96,8 @@ checkpoint 记录任务状态。若外部服务已经写成功、调用方却在
 - [MCP Security Best Practices](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)（访问日期 2026-09-26）
 - [OWASP LLM01 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)（访问日期 2026-09-26）
 - [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)（访问日期 2026-09-26）
-- 站内相关：[框架选型](/ai/agent/frameworks) · [RAG 架构](/ai/application/rag-architecture) · [应用评测](/ai/application/evaluation) · [成本测算](/ai/infra/inference/token-economics)
+- 站内相关：[框架选型](/ai/agent/frameworks) · [RAG 架构](/ai/application/rag-architecture) · [应用评测](/ai/application/evaluation) · [成本测算](/ai/infra/inference/token-economics) · [AI 编程中的人的责任](/software/guide/ai-coding-responsibility)
+
+- 软件工程入口：[编程 Agent 沙箱与权限](/software/ai-assisted/sandbox-permissions) · [Agent 研发协作](/software/ai-assisted/agent-collaboration)
 
 </Refs>

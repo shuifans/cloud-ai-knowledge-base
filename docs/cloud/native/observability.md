@@ -671,4 +671,6 @@ OTel 落地路线（四步，按此顺序几乎不会返工）：① 统一服�
 
 站内相关：[Kubernetes 核心机制与企业级落地](/cloud/native/kubernetes) · [微服务治理](/cloud/native/microservice) · [智能体全景](/ai/agent/) · [云原生导读](/cloud/native/)
 
+- 应用工程入口：[应用埋点与追踪](/software/operations/application-observability) · [SLO 与健康检查](/software/operations/slo-health-oncall) · [故障响应](/software/operations/incident-response)
+
 </Refs>

@@ -165,4 +165,6 @@ flowchart LR
 
 **站内相关**：[弹性计算](/cloud/infra/compute) · [云存储](/cloud/infra/storage) · [云网络](/cloud/infra/network) · [卓越架构](/cloud/architecture/well-architected)
 
+- 应用工程入口：[容量、性能与成本](/software/operations/capacity-performance-cost) · [估算、风险与全生命周期成本](/software/requirements/estimation-risk-economics)
+
 </Refs>

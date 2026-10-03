@@ -185,4 +185,6 @@ DNS TTL、缓存、长连接、消息积压、第三方白名单和证书经常�
 
 **站内相关**：[卓越架构](/cloud/architecture/well-architected) · [安全与身份治理](/cloud/architecture/security-governance) · [云存储](/cloud/infra/storage) · [可观测体系](/cloud/native/observability)
 
+- 应用工程入口：[发布与回退](/software/delivery/release-rollback) · [恢复演练与业务对账](/software/operations/recovery-reconciliation)
+
 </Refs>

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "batch": "1a",
+  "completedOn": "2026-10-03",
+  "delivery": "local-review",
+  "models": {
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh"
+  },
+  "workers": [
+    "01a1019b-417a-7961-aa1e-78ed6822078a",
+    "01a1019b-5047-7af0-93d5-120401fcef35",
+    "01a1019b-5ede-7963-82c4-5926511a42a4"
+  ],
+  "counts": {
+    "completeArticles": 12,
+    "overviewPages": 7,
+    "referencePages": 3,
+    "addedMarkdownPages": 22,
+    "mermaidDiagrams": 13
+  },
+  "reuse": [
+    "cloud/data/database",
+    "cloud/native/microservice",
+    "cloud/native/observability",
+    "cloud/native/kubernetes",
+    "cloud/architecture/reliability-dr",
+    "cloud/architecture/security-governance",
+    "ai/agent/security",
+    "ai/application/evaluation",
+    "ai/application/rag-architecture",
+    "ai/agent/frameworks"
+  ],
+  "checks": [
+    {
+      "check": "node --test tests/*.test.mjs",
+      "passed": true,
+      "tests": 23
+    },
+    {
+      "check": "node scripts/check-pelicans.mjs",
+      "passed": true,
+      "originalWorks": 17
+    },
+    {
+      "check": "vitepress build docs",
+      "passed": true,
+      "deadLinksChecked": true,
+      "note": "系统 PATH 没有 npm；以内置 Node 执行 package.json 的 docs:build 中两项同等命令，未安装或变更依赖。"
+    },
+    {
+      "check": "git diff --check",
+      "passed": true
+    },
+    {
+      "check": "建设清单编号、阶段数与导览专业链接关系",
+      "passed": true,
+      "guideAndProfessionalTopics": 121,
+      "publishedTopics": 12,
+      "phaseCounts": [
+        37,
+        22,
+        26,
+        20,
+        16
+      ]
+    },
+    {
+      "check": "新增正文渲染与内容结构",
+      "passed": true,
+      "note": "读者引语、机制与实践、失败模式、Refs、站内互链及实际来源日期；修复四篇中英文括号旁的 Markdown 加粗标记。"
+    },
+    {
+      "check": "Mermaid 浏览器实际渲染",
+      "passed": true,
+      "diagrams": 13,
+      "note": "独立 Node 解析受 DOMPurify 环境限制，采用真实浏览器逐篇滚动和 SVG 检查；手机端验收图点击放大通过。"
+    },
+    {
+      "check": "响应式与导航搜索",
+      "passed": true,
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "width": 393,
+          "height": 852
+        },
+        {
+          "width": 320,
+          "height": 740
+        }
+      ],
+      "observations": [
+        "首页四入口在桌面两列、手机一列",
+        "桌面菜单与手机软件研发展开入口可见",
+        "验收搜索按软件研发筛选，专业主文与导览优先，章节合并",
+        "320px 搜索筛选换行且按钮高度44px，容器不溢出",
+        "393px 正文不横向溢出，宽表格在自身容器滚动",
+        "一份自动导读，面包屑的栏目和文章名称正确",
+        "最终构建的加粗修正显示正确；预览服务重启后重新核对"
+      ]
+    }
+  ],
+  "buildWarnings": [
+    "PromQL 语法高亮回退为文本",
+    "部分压缩块超过 500 kB；构建仍成功"
+  ],
+  "limits": [
+    "案例为虚构教学示意，未提供或运行报名应用，不报告案例测试通过。",
+    "既有云和 AI 主文仅增加互链，不刷新其技术复核日期。",
+    "Git 提交、推送、PR、生产发布均未执行。"
+  ],
+  "nextBatch": {
+    "id": "1b",
+    "topics": [
+      "G5",
+      "G6",
+      "F4",
+      "F5",
+      "T4",
+      "C2"
+    ],
+    "description": "语言框架与依赖、本地运行、终端网络、配置环境和提交历史；其余专题按完整五阶段清单推进。"
+  }
+}

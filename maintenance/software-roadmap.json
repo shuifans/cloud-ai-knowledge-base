@@ -1,0 +1,2124 @@
+{
+  "schemaVersion": 1,
+  "plannedOn": "2026-10-03",
+  "title": "软件研发与工程实践",
+  "organization": "领域→子域→专题；导览和独立专业查询共存",
+  "case": "虚构的小型活动报名与管理系统，不含支付、多租户或真实个人数据",
+  "statusMeaning": {
+    "planned": "仅规划，无公开空页",
+    "in-progress": "编辑中，尚未验收",
+    "published": "正文通过批次验收，可发布，但不代表已上线"
+  },
+  "guide": [
+    {
+      "id": "G1",
+      "title": "认识 AI 编程与人的责任",
+      "path": "/software/guide/ai-coding-responsibility",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "AI1",
+        "AI4",
+        "R2"
+      ],
+      "publishedTitle": "AI 编程：协作方式与人的责任",
+      "completedOn": "2026-10-03",
+      "summary": "认识 AI 编程的能力与边界，明确各研发阶段的决策和验证责任。"
+    },
+    {
+      "id": "G2",
+      "title": "把想法变成需求和验收",
+      "path": "/software/guide/requirements-and-acceptance",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "publishedTitle": "从想法到需求与验收",
+      "completedOn": "2026-10-03",
+      "summary": "把想法写成范围、业务规则和可核查的验收条件，再安排 AI 实现。"
+    },
+    {
+      "id": "G3",
+      "title": "看懂软件项目全景",
+      "path": "/software/guide/software-project-overview",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "F1",
+        "W1",
+        "B1",
+        "DB1"
+      ],
+      "publishedTitle": "软件项目全景：从操作到交付",
+      "completedOn": "2026-10-03",
+      "summary": "沿一次活动报名，理解界面、接口、后端、数据库和环境如何协同。"
+    },
+    {
+      "id": "G4",
+      "title": "文件、目录与仓库",
+      "path": "/software/guide/files-directories-repositories",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "F3",
+        "T1",
+        "C1"
+      ],
+      "publishedTitle": "文件、目录与代码仓库",
+      "completedOn": "2026-10-03",
+      "summary": "区分文件目录、工程与版本仓库，识别源码、配置、依赖和生成物。"
+    },
+    {
+      "id": "G5",
+      "title": "语言、框架、运行时与依赖",
+      "path": "/software/guide/languages-frameworks-dependencies",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "P6",
+        "T3",
+        "T5"
+      ],
+      "summary": "分清语言、框架、运行时和依赖的职责，读懂项目技术选择及其约束。",
+      "publishedTitle": "语言、框架、运行时与依赖",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G6",
+      "title": "在本地运行项目",
+      "path": "/software/guide/running-locally",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "F4",
+        "F5",
+        "T4",
+        "T6"
+      ],
+      "summary": "按环境、依赖、配置和启动入口运行项目，用证据判断本地失败发生在哪一层。",
+      "publishedTitle": "在本地运行项目",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G7",
+      "title": "需求如何穿过界面、接口与数据库",
+      "path": "/software/guide/request-through-system",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "W4",
+        "B2",
+        "B3",
+        "DB1"
+      ],
+      "summary": "跟随一次报名请求，看清界面状态、接口契约、业务规则与数据约束的联系。",
+      "publishedTitle": "需求如何穿过界面、接口与数据库",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G8",
+      "title": "给 AI 上下文与边界",
+      "path": "/software/guide/ai-context-boundaries",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "AI2",
+        "AI3",
+        "R6"
+      ],
+      "summary": "把需求、仓库事实、限制与完成条件交给 AI，控制一次任务的上下文和改动边界。",
+      "publishedTitle": "给 AI 上下文与边界",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G9",
+      "title": "看懂改动与保存版本",
+      "path": "/software/guide/changes-and-versions",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "C1",
+        "C2",
+        "C5"
+      ],
+      "summary": "阅读文件差异，区分未提交改动、已保存版本和远端状态，保留可追踪的变更。",
+      "publishedTitle": "看懂改动与保存版本",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G10",
+      "title": "分支、PR、审查与合并",
+      "path": "/software/guide/branches-review-merge",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "summary": "用分支和 PR/MR 组织可审查的改动，理解检查、冲突处理和合并的条件。",
+      "publishedTitle": "分支、PR、审查与合并",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G11",
+      "title": "验证与验收成果",
+      "path": "/software/guide/verification-acceptance",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "Q2",
+        "Q3",
+        "Q7",
+        "AI4"
+      ],
+      "summary": "以正常、边界、异常和权限场景验收成果，区分演示、测试记录与有效证据。",
+      "publishedTitle": "验证与验收成果",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G12",
+      "title": "定位问题与修复",
+      "path": "/software/guide/diagnosis-repair",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "T2",
+        "Q4",
+        "O3"
+      ],
+      "summary": "记录复现条件并沿请求链定位问题，验证修复及其对原有行为的影响。",
+      "publishedTitle": "定位问题与修复",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G13",
+      "title": "配置、密钥、权限与数据",
+      "path": "/software/guide/configuration-secrets-data",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "T4",
+        "B4",
+        "S2",
+        "S3",
+        "S5"
+      ],
+      "summary": "辨别公开配置、密钥、权限和数据，检查客户端暴露、服务端授权与保留边界。",
+      "publishedTitle": "配置、密钥、权限与数据",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G14",
+      "title": "从本地到线上",
+      "path": "/software/guide/local-to-production",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "DL1",
+        "DL2",
+        "DL3",
+        "DL4",
+        "DL5"
+      ],
+      "summary": "把源码版本、构建制品、运行环境和网络入口连接起来，准备上线所需证据。",
+      "publishedTitle": "从本地到线上",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G15",
+      "title": "安全发布、观察与回退",
+      "path": "/software/guide/release-observe-rollback",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "DL6",
+        "O1",
+        "O2",
+        "O3",
+        "DB4"
+      ],
+      "summary": "安排发布前检查、上线观察和停止条件，判断代码回退与数据恢复的区别。",
+      "publishedTitle": "安全发布、观察与回退",
+      "completedOn": "2026-10-03"
+    },
+    {
+      "id": "G16",
+      "title": "接管、维护、扩展与停用",
+      "path": "/software/guide/maintenance-takeover",
+      "phase": 1,
+      "status": "published",
+      "professionalTopics": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "R5",
+        "O4"
+      ],
+      "summary": "以交接清单接管项目，规划升级、技术债、运行成本和有序停用。",
+      "publishedTitle": "接管、维护、扩展与停用",
+      "completedOn": "2026-10-03"
+    }
+  ],
+  "professional": [
+    {
+      "id": "F",
+      "slug": "foundations",
+      "title": "计算机与软件基础",
+      "purpose": "理解程序运行与系统边界",
+      "audience": "建立系统概念的读者",
+      "prerequisites": "无需编程经验",
+      "articles": [
+        {
+          "id": "F1",
+          "title": "程序从源码到运行",
+          "path": "/software/foundations/source-to-runtime",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "从源码到运行中的程序",
+          "completedOn": "2026-10-03",
+          "summary": "区分源码、构建产物、运行时与进程，解释浏览器和服务器执行程序的路径。"
+        },
+        {
+          "id": "F2",
+          "title": "操作系统、进程线程与内存",
+          "path": "/software/foundations/operating-systems-processes-memory",
+          "phase": 2,
+          "status": "published",
+          "summary": "理解进程、线程、虚拟内存和资源隔离，判断共享状态与系统资源问题。",
+          "publishedTitle": "操作系统、进程线程与内存",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "F3",
+          "title": "文件系统、路径权限与编码",
+          "path": "/software/foundations/files-paths-permissions",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "文件、路径与权限",
+          "completedOn": "2026-10-03",
+          "summary": "从工作目录、路径、权限、编码与大小写规则解释跨环境文件问题。"
+        },
+        {
+          "id": "F4",
+          "title": "终端、Shell 与命令行",
+          "path": "/software/foundations/terminal-shell",
+          "phase": 1,
+          "status": "published",
+          "summary": "分清终端、Shell 与命令，理解参数、引号、重定向、管道、退出码和进程控制。",
+          "publishedTitle": "终端、Shell 与命令行",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "F5",
+          "title": "网络地址、端口与连接",
+          "path": "/software/foundations/network-addresses-ports",
+          "phase": 1,
+          "status": "published",
+          "summary": "连接地址、DNS、端口、传输协议和监听边界，分层定位无法访问的原因。",
+          "publishedTitle": "网络地址、端口与连接",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "F6",
+          "title": "工程数学与度量基础",
+          "path": "/software/foundations/engineering-math-measurement",
+          "phase": 2,
+          "status": "published",
+          "summary": "用单位、概率、分位数和测量条件解释工程指标，避免用平均值或小样本误判。",
+          "publishedTitle": "工程数学与度量基础",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "通用计算机机制帮助解释程序如何使用操作系统、文件、网络和资源。虚拟化、VPC 及云资源产品选型由云计算领域承担；这里先建立应用运行的共同语言。",
+      "readingOrder": [
+        "F1",
+        "F3",
+        "F4",
+        "F5",
+        "F2",
+        "F6"
+      ]
+    },
+    {
+      "id": "P",
+      "slug": "programming",
+      "title": "编程语言与程序设计",
+      "purpose": "理解语言机制并构建可维护程序",
+      "audience": "初学编程者及跨语言开发者",
+      "prerequisites": "程序运行、文件与模块",
+      "articles": [
+        {
+          "id": "P1",
+          "title": "变量、类型与控制流",
+          "path": "/software/programming/types-control-flow",
+          "phase": 2,
+          "status": "published",
+          "summary": "以变量、类型、转换和控制流解释程序行为，区分静态类型检查与运行时验证。",
+          "publishedTitle": "变量、类型与控制流",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "P2",
+          "title": "函数、作用域与模块",
+          "path": "/software/programming/functions-modules",
+          "phase": 2,
+          "status": "published",
+          "summary": "理解函数契约、作用域、闭包和模块，把隐含状态与依赖变成可维护的边界。",
+          "publishedTitle": "函数、作用域与模块",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "P3",
+          "title": "抽象、接口与编程范式",
+          "path": "/software/programming/abstraction-paradigms",
+          "phase": 2,
+          "status": "published",
+          "summary": "比较封装、接口、组合与编程范式，按变化点选择抽象而不是机械套用模式。",
+          "publishedTitle": "抽象、接口与编程范式",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "P4",
+          "title": "错误、异常与资源管理",
+          "path": "/software/programming/errors-resource-management",
+          "phase": 2,
+          "status": "published",
+          "summary": "建立错误传播和资源释放模型，区分业务拒绝、程序缺陷、异常与恢复策略。",
+          "publishedTitle": "错误、异常与资源管理",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "P5",
+          "title": "异步、并发同步与取消",
+          "path": "/software/programming/async-concurrency",
+          "phase": 2,
+          "status": "published",
+          "summary": "区分异步、并发与并行，理解竞态、同步、取消、超时和任务生命周期。",
+          "publishedTitle": "异步、并发同步与取消",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "P6",
+          "title": "语言、运行时与工程选型",
+          "path": "/software/programming/languages-runtimes",
+          "phase": 2,
+          "status": "published",
+          "summary": "按执行模型、类型系统、生态和维护约束比较语言与运行时，明确选型依据。",
+          "publishedTitle": "语言、运行时与工程选型",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注语言的语义、抽象和执行行为，示例用于比较机制，不要求读者采用统一语言。依赖安装与构建流程在工具链域，界面和服务的框架实践在前后端域。",
+      "readingOrder": [
+        "P1",
+        "P2",
+        "P4",
+        "P3",
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "A",
+      "slug": "algorithms",
+      "title": "数据结构与算法",
+      "purpose": "按数据与规模选择结构并判断正确性",
+      "audience": "开发者及性能评估者",
+      "prerequisites": "变量、函数与控制流",
+      "articles": [
+        {
+          "id": "A1",
+          "title": "常用数据结构的工程选择",
+          "path": "/software/algorithms/data-structures",
+          "phase": 2,
+          "status": "published",
+          "summary": "按访问模式、顺序、重复性与更新频率选择数组、哈希、队列等结构。",
+          "publishedTitle": "常用数据结构的工程选择",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "A2",
+          "title": "时间与空间复杂度",
+          "path": "/software/algorithms/complexity",
+          "phase": 2,
+          "status": "published",
+          "summary": "理解渐近复杂度、最坏与均摊分析，把增长趋势与实际资源成本联系起来。",
+          "publishedTitle": "时间与空间复杂度",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "A3",
+          "title": "搜索、排序与字符串处理",
+          "path": "/software/algorithms/search-sort-strings",
+          "phase": 2,
+          "status": "published",
+          "summary": "围绕有序性、比较规则与文本编码选择查找、排序和字符串处理方法。",
+          "publishedTitle": "搜索、排序与字符串处理",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "A4",
+          "title": "树、图与依赖关系",
+          "path": "/software/algorithms/trees-graphs",
+          "phase": 2,
+          "status": "published",
+          "summary": "把层次、依赖和连通性建模为树或图，理解遍历、拓扑排序与环检测。",
+          "publishedTitle": "树、图与依赖关系",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "A5",
+          "title": "正确性、测量与算法优化",
+          "path": "/software/algorithms/correctness-optimization",
+          "phase": 2,
+          "status": "published",
+          "summary": "用不变量、反例和工作负载验证正确性，再通过测量选择优化方向。",
+          "publishedTitle": "正确性、测量与算法优化",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注数据、操作与规模之间的关系，涵盖正确性和实际测量。数据库执行引擎、分布式存储和机器学习算法由数据或 AI 主文解释；复杂度不能替代具体工作负载测量。",
+      "readingOrder": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "T",
+      "slug": "toolchain",
+      "title": "开发环境与工具链",
+      "purpose": "组织工程并使开发、安装和构建可复现",
+      "audience": "AI 项目接管者及开发者",
+      "prerequisites": "文件目录与程序运行",
+      "articles": [
+        {
+          "id": "T1",
+          "title": "项目目录、文件与配置",
+          "path": "/software/toolchain/project-structure",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "工程目录与配置",
+          "completedOn": "2026-10-03",
+          "summary": "从入口、模块、配置、测试和生成物阅读结构，判断目录怎样服务工程边界。"
+        },
+        {
+          "id": "T2",
+          "title": "IDE、调试与开发工具",
+          "path": "/software/toolchain/ide-debugging",
+          "phase": 2,
+          "status": "published",
+          "summary": "用断点、调用栈、变量和诊断工具检验假设，理解编辑器提示与运行事实的区别。",
+          "publishedTitle": "IDE、调试与开发工具",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "T3",
+          "title": "依赖、包管理与锁文件",
+          "path": "/software/toolchain/dependencies-lockfiles",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "依赖、清单与锁文件",
+          "completedOn": "2026-10-03",
+          "summary": "分清依赖清单、解析结果和锁文件，理解可复现安装的条件与升级风险。"
+        },
+        {
+          "id": "T4",
+          "title": "开发环境、环境变量与配置注入",
+          "path": "/software/toolchain/environment-configuration",
+          "phase": 1,
+          "status": "published",
+          "summary": "区分配置载体、优先级、注入阶段和秘密，避免把开发环境假设带入生产。",
+          "publishedTitle": "开发环境、环境变量与配置注入",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "T5",
+          "title": "构建工具链与制品",
+          "path": "/software/toolchain/build-artifacts",
+          "phase": 2,
+          "status": "published",
+          "summary": "沿编译、转换、打包和资源处理识别制品，检查构建输入、来源与目标环境。",
+          "publishedTitle": "构建工具链与制品",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "T6",
+          "title": "可复现开发与团队约定",
+          "path": "/software/toolchain/reproducible-development",
+          "phase": 2,
+          "status": "published",
+          "summary": "约束工具版本、依赖和环境差异，让新人、CI 与开发者共享可验证的启动路径。",
+          "publishedTitle": "可复现开发与团队约定",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注项目组织、调试、依赖、配置和构建输入。目录布局按工程边界判断；可复现开发与生产部署分别管理。CI 和发布在交付域，容器集群机制复用云原生主文。",
+      "readingOrder": [
+        "T1",
+        "T3",
+        "T4",
+        "T6",
+        "T5",
+        "T2"
+      ]
+    },
+    {
+      "id": "C",
+      "slug": "collaboration",
+      "title": "版本控制与协作",
+      "purpose": "以版本和审查组织可追踪变更",
+      "audience": "AI 项目管理者及协作开发者",
+      "prerequisites": "文件、变更与验收",
+      "articles": [
+        {
+          "id": "C1",
+          "title": "Git 与仓库的版本模型",
+          "path": "/software/collaboration/git-repository-model",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "Git 仓库模型",
+          "completedOn": "2026-10-03",
+          "summary": "用快照、暂存区、提交父关系与引用建立 Git 和远端仓库的准确模型。"
+        },
+        {
+          "id": "C2",
+          "title": "提交、差异、历史与撤销",
+          "path": "/software/collaboration/commits-history-undo",
+          "phase": 1,
+          "status": "published",
+          "summary": "读懂工作区和提交差异，按历史是否共享选择撤销办法并保留恢复线索。",
+          "publishedTitle": "提交、差异、历史与撤销",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "C3",
+          "title": "分支、合并与冲突策略",
+          "path": "/software/collaboration/branches-merges-conflicts",
+          "phase": 1,
+          "status": "published",
+          "summary": "理解分支引用、共同祖先、合并和变基，处理文本冲突与语义冲突。",
+          "publishedTitle": "分支、合并与冲突策略",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "C4",
+          "title": "仓库托管与 PR/MR 协作",
+          "path": "/software/collaboration/pull-request-workflow",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "Pull Request 工作流",
+          "completedOn": "2026-10-03",
+          "summary": "把 Issue、PR/MR、审查、自动检查与合并串成有证据的协作过程。"
+        },
+        {
+          "id": "C5",
+          "title": "代码审查与变更证据",
+          "path": "/software/collaboration/code-review-evidence",
+          "phase": 2,
+          "status": "published",
+          "summary": "围绕目标、风险和证据审查变更，检查业务、兼容性、安全及可维护性。",
+          "publishedTitle": "代码审查与变更证据",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "C6",
+          "title": "标签、版本与配置基线",
+          "path": "/software/collaboration/tags-versions-baselines",
+          "phase": 2,
+          "status": "published",
+          "summary": "区分 Git 标签、发布版本和配置基线，建立版本、制品和运行实例的追踪。",
+          "publishedTitle": "标签、版本与配置基线",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "版本控制记录对象与历史，托管平台组织 PR/MR、Issue 和审查。平台差异与团队策略需要明确；合并、发布和部署是可以关联的不同活动。",
+      "readingOrder": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    {
+      "id": "R",
+      "slug": "requirements",
+      "title": "需求、产品与项目管理",
+      "purpose": "把问题、范围和质量条件转成可验证交付",
+      "audience": "需求提出者、产品负责人及开发者",
+      "prerequisites": "无需编程经验",
+      "articles": [
+        {
+          "id": "R1",
+          "title": "问题、场景、需求与范围",
+          "path": "/software/requirements/problem-scope",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "问题与范围",
+          "completedOn": "2026-10-03",
+          "summary": "区分用户问题、需求和实现方案，明确范围、非目标、假设与变更边界。"
+        },
+        {
+          "id": "R2",
+          "title": "验收标准与质量属性",
+          "path": "/software/requirements/acceptance-criteria",
+          "phase": 1,
+          "status": "published",
+          "publishedTitle": "可验证的验收标准",
+          "completedOn": "2026-10-03",
+          "summary": "把行为、异常、权限和质量属性写成可验证标准，追踪需求到交付证据。"
+        },
+        {
+          "id": "R3",
+          "title": "需求分析、领域规则与追踪",
+          "path": "/software/requirements/requirements-analysis",
+          "phase": 3,
+          "status": "published",
+          "summary": "识别领域术语、规则、状态和冲突，建立需求、设计与测试间的追踪关系。",
+          "publishedTitle": "需求分析、领域规则与追踪",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "R4",
+          "title": "生命周期、迭代与过程选择",
+          "path": "/software/requirements/lifecycle-process",
+          "phase": 5,
+          "status": "published",
+          "summary": "比较迭代、增量和计划驱动过程，按反馈速度、风险和治理要求安排生命周期。",
+          "publishedTitle": "生命周期、迭代与过程选择",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "R5",
+          "title": "估算、风险、成本与自建采购",
+          "path": "/software/requirements/estimation-risk-economics",
+          "phase": 5,
+          "status": "published",
+          "summary": "把估算假设、不确定性、风险和全生命周期成本用于范围及自建采购判断。",
+          "publishedTitle": "估算、风险、成本与自建采购",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "R6",
+          "title": "文档、沟通与责任分工",
+          "path": "/software/requirements/documentation-responsibility",
+          "phase": 5,
+          "status": "published",
+          "summary": "组织决策、接口、运行和交接文档，明确维护责任与可检索的事实来源。",
+          "publishedTitle": "文档、沟通与责任分工",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "围绕问题、范围、规则、质量、风险、成本与责任组织工作。需求不是实现方案，验收条件不是测试结果；设计、实现、测试和交付在相邻领域展开。",
+      "readingOrder": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "id": "D",
+      "slug": "architecture",
+      "title": "软件设计与架构",
+      "purpose": "设计模块系统边界并记录取舍",
+      "audience": "开发者、架构师及技术负责人",
+      "prerequisites": "模块、接口、网络与数据",
+      "articles": [
+        {
+          "id": "D1",
+          "title": "模块边界、依赖与接口",
+          "path": "/software/architecture/modules-interfaces",
+          "phase": 3,
+          "status": "published",
+          "summary": "按职责、变化和契约划分模块，检查依赖方向、耦合与接口演进。",
+          "publishedTitle": "模块边界、依赖与接口",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D2",
+          "title": "设计原则、模式与重构",
+          "path": "/software/architecture/principles-patterns",
+          "phase": 3,
+          "status": "published",
+          "summary": "围绕具体变化点应用设计原则和模式，用行为证据控制重构风险。",
+          "publishedTitle": "设计原则、模式与重构",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D3",
+          "title": "建模与架构描述",
+          "path": "/software/architecture/architecture-modeling",
+          "phase": 3,
+          "status": "published",
+          "summary": "按读者关注点选择结构、部署和行为视图，保持架构描述与实现对应。",
+          "publishedTitle": "建模与架构描述",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D4",
+          "title": "单体、模块化单体与服务",
+          "path": "/software/architecture/monolith-services",
+          "phase": 3,
+          "status": "published",
+          "summary": "比较单体、模块化单体和服务，评估部署、数据、团队与故障边界的成本。",
+          "publishedTitle": "单体、模块化单体与服务",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D5",
+          "title": "分布式一致性与部分失败",
+          "path": "/software/architecture/distributed-failure",
+          "phase": 3,
+          "status": "published",
+          "summary": "解释网络分区、超时与结果未知，按一致性要求设计重试和失败处理。",
+          "publishedTitle": "分布式一致性与部分失败",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D6",
+          "title": "事件、工作流与补偿",
+          "path": "/software/architecture/events-workflows",
+          "phase": 3,
+          "status": "published",
+          "summary": "区分命令、事件与工作流，通过幂等、顺序和补偿处理跨组件状态变化。",
+          "publishedTitle": "事件、工作流与补偿",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "D7",
+          "title": "架构决策与验证",
+          "path": "/software/architecture/architecture-decisions",
+          "phase": 3,
+          "status": "published",
+          "summary": "把约束、备选方案和后果记录为架构决策，以可验证场景检查取舍。",
+          "publishedTitle": "架构决策与验证",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注模块、系统边界、状态与重要决策。用视图和场景描述取舍；云微服务治理、集群与可靠性架构由已有主文承担，本文说明应用设计为何形成这些需求。",
+      "readingOrder": [
+        "D1",
+        "D2",
+        "D3",
+        "D7",
+        "D4",
+        "D5",
+        "D6"
+      ]
+    },
+    {
+      "id": "W",
+      "slug": "frontend",
+      "title": "前端与界面工程",
+      "purpose": "构建可访问、兼容、可观测的界面",
+      "audience": "前端开发者及成果验收者",
+      "prerequisites": "Web、程序运行与基本编程",
+      "articles": [
+        {
+          "id": "W1",
+          "title": "Web 标准与浏览器运行",
+          "path": "/software/frontend/web-browser",
+          "phase": 3,
+          "status": "published",
+          "summary": "连接 URL、请求、文档、脚本和渲染，理解浏览器安全边界与 Web 标准。",
+          "publishedTitle": "Web 标准与浏览器运行",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W2",
+          "title": "HTML、CSS 与响应式布局",
+          "path": "/software/frontend/html-css-responsive",
+          "phase": 3,
+          "status": "published",
+          "summary": "用语义 HTML、CSS 布局和响应式规则构建界面，检查内容、尺寸与交互边界。",
+          "publishedTitle": "HTML、CSS 与响应式布局",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W3",
+          "title": "JavaScript 交互与浏览器 API",
+          "path": "/software/frontend/javascript-browser-apis",
+          "phase": 3,
+          "status": "published",
+          "summary": "理解 DOM、事件和异步浏览器 API，控制网络请求、资源清理和权限边界。",
+          "publishedTitle": "JavaScript 交互与浏览器 API",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W4",
+          "title": "组件、状态、路由与表单",
+          "path": "/software/frontend/components-state-routing",
+          "phase": 3,
+          "status": "published",
+          "summary": "划分组件责任、状态来源、路由与表单校验，避免界面状态和业务状态混淆。",
+          "publishedTitle": "组件、状态、路由与表单",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W5",
+          "title": "渲染方式与框架选型",
+          "path": "/software/frontend/rendering-frameworks",
+          "phase": 3,
+          "status": "published",
+          "summary": "比较客户端、服务端和静态渲染及水合，按访问模式和部署条件选择框架。",
+          "publishedTitle": "渲染方式与框架选型",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W6",
+          "title": "交互、可访问性与国际化",
+          "path": "/software/frontend/accessibility-internationalization",
+          "phase": 3,
+          "status": "published",
+          "summary": "以键盘、语义、焦点和辅助技术检查可访问性，处理语言、时区和本地格式。",
+          "publishedTitle": "交互、可访问性与国际化",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "W7",
+          "title": "前端性能、兼容与观测",
+          "path": "/software/frontend/frontend-performance",
+          "phase": 3,
+          "status": "published",
+          "summary": "区分加载、交互与渲染性能，通过真实使用和实验数据定位前端瓶颈。",
+          "publishedTitle": "前端性能、兼容与观测",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注 Web 界面从浏览器机制到可访问交互、渲染和性能的工程闭环。前端数据校验改善体验，业务规则与权限仍须服务端落实；桌面、移动和扩展的宿主差异见专项开发。",
+      "readingOrder": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7"
+      ]
+    },
+    {
+      "id": "B",
+      "slug": "backend",
+      "title": "后端与接口工程",
+      "purpose": "落实业务、契约、权限与外部系统交互",
+      "audience": "后端开发者及接口验收者",
+      "prerequisites": "HTTP、模块与数据",
+      "articles": [
+        {
+          "id": "B1",
+          "title": "服务与请求生命周期",
+          "path": "/software/backend/service-lifecycle",
+          "phase": 3,
+          "status": "published",
+          "summary": "沿接入、验证、业务处理和响应理解服务生命周期，管理超时、连接与退出。",
+          "publishedTitle": "服务与请求生命周期",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B2",
+          "title": "HTTP、API 与接口契约",
+          "path": "/software/backend/http-api-contracts",
+          "phase": 1,
+          "status": "published",
+          "summary": "将 HTTP 语义、资源、错误和兼容性写入接口契约，避免传输成功掩盖业务失败。",
+          "publishedTitle": "HTTP、API 与接口契约",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B3",
+          "title": "业务逻辑、规则与状态机",
+          "path": "/software/backend/business-state-machines",
+          "phase": 3,
+          "status": "published",
+          "summary": "以不变量和状态机落实业务规则，让状态转换、权限及并发判断可验证。",
+          "publishedTitle": "业务逻辑、规则与状态机",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B4",
+          "title": "身份认证、会话与权限",
+          "path": "/software/backend/authentication-authorization",
+          "phase": 3,
+          "status": "published",
+          "summary": "区分认证、会话和授权，检查令牌生命周期、对象权限及服务端执行边界。",
+          "publishedTitle": "身份认证、会话与权限",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B5",
+          "title": "消息、任务、调度与幂等",
+          "path": "/software/backend/messages-jobs-idempotency",
+          "phase": 3,
+          "status": "published",
+          "summary": "设计消息、后台任务和调度，用幂等、确认与重试处理重复和失败。",
+          "publishedTitle": "消息、任务、调度与幂等",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B6",
+          "title": "第三方集成与 Webhook",
+          "path": "/software/backend/integrations-webhooks",
+          "phase": 3,
+          "status": "published",
+          "summary": "以签名、去重、重放和兼容性约束外部集成，防止第三方失败扩散。",
+          "publishedTitle": "第三方集成与 Webhook",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "B7",
+          "title": "后端框架、性能与资源管理",
+          "path": "/software/backend/backend-frameworks-performance",
+          "phase": 3,
+          "status": "published",
+          "summary": "按请求模型、生态和资源约束选择后端框架，管理连接池、阻塞和背压。",
+          "publishedTitle": "后端框架、性能与资源管理",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注服务处理请求、落实业务和访问外部系统的边界。HTTP 契约与身份权限是基础，异步任务需要处理重复和失败；数据库、平台治理与集群机制由对应主文深入解释。",
+      "readingOrder": [
+        "B2",
+        "B1",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    {
+      "id": "DB",
+      "slug": "data",
+      "title": "数据库与应用数据工程",
+      "purpose": "确保应用数据正确性、演进与恢复",
+      "audience": "应用开发者及数据负责人",
+      "prerequisites": "数据关系、业务规则与后端",
+      "articles": [
+        {
+          "id": "DB1",
+          "title": "数据模型、关系与约束",
+          "path": "/software/data/data-models",
+          "phase": 1,
+          "status": "published",
+          "summary": "从实体、关系与不变量建立应用数据模型，将唯一性和引用规则落实为约束。",
+          "publishedTitle": "数据模型、关系与约束",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DB2",
+          "title": "SQL 查询与执行计划",
+          "path": "/software/data/sql-query-plans",
+          "phase": 3,
+          "status": "published",
+          "summary": "理解 SQL 查询语义和执行计划，用真实数据分布判断连接、扫描与索引成本。",
+          "publishedTitle": "SQL 查询与执行计划",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DB3",
+          "title": "事务、并发与索引的应用选择",
+          "path": "/software/data/transactions-indexes",
+          "phase": 3,
+          "status": "published",
+          "summary": "按隔离、锁和冲突选择事务与索引，处理并发写入而不是只优化单次查询。",
+          "publishedTitle": "事务、并发与索引的应用选择",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DB4",
+          "title": "ORM、迁移与兼容",
+          "path": "/software/data/orm-migrations",
+          "phase": 3,
+          "status": "published",
+          "summary": "区分对象映射和数据库语义，以分阶段迁移保持新旧应用及数据兼容。",
+          "publishedTitle": "ORM、迁移与兼容",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DB5",
+          "title": "缓存、搜索与存储的应用边界",
+          "path": "/software/data/cache-search-storage",
+          "phase": 3,
+          "status": "published",
+          "summary": "根据访问和一致性需求组合缓存、搜索及存储，明确权威数据和失效策略。",
+          "publishedTitle": "缓存、搜索与存储的应用边界",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DB6",
+          "title": "导入、数据质量与恢复",
+          "path": "/software/data/data-quality-recovery",
+          "phase": 3,
+          "status": "published",
+          "summary": "控制导入校验、去重与来源追踪，用恢复演练和对账验证数据质量。",
+          "publishedTitle": "导入、数据质量与恢复",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注应用模型、查询、事务、迁移及数据演进。数据库引擎路线与产品选型复用云数据域；分析平台复用大数据与 OLAP 主文。应用约束须落到数据库和可验证的流程。",
+      "readingOrder": [
+        "DB1",
+        "DB2",
+        "DB3",
+        "DB4",
+        "DB5",
+        "DB6"
+      ]
+    },
+    {
+      "id": "Q",
+      "slug": "quality",
+      "title": "测试与工程质量",
+      "purpose": "以有效证据验证功能、质量与变更影响",
+      "audience": "开发者、测试人员及验收者",
+      "prerequisites": "需求、验收与程序运行",
+      "articles": [
+        {
+          "id": "Q1",
+          "title": "质量模型与验证策略",
+          "path": "/software/quality/quality-strategy",
+          "phase": 4,
+          "status": "published",
+          "summary": "把质量属性、风险与可测试性转成验证策略，分清验证、确认和验收。",
+          "publishedTitle": "质量模型与验证策略",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q2",
+          "title": "单元、集成、契约与端到端测试",
+          "path": "/software/quality/test-levels",
+          "phase": 1,
+          "status": "published",
+          "summary": "比较单元、集成、契约与端到端测试，按边界和失败成本分配证据。",
+          "publishedTitle": "单元、集成、契约与端到端测试",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q3",
+          "title": "测试用例、边界、状态与数据",
+          "path": "/software/quality/test-cases",
+          "phase": 4,
+          "status": "published",
+          "summary": "用等价类、边界、决策表和状态转换设计用例，并控制测试数据及判定依据。",
+          "publishedTitle": "测试用例、边界、状态与数据",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q4",
+          "title": "调试、日志与缺陷管理",
+          "path": "/software/quality/debugging-defects",
+          "phase": 4,
+          "status": "published",
+          "summary": "围绕复现、假设和观测定位缺陷，保留诊断线索并验证修复和回归。",
+          "publishedTitle": "调试、日志与缺陷管理",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q5",
+          "title": "静态检查、类型与审查",
+          "path": "/software/quality/static-analysis",
+          "phase": 4,
+          "status": "published",
+          "summary": "理解类型检查、lint 与静态分析能够证明什么，将工具发现与人工审查结合。",
+          "publishedTitle": "静态检查、类型与审查",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q6",
+          "title": "性能、负载与可靠性测试",
+          "path": "/software/quality/performance-reliability-tests",
+          "phase": 4,
+          "status": "published",
+          "summary": "设计负载、压力、长稳和故障实验，明确工作负载、停止条件和结果边界。",
+          "publishedTitle": "性能、负载与可靠性测试",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "Q7",
+          "title": "验收、回归与质量度量",
+          "path": "/software/quality/acceptance-regression",
+          "phase": 1,
+          "status": "published",
+          "summary": "把验收标准、回归范围和质量度量连接起来，避免以覆盖率代替交付判断。",
+          "publishedTitle": "验收、回归与质量度量",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注从风险和质量目标到有效验证证据的全过程。测试、静态分析、调试和验收互补；AI 自报完成、单一覆盖率和一次正常演示均不能独立证明交付满足要求。",
+      "readingOrder": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q5",
+        "Q4",
+        "Q6",
+        "Q7"
+      ]
+    },
+    {
+      "id": "DL",
+      "slug": "delivery",
+      "title": "构建交付与部署",
+      "purpose": "从可追溯构建到可控发布与回退",
+      "audience": "开发者、平台人员及上线负责人",
+      "prerequisites": "版本控制、环境与网络",
+      "articles": [
+        {
+          "id": "DL1",
+          "title": "构建与 CI 流水线",
+          "path": "/software/delivery/build-ci",
+          "phase": 1,
+          "status": "published",
+          "summary": "用固定输入构建可追溯制品，把 CI 检查、来源和交付证据连接起来。",
+          "publishedTitle": "构建与 CI 流水线",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DL2",
+          "title": "环境、配置与基础设施即代码",
+          "path": "/software/delivery/environments-iac",
+          "phase": 4,
+          "status": "published",
+          "summary": "管理环境差异、配置和基础设施声明，检查状态、漂移和变更计划。",
+          "publishedTitle": "环境、配置与基础设施即代码",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DL3",
+          "title": "容器、镜像与打包",
+          "path": "/software/delivery/containers-images",
+          "phase": 4,
+          "status": "published",
+          "summary": "区分镜像、容器和宿主资源，评估打包、隔离、来源及运行配置。",
+          "publishedTitle": "容器、镜像与打包",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DL4",
+          "title": "托管、部署与平台工程",
+          "path": "/software/delivery/hosting-platforms",
+          "phase": 4,
+          "status": "published",
+          "summary": "按工作负载、责任、约束和退出成本选择托管及部署方式，明确平台接口。",
+          "publishedTitle": "托管、部署与平台工程",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DL5",
+          "title": "域名、DNS、HTTPS 与入口",
+          "path": "/software/delivery/dns-https",
+          "phase": 4,
+          "status": "published",
+          "summary": "连接域名解析、入口路由和 TLS 信任，分层判断访问与证书故障。",
+          "publishedTitle": "域名、DNS、HTTPS 与入口",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "DL6",
+          "title": "发布、功能开关与回滚",
+          "path": "/software/delivery/release-rollback",
+          "phase": 1,
+          "status": "published",
+          "summary": "区分部署与发布，以渐进流量、功能开关和兼容策略控制回退风险。",
+          "publishedTitle": "发布、功能开关与回滚",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注从源码版本、构建输入和制品来源到可控部署、发布与回退。应用环境与基础设施状态需分别追踪；Kubernetes 调度及云平台架构复用云原生主文。",
+      "readingOrder": [
+        "DL1",
+        "DL2",
+        "DL3",
+        "DL4",
+        "DL5",
+        "DL6"
+      ]
+    },
+    {
+      "id": "O",
+      "slug": "operations",
+      "title": "运维可靠性与性能",
+      "purpose": "围绕服务目标观测、恢复与优化",
+      "audience": "应用维护者及运维人员",
+      "prerequisites": "服务、部署与质量指标",
+      "articles": [
+        {
+          "id": "O1",
+          "title": "SLO、健康检查与值守",
+          "path": "/software/operations/slo-health-oncall",
+          "phase": 4,
+          "status": "published",
+          "summary": "从用户成功定义 SLI/SLO，区分健康检查与服务目标，并安排值守责任。",
+          "publishedTitle": "SLO、健康检查与值守",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "O2",
+          "title": "应用指标、日志与追踪埋点",
+          "path": "/software/operations/application-observability",
+          "phase": 4,
+          "status": "published",
+          "summary": "围绕用户路径设计应用指标、日志与追踪，控制关联、采样和敏感信息。",
+          "publishedTitle": "应用指标、日志与追踪埋点",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "O3",
+          "title": "故障响应、手册与复盘",
+          "path": "/software/operations/incident-response",
+          "phase": 4,
+          "status": "published",
+          "summary": "以分工、止损和时间线处理故障，把复盘结论落实为可验证行动。",
+          "publishedTitle": "故障响应、手册与复盘",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "O4",
+          "title": "性能分析、容量、弹性与成本",
+          "path": "/software/operations/capacity-performance-cost",
+          "phase": 4,
+          "status": "published",
+          "summary": "从工作负载和瓶颈分析容量、弹性与成本，验证优化是否改善目标指标。",
+          "publishedTitle": "性能分析、容量、弹性与成本",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "O5",
+          "title": "恢复演练与数据对账",
+          "path": "/software/operations/recovery-reconciliation",
+          "phase": 4,
+          "status": "published",
+          "summary": "将备份、恢复和业务对账组合成演练，检验恢复时间、数据损失和一致性。",
+          "publishedTitle": "恢复演练与数据对账",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "围绕用户服务目标组织应用观测、值守、故障、容量和恢复验证。平台采集存储及灾备架构由云计算主文深入解释；应用需要定义自己的指标、手册和业务对账。",
+      "readingOrder": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5"
+      ]
+    },
+    {
+      "id": "S",
+      "slug": "security",
+      "title": "安全、隐私与治理",
+      "purpose": "约束攻击面、数据与依赖风险",
+      "audience": "开发者、安全人员及项目负责人",
+      "prerequisites": "接口、身份、数据与交付",
+      "articles": [
+        {
+          "id": "S1",
+          "title": "威胁建模与安全开发验证",
+          "path": "/software/security/threat-modeling",
+          "phase": 4,
+          "status": "published",
+          "summary": "按资产、信任边界和攻击路径建模威胁，将安全要求放入研发验证。",
+          "publishedTitle": "威胁建模与安全开发验证",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "S2",
+          "title": "输入、输出与业务安全",
+          "path": "/software/security/application-security",
+          "phase": 4,
+          "status": "published",
+          "summary": "区分输入校验、输出编码和业务授权，防范注入、跨站攻击及流程滥用。",
+          "publishedTitle": "输入、输出与业务安全",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "S3",
+          "title": "密钥、最小权限与审计",
+          "path": "/software/security/secrets-permissions",
+          "phase": 4,
+          "status": "published",
+          "summary": "管理密钥发放、使用、轮换和撤销，以最小权限和审计限制执行边界。",
+          "publishedTitle": "密钥、最小权限与审计",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "S4",
+          "title": "依赖供应链与制品信任",
+          "path": "/software/security/supply-chain",
+          "phase": 4,
+          "status": "published",
+          "summary": "追踪依赖和制品来源，用锁定、扫描、签名与证明约束供应链风险。",
+          "publishedTitle": "依赖供应链与制品信任",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "S5",
+          "title": "隐私与数据生命周期",
+          "path": "/software/security/privacy-lifecycle",
+          "phase": 4,
+          "status": "published",
+          "summary": "按目的、最小化和保留规则管理数据全生命周期，识别副本与第三方流转。",
+          "publishedTitle": "隐私与数据生命周期",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "S6",
+          "title": "许可证、知识产权与职业责任",
+          "path": "/software/security/licenses-professional-practice",
+          "phase": 4,
+          "status": "published",
+          "summary": "区分许可证、版权与使用方式，建立来源清单和工程职业责任边界。",
+          "publishedTitle": "许可证、知识产权与职业责任",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "从资产与信任边界到输入输出、秘密、依赖和数据生命周期，覆盖应用研发治理。云账户组织治理由云安全主文承担；许可证与法律要求需要结合具体材料、使用方式和适用地区审查。",
+      "readingOrder": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6"
+      ]
+    },
+    {
+      "id": "AI",
+      "slug": "ai-assisted",
+      "title": "AI 辅助研发与 Agent 工程",
+      "purpose": "将 AI 纳入需求、受限执行与验证",
+      "audience": "AI 编程使用者及研发团队",
+      "prerequisites": "需求、仓库与验收",
+      "articles": [
+        {
+          "id": "AI1",
+          "title": "Vibe Coding 与 AI 辅助研发全景",
+          "path": "/software/ai-assisted/ai-development",
+          "phase": 1,
+          "status": "published",
+          "summary": "将 Vibe Coding 放入完整研发流程，明确 AI 的能力、验证要求与人的责任。",
+          "publishedTitle": "Vibe Coding 与 AI 辅助研发全景",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "AI2",
+          "title": "上下文、约束与记忆",
+          "path": "/software/ai-assisted/context-constraints",
+          "phase": 2,
+          "status": "published",
+          "summary": "区分事实、规则和任务上下文，管理约束、记忆与变更时的信息失效。",
+          "publishedTitle": "上下文、约束与记忆",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "AI3",
+          "title": "任务拆分、变更预算与 Agent 协作",
+          "path": "/software/ai-assisted/agent-collaboration",
+          "phase": 2,
+          "status": "published",
+          "summary": "按任务边界拆分 Agent 工作，约束共享文件、接口、变更范围与集成证据。",
+          "publishedTitle": "任务拆分、变更预算与 Agent 协作",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "AI4",
+          "title": "AI 生成代码的验证与验收",
+          "path": "/software/ai-assisted/generated-code-verification",
+          "phase": 1,
+          "status": "published",
+          "summary": "独立核对生成代码、依赖与测试，检查业务、安全、兼容和运行证据。",
+          "publishedTitle": "AI 生成代码的验证与验收",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "AI5",
+          "title": "沙箱、权限与执行防护",
+          "path": "/software/ai-assisted/sandbox-permissions",
+          "phase": 2,
+          "status": "published",
+          "summary": "以沙箱、工具权限和审批约束 Agent 执行，处理外部内容与提示注入风险。",
+          "publishedTitle": "沙箱、权限与执行防护",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "AI6",
+          "title": "评测、成本与迭代",
+          "path": "/software/ai-assisted/evaluation-cost",
+          "phase": 2,
+          "status": "published",
+          "summary": "用项目任务集评估 AI 研发质量、成本和失败，控制环境变量与迭代比较。",
+          "publishedTitle": "评测、成本与迭代",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注使用 AI 构造和维护软件时的任务、上下文、权限与验证。开发 AI 产品的模型、检索和 Agent 原理由 AI 领域解释；工具产品功能和模型价格须按具体版本另行核实。",
+      "readingOrder": [
+        "AI1",
+        "AI2",
+        "AI3",
+        "AI5",
+        "AI4",
+        "AI6"
+      ]
+    },
+    {
+      "id": "M",
+      "slug": "maintenance",
+      "title": "维护与软件演进",
+      "purpose": "接管、演进既有软件并有序退出",
+      "audience": "项目接管者、维护者及技术负责人",
+      "prerequisites": "版本、设计、测试与交付",
+      "articles": [
+        {
+          "id": "M1",
+          "title": "阅读与接管既有系统",
+          "path": "/software/maintenance/system-takeover",
+          "phase": 5,
+          "status": "published",
+          "summary": "按业务、代码、数据、交付和责任阅读既有系统，建立可复现的接管基线。",
+          "publishedTitle": "阅读与接管既有系统",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "M2",
+          "title": "重构、技术债与架构演进",
+          "path": "/software/maintenance/refactoring-debt",
+          "phase": 5,
+          "status": "published",
+          "summary": "识别技术债的影响与变化热点，借助行为验证分步重构和演进架构。",
+          "publishedTitle": "重构、技术债与架构演进",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "M3",
+          "title": "依赖升级、弃用与兼容",
+          "path": "/software/maintenance/upgrades-compatibility",
+          "phase": 5,
+          "status": "published",
+          "summary": "沿兼容约束、弃用信号和依赖图规划升级，验证协议、配置与数据变化。",
+          "publishedTitle": "依赖升级、弃用与兼容",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "M4",
+          "title": "维护变更与问题管理",
+          "path": "/software/maintenance/maintenance-changes",
+          "phase": 5,
+          "status": "published",
+          "summary": "把缺陷、需求和维护变更统一追踪，安排优先级、影响分析与交付验证。",
+          "publishedTitle": "维护变更与问题管理",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "M5",
+          "title": "停用、数据迁移与可持续性",
+          "path": "/software/maintenance/retirement-sustainability",
+          "phase": 5,
+          "status": "published",
+          "summary": "规划停用、数据迁移和保留责任，以验证、通知和资源退出结束软件生命周期。",
+          "publishedTitle": "停用、数据迁移与可持续性",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "关注既有系统的接管、持续变更、依赖升级和退出。重构须保持约定行为，架构演进需要说明改变的契约；停用同时涉及数据、集成、用户和资源责任。",
+      "readingOrder": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ]
+    },
+    {
+      "id": "X",
+      "slug": "specialized",
+      "title": "专项开发",
+      "purpose": "明确平台约束与扩展入口",
+      "audience": "选择开发形态者及跨领域开发者",
+      "prerequisites": "程序、系统与通用工程",
+      "articles": [
+        {
+          "id": "X1",
+          "title": "移动应用开发基础",
+          "path": "/software/specialized/mobile",
+          "phase": 5,
+          "status": "published",
+          "summary": "理解移动生命周期、离线、权限和分发约束，选择原生或跨平台工程路径。",
+          "publishedTitle": "移动应用开发基础",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X2",
+          "title": "桌面应用开发基础",
+          "path": "/software/specialized/desktop",
+          "phase": 5,
+          "status": "published",
+          "summary": "理解桌面进程、系统集成、安装更新和平台差异，控制应用权限与交付边界。",
+          "publishedTitle": "桌面应用开发基础",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X3",
+          "title": "CLI 与自动化工具",
+          "path": "/software/specialized/cli-automation",
+          "phase": 5,
+          "status": "published",
+          "summary": "设计 CLI 的参数、输出、退出码和幂等性，使自动化可组合、可诊断和可恢复。",
+          "publishedTitle": "CLI 与自动化工具",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X4",
+          "title": "浏览器扩展",
+          "path": "/software/specialized/browser-extensions",
+          "phase": 5,
+          "status": "published",
+          "summary": "理解扩展页面、内容脚本和后台上下文，约束宿主权限、消息与分发。",
+          "publishedTitle": "浏览器扩展",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X5",
+          "title": "游戏软件工程基础",
+          "path": "/software/specialized/games",
+          "phase": 5,
+          "status": "published",
+          "summary": "围绕游戏循环、状态、资源与确定性安排工程，区分实时性能和通用业务服务。",
+          "publishedTitle": "游戏软件工程基础",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X6",
+          "title": "嵌入式、物联网与实时约束",
+          "path": "/software/specialized/embedded-iot",
+          "phase": 5,
+          "status": "published",
+          "summary": "把设备资源、时序、通信和物理故障纳入嵌入式及物联网研发与升级验证。",
+          "publishedTitle": "嵌入式、物联网与实时约束",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X7",
+          "title": "音视频与实时通信",
+          "path": "/software/specialized/realtime-media",
+          "phase": 5,
+          "status": "published",
+          "summary": "连接采集、编码、传输和播放，按延迟、丢包与同步要求选择实时媒体方案。",
+          "publishedTitle": "音视频与实时通信",
+          "completedOn": "2026-10-03"
+        },
+        {
+          "id": "X8",
+          "title": "AI 应用工程入口",
+          "path": "/software/specialized/ai-applications",
+          "phase": 5,
+          "status": "published",
+          "summary": "把通用应用工程连接到模型、检索和 Agent，明确 AI 应用质量与安全的新边界。",
+          "publishedTitle": "AI 应用工程入口",
+          "completedOn": "2026-10-03"
+        }
+      ],
+      "boundary": "覆盖不同开发形态的运行模型、额外约束与深入入口，不穷举语言或产品。通用需求、版本、测试和交付方法依然适用，但宿主生命周期、权限、实时性和分发规则需要另行验证。",
+      "readingOrder": [
+        "X3",
+        "X1",
+        "X2",
+        "X4",
+        "X5",
+        "X6",
+        "X7",
+        "X8"
+      ]
+    }
+  ],
+  "reference": [
+    "terms",
+    "scenarios",
+    "technologies-tools"
+  ],
+  "publicOutlinesPlanned": [],
+  "currentBatch": {
+    "id": "remaining-all",
+    "status": "complete",
+    "completedOn": "2026-10-03",
+    "delivery": "local-review",
+    "articles": [
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16",
+      "F2",
+      "F4",
+      "F5",
+      "F6",
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "T2",
+      "T4",
+      "T5",
+      "T6",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "W1",
+      "W2",
+      "W3",
+      "W4",
+      "W5",
+      "W6",
+      "W7",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "DB1",
+      "DB2",
+      "DB3",
+      "DB4",
+      "DB5",
+      "DB6",
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7",
+      "DL1",
+      "DL2",
+      "DL3",
+      "DL4",
+      "DL5",
+      "DL6",
+      "O1",
+      "O2",
+      "O3",
+      "O4",
+      "O5",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "AI1",
+      "AI2",
+      "AI3",
+      "AI4",
+      "AI5",
+      "AI6",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8"
+    ],
+    "scope": "完成第一阶段余下 25 篇与第二至第五阶段 84 篇；并行写作，统一整合验收。"
+  },
+  "phaseTotals": {
+    "1": 37,
+    "2": 22,
+    "3": 26,
+    "4": 20,
+    "5": 16
+  },
+  "targetTotals": {
+    "guideArticles": 16,
+    "professionalArticles": 105,
+    "referencePages": 3,
+    "overviewPages": 20,
+    "totalPages": 144
+  },
+  "nextBatch": null,
+  "outlinePlanResolution": {
+    "originalTopics": [
+      "P1",
+      "D1",
+      "W4",
+      "B1",
+      "S1",
+      "AI2"
+    ],
+    "resolution": "均已完成完整正文，本轮无提纲页或规划空页。"
+  },
+  "batchHistory": [
+    {
+      "id": "1a",
+      "articles": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "F1",
+        "F3",
+        "T1",
+        "T3",
+        "C1",
+        "C4",
+        "R1",
+        "R2"
+      ],
+      "scope": "4 篇导览与 8 篇专业正文；导航、摘要、索引及维护规则同步",
+      "acceptance": [
+        "读者引语、机制实践、失败模式与边界，有判断意义的 Mermaid",
+        "一手来源实际核验，Refs 引用，日期仅指实际复核范围",
+        "导航、摘要、状态、互链一致",
+        "项目测试、含死链检查的构建及桌面手机预览通过"
+      ],
+      "status": "complete",
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "id": "remaining-all",
+      "status": "complete",
+      "completedOn": "2026-10-03",
+      "delivery": "local-review",
+      "articles": [
+        "G5",
+        "G6",
+        "G7",
+        "G8",
+        "G9",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16",
+        "F2",
+        "F4",
+        "F5",
+        "F6",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "T2",
+        "T4",
+        "T5",
+        "T6",
+        "C2",
+        "C3",
+        "C5",
+        "C6",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "DB1",
+        "DB2",
+        "DB3",
+        "DB4",
+        "DB5",
+        "DB6",
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "Q7",
+        "DL1",
+        "DL2",
+        "DL3",
+        "DL4",
+        "DL5",
+        "DL6",
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "AI1",
+        "AI2",
+        "AI3",
+        "AI4",
+        "AI5",
+        "AI6",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "X1",
+        "X2",
+        "X3",
+        "X4",
+        "X5",
+        "X6",
+        "X7",
+        "X8"
+      ],
+      "scope": "完成第一阶段余下 25 篇与第二至第五阶段 84 篇；并行写作，统一整合验收。"
+    }
+  ],
+  "phaseCompletion": [
+    {
+      "phase": 1,
+      "name": "导览与工程主线",
+      "status": "complete",
+      "totalCompleteArticles": 37,
+      "newCompleteArticlesThisRun": 25,
+      "topics": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8",
+        "G9",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16",
+        "F1",
+        "F3",
+        "F4",
+        "F5",
+        "T1",
+        "T3",
+        "T4",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "R1",
+        "R2",
+        "B2",
+        "DB1",
+        "Q2",
+        "Q7",
+        "DL1",
+        "DL6",
+        "AI1",
+        "AI4"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 2,
+      "name": "程序设计、算法与工具协作",
+      "status": "complete",
+      "totalCompleteArticles": 22,
+      "newCompleteArticlesThisRun": 22,
+      "topics": [
+        "F2",
+        "F6",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "T2",
+        "T5",
+        "T6",
+        "C5",
+        "C6",
+        "AI2",
+        "AI3",
+        "AI5",
+        "AI6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 3,
+      "name": "架构与应用工程",
+      "status": "complete",
+      "totalCompleteArticles": 26,
+      "newCompleteArticlesThisRun": 26,
+      "topics": [
+        "R3",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "B1",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "DB2",
+        "DB3",
+        "DB4",
+        "DB5",
+        "DB6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 4,
+      "name": "质量、交付与生产治理",
+      "status": "complete",
+      "totalCompleteArticles": 20,
+      "newCompleteArticlesThisRun": 20,
+      "topics": [
+        "Q1",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "DL2",
+        "DL3",
+        "DL4",
+        "DL5",
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    },
+    {
+      "phase": 5,
+      "name": "管理、维护与专项开发",
+      "status": "complete",
+      "totalCompleteArticles": 16,
+      "newCompleteArticlesThisRun": 16,
+      "topics": [
+        "R4",
+        "R5",
+        "R6",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "X1",
+        "X2",
+        "X3",
+        "X4",
+        "X5",
+        "X6",
+        "X7",
+        "X8"
+      ],
+      "completedOn": "2026-10-03",
+      "delivery": "local-review"
+    }
+  ],
+  "completedOn": "2026-10-03",
+  "completionRecord": "maintenance/software-completion.json",
+  "status": "complete"
+}

@@ -178,4 +178,6 @@ flowchart LR
 
 **站内相关**：[卓越架构](/cloud/architecture/well-architected) · [可靠性与灾备](/cloud/architecture/reliability-dr) · [云网络](/cloud/infra/network) · [可观测体系](/cloud/native/observability)
 
+- 应用工程入口：[威胁建模](/software/security/threat-modeling) · [身份认证与授权](/software/backend/authentication-authorization) · [密钥与最小权限](/software/security/secrets-permissions)
+
 </Refs>

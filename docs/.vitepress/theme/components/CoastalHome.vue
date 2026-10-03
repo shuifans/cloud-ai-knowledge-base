@@ -8,9 +8,11 @@ import Timeline from './Timeline.vue'
 const areas = [
   { number: '01', name: '云计算', english: 'CLOUD COMPUTING', icon: 'cloud', description: '从基础设施出发，理解云上系统如何构建、运行与演进。', topics: '云计算基座 / 计算·存储·网络 / 数据 / 云原生 / 架构', link: '/cloud/', start: '/cloud/foundation/', startLabel: '从云计算基座开始' },
   { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '从模型原理走向工程实践，连接算力、应用与智能体。', topics: '模型与算法 / AI 基础设施 / 应用与评测 / 智能体', link: '/ai/', start: '/ai/models/', startLabel: '从模型与算法开始' },
-  { number: '03', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/', start: '/chronicle/mobile-internet', startLabel: '从移动互联网开始' },
+  { number: '03', name: '软件研发', english: 'SOFTWARE ENGINEERING', icon: 'software', description: '从需求与代码到验证、交付和维护，理解并管理软件项目。', topics: 'AI 编程导览 / 程序与设计 / 实现与数据 / 质量与交付 / 维护治理', link: '/software/', start: '/software/guide/', startLabel: '从认识软件项目开始' },
+  { number: '04', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/', start: '/chronicle/mobile-internet', startLabel: '从移动互联网开始' },
 ]
 const reading = [
+  { label: '软件项目导览', title: 'AI 编程：协作方式与人的责任', link: '/software/guide/ai-coding-responsibility' },
   { label: '云计算基座', title: 'OpenStack 架构与十年演进', link: '/cloud/foundation/openstack' },
   { label: '应用与评测', title: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
   { label: 'AI 基础设施', title: '大模型推理部署实战', link: '/ai/infra/inference/llm-inference' },
@@ -28,24 +30,25 @@ function openSearch() {
         <p class="eyebrow">A LITTLE KNOWLEDGE JOURNEY</p>
         <h1 id="home-title">云与 AI<br /><span>知识体系</span></h1>
         <p class="hero-tagline">保持好奇，慢慢深入。</p>
-        <p class="hero-description">从云计算基座，到大模型与智能体。<br />把零散的技术线索，整理成可检索的知识体系。<br class="desktop-break" />理解原理，也抵达实践。</p>
+        <p class="hero-description">从云计算、大模型，到软件研发与工程实践。<br />把零散的技术线索，整理成可检索的知识体系。<br class="desktop-break" />理解原理，也抵达实践。</p>
         <div class="hero-actions">
           <a class="coast-button" href="#knowledge-areas">探索技术领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
           <button class="search-button" type="button" @click="openSearch"><span class="vpi-search" aria-hidden="true"></span>搜索知识</button>
         </div>
-        <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a href="#task-start">按任务开始</a></nav>
+        <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a :href="withBase('/software/')">软件研发</a><a href="#task-start">按任务开始</a></nav>
         <p class="hero-footnote">公开资料为起点 · 工程实践为方向 · 持续校验</p>
       </div>
       <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
     </section>
 
     <section id="knowledge-areas" class="knowledge-section" aria-labelledby="knowledge-title">
-      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR ROUTE</p><h2 id="knowledge-title">每一条路，都通向理解。</h2></div><span class="section-note">两大技术领域，一条历史线索</span></div>
+      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR ROUTE</p><h2 id="knowledge-title">每一条路，都通向理解。</h2></div><span class="section-note">三大技术领域，一条历史线索</span></div>
       <div class="knowledge-grid">
         <article v-for="area in areas" :key="area.number" class="knowledge-card">
           <div class="card-top"><span class="area-icon" aria-hidden="true">
             <svg v-if="area.icon === 'cloud'" viewBox="0 0 64 64" fill="none"><path d="M19 48h27a11 11 0 0 0 1-22 15 15 0 0 0-28-3A12 12 0 0 0 19 48Z"/><path d="M20 53h24M24 58h16"/></svg>
             <svg v-else-if="area.icon === 'ai'" viewBox="0 0 64 64" fill="none"><rect x="18" y="18" width="28" height="28" rx="6"/><path d="M27 27h10v10H27zM32 12v6M32 46v6M12 32h6M46 32h6M19 19l4 4M41 41l4 4M45 19l-4 4M23 41l-4 4"/></svg>
+            <svg v-else-if="area.icon === 'software'" viewBox="0 0 64 64" fill="none"><rect x="10" y="12" width="44" height="40" rx="5"/><path d="M10 22h44M26 31l-6 6 6 6M38 31l6 6-6 6M34 29l-4 16"/></svg>
             <svg v-else viewBox="0 0 64 64" fill="none"><path d="M14 47h36M18 39V23M32 39V16M46 39V28"/><circle cx="18" cy="20" r="4"/><circle cx="32" cy="13" r="4"/><circle cx="46" cy="25" r="4"/></svg>
           </span><span class="route-number">ROUTE / {{ area.number }}</span></div>
           <p class="area-english">{{ area.english }}</p><h3><a :href="withBase(area.link)">{{ area.name }}</a></h3>
@@ -100,7 +103,7 @@ h1 span { color: var(--coast-accent); }
 .section-heading .eyebrow { margin-bottom: 7px; }
 .coastal-home h2 { font-size: 25px; line-height: 1.5; letter-spacing: .025em; font-weight: 550; margin: 0; padding: 0; border: 0; }
 .section-note { font-size: 11px; color: var(--coast-muted); padding-bottom: 5px; }
-.knowledge-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .knowledge-card { background: var(--coast-card); border: 1px solid var(--coast-line); border-radius: 20px; padding: 23px; transition: border-color .2s, transform .2s; }
 .knowledge-card:hover { border-color: var(--coast-accent); transform: translateY(-3px); }
 .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
@@ -180,7 +183,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #c49441; outline-offs
 .hero-shortcuts { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
 .hero-shortcuts a { font-size: 12px; color: var(--coast-accent); text-decoration: underline; text-underline-offset: 4px; }
 .task-section { padding-top: 48px; }
-.task-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.task-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .task-grid article { padding: 20px; border: 1px solid var(--coast-line); border-radius: 16px; background: var(--coast-wash); }
 .coastal-home .task-grid h3,.coastal-home .topic-grid h3 { font-size: 16px; margin: 0 0 10px; }
 .task-grid p { margin: 0 0 15px; color: var(--coast-muted); font-size: 12px; line-height: 1.8; }
