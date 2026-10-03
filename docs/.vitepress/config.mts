@@ -28,6 +28,10 @@ export default defineConfig({
   transformPageData(pageData) {
     const path = `/${pageKey(pageData.relativePath)}`
     Object.assign(pageData.frontmatter, sectionPager(knowledgeSidebar, path), softwarePager(path))
+    if (pageData.frontmatter.directory) {
+      pageData.frontmatter.outline = false
+      pageData.frontmatter.aside = false
+    }
     pageData.frontmatter.lastVerified = verifiedDate(pageData.frontmatter.lastVerified)
     pageData.frontmatter.lastReviewed = verifiedDate(pageData.frontmatter.lastReviewed)
   },
@@ -35,6 +39,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: [
+        { find: /^\.\/VPSidebarGroup\.vue$/, replacement: component('KnowledgeTree') },
         { find: /^\.\/VPDocOutlineItem\.vue$/, replacement: component('KnowledgeOutline') },
         { find: /^\.\/VPLocalSearchBox\.vue$/, replacement: component('KnowledgeSearch') },
         { find: /^\.\/VPNavBarHamburger\.vue$/, replacement: component('KnowledgeMenuButton') },

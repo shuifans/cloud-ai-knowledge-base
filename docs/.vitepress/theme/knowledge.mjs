@@ -39,9 +39,10 @@ export function breadcrumbTrail(sidebar, path, title, base = '/') {
 export function sectionPager(sidebar, path) {
   const section = sidebar.find(item => item.items && findNode([item], path))
   if (!section) return { prev: false, next: false }
-  const flatten = items => items.flatMap(item => [ ...(item.link ? [{ text: item.text, link: item.link }] : []), ...flatten(item.items || []) ])
+  const flatten = items => items.flatMap(item => item.items?.length ? flatten(item.items) : item.link ? [{ text: item.text, link: item.link }] : [])
   const links = flatten([section])
   const index = links.findIndex(item => normalizePath(item.link) === normalizePath(path))
+  if (index < 0) return { prev: false, next: false }
   return { prev: links[index - 1] || false, next: links[index + 1] || false }
 }
 
