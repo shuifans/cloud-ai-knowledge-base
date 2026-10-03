@@ -39,6 +39,30 @@ test('shared filters survive reload with Pages base and preserve unrelated URL s
   assert.equal(writeFilters(url.href, { models: [], efforts: [], sort: 'model' }), '/cloud-ai-knowledge-base/playground/pelican/?campaign=demo#works')
 })
 
+test('default comparison order groups full model names and sorts effort from low to max across batches', () => {
+  const models = ['gpt6.1-sol', 'gpt6-sol', 'gpt6-astra']
+  const modelEfforts = [
+    ['gpt6.1-sol', ['high', 'medium', 'xhigh']],
+    ['gpt6-sol', ['max', 'xhigh', 'high', 'medium']],
+    ['gpt6-astra', ['high', 'xhigh', 'medium']],
+  ]
+  const mixedBatches = modelEfforts.flatMap(([modelId, efforts]) => efforts.map((reasoningEffort, index) => ({
+    id: `${modelId}-${reasoningEffort}`, modelId, reasoningEffort,
+    importedAt: index % 2 ? '2026-09-26T00:00:00Z' : '2026-09-30T00:00:00Z',
+  })))
+  const results = filterResults(mixedBatches, { models })
+  assert.deepEqual(results.map(result => `${result.modelId}/${result.reasoningEffort}`), [
+    'gpt6-astra/medium', 'gpt6-astra/high', 'gpt6-astra/xhigh',
+    'gpt6-sol/medium', 'gpt6-sol/high', 'gpt6-sol/xhigh', 'gpt6-sol/max',
+    'gpt6.1-sol/medium', 'gpt6.1-sol/high', 'gpt6.1-sol/xhigh',
+  ])
+  const unordered = ['max', 'xhigh', 'high', 'low', 'medium'].map((reasoningEffort, index) => ({
+    id: `${index}`, modelId: 'example-model', reasoningEffort,
+    importedAt: `2026-10-0${index + 1}T00:00:00Z`,
+  }))
+  assert.deepEqual(filterResults(unordered).map(result => result.reasoningEffort), ['low', 'medium', 'high', 'xhigh', 'max'])
+})
+
 test('preview policy precedes executable content while original output remains intact', () => {
   const original = '<!doctype html><HTML><HEAD><script>document.body.dataset.test = 1</script></HEAD><body><svg></svg></body></HTML>'
   const preview = previewDocument(original)

@@ -2,7 +2,17 @@
 
 final result: passed
 
-## 最新：补充 4 个鹈鹕测试作品（2026-09-30）
+## 最新：鹈鹕测试对比排序（2026-10-03）
+
+final result: passed
+
+- 原因是模型筛选继承了最近收录排序，新旧批次交错。调整模型或 effort 时自动切回名称排序；手动选择最近收录仍有效，排序选项明确为「名称与 effort 升序」。
+- 从 `?sort=recent` 开始，在模型菜单搜索 GPT 并选择 4 个模型，11 个作品按完整名称连续分组：astra、luna、sol、6.1-sol。同模型 effort 升序，刷新后名称排序和筛选保持，URL 不再带旧的 `sort=recent`。
+- 再手动选最近收录后筛选 high，自动切回名称排序，得到 astra、sol、6.1-sol 各 1 个 high。astra 与 6.1-sol 单独对比时，分别连续显示 medium、high、xhigh。
+- 手机 393 × 852 无横向溢出，排序选择和卡片顺序正常。浏览器无 error / warning；17 个原件及封面校验、23 项测试及正式 base 构建通过（17.04 秒），包括死链检查。既有构建提示不变。
+- 桌面完整对比截图：`design/pelican-lab/qa/name-effort-order.jpg`。原始输出、动画默认播放与详情默认完整画面保留。
+
+## 补充 4 个鹈鹕测试作品（2026-09-30）
 
 final result: passed
 

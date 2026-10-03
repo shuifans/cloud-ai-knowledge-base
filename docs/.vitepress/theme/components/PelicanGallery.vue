@@ -43,6 +43,7 @@ function isCardPlaying(id: string) { return pageVisible.value && !detail.value &
 function applyFilters(next: { models?: string[]; efforts?: string[]; sort?: string }) {
   if (next.models) models.value = next.models
   if (next.efforts) efforts.value = next.efforts
+  if (next.models || next.efforts) sort.value = 'model'
   if (next.sort) sort.value = next.sort
   const url = writeFilters(window.location.href, { models: models.value, efforts: efforts.value, sort: sort.value })
   if (url !== location.pathname + location.search + location.hash) history.pushState(history.state, '', url)
@@ -195,7 +196,7 @@ onBeforeUnmount(() => {
         <button type="button" :aria-pressed="!efforts.length" @click="applyFilters({ efforts: [] })">全部</button>
         <button v-for="effort in availableEfforts" :key="effort" type="button" :aria-pressed="efforts.includes(effort)" :title="`${effort} · ${effortCount(effort)} 个作品`" @click="applyFilters({ efforts: toggle(efforts, effort) })">{{ effort }}<small>{{ effortCount(effort) }}</small></button>
       </div></fieldset>
-      <label class="sort-control"><span class="sr-only">作品排序</span><select :value="sort" aria-label="作品排序" @change="applyFilters({ sort: ($event.target as HTMLSelectElement).value })"><option value="model">模型分组</option><option value="recent">最近收录</option></select></label>
+      <label class="sort-control"><span class="sr-only">作品排序</span><select :value="sort" aria-label="作品排序" @change="applyFilters({ sort: ($event.target as HTMLSelectElement).value })"><option value="model">名称与 effort 升序</option><option value="recent">最近收录</option></select></label>
     </section>
 
     <div class="results-bar"><p role="status" aria-live="polite">显示 <strong>{{ shown.length }}</strong> / {{ catalog.results.length }} 个作品 <button v-if="hasFilters || sort !== 'model'" type="button" @click="clearFilters">清空筛选</button></p><span>趣味观察，不代表综合能力排名。</span></div>
