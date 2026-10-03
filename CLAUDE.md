@@ -24,7 +24,7 @@ npm run docs:preview  # 预览构建产物
 ## 新增文章流程
 
 1. 从 `templates/article-template.md` 或概念、专题、实践、比较模板复制，放入对应知识域目录，英文短横线文件名；按主题调整结构，不为套模板重复空话
-2. 在 `docs/.vitepress/config.mts` 的对应 `sidebar` 中注册条目；软件研发统一维护 `docs/.vitepress/software-sidebar.mjs`（提纲页标注"（提纲）"）
+2. 在 `docs/.vitepress/site-navigation.mjs` 的全站目录树中注册条目；软件研发统一维护 `docs/.vitepress/software-sidebar.mjs`（提纲页标注"（提纲）"）
 3. 目录页只组织文章入口，不写导读、学习路径或推荐阅读顺序；软件研发目录由同一份侧栏配置在构建时生成，不重复手写清单
 4. 在 `docs/.vitepress/reading-guides.mjs` 补充搜索摘要；正文不注入阅读指南
 5. 跑 `node --test tests/*.test.mjs` 和 `npm run docs:build` 确认行为与链接
@@ -56,7 +56,7 @@ npm run docs:preview  # 预览构建产物
 - 优先官方文档/博客的架构图、Wikimedia Commons；下载后校验为图片格式，超过 1.5MB 压缩（`sips -Z 1200`）
 - 每张图正文下方用斜体图注标注来源页链接；参考资料的"图片来源"小节也要登记
 - Mermaid 治理：渲染配置在 `theme/components/MermaidDiagram.vue`（mermaid 按需动态 import，不进全站预加载），图容器为纸面卡片（`theme/custom.css` 的 `.mermaid`）——浅色模式浅纸面、暗色模式深纸面，切主题时由组件内 MutationObserver 触发重渲染；SVG 必须在卡片内等比例缩放到正文宽度，完整展示后由点击放大查看细节，不得仅靠横向滚动隐藏超宽内容；全景/矩阵类图必须用 subgraph 内 `direction LR`（或 block-beta）让同层节点横排，禁止孤立节点直接挂 TB/TD 下由 dagre 逐列排 rank（会形成大空隙竖条）
-- 面包屑（`theme/components/Breadcrumbs.vue`）由 `config.mts` 的 `nav` + `sidebar` 推导，无需手工维护；层级为「首页 > 支柱名（取自 nav）> 分组名（取自 sidebar 分组）> 页名」，因此 sidebar 分组命名会直接出现在面包屑中间层
+- 面包屑（`theme/components/Breadcrumbs.vue`）直接由全站目录树推导，层级为「首页 > 版块 > 目录 > 文章」。不依赖顶部导航，不手工维护第二份目录。
 
 ## 写作风格
 
@@ -86,7 +86,7 @@ npm run docs:preview  # 预览构建产物
 
 ## 导航与阅读体验维护
 
-- `config.mts`（软件研发引用 `software-sidebar.mjs`）是目录名称、顺序与层级的唯一来源。目录分组保留 `link`，子条目只列文章，不再重复自身目录；面包屑据此推导。
+- `site-navigation.mjs`（软件研发引用 `software-sidebar.mjs`）是目录名称、顺序与层级的唯一来源；`config.mts` 为所有页面使用同一棵左侧目录树，顶部不设置模块跳转或下拉菜单。目录分组保留 `link`，子条目只列文章，不再重复自身目录；面包屑据此推导。
 - 本站使用“版块 → 目录 → 文章”，不添加导读卡或推荐阅读顺序。`directory-markdown.mjs` 将目录标记展开为普通 Markdown 链接；文章标题后直接呈现正文，复核记录置于文末。
 - `reading-guides.mjs` 保留搜索摘要；目录、侧栏和文章翻页顺序统一，软件研发翻页不跨目录。首页以版块入口为主。
 - `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。

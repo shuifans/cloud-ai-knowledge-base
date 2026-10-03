@@ -2,7 +2,8 @@ import { defineConfig } from 'vitepress'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import { pageKey, verifiedDate } from './reading-guides.mjs'
-import { softwareSidebar } from './software-sidebar.mjs'
+import { knowledgeSidebar } from './site-navigation.mjs'
+import { sectionPager } from './theme/knowledge.mjs'
 import { directoryMarkdown, softwarePager } from './directory-markdown.mjs'
 
 const require = createRequire(import.meta.url)
@@ -25,7 +26,8 @@ export default defineConfig({
   ignoreDeadLinks: false,
 
   transformPageData(pageData) {
-    Object.assign(pageData.frontmatter, softwarePager(`/${pageKey(pageData.relativePath)}`))
+    const path = `/${pageKey(pageData.relativePath)}`
+    Object.assign(pageData.frontmatter, sectionPager(knowledgeSidebar, path), softwarePager(path))
     pageData.frontmatter.lastVerified = verifiedDate(pageData.frontmatter.lastVerified)
     pageData.frontmatter.lastReviewed = verifiedDate(pageData.frontmatter.lastReviewed)
   },
@@ -103,214 +105,9 @@ export default defineConfig({
       },
     },
 
-    nav: [
-      {
-        text: '云计算',
-        items: [
-          { text: '云计算全景', link: '/cloud/' },
-          { text: '云计算基座', link: '/cloud/foundation/' },
-          { text: '计算·存储·网络', link: '/cloud/infra/' },
-          { text: '数据库·大数据', link: '/cloud/data/' },
-          { text: '云原生', link: '/cloud/native/' },
-          { text: '架构与治理', link: '/cloud/architecture/' },
-        ],
-      },
-      {
-        text: '人工智能',
-        items: [
-          { text: 'AI 全景', link: '/ai/' },
-          { text: '模型与算法', link: '/ai/models/' },
-          { text: 'AI 基础设施', link: '/ai/infra/' },
-          { text: '应用与评测', link: '/ai/application/' },
-          { text: '智能体（Agent）', link: '/ai/agent/' },
-        ],
-      },
-      { text: '软件研发', link: '/software/' },
-      { text: '鹈鹕测试', link: '/playground/pelican/' },
-      { text: '编年史', link: '/chronicle/' },
-      { text: '关于', link: '/about' },
-    ],
+    nav: [],
 
-    sidebar: {
-      '/cloud/': [
-        { text: '云计算全景', link: '/cloud/' },
-        {
-          text: '云计算基座',
-          link: '/cloud/foundation/',
-          collapsed: true,
-          items: [
-            { text: '导读：基座知识框架', link: '/cloud/foundation/' },
-            {
-              text: 'OpenStack 架构与十年演进',
-              link: '/cloud/foundation/openstack',
-            },
-            { text: '虚拟化与 KVM', link: '/cloud/foundation/virtualization' },
-            { text: 'SDN / NFV', link: '/cloud/foundation/sdn-nfv' },
-          ],
-        },
-        {
-          text: '计算 · 存储 · 网络',
-          link: '/cloud/infra/',
-          collapsed: true,
-          items: [
-            { text: '导读：三大件知识框架', link: '/cloud/infra/' },
-            { text: '弹性计算', link: '/cloud/infra/compute' },
-            { text: '云存储', link: '/cloud/infra/storage' },
-            { text: '云网络', link: '/cloud/infra/network' },
-          ],
-        },
-        {
-          text: '数据库 · 大数据',
-          link: '/cloud/data/',
-          collapsed: true,
-          items: [
-            { text: '导读：数据层知识框架', link: '/cloud/data/' },
-            { text: '数据库选型', link: '/cloud/data/database' },
-            { text: 'OLAP 引擎：谱系机制拆解与选型', link: '/cloud/data/olap' },
-            { text: '大数据体系', link: '/cloud/data/bigdata' },
-          ],
-        },
-        {
-          text: '云原生',
-          link: '/cloud/native/',
-          collapsed: true,
-          items: [
-            { text: '导读：云原生知识框架', link: '/cloud/native/' },
-            {
-              text: 'Kubernetes 核心机制与企业级落地',
-              link: '/cloud/native/kubernetes',
-            },
-            { text: '微服务治理', link: '/cloud/native/microservice' },
-            { text: '可观测体系', link: '/cloud/native/observability' },
-          ],
-        },
-        {
-          text: '架构与治理',
-          link: '/cloud/architecture/',
-          collapsed: true,
-          items: [
-            { text: '导读：架构与治理知识框架', link: '/cloud/architecture/' },
-            {
-              text: '卓越架构：从原则到持续评审',
-              link: '/cloud/architecture/well-architected',
-            },
-            {
-              text: '安全与身份治理',
-              link: '/cloud/architecture/security-governance',
-            },
-            { text: '可靠性与灾备', link: '/cloud/architecture/reliability-dr' },
-            { text: 'FinOps：云成本治理', link: '/cloud/architecture/finops' },
-            { text: '云迁移与现代化', link: '/cloud/architecture/migration' },
-          ],
-        },
-      ],
-      '/ai/': [
-        { text: 'AI 全景', link: '/ai/' },
-        {
-          text: '模型与算法',
-          link: '/ai/models/',
-          collapsed: true,
-          items: [
-            { text: '模型总览', link: '/ai/models/' },
-            {
-              text: '基础模型',
-              items: [
-                { text: '机器学习与深度学习经典', link: '/ai/models/ml-dl' },
-                { text: '大语言模型架构解析', link: '/ai/models/llm' },
-              ],
-            },
-            {
-              text: '多模态理解',
-              items: [
-                { text: '视觉理解', link: '/ai/models/vision' },
-                { text: '语音识别与理解', link: '/ai/models/audio' },
-              ],
-            },
-            {
-              text: '多模态生成',
-              items: [
-                { text: '图像生成', link: '/ai/models/image-gen' },
-                { text: '视频生成', link: '/ai/models/video-gen' },
-                { text: '语音生成', link: '/ai/models/speech-gen' },
-              ],
-            },
-          ],
-        },
-        {
-          text: 'AI 基础设施',
-          link: '/ai/infra/',
-          collapsed: true,
-          items: [
-            { text: '基础设施总览', link: '/ai/infra/' },
-            { text: 'GPU 集群与高速网络', link: '/ai/infra/cluster' },
-            { text: '训练工程', link: '/ai/infra/training' },
-            {
-              text: '推理与算力',
-              link: '/ai/infra/inference/',
-              collapsed: true,
-              items: [
-                { text: '推理与算力总览', link: '/ai/infra/inference/' },
-                {
-                  text: '大模型推理部署实战',
-                  link: '/ai/infra/inference/llm-inference',
-                },
-                {
-                  text: 'GPU 选型与推理成本测算',
-                  link: '/ai/infra/inference/gpu-sizing',
-                },
-                {
-                  text: 'Token 经济学：定价与成本',
-                  link: '/ai/infra/inference/token-economics',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          text: '应用与评测',
-          link: '/ai/application/',
-          collapsed: true,
-          items: [
-            { text: '应用总览', link: '/ai/application/' },
-            {
-              text: '企业级 RAG 架构设计',
-              link: '/ai/application/rag-architecture',
-            },
-            { text: '多模态应用', link: '/ai/application/multimodal' },
-            { text: '大模型评测', link: '/ai/application/evaluation' },
-          ],
-        },
-        {
-          text: '智能体（Agent）',
-          link: '/ai/agent/',
-          collapsed: true,
-          items: [
-            { text: '智能体技术全景', link: '/ai/agent/' },
-            { text: 'Agent 热点编年史', link: '/ai/agent/history' },
-            { text: 'Agent 开发框架对比', link: '/ai/agent/frameworks' },
-            { text: 'Agent 安全与可靠执行', link: '/ai/agent/security' },
-          ],
-        },
-      ],
-      '/software/': softwareSidebar,
-      '/chronicle/': [
-        {
-          text: '技术编年史',
-          link: '/chronicle/',
-          collapsed: true,
-          items: [
-            { text: '十年六浪：总纲', link: '/chronicle/' },
-            { text: '移动互联网时代', link: '/chronicle/mobile-internet' },
-            { text: '直播时代', link: '/chronicle/livestream' },
-            { text: '短视频时代', link: '/chronicle/short-video' },
-            { text: '区块链时代', link: '/chronicle/blockchain' },
-            { text: '元宇宙时代', link: '/chronicle/metaverse' },
-            { text: 'AI 大模型时代', link: '/chronicle/ai-era' },
-            { text: '暗流：信创与国产化', link: '/chronicle/xinchuang' },
-          ],
-        },
-      ],
-    },
+    sidebar: knowledgeSidebar,
 
     socialLinks: [
       {

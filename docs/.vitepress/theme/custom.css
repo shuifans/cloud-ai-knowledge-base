@@ -140,18 +140,16 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPNavBarSocialLinks::before { display: none !important; }
 .VPFlyout .menu .VPMenu { border-radius: 18px; border-color: var(--coast-line); background: var(--coast-card); box-shadow: var(--coast-shadow); }
 .VPNavScreen { background: var(--coast-page); }
-/* The gallery adds a sixth destination; use the existing menu before labels collide. */
-@media (min-width: 768px) and (max-width: 1099px) {
-  .VPNavBarMenu, .VPNavBarExtra, .VPNavBarSocialLinks { display: none !important; }
-  .VPNavBarHamburger { display: flex !important; }
-  .VPNavScreen { display: block !important; }
-}
+/* Modules live in the sidebar; the header contains only utility controls. */
 .VPLocalNav { border-bottom-color: var(--coast-line); }
 
 /* 侧边导航与页内目录 */
 .VPSidebar { font-size: 13px; border-right: 1px solid var(--coast-line); }
 .VPSidebar .group { border-color: var(--coast-line); }
 .VPSidebarItem.level-0 .text { font-size: 13px; font-weight: 550; letter-spacing: .01em; }
+.VPSidebarItem.level-0 > .item > .link > .text { font-size: 14px; font-weight: 650; }
+.VPSidebarItem.level-0 > .items { padding-left: 8px; }
+.VPSidebarItem.level-1 > .item { min-height: 38px; align-items: center; }
 .VPSidebarItem.is-active > .item > .indicator { background: var(--coast-accent); }
 .VPSidebarItem.is-active > .item > .link { background: var(--coast-wash); border-radius: 8px; padding-left: 9px; }
 .VPSidebarItem.is-active > .item > .link .text { color: var(--coast-accent); font-weight: 600; }

@@ -11,11 +11,38 @@ export function findNode(items, path) {
 }
 
 export function overviewChildren(sidebar, path) {
-  const prefix = Object.keys(sidebar).filter(p => `${normalizePath(path)}/`.startsWith(p)).sort((a,b)=>b.length-a.length)[0]
-  const items = sidebar[prefix] || []
+  const prefix = Array.isArray(sidebar) ? '/' : Object.keys(sidebar).filter(p => `${normalizePath(path)}/`.startsWith(p)).sort((a,b)=>b.length-a.length)[0]
+  const items = Array.isArray(sidebar) ? sidebar : sidebar[prefix] || []
   const node = findNode(items, path)
   const children = node?.items || (normalizePath(path) === normalizePath(prefix || '') ? items : [])
   return children.flatMap(item => item.link ? [item] : (item.items || [])).filter(item => item.link && normalizePath(item.link) !== normalizePath(path))
+}
+
+export function findTrail(items, path, ancestors = []) {
+  for (const item of items) {
+    const trail = item.link ? [...ancestors, { text: item.text, link: item.link }] : ancestors
+    if (item.link && normalizePath(item.link) === normalizePath(path)) return trail
+    const found = item.items && findTrail(item.items, path, trail)
+    if (found) return found
+  }
+  return null
+}
+
+export function breadcrumbTrail(sidebar, path, title, base = '/') {
+  const current = base !== '/' && path.startsWith(base) ? path.slice(base.length - 1) : path
+  if (normalizePath(current) === '/') return []
+  const trail = findTrail(sidebar, current) || (title ? [{ text: title }] : [])
+  return [{ text: '首页', link: '/' }, ...trail.filter(item => item.link !== '/')]
+}
+
+// A shared sidebar must not make the last article jump into another knowledge area.
+export function sectionPager(sidebar, path) {
+  const section = sidebar.find(item => item.items && findNode([item], path))
+  if (!section) return { prev: false, next: false }
+  const flatten = items => items.flatMap(item => [ ...(item.link ? [{ text: item.text, link: item.link }] : []), ...flatten(item.items || []) ])
+  const links = flatten([section])
+  const index = links.findIndex(item => normalizePath(item.link) === normalizePath(path))
+  return { prev: links[index - 1] || false, next: links[index + 1] || false }
 }
 
 export function shortHeading(title) {

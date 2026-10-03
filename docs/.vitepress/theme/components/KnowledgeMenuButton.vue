@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
 defineProps<{
   active: boolean
 }>()
@@ -10,6 +13,7 @@ defineEmits<{
 
 <template>
   <button
+    v-if="theme.nav?.length"
     type="button"
     class="VPNavBarHamburger"
     :class="{ active }"

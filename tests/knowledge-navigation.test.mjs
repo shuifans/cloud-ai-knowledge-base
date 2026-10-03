@@ -3,10 +3,11 @@ import assert from 'node:assert/strict'
 import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { createMarkdownRenderer, resolveConfig } from 'vitepress'
 import { groupSearchResults, canonicalPath, highlightParts } from '../docs/.vitepress/theme/search.mjs'
-import { overviewChildren, findNode, taskPaths, topicPaths, shortHeading } from '../docs/.vitepress/theme/knowledge.mjs'
+import { overviewChildren, findNode, taskPaths, topicPaths, shortHeading, breadcrumbTrail, sectionPager } from '../docs/.vitepress/theme/knowledge.mjs'
 import { getReadingGuide, pageKey, learningPaths, historyConnections, verifiedDate } from '../docs/.vitepress/reading-guides.mjs'
 import { directoryMarkdown, softwarePager } from '../docs/.vitepress/directory-markdown.mjs'
 import { softwareSidebar } from '../docs/.vitepress/software-sidebar.mjs'
+import { knowledgeSidebar } from '../docs/.vitepress/site-navigation.mjs'
 const catalog = [
   { url: '/ai/application/rag', title: '企业级 RAG 架构设计', summary: '设计检索与评测链路。' },
   { url: '/ai/application/', title: '应用与评测', summary: '模型接入应用。' },
@@ -102,6 +103,47 @@ test('verification dates preserve the actual date across YAML Date and serialize
   assert.equal(verifiedDate('2026-09-20T00:00:00.000Z'), '2026-09-20')
   assert.equal(verifiedDate(undefined), '')
   assert.equal(verifiedDate('unverified'), '')
+})
+
+test('one global sidebar contains every knowledge area and no duplicate destinations', async () => {
+  const config = await resolveConfig('docs', 'build')
+  const { sidebar, nav } = config.site.themeConfig
+  assert.ok(Array.isArray(sidebar))
+  assert.deepEqual(sidebar, knowledgeSidebar)
+  assert.deepEqual(nav, [])
+  assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/chronicle/'])
+  const links = []
+  function visit(items) {
+    for (const item of items) {
+      if (item.link) links.push(item.link)
+      if (item.items) visit(item.items)
+    }
+  }
+  visit(sidebar)
+  assert.equal(new Set(links).size, links.length)
+  assert.ok(overviewChildren(sidebar, '/cloud/').length === 5)
+  assert.ok(overviewChildren(sidebar, '/software/').length === 19)
+  for (const file of ['docs/index.md', 'docs/playground/pelican/index.md']) {
+    assert.doesNotMatch(readFileSync(file,'utf8'), /^sidebar: false$|^layout: home$/m, file)
+  }
+})
+
+test('breadcrumbs retain the full directory hierarchy without top navigation, including deployment base', () => {
+  const path = '/cloud-ai-knowledge-base/ai/infra/inference/gpu-sizing.html'
+  const trail = breadcrumbTrail(knowledgeSidebar, path, 'GPU 选型', '/cloud-ai-knowledge-base/')
+  assert.deepEqual(trail.map(item=>item.link), ['/', '/ai/', '/ai/infra/', '/ai/infra/inference/', '/ai/infra/inference/gpu-sizing'])
+  assert.equal(trail[1].text, '人工智能')
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/backend/http-api-contracts', '').map(item=>item.link), ['/', '/software/', '/software/backend/', '/software/backend/http-api-contracts'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/', '').map(item=>item.text), ['首页','软件研发'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/about', '').map(item=>item.text), ['首页','关于'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/', ''), [])
+})
+
+test('global sidebar does not introduce article paging across unrelated areas', () => {
+  assert.equal(sectionPager(knowledgeSidebar, '/cloud/architecture/migration').next, false)
+  assert.equal(sectionPager(knowledgeSidebar, '/ai/agent/security').next, false)
+  assert.equal(sectionPager(knowledgeSidebar, '/ai/').prev, false)
+  assert.deepEqual(sectionPager(knowledgeSidebar, '/about'), {prev:false,next:false})
 })
 
 test('real site config exposes every hub and keeps inference articles inside their clickable parent', async () => {

@@ -1,5 +1,7 @@
 ---
-layout: home
+layout: page
+outline: false
+readingProgress: false
 title: 云与 AI 知识体系
 lastVerified: 2026-09-20
 ---
