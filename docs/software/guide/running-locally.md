@@ -117,6 +117,6 @@ flowchart TD
 - [npm Docs：npm ci](https://docs.npmjs.com/cli/v11/commands/npm-ci/)（访问日期 2026-10-03）——锁文件一致性、安装目录与冻结安装。
 - [Python：Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html)（访问日期 2026-10-03）——项目环境隔离与激活机制。
 - [Python：os.getcwd](https://docs.python.org/3/library/os.html#os.getcwd)（访问日期 2026-10-03）——进程工作目录。
-- 站内相关：[软件研发导览](/software/guide/) · [语言与依赖](/software/guide/languages-frameworks-dependencies) · [终端与 Shell](/software/foundations/terminal-shell) · [网络地址与端口](/software/foundations/network-addresses-ports) · [可复现开发](/software/toolchain/reproducible-development) · [环境配置](/software/toolchain/environment-configuration) · [请求穿过系统](/software/guide/request-through-system)
+- 站内相关：[软件项目入门](/software/guide/) · [语言与依赖](/software/guide/languages-frameworks-dependencies) · [终端与 Shell](/software/foundations/terminal-shell) · [网络地址与端口](/software/foundations/network-addresses-ports) · [可复现开发](/software/toolchain/reproducible-development) · [环境配置](/software/toolchain/environment-configuration) · [请求穿过系统](/software/guide/request-through-system)
 
 </Refs>

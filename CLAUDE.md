@@ -10,7 +10,7 @@
   - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）/ architecture（卓越架构·安全·可靠性·FinOps·迁移）
   - **人工智能** `docs/ai/`：models（模型与算法）/ infra（集群/训练/推理）/ application（应用与评测）/ agent（智能体全景·编年史·框架对比）
   - **编年史** `docs/chronicle/`：技术浪潮与信创演进
-  - **软件研发** `docs/software/`：guide（认识 AI 编程与软件项目）+ 按专业领域组织的子域 + reference（术语、场景与技术工具索引）；完整专题和批次见 `maintenance/software-roadmap.json`
+  - **软件研发** `docs/software/`：guide（软件项目入门）+ 按专业领域组织的子域 + reference（术语、场景与技术工具索引）；完整专题和批次见 `maintenance/software-roadmap.json`
 - 内容分级：完整文章（无标记）· 提纲页（纯文字“本文是提纲页”提示块 + 有意义的范围与要点）；仅规划的专题不创建空页
 
 ## 常用命令
@@ -24,9 +24,9 @@ npm run docs:preview  # 预览构建产物
 ## 新增文章流程
 
 1. 从 `templates/article-template.md` 或概念、专题、实践、比较模板复制，放入对应知识域目录，英文短横线文件名；按主题调整结构，不为套模板重复空话
-2. 在 `docs/.vitepress/config.mts` 的对应 `sidebar` 中注册条目（提纲页标注"（提纲）"）
-3. 若文章被域导读页的清单引用，同步更新导读页表格中的状态
-4. 在 `docs/.vitepress/reading-guides.mjs` 补充摘要；适用读者与前置知识可继承领域导读
+2. 在 `docs/.vitepress/config.mts` 的对应 `sidebar` 中注册条目；软件研发统一维护 `docs/.vitepress/software-sidebar.mjs`（提纲页标注"（提纲）"）
+3. 目录页只组织文章入口，不写导读、学习路径或推荐阅读顺序；软件研发目录由同一份侧栏配置在构建时生成，不重复手写清单
+4. 在 `docs/.vitepress/reading-guides.mjs` 补充搜索摘要；正文不注入阅读指南
 5. 跑 `node --test tests/*.test.mjs` 和 `npm run docs:build` 确认行为与链接
 
 ## 文章结构标准
@@ -76,7 +76,7 @@ npm run docs:preview  # 预览构建产物
 
 ## 提纲页扩充约定
 
-提纲页正文以 `::: warning 本文是提纲页 ... :::` 开头，明确范围、核心问题、前置知识与待展开要点。扩充为完整文章时：移除该提示块、补全正文、更新导航和导读中的状态；软件研发同步更新建设清单。目录与查询索引页负责组织入口，不为满足技术正文的配图要求重复插入知识地图。
+提纲页正文以 `::: warning 本文是提纲页 ... :::` 开头，明确范围、核心问题、前置知识与待展开要点。扩充为完整文章时：移除该提示块、补全正文、更新目录中的状态；软件研发同步更新建设清单。目录与查询索引页负责组织入口，不为满足技术正文的配图要求重复插入知识地图。
 
 ## 发布流程
 
@@ -86,8 +86,8 @@ npm run docs:preview  # 预览构建产物
 
 ## 导航与阅读体验维护
 
-- `config.mts` 是目录名称与层级的唯一来源；真实目录分组必须有总览 `link`。面包屑、总览入口从此配置推导；仅作分类标签的无链接分组不进入面包屑。
-- `reading-markdown.mjs` 在文章标题后统一插入导读，技术配图保持正文位置。不要在每篇 Markdown 中重复手写导读组件。
-- `reading-guides.mjs` 管理编辑摘要、学习顺序及编年史技术互链；`theme/knowledge.mjs` 管理首页任务与跨领域专题，只引用既有主文。
+- `config.mts`（软件研发引用 `software-sidebar.mjs`）是目录名称、顺序与层级的唯一来源。目录分组保留 `link`，子条目只列文章，不再重复自身目录；面包屑据此推导。
+- 本站使用“版块 → 目录 → 文章”，不添加导读卡或推荐阅读顺序。`directory-markdown.mjs` 将目录标记展开为普通 Markdown 链接；文章标题后直接呈现正文，复核记录置于文末。
+- `reading-guides.mjs` 保留搜索摘要；目录、侧栏和文章翻页顺序统一，软件研发翻页不跨目录。首页以版块入口为主。
 - `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。
 - 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、目录、手机菜单三处覆盖。

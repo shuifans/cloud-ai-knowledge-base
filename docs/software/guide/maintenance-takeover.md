@@ -114,6 +114,6 @@ OWASP 的秘密生命周期包括撤销。[秘密管理指导](https://cheatshee
 - [NASA：SWE-075 — Plan Operations, Maintenance, Retirement](https://swehb.nasa.gov/spaces/SWEHBVD/pages/102695456/SWE-075%2B-%2BPlan%2BOperations%2BMaintenance%2BRetirement)（访问日期 2026-10-03）——运行、维护、支持和退役的规划。
 - [Martin Fowler：Technical Debt Quadrant](https://martinfowler.com/bliki/TechnicalDebtQuadrant.html)（访问日期 2026-10-03）——技术债的审慎、鲁莽及刻意、非刻意来源。
 - [OWASP：Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)（访问日期 2026-10-03）——秘密生命周期及撤销。
-- 站内相关：[软件研发导览](/software/guide/) · [系统接管](/software/maintenance/system-takeover) · [重构与技术债](/software/maintenance/refactoring-debt) · [升级与兼容](/software/maintenance/upgrades-compatibility) · [维护变更](/software/maintenance/maintenance-changes) · [停用与可持续性](/software/maintenance/retirement-sustainability) · [估算与成本](/software/requirements/estimation-risk-economics) · [容量与成本](/software/operations/capacity-performance-cost) · [AI 辅助研发](/software/ai-assisted/ai-development)
+- 站内相关：[软件项目入门](/software/guide/) · [系统接管](/software/maintenance/system-takeover) · [重构与技术债](/software/maintenance/refactoring-debt) · [升级与兼容](/software/maintenance/upgrades-compatibility) · [维护变更](/software/maintenance/maintenance-changes) · [停用与可持续性](/software/maintenance/retirement-sustainability) · [估算与成本](/software/requirements/estimation-risk-economics) · [容量与成本](/software/operations/capacity-performance-cost) · [AI 辅助研发](/software/ai-assisted/ai-development)
 
 </Refs>

@@ -138,7 +138,7 @@ npm 官方说明建议将锁文件提交到源码仓库，以便协作者和构�
 
 常见错误包括：直接修改依赖目录，重新安装后修改消失；修改构建产物，下次构建覆盖；复制整个项目却遗漏隐藏配置或历史；删除“看不懂的目录”，同时丢失运行数据。处理文件前，应先回答它从哪里来、由谁维护、能否重建、是否有独立备份。
 
-这四篇导览建立了责任、需求、系统与文件之间的联系。后续第 5 至 16 章将继续展开软件研发的基础与工作过程；阅读顺序以导览实际发布内容为准。当前还可以通过下列专业文章加深理解，无需先掌握全部工具再开始阅读。
+责任、需求、系统与文件共同决定一个项目如何被理解和维护。以下文章分别展开文件权限、工程结构、依赖和版本控制。
 
 ## 参考资料
 
@@ -149,6 +149,6 @@ npm 官方说明建议将锁文件提交到源码仓库，以便协作者和构�
 - [GitHub Docs：About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)（访问日期 2026-10-03）——远端仓库与协作功能。
 - [Python：os.getcwd 与 os.chdir](https://docs.python.org/3/library/os.html#os.getcwd)（访问日期 2026-10-03）——工作目录的获取和切换。
 - [npm Docs：package-lock.json](https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/)（访问日期 2026-10-03）——具体依赖树、复现用途与入库建议。
-- 站内相关：[软件研发导览](/software/guide/) · [软件项目全景](/software/guide/software-project-overview) · [文件、路径与权限](/software/foundations/files-paths-permissions) · [项目结构](/software/toolchain/project-structure) · [依赖与锁文件](/software/toolchain/dependencies-lockfiles) · [Git 仓库模型](/software/collaboration/git-repository-model)
+- 站内相关：[软件项目入门](/software/guide/) · [软件项目全景](/software/guide/software-project-overview) · [文件、路径与权限](/software/foundations/files-paths-permissions) · [项目结构](/software/toolchain/project-structure) · [依赖与锁文件](/software/toolchain/dependencies-lockfiles) · [Git 仓库模型](/software/collaboration/git-repository-model)
 
 </Refs>

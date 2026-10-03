@@ -106,6 +106,6 @@ Git 合并通常利用共同祖先与两端内容确定怎样组合变化；无�
 
 - [Git：git-merge](https://git-scm.com/docs/git-merge)（访问日期 2026-10-03）——共同祖先、组合变化与冲突处理。
 - [GitHub Docs：Pull request reviews](https://docs.github.com/en/pull-requests/reference/pull-request-reviews)（访问日期 2026-10-03）——审查状态与协作流程。
-- 站内相关：[软件研发导览](/software/guide/) · [改动与版本](/software/guide/changes-and-versions) · [PR 工作流](/software/collaboration/pull-request-workflow) · [分支与冲突](/software/collaboration/branches-merges-conflicts) · [代码审查证据](/software/collaboration/code-review-evidence) · [验证与验收](/software/guide/verification-acceptance)
+- 站内相关：[软件项目入门](/software/guide/) · [改动与版本](/software/guide/changes-and-versions) · [PR 工作流](/software/collaboration/pull-request-workflow) · [分支与冲突](/software/collaboration/branches-merges-conflicts) · [代码审查证据](/software/collaboration/code-review-evidence) · [验证与验收](/software/guide/verification-acceptance)
 
 </Refs>

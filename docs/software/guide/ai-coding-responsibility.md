@@ -118,7 +118,7 @@ NIST SSDF 将安全开发实践放入软件生命周期，目的包括减少漏�
 - [GitHub Docs：Application card — GitHub Copilot Agents](https://docs.github.com/en/copilot/responsible-use/agents)（访问日期 2026-10-03）——生成与审查能力的限制、人工复核的作用。
 - [NIST SP 800-218：Secure Software Development Framework 1.1](https://csrc.nist.gov/pubs/sp/800/218/final)（访问日期 2026-10-03）——安全开发贯穿生命周期的公开依据。
 - [OWASP LLM01:2025：Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)（访问日期 2026-10-03）——外部内容影响模型行为及权限防护。
-- 站内相关：[软件研发导览](/software/guide/) · [需求与验收](/software/guide/requirements-and-acceptance) · [软件项目全景](/software/guide/software-project-overview) · [Git 仓库模型](/software/collaboration/git-repository-model) · [Agent 安全与可靠执行](/ai/agent/security)
+- 站内相关：[软件项目入门](/software/guide/) · [需求与验收](/software/guide/requirements-and-acceptance) · [软件项目全景](/software/guide/software-project-overview) · [Git 仓库模型](/software/collaboration/git-repository-model) · [Agent 安全与可靠执行](/ai/agent/security)
 
 - 专业篇：[AI 辅助研发全景](/software/ai-assisted/ai-development) · [生成代码的验证与验收](/software/ai-assisted/generated-code-verification)
 

@@ -1,38 +1,12 @@
 ---
-title: 导读：数据库与应用数据工程
-outline: [2, 3]
+title: 数据库与应用数据工程
+outline: 2
+directory: true
+readingProgress: false
+prev: false
+next: false
 ---
 
 # 数据库与应用数据工程
 
-> 确保应用数据正确性、演进与恢复。本域面向应用开发者及数据负责人，每篇专题均可独立查阅；先从具体问题进入，再按需要补齐机制和工程边界。
-
-## 范围与相邻领域
-
-关注应用模型、查询、事务、迁移及数据演进。数据库引擎路线与产品选型复用云数据域；分析平台复用大数据与 OLAP 主文。应用约束须落到数据库和可验证的流程。
-
-## 专题与查阅范围
-
-| 专题 | 要解决的问题 |
-| --- | --- |
-| [数据模型、关系与约束](/software/data/data-models) | 从实体、关系与不变量建立应用数据模型，将唯一性和引用规则落实为约束。 |
-| [SQL 查询与执行计划](/software/data/sql-query-plans) | 理解 SQL 查询语义和执行计划，用真实数据分布判断连接、扫描与索引成本。 |
-| [事务、并发与索引的应用选择](/software/data/transactions-indexes) | 按隔离、锁和冲突选择事务与索引，处理并发写入而不是只优化单次查询。 |
-| [ORM、迁移与兼容](/software/data/orm-migrations) | 区分对象映射和数据库语义，以分阶段迁移保持新旧应用及数据兼容。 |
-| [缓存、搜索与存储的应用边界](/software/data/cache-search-storage) | 根据访问和一致性需求组合缓存、搜索及存储，明确权威数据和失效策略。 |
-| [导入、数据质量与恢复](/software/data/data-quality-recovery) | 控制导入校验、去重与来源追踪，用恢复演练和对账验证数据质量。 |
-
-## 怎样开始
-
-前置知识：数据关系、业务规则与后端。初次进入本域，可以按照上方自动导读的顺序建立概念；已经遇到具体问题时，直接查阅对应专题。阅读顺序是编辑建议，不是理解每篇文章的硬性依赖。
-
-[需求如何穿过界面、接口与数据库](/software/guide/request-through-system) → [发布、功能开关与回滚](/software/delivery/release-rollback) → [恢复演练与数据对账](/software/operations/recovery-reconciliation)提供导览或相邻专业入口。专题中的示例用于解释机制，是否适用于自己的项目，仍要检查环境、数据、风险和验证条件。
-
-## 参考资料
-
-<Refs>
-
-- 本页组织领域范围与入口；技术机制、一手来源、适用版本及实际访问日期见各主文。
-- 站内相关：[软件研发总览](/software/) · [场景索引](/software/reference/scenarios) · [术语索引](/software/reference/terms)
-
-</Refs>
+<!-- directory:/software/data/ -->

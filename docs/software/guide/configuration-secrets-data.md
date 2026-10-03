@@ -106,6 +106,6 @@ OWASP 日志指导列出访问令牌、认证密码等不应直接记录的内�
 - [OWASP：Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)（访问日期 2026-10-03）——服务秘密生命周期与撤销更新。
 - [OWASP：Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)（访问日期 2026-10-03）——身份、对象与请求级授权。
 - [OWASP：Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)（访问日期 2026-10-03）——日志中的秘密与敏感数据边界。
-- 站内相关：[软件研发导览](/software/guide/) · [环境配置](/software/toolchain/environment-configuration) · [身份与权限](/software/backend/authentication-authorization) · [密钥与审计](/software/security/secrets-permissions) · [应用安全](/software/security/application-security) · [隐私生命周期](/software/security/privacy-lifecycle) · [本地到线上](/software/guide/local-to-production)
+- 站内相关：[软件项目入门](/software/guide/) · [环境配置](/software/toolchain/environment-configuration) · [身份与权限](/software/backend/authentication-authorization) · [密钥与审计](/software/security/secrets-permissions) · [应用安全](/software/security/application-security) · [隐私生命周期](/software/security/privacy-lifecycle) · [本地到线上](/software/guide/local-to-production)
 
 </Refs>

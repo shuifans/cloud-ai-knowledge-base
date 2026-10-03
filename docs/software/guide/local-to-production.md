@@ -102,6 +102,6 @@ flowchart TD
 - [The Twelve-Factor App：Build, release, run](https://12factor.net/build-release-run)（访问日期 2026-10-03）——版本、构建、发布配置与运行。
 - [Docker Docs：Publishing and exposing ports](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)（访问日期 2026-10-03）——声明、发布、监听地址与访问范围。
 - [MDN：Transport Layer Security](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Transport_Layer_Security)（访问日期 2026-10-03）——TLS 传输保护。
-- 站内相关：[软件研发导览](/software/guide/) · [本地运行](/software/guide/running-locally) · [配置与秘密](/software/guide/configuration-secrets-data) · [构建与 CI](/software/delivery/build-ci) · [容器与镜像](/software/delivery/containers-images) · [托管与部署](/software/delivery/hosting-platforms) · [DNS 与 HTTPS](/software/delivery/dns-https) · [发布观察与回退](/software/guide/release-observe-rollback)
+- 站内相关：[软件项目入门](/software/guide/) · [本地运行](/software/guide/running-locally) · [配置与秘密](/software/guide/configuration-secrets-data) · [构建与 CI](/software/delivery/build-ci) · [容器与镜像](/software/delivery/containers-images) · [托管与部署](/software/delivery/hosting-platforms) · [DNS 与 HTTPS](/software/delivery/dns-https) · [发布观察与回退](/software/guide/release-observe-rollback)
 
 </Refs>

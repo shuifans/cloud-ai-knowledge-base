@@ -128,6 +128,6 @@ flowchart TD
 - [Hypothesis：Stateful tests](https://hypothesis.readthedocs.io/en/latest/stateful.html)（访问日期 2026-10-03）——状态动作、前置条件和每步不变量检查。
 - [Playwright：Assertions](https://playwright.dev/docs/test-assertions)（访问日期 2026-10-03）——重试断言与超时边界。
 - [OWASP：Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)（访问日期 2026-10-03）——服务端授权检查原则。
-- 站内相关：[验证与验收导读](/software/guide/verification-acceptance) · [质量策略](/software/quality/quality-strategy) · [测试层次](/software/quality/test-levels) · [用例与状态](/software/quality/test-cases) · [验收与回归](/software/quality/acceptance-regression) · [事务与并发](/software/data/transactions-indexes) · [评测与成本](/software/ai-assisted/evaluation-cost)
+- 站内相关：[验证与验收成果](/software/guide/verification-acceptance) · [质量策略](/software/quality/quality-strategy) · [测试层次](/software/quality/test-levels) · [用例与状态](/software/quality/test-cases) · [验收与回归](/software/quality/acceptance-regression) · [事务与并发](/software/data/transactions-indexes) · [评测与成本](/software/ai-assisted/evaluation-cost)
 
 </Refs>

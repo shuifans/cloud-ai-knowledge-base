@@ -128,6 +128,6 @@ flowchart TD
 - [OWASP：Server Side Request Forgery Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)（访问日期 2026-10-03）——网络目标校验和纵深防护。
 - [OWASP：Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)（访问日期 2026-10-03）——凭据访问、轮换与撤销。
 - [OWASP：Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)（访问日期 2026-10-03）——审计内容与敏感信息保护。
-- 站内相关：[Agent 安全与可靠执行](/ai/agent/security) · [上下文与约束](/software/ai-assisted/context-constraints) · [配置与密钥导读](/software/guide/configuration-secrets-data) · [文件与权限](/software/foundations/files-paths-permissions) · [最小权限与审计](/software/security/secrets-permissions) · [供应链安全](/software/security/supply-chain) · [消息与幂等](/software/backend/messages-jobs-idempotency)
+- 站内相关：[Agent 安全与可靠执行](/ai/agent/security) · [上下文与约束](/software/ai-assisted/context-constraints) · [配置、密钥、权限与数据](/software/guide/configuration-secrets-data) · [文件与权限](/software/foundations/files-paths-permissions) · [最小权限与审计](/software/security/secrets-permissions) · [供应链安全](/software/security/supply-chain) · [消息与幂等](/software/backend/messages-jobs-idempotency)
 
 </Refs>

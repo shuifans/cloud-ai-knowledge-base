@@ -4,6 +4,7 @@ import Breadcrumbs from './components/Breadcrumbs.vue'
 import ReadingProgress from './components/ReadingProgress.vue'
 import CoastalThemeToggle from './components/CoastalThemeToggle.vue'
 import BackgroundMusic from './components/BackgroundMusic.vue'
+import ArticleMeta from './components/ArticleMeta.vue'
 
 const { Layout } = DefaultTheme
 </script>
@@ -19,6 +20,9 @@ const { Layout } = DefaultTheme
     </template>
     <template #doc-before>
       <Breadcrumbs />
+    </template>
+    <template #doc-after>
+      <ArticleMeta />
     </template>
   </Layout>
 </template>

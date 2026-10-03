@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
-import { data as catalog } from '../knowledge.data'
-import { taskPaths, topicPaths } from '../knowledge.mjs'
 import PelicanRide from './PelicanRide.vue'
 import Timeline from './Timeline.vue'
 
 const areas = [
-  { number: '01', name: '云计算', english: 'CLOUD COMPUTING', icon: 'cloud', description: '从基础设施出发，理解云上系统如何构建、运行与演进。', topics: '云计算基座 / 计算·存储·网络 / 数据 / 云原生 / 架构', link: '/cloud/', start: '/cloud/foundation/', startLabel: '从云计算基座开始' },
-  { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '从模型原理走向工程实践，连接算力、应用与智能体。', topics: '模型与算法 / AI 基础设施 / 应用与评测 / 智能体', link: '/ai/', start: '/ai/models/', startLabel: '从模型与算法开始' },
-  { number: '03', name: '软件研发', english: 'SOFTWARE ENGINEERING', icon: 'software', description: '从需求与代码到验证、交付和维护，理解并管理软件项目。', topics: 'AI 编程导览 / 程序与设计 / 实现与数据 / 质量与交付 / 维护治理', link: '/software/', start: '/software/guide/', startLabel: '从认识软件项目开始' },
-  { number: '04', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/', start: '/chronicle/mobile-internet', startLabel: '从移动互联网开始' },
+  { number: '01', name: '云计算', english: 'CLOUD COMPUTING', icon: 'cloud', description: '从基础设施出发，理解云上系统如何构建、运行与演进。', topics: '云计算基座 / 计算·存储·网络 / 数据 / 云原生 / 架构', link: '/cloud/' },
+  { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '从模型原理走向工程实践，连接算力、应用与智能体。', topics: '模型与算法 / AI 基础设施 / 应用与评测 / 智能体', link: '/ai/' },
+  { number: '03', name: '软件研发', english: 'SOFTWARE ENGINEERING', icon: 'software', description: '从需求与代码到验证、交付和维护，理解并管理软件项目。', topics: '软件项目入门 / 程序与设计 / 实现与数据 / 质量与交付 / 维护治理', link: '/software/' },
+  { number: '04', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/' },
 ]
-const reading = [
-  { label: '软件项目导览', title: 'AI 编程：协作方式与人的责任', link: '/software/guide/ai-coding-responsibility' },
-  { label: '云计算基座', title: 'OpenStack 架构与十年演进', link: '/cloud/foundation/openstack' },
-  { label: '应用与评测', title: '企业级 RAG 架构设计', link: '/ai/application/rag-architecture' },
-  { label: 'AI 基础设施', title: '大模型推理部署实战', link: '/ai/infra/inference/llm-inference' },
-]
-const verifiedOn = (path: string) => catalog.find(page => page.url === path)?.verified || ''
 function openSearch() {
   document.querySelector<HTMLButtonElement>('.VPNavBarSearch .DocSearch-Button')?.click()
 }
@@ -35,7 +26,7 @@ function openSearch() {
           <a class="coast-button" href="#knowledge-areas">探索技术领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
           <button class="search-button" type="button" @click="openSearch"><span class="vpi-search" aria-hidden="true"></span>搜索知识</button>
         </div>
-        <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a :href="withBase('/software/')">软件研发</a><a href="#task-start">按任务开始</a></nav>
+        <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a :href="withBase('/software/')">软件研发</a><a :href="withBase('/chronicle/')">技术编年史</a></nav>
         <p class="hero-footnote">公开资料为起点 · 工程实践为方向 · 持续校验</p>
       </div>
       <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
@@ -53,22 +44,10 @@ function openSearch() {
           </span><span class="route-number">ROUTE / {{ area.number }}</span></div>
           <p class="area-english">{{ area.english }}</p><h3><a :href="withBase(area.link)">{{ area.name }}</a></h3>
           <p class="area-description">{{ area.description }}</p><p class="area-topics">{{ area.topics }}</p>
-          <div class="card-links"><a class="area-entry" :href="withBase(area.link)">探索这一领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a><a class="area-start" :href="withBase(area.start)">{{ area.startLabel }}</a></div>
+          <div class="card-links"><a class="area-entry" :href="withBase(area.link)">查看目录 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
         </article>
       </div>
     </section>
-
-    <section id="task-start" class="task-section" aria-labelledby="task-title">
-      <div class="section-heading"><div><p class="eyebrow">START WITH A QUESTION</p><h2 id="task-title">带着任务，找一条路径。</h2></div><span class="section-note">从目标走向方法</span></div>
-      <div class="task-grid"><article v-for="task in taskPaths" :key="task.title"><h3>{{ task.title }}</h3><p>{{ task.question }}</p><nav :aria-label="task.title"><a v-for="[label,path] in task.links" :key="path" :href="withBase(path)">{{ label }} <span class="vpi-arrow-right" aria-hidden="true"></span></a></nav></article></div>
-    </section>
-
-    <section class="reading-section" aria-labelledby="reading-title">
-      <div class="reading-intro"><p class="eyebrow">A GOOD PLACE TO START</p><h2 id="reading-title">精选阅读，慢慢深入。</h2><p>复核日期记录技术内容的校验时间。</p></div>
-      <div class="reading-list"><a v-for="(article, i) in reading" :key="article.link" :href="withBase(article.link)"><span class="reading-number">0{{ i + 1 }}</span><span class="reading-text"><small>{{ article.label }}</small><strong>{{ article.title }}</strong><small v-if="verifiedOn(article.link)">内容复核于 <time :datetime="verifiedOn(article.link)">{{ verifiedOn(article.link) }}</time></small></span><span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
-    </section>
-
-    <section class="topic-section" aria-labelledby="topic-title"><div class="section-heading"><div><p class="eyebrow">CONNECT THE DOTS</p><h2 id="topic-title">跨越目录，串起共通问题。</h2></div></div><div class="topic-grid"><article v-for="topic in topicPaths" :key="topic.title"><h3>{{ topic.title }}</h3><nav :aria-label="topic.title"><a v-for="[label,path] in topic.links" :key="path" :href="withBase(path)">{{ label }} <span class="vpi-arrow-right" aria-hidden="true"></span></a></nav></article></div></section>
 
     <section id="home-timeline" class="coastal-chronicle" aria-labelledby="chronicle-title">
       <div class="chronicle-intro"><p class="eyebrow">FOLLOW THE TIDE</p><h2 id="chronicle-title">技术有浪潮，<br />知识有来路。</h2><p>从移动互联网到 AI 大模型，<br />每一轮变化，都留下值得理解的线索。</p><a class="text-link" :href="withBase('/chronicle/')">沿着时间线，看看来时的路 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
@@ -116,21 +95,6 @@ h1 span { color: var(--coast-accent); }
 .area-topics { font-size: 10px; line-height: 1.9; min-height: 38px; margin: 16px 0 22px; color: var(--coast-muted); }
 .card-links { border-top: 1px solid var(--coast-line); padding-top: 17px; display: grid; gap: 11px; }
 .area-entry { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 550; color: var(--coast-accent); }
-.area-start { font-size: 11px; color: var(--coast-muted); width: fit-content; }
-.area-start:hover { color: var(--coast-accent); text-decoration: underline; text-underline-offset: 4px; }
-.reading-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; padding: 52px 0; margin: 45px 0 0; border-top: 1px solid var(--coast-line); }
-.reading-intro { padding-top: 15px; }
-.reading-intro .eyebrow { margin-bottom: 9px; }
-.reading-intro > p:last-child { font-size: 13px; color: var(--coast-muted); margin-top: 11px; }
-.reading-list a { display: flex; align-items: center; gap: 19px; border-bottom: 1px solid var(--coast-line); padding: 16px 0; }
-.reading-list a:first-child { padding-top: 0; }
-.reading-list a:last-child { border-bottom: 0; }
-.reading-number { color: var(--coast-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
-.reading-text { display: grid; gap: 4px; flex: 1; }
-.reading-text small { color: var(--coast-muted); font-size: 10px; }
-.reading-text strong { font-size: 14px; font-weight: 500; }
-.reading-list a:hover strong { color: var(--coast-accent); }
-.reading-list .vpi-arrow-right { color: var(--coast-accent); font-size: 15px; }
 .coastal-chronicle { display: grid; grid-template-columns: .85fr 1.15fr; gap: 48px; padding: 40px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 24px; scroll-margin-top: 80px; }
 .coastal-home .chronicle-intro h2 { font-size: 30px; line-height: 1.6; }
 .chronicle-intro > p:not(.eyebrow) { color: var(--coast-muted); font-size: 13px; line-height: 2; margin: 18px 0 23px; }
@@ -160,7 +124,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #c49441; outline-offs
   .hero-description { font-size: 14px; } .hero-actions { justify-content: center; margin-top: 22px; }
   .hero-footnote { margin-top: 20px; } .coastal-hero :deep(.ride-card) { width: 100%; max-width: 600px; margin: 0 auto; }
   .knowledge-grid { gap: 12px; } .knowledge-card { padding: 17px; } .area-description { min-height: 76px; }
-  .reading-section { gap: 26px; } .coastal-chronicle { grid-template-columns: 1fr; gap: 32px; }
+  .coastal-chronicle { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (max-width: 600px) {
   .coastal-home { padding: 0 20px; } .coastal-hero { padding-top: 29px; }
@@ -171,26 +135,16 @@ a:focus-visible, button:focus-visible { outline: 3px solid #c49441; outline-offs
   .knowledge-grid { grid-template-columns: 1fr; gap: 14px; } .knowledge-card { padding: 24px; }
   .card-top { margin-bottom: 18px; } .area-description, .area-topics { min-height: 0; } .area-topics { margin: 12px 0 20px; }
   .card-links { display: flex; align-items: center; justify-content: space-between; gap: 16px; } .area-entry { gap: 9px; }
-  .reading-section { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; margin-top: 32px; }
-  .reading-intro { padding: 0; } .reading-text strong { font-size: 13px; }
   .coastal-chronicle { padding: 25px 22px; border-radius: 20px; }
   .coastal-home .chronicle-intro h2 { font-size: 26px; } .coastal-manifesto { padding: 45px 0 40px; }
   .manifesto-quote { font-size: 18px; line-height: 1.8; } .manifesto-note { font-size: 11px; }
 }
 @media (max-width: 360px) { .coastal-home { padding: 0 14px; } .coastal-home h1 { font-size: 30px; } .card-links { align-items: start; flex-direction: column; gap: 12px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .knowledge-card:hover { transform: none; } }
-.knowledge-section,.task-section { scroll-margin-top: 92px; }
+.knowledge-section { scroll-margin-top: 92px; }
 .hero-shortcuts { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
 .hero-shortcuts a { font-size: 12px; color: var(--coast-accent); text-decoration: underline; text-underline-offset: 4px; }
-.task-section { padding-top: 48px; }
-.task-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
-.task-grid article { padding: 20px; border: 1px solid var(--coast-line); border-radius: 16px; background: var(--coast-wash); }
-.coastal-home .task-grid h3,.coastal-home .topic-grid h3 { font-size: 16px; margin: 0 0 10px; }
-.task-grid p { margin: 0 0 15px; color: var(--coast-muted); font-size: 12px; line-height: 1.8; }
-.task-grid nav,.topic-grid nav { display: grid; gap: 8px; }
-.task-grid a,.topic-grid a { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--coast-accent); font-size: 12px; padding: 5px 0; }
-.task-grid a:hover,.topic-grid a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.topic-section { padding: 0 0 48px; }.topic-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 30px; }.topic-grid article { border-top: 1px solid var(--coast-line); padding-top: 20px; }
-@media(max-width:820px) { .hero-shortcuts { justify-content: center; }.task-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media(max-width:600px) { .hero-shortcuts { gap: 18px; margin-top: 12px; }.hero-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; }.hero-footnote { margin-top: 6px; }.task-section { padding-top: 32px; }.task-grid { grid-template-columns: 1fr; gap: 12px; }.task-grid nav { display: flex; gap: 22px; }.task-grid a,.topic-grid a { min-height: 44px; }.task-grid p { margin-bottom: 6px; }.topic-grid { grid-template-columns: 1fr; gap: 20px; }.topic-grid nav { display: flex; gap: 25px; }.topic-section { padding-bottom: 32px; } }
+.coastal-chronicle { margin-top: 48px; }
+@media(max-width:820px) { .hero-shortcuts { justify-content: center; } }
+@media(max-width:600px) { .hero-shortcuts { gap: 18px; margin-top: 12px; }.hero-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; }.hero-footnote { margin-top: 6px; }.coastal-chronicle { margin-top: 32px; } }
 </style>

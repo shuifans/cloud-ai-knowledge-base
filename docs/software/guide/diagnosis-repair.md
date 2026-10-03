@@ -110,6 +110,6 @@ flowchart TD
 - [Google SRE：Effective Troubleshooting](https://sre.google/sre-book/effective-troubleshooting/)（访问日期 2026-10-03）——假设、观察与区分候选原因。
 - [Chrome DevTools：Inspect network activity](https://developer.chrome.com/docs/devtools/network/)（访问日期 2026-10-03）——请求、响应与发起关系检查。
 - [OWASP：Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)（访问日期 2026-10-03）——日志内容与敏感信息边界。
-- 站内相关：[软件研发导览](/software/guide/) · [请求链路](/software/guide/request-through-system) · [IDE 与调试](/software/toolchain/ide-debugging) · [调试与缺陷](/software/quality/debugging-defects) · [故障响应](/software/operations/incident-response) · [配置与数据](/software/guide/configuration-secrets-data)
+- 站内相关：[软件项目入门](/software/guide/) · [请求链路](/software/guide/request-through-system) · [IDE 与调试](/software/toolchain/ide-debugging) · [调试与缺陷](/software/quality/debugging-defects) · [故障响应](/software/operations/incident-response) · [配置与数据](/software/guide/configuration-secrets-data)
 
 </Refs>

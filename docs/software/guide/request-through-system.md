@@ -110,6 +110,6 @@ flowchart TD
 - [MDN：Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)（访问日期 2026-10-03）——网络失败与 HTTP 响应状态的区别。
 - [PostgreSQL：Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html)（访问日期 2026-10-03）——唯一与关系约束。
 - [PostgreSQL：Transactions](https://www.postgresql.org/docs/current/tutorial-transactions.html)（访问日期 2026-10-03）——成组提交、撤销与持久结果。
-- 站内相关：[软件研发导览](/software/guide/) · [项目全景](/software/guide/software-project-overview) · [接口契约](/software/backend/http-api-contracts) · [业务状态机](/software/backend/business-state-machines) · [数据模型](/software/data/data-models) · [事务与并发](/software/data/transactions-indexes) · [给 AI 上下文](/software/guide/ai-context-boundaries)
+- 站内相关：[软件项目入门](/software/guide/) · [项目全景](/software/guide/software-project-overview) · [接口契约](/software/backend/http-api-contracts) · [业务状态机](/software/backend/business-state-machines) · [数据模型](/software/data/data-models) · [事务与并发](/software/data/transactions-indexes) · [给 AI 上下文](/software/guide/ai-context-boundaries)
 
 </Refs>

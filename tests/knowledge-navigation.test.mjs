@@ -5,7 +5,8 @@ import { createMarkdownRenderer, resolveConfig } from 'vitepress'
 import { groupSearchResults, canonicalPath, highlightParts } from '../docs/.vitepress/theme/search.mjs'
 import { overviewChildren, findNode, taskPaths, topicPaths, shortHeading } from '../docs/.vitepress/theme/knowledge.mjs'
 import { getReadingGuide, pageKey, learningPaths, historyConnections, verifiedDate } from '../docs/.vitepress/reading-guides.mjs'
-import { readingMarkdown } from '../docs/.vitepress/reading-markdown.mjs'
+import { directoryMarkdown, softwarePager } from '../docs/.vitepress/directory-markdown.mjs'
+import { softwareSidebar } from '../docs/.vitepress/software-sidebar.mjs'
 const catalog = [
   { url: '/ai/application/rag', title: '企业级 RAG 架构设计', summary: '设计检索与评测链路。' },
   { url: '/ai/application/', title: '应用与评测', summary: '模型接入应用。' },
@@ -52,18 +53,49 @@ test('every article has a complete reading guide; all curated paths resolve to a
     assert.ok(existsSync(`docs/${relative}${relative.endsWith('/') ? 'index.md' : '.md'}`), path)
   }
 })
-test('reading guides follow article titles and preserve technical images and headings', async () => {
-  const md = await createMarkdownRenderer(process.cwd(), {config: readingMarkdown})
-  const output = md.render('# 标题\n\n![架构图](/images/test.png)\n\n*图源说明*\n\n> 保留引语\n\n## 原理\n\n![技术图](/images/another.png)')
-  assert.equal((output.match(/PageGuide/g) || []).length,1)
-  assert.ok(output.indexOf('<PageGuide') < output.indexOf('<img'))
+test('articles render directly without injected guides and retain technical content', async () => {
+  const md = await createMarkdownRenderer(process.cwd(), {config: directoryMarkdown})
+  const output = md.render('# 标题\n\n![架构图](/images/test.png)\n\n> 保留引语\n\n## 原理\n\n正文')
+  assert.doesNotMatch(output, /PageGuide|阅读指南|建议阅读顺序/)
   assert.match(output, /<img src="\/images\/test.png"/)
-  assert.match(output, /<img src="\/images\/another.png"/)
-  assert.match(output, /图源说明/)
   assert.match(output, /保留引语/)
   assert.match(output, /<h2 id="原理"/)
-  assert.doesNotMatch(output, /<details/)
-  assert.doesNotMatch(md.render('首页无文章标题'), /PageGuide/)
+})
+test('software catalogs expose every article exactly once with the same order as the sidebar', async () => {
+  const md = await createMarkdownRenderer(process.cwd(), {config: directoryMarkdown})
+  const groups = softwareSidebar.filter(item => item.items)
+  const expected = readdirSync('docs/software', {recursive:true}).filter(p=>p.endsWith('.md') && !p.endsWith('index.md')).map(p=>`/software/${p.slice(0,-3)}`).sort()
+  const entries = groups.flatMap(group=>group.items)
+  assert.deepEqual(entries.map(item=>item.link).sort(), expected)
+  assert.equal(new Set(entries.map(item=>item.link)).size, entries.length)
+  const overview = md.render(readFileSync('docs/software/index.md', 'utf8'))
+  for (const group of groups) {
+    assert.ok(!group.items.some(item=>item.link === group.link), `Duplicate self-link: ${group.link}`)
+    const source = readFileSync(`docs${group.link}index.md`, 'utf8')
+    assert.doesNotMatch(source, /导读|阅读顺序|怎样开始/)
+    const output = md.render(source)
+    let previousPosition = -1
+    for (const item of group.items) {
+      const href = `href="${item.link}.html"`
+      assert.equal(overview.split(href).length - 1, 1, `Overview: ${item.link}`)
+      assert.equal(output.split(href).length - 1, 1, `Directory: ${item.link}`)
+      const position = output.indexOf(href)
+      assert.ok(position > previousPosition)
+      previousPosition = position
+    }
+  }
+})
+test('software article paging stays inside the article directory', () => {
+  for (const group of softwareSidebar.filter(item=>item.items)) {
+    assert.deepEqual(softwarePager(group.link), {prev:false,next:false})
+    assert.equal(softwarePager(group.items[0].link).prev, false)
+    assert.equal(softwarePager(group.items.at(-1).link).next, false)
+    for (let i=1;i<group.items.length;i++) {
+      assert.equal(softwarePager(group.items[i].link).prev.link, group.items[i-1].link)
+      assert.equal(softwarePager(group.items[i-1].link).next.link, group.items[i].link)
+    }
+  }
+  assert.deepEqual(softwarePager('/cloud/infra/compute'), {})
 })
 test('verification dates preserve the actual date across YAML Date and serialized frontmatter', () => {
   assert.equal(verifiedDate(new Date('2026-09-20T00:00:00.000Z')), '2026-09-20')

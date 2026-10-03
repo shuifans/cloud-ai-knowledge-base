@@ -113,6 +113,6 @@ flowchart TD
 
 - [Cucumber：Gherkin Reference](https://cucumber.io/docs/gherkin/reference/)（访问日期 2026-10-03）——前提、动作与可观察结果。
 - [Playwright：Assertions](https://playwright.dev/docs/test-assertions)（访问日期 2026-10-03）——断言、异步等待和重试边界。
-- 站内相关：[软件研发导览](/software/guide/) · [验收标准](/software/requirements/acceptance-criteria) · [测试层次](/software/quality/test-levels) · [测试场景与数据](/software/quality/test-cases) · [验收与回归](/software/quality/acceptance-regression) · [AI 代码验证](/software/ai-assisted/generated-code-verification) · [诊断与修复](/software/guide/diagnosis-repair)
+- 站内相关：[软件项目入门](/software/guide/) · [验收标准](/software/requirements/acceptance-criteria) · [测试层次](/software/quality/test-levels) · [测试场景与数据](/software/quality/test-cases) · [验收与回归](/software/quality/acceptance-regression) · [AI 代码验证](/software/ai-assisted/generated-code-verification) · [诊断与修复](/software/guide/diagnosis-repair)
 
 </Refs>

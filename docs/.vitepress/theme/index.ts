@@ -1,7 +1,6 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import CoastalHome from './components/CoastalHome.vue'
-import PageGuide from './components/PageGuide.vue'
 import Timeline from './components/Timeline.vue'
 import Refs from './components/Refs.vue'
 import MermaidDiagram from './components/MermaidDiagram.vue'
@@ -14,7 +13,6 @@ export default {
   Layout: KnowledgeLayout,
   enhanceApp({ app }) {
     app.component('CoastalHome', CoastalHome)
-    app.component('PageGuide', PageGuide)
     app.component('Timeline', Timeline)
     app.component('Refs', Refs)
     app.component('Mermaid', MermaidDiagram)

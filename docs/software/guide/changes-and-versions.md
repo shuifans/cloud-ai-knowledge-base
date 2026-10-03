@@ -122,6 +122,6 @@ Git `restore` 可以用指定来源恢复工作树或暂存区内容，可能覆
 - [Git：git-diff](https://git-scm.com/docs/git-diff)（访问日期 2026-10-03）——不同内容层次的比较。
 - [Git：git-restore](https://git-scm.com/docs/git-restore)（访问日期 2026-10-03）——恢复来源与目标。
 - [Git：git-revert](https://git-scm.com/docs/git-revert)（访问日期 2026-10-03）——以新提交记录反向变化。
-- 站内相关：[软件研发导览](/software/guide/) · [Git 仓库模型](/software/collaboration/git-repository-model) · [提交与撤销](/software/collaboration/commits-history-undo) · [代码审查证据](/software/collaboration/code-review-evidence) · [版本与基线](/software/collaboration/tags-versions-baselines) · [分支与合并导览](/software/guide/branches-review-merge)
+- 站内相关：[软件项目入门](/software/guide/) · [Git 仓库模型](/software/collaboration/git-repository-model) · [提交与撤销](/software/collaboration/commits-history-undo) · [代码审查证据](/software/collaboration/code-review-evidence) · [版本与基线](/software/collaboration/tags-versions-baselines) · [分支与合并导览](/software/guide/branches-review-merge)
 
 </Refs>

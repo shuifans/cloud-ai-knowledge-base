@@ -104,6 +104,6 @@ OWASP 将来自文件或网站、诱导模型改变行为的输入列为间接�
 
 - [Anthropic：Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)（访问日期 2026-10-03）——按需读取、压缩和持久笔记的工程方法。
 - [OWASP LLM01:2025：Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)（访问日期 2026-10-03）——外部内容与工具权限边界。
-- 站内相关：[软件研发导览](/software/guide/) · [AI 编程责任](/software/guide/ai-coding-responsibility) · [上下文与记忆](/software/ai-assisted/context-constraints) · [任务拆分与协作](/software/ai-assisted/agent-collaboration) · [沙箱与权限](/software/ai-assisted/sandbox-permissions) · [文档与责任分工](/software/requirements/documentation-responsibility) · [改动与版本](/software/guide/changes-and-versions)
+- 站内相关：[软件项目入门](/software/guide/) · [AI 编程责任](/software/guide/ai-coding-responsibility) · [上下文与记忆](/software/ai-assisted/context-constraints) · [任务拆分与协作](/software/ai-assisted/agent-collaboration) · [沙箱与权限](/software/ai-assisted/sandbox-permissions) · [文档与责任分工](/software/requirements/documentation-responsibility) · [改动与版本](/software/guide/changes-and-versions)
 
 </Refs>

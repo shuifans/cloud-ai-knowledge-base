@@ -105,6 +105,6 @@ Python 官方教程用虚拟环境解决应用间包版本冲突，并说明创�
 - [MDN：Introduction to the server side](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction)（访问日期 2026-10-03）——客户端、服务端与 Web 框架职责。
 - [npm Docs：npm ci](https://docs.npmjs.com/cli/v11/commands/npm-ci/)（访问日期 2026-10-03）——依据锁文件安装及不一致处理。
 - [Python：Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html)（访问日期 2026-10-03）——项目依赖隔离与解释器版本。
-- 站内相关：[软件研发导览](/software/guide/) · [源码到运行](/software/foundations/source-to-runtime) · [语言与运行时](/software/programming/languages-runtimes) · [依赖与锁文件](/software/toolchain/dependencies-lockfiles) · [构建工具链与制品](/software/toolchain/build-artifacts) · [本地运行](/software/guide/running-locally)
+- 站内相关：[软件项目入门](/software/guide/) · [源码到运行](/software/foundations/source-to-runtime) · [语言与运行时](/software/programming/languages-runtimes) · [依赖与锁文件](/software/toolchain/dependencies-lockfiles) · [构建工具链与制品](/software/toolchain/build-artifacts) · [本地运行](/software/guide/running-locally)
 
 </Refs>

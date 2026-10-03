@@ -179,6 +179,20 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .vp-doc strong { font-weight: 600; }
 .vp-doc blockquote { margin: 24px 0; padding: 14px 20px; border: 1px solid var(--coast-line); border-left: 3px solid var(--coast-accent); border-radius: 0 14px 14px 0; background: var(--coast-wash); color: var(--coast-muted); font-size: 14px; }
 .vp-doc blockquote p { margin: 4px 0; }
+/* Direct article catalogs: one row per article, no repeated guide cards. */
+.vp-doc .article-directory .directory-count { margin: -8px 0 24px; color: var(--coast-muted); font-size: 13px; }
+.vp-doc .article-directory h2 { font-size: 21px; margin: 32px 0 12px; padding-top: 24px; }
+.vp-doc .article-directory h2 a:not(.header-anchor) { color: var(--coast-ink); text-decoration: none; }
+.vp-doc .article-directory h2 a:not(.header-anchor):hover { color: var(--coast-accent); text-decoration: underline; }
+.vp-doc .article-directory ul { list-style: none; padding: 0; margin: 0; }
+.vp-doc .article-directory li { margin: 0; border-bottom: 1px solid var(--coast-line); }
+.vp-doc .article-directory li a { display: flex; align-items: center; min-height: 48px; padding: 10px 4px; font-size: 15px; line-height: 1.7; text-decoration: none; }
+.vp-doc .article-directory li a::after { content: '→'; margin-left: auto; padding-left: 16px; color: var(--coast-muted); }
+.vp-doc .article-directory li a:hover { background: var(--coast-wash); }
+.vp-doc .article-directory a:focus-visible { outline: 2px solid var(--coast-focus); outline-offset: 3px; }
+@media (min-width: 768px) {
+  .vp-doc .directory-overview ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+}
 .vp-doc hr { border: 0; border-top: 1px solid var(--coast-line); margin: 40px 0; }
 
 /* 表格在容器内滚动，长句可换行，避免撑宽整页。 */

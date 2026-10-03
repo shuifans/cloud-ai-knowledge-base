@@ -109,6 +109,6 @@ Kubernetes 文档明确说明，Deployment 回滚只回滚其 Pod 模板部分�
 
 - [Google SRE Workbook：Canarying Releases](https://sre.google/workbook/canarying-releases/)（访问日期 2026-10-03）——受控开放、代表性样本与指标归因。
 - [Kubernetes：Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)（访问日期 2026-10-03）——修订历史与 Pod 模板回滚范围。
-- 站内相关：[软件研发导览](/software/guide/) · [本地到线上](/software/guide/local-to-production) · [发布与回滚](/software/delivery/release-rollback) · [SLO 与健康检查](/software/operations/slo-health-oncall) · [应用观测](/software/operations/application-observability) · [故障响应](/software/operations/incident-response) · [数据迁移兼容](/software/data/orm-migrations) · [接管与维护](/software/guide/maintenance-takeover)
+- 站内相关：[软件项目入门](/software/guide/) · [本地到线上](/software/guide/local-to-production) · [发布与回滚](/software/delivery/release-rollback) · [SLO 与健康检查](/software/operations/slo-health-oncall) · [应用观测](/software/operations/application-observability) · [故障响应](/software/operations/incident-response) · [数据迁移兼容](/software/data/orm-migrations) · [接管与维护](/software/guide/maintenance-takeover)
 
 </Refs>
