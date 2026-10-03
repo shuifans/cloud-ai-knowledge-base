@@ -86,8 +86,7 @@ npm run docs:preview  # 预览构建产物
 ## 导航与阅读体验维护
 
 - `config.mts` 是目录名称与层级的唯一来源；真实目录分组必须有总览 `link`。面包屑、总览入口从此配置推导；仅作分类标签的无链接分组不进入面包屑。
-- `reading-markdown.mjs` 在文章标题后统一插入导读，并将首张知识地图收纳为可展开卡片；后续技术配图保持正文位置。不要在每篇 Markdown 中重复手写这些组件。
+- `reading-markdown.mjs` 在文章标题后统一插入导读，技术配图保持正文位置。不要在每篇 Markdown 中重复手写导读组件。
 - `reading-guides.mjs` 管理编辑摘要、学习顺序及编年史技术互链；`theme/knowledge.mjs` 管理首页任务与跨领域专题，只引用既有主文。
 - `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。
 - 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、目录、手机菜单三处覆盖。
-- 新增知识地图沿用海岸配色与日夜模式思路，减少图内文字；详细结论优先留在可检索正文中。

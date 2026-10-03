@@ -148,7 +148,7 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 }
 .VPLocalNav { border-bottom-color: var(--coast-line); }
 
-/* 侧边知识地图与页内目录 */
+/* 侧边导航与页内目录 */
 .VPSidebar { font-size: 13px; border-right: 1px solid var(--coast-line); }
 .VPSidebar .group { border-color: var(--coast-line); }
 .VPSidebarItem.level-0 .text { font-size: 13px; font-weight: 550; letter-spacing: .01em; }

@@ -8,10 +8,6 @@ reviewScope: 移除扩散多样性保证、唯一工业路线与可控性排他�
 
 # 图像生成：从 Stable Diffusion 到 DiT 时代
 
-![扩散生成主链、控制方法与评估体系总览图](/images/ai/models/image-gen/image-gen-overview.png)
-
-*本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
-
 > 面向要把文生图/图像编辑能力接进产品、并为"自建还是买 API"做决策的工程师与方案架构师。这篇把图像生成这条技术线从地基讲到格局：**DDPM 的前向加噪与反向去噪到底在学什么（噪声 ε 与目标图像 x₀ 的换算关系）、采样器为什么能从千步压到二十步、CFG 引导强度这个旋钮背后是什么权衡、Latent Diffusion 的 VAE 压缩为什么是"消费级显卡能跑"的根本原因、去噪主干为什么从 U-Net 换成 DiT 再演进到 MM-DiT 双流、以及 ControlNet / IP-Adapter / LoRA / Inpainting 开放权重与 API 控制能力如何分别评估**。读完你会掌握一条完整主轴：扩散原理打底 → 潜空间省算力 → 架构换代吃 Scaling Law → 流匹配压步数 → 可控性插件化 → 评估与成本落地。最后一层是 2025–2026 的新变局：自回归多模态路线（GPT-4o 原生生图）带着"理解与生成同一个模型"回来了，与扩散路线正面竞争，选型判断因此要重写。
 
 ![开源文生图示例：官方仓库对"a photograph of a fire""a shirt with a fire printed on it"等四组提示词的生成结果](/images/ai/models/image-gen/txt2img-preview.png)

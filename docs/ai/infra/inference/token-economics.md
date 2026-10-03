@@ -7,8 +7,6 @@ verificationScope: API 计费快照、缓存算例、成本公式与适用边界
 
 # Token 经济学：定价与成本的数学
 
-![从 FLOPs、卡时成本到每任务成本的推导图](/images/ai/infra/inference/token-economics/token-economics-overview.png)
-
 > 面向要做模型选型、预算与成本优化的工程师。先分清 API 账单、推理服务成本与训练投入，再用带条件的价格快照和可复算的例子，把“每百万 token”换算成“每个成功任务”。产品数据采集于 2026-09-26，后续以官方价目页为准。
 
 ## 先分清三本账

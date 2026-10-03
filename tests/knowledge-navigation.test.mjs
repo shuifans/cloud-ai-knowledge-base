@@ -52,15 +52,17 @@ test('every article has a complete reading guide; all curated paths resolve to a
     assert.ok(existsSync(`docs/${relative}${relative.endsWith('/') ? 'index.md' : '.md'}`), path)
   }
 })
-test('only the leading knowledge map is folded; technical images and headings remain', async () => {
+test('reading guides follow article titles and preserve technical images and headings', async () => {
   const md = await createMarkdownRenderer(process.cwd(), {config: readingMarkdown})
-  const output = md.render('# 标题\n\n![地图](/images/test.png)\n\n*本站生成的高清全文阅读地图；具体版本以原文为准。*\n\n> 保留引语\n\n## 原理\n\n![技术图](/images/another.png)')
+  const output = md.render('# 标题\n\n![架构图](/images/test.png)\n\n*图源说明*\n\n> 保留引语\n\n## 原理\n\n![技术图](/images/another.png)')
   assert.equal((output.match(/PageGuide/g) || []).length,1)
-  assert.ok(output.indexOf('<PageGuide') < output.indexOf('<OverviewMap'))
-  assert.match(output, /<OverviewMap src="\/images\/test.png"/)
+  assert.ok(output.indexOf('<PageGuide') < output.indexOf('<img'))
+  assert.match(output, /<img src="\/images\/test.png"/)
   assert.match(output, /<img src="\/images\/another.png"/)
+  assert.match(output, /图源说明/)
   assert.match(output, /保留引语/)
-  assert.doesNotMatch(output, /高清全文阅读地图/)
+  assert.match(output, /<h2 id="原理"/)
+  assert.doesNotMatch(output, /<details/)
   assert.doesNotMatch(md.render('首页无文章标题'), /PageGuide/)
 })
 test('verification dates preserve the actual date across YAML Date and serialized frontmatter', () => {

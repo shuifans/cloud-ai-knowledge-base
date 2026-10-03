@@ -6,10 +6,6 @@ outline: [2, 3]
 
 # 架构与治理
 
-![从卓越架构评审到安全、可靠性、FinOps 与迁移的治理闭环](/images/cloud/architecture/index/architecture-governance-overview.png)
-
-*本站生成的高清全文阅读地图；具体版本、参数与结论以正文引用的一手来源为准。*
-
 > 计算、存储、网络和云原生解决“组件怎么工作”，架构与治理解决“怎样把组件长期组织成安全、可靠、可负担、可演进的生产系统”。本域以阿里云卓越架构与 AWS Well-Architected 为双参考系，把跨云通用原则和厂商实现分开表达。
 
 ## 这个域回答什么问题

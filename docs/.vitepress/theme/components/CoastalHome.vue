@@ -28,9 +28,9 @@ function openSearch() {
         <p class="eyebrow">A LITTLE KNOWLEDGE JOURNEY</p>
         <h1 id="home-title">云与 AI<br /><span>知识体系</span></h1>
         <p class="hero-tagline">保持好奇，慢慢深入。</p>
-        <p class="hero-description">从云计算基座，到大模型与智能体。<br />把零散的技术线索，连成一张可探索的知识地图。<br class="desktop-break" />理解原理，也抵达实践。</p>
+        <p class="hero-description">从云计算基座，到大模型与智能体。<br />把零散的技术线索，整理成可检索的知识体系。<br class="desktop-break" />理解原理，也抵达实践。</p>
         <div class="hero-actions">
-          <a class="coast-button" href="#knowledge-map">探索知识地图 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
+          <a class="coast-button" href="#knowledge-areas">探索技术领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
           <button class="search-button" type="button" @click="openSearch"><span class="vpi-search" aria-hidden="true"></span>搜索知识</button>
         </div>
         <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a href="#task-start">按任务开始</a></nav>
@@ -39,7 +39,7 @@ function openSearch() {
       <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
     </section>
 
-    <section id="knowledge-map" class="knowledge-section" aria-labelledby="knowledge-title">
+    <section id="knowledge-areas" class="knowledge-section" aria-labelledby="knowledge-title">
       <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR ROUTE</p><h2 id="knowledge-title">每一条路，都通向理解。</h2></div><span class="section-note">两大技术领域，一条历史线索</span></div>
       <div class="knowledge-grid">
         <article v-for="area in areas" :key="area.number" class="knowledge-card">
