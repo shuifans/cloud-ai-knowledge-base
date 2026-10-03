@@ -140,7 +140,7 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPNavBarSocialLinks::before { display: none !important; }
 .VPFlyout .menu .VPMenu { border-radius: 18px; border-color: var(--coast-line); background: var(--coast-card); box-shadow: var(--coast-shadow); }
 .VPNavScreen { background: var(--coast-page); }
-/* Modules live in the sidebar; the header contains only utility controls. */
+/* Header links lead directly to the four main pages; the full tree stays on the left. */
 .VPLocalNav { border-bottom-color: var(--coast-line); }
 
 /* 侧边导航与页内目录 */
@@ -149,6 +149,8 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPDocAsideOutline .outline-title { font-size: 12px; letter-spacing: .04em; }
 .VPDocAsideOutline .outline-link { font-size: 12px; }
 .knowledge-breadcrumb { font-size: 11px !important; letter-spacing: .025em; }
+.knowledge-layout { --knowledge-content-offset: var(--vp-sidebar-width); }
+.knowledge-layout:not(.article-outline-open) .VPDoc > .container > .aside { display: none; }
 
 /* 文章：纸面阅读区 */
 .VPDoc .content-container { padding: 32px 24px; border: 1px solid var(--coast-line); border-radius: 24px; background: var(--coast-card); box-shadow: var(--coast-shadow); }
@@ -261,15 +263,30 @@ body.zoom-lock { overflow: hidden; }
 .VPHome .vp-doc { max-width: 100%; margin: 0; padding: 0; }
 
 @media (min-width: 960px) {
+  .knowledge-layout:has(.reading-controls) .VPContent { padding-top: calc(var(--vp-nav-height) + 44px); }
+  .knowledge-layout.sidebar-collapsed { --knowledge-content-offset: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2)); }
+  .knowledge-layout.sidebar-collapsed .VPSidebar { visibility: hidden; transform: translateX(-100%); pointer-events: none; }
+  .knowledge-layout.sidebar-collapsed .VPContent.has-sidebar { padding-left: var(--knowledge-content-offset); }
+  .vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { scroll-margin-top: calc(var(--vp-nav-height) + 64px); }
   .Layout .VPSidebar:has(.knowledge-directory) { padding-left: 20px; padding-right: 20px; }
   .VPSidebar .curtain { margin-left: -20px; margin-right: -20px; }
-  .VPContent > .VPDoc { padding: 32px 16px 0; }
+  .VPContent > .VPDoc { padding: 16px 16px 0; }
   .VPDoc > .container { max-width: none; }
   .VPDoc > .container > .content { min-width: 0; padding: 0 0 64px; }
 }
 @media (min-width: 1280px) {
   .VPDoc > .container > .aside { flex: 0 0 200px; max-width: 200px; padding-left: 16px; }
   .VPDoc .aside-container, .VPDoc .aside-curtain { width: 184px; }
+  .VPDoc .aside-container { padding-top: calc(var(--vp-nav-height) + 84px); }
+}
+@media (min-width: 1440px) {
+  .knowledge-layout:not(.sidebar-collapsed) { --knowledge-content-offset: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)); }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .VPNavBarSearch .DocSearch-Button-Placeholder, .VPNavBarSearch .DocSearch-Button-Keys { display: none; }
+  .VPNavBarSearch .DocSearch-Button { width: 36px; padding: 0; justify-content: center; }
+  .VPNavBar .coastal-theme-toggle { margin-left: 8px; padding: 8px; }
+  .VPNavBar .mode-name { display: none; }
 }
 @media (max-width: 959px) {
   .VPContent > .VPDoc { padding: 24px 16px 48px; }
@@ -304,6 +321,7 @@ body.zoom-lock { overflow: hidden; }
 /* 导航触控尺寸与按章节展开的目录。 */
 .VPDocAsideOutline .outline-marker { display: none; }
 @media(max-width:767px) {
+  .VPNavBar > .wrapper > .container > .title { flex-shrink: 1; min-width: 0; }
   .VPNavBar .VPNavBarHamburger { width: 44px; flex-shrink: 0; }
   .VPNavBarSearch .DocSearch-Button { width: 44px; height: 44px; margin: 0; }
   .VPNavBar .coastal-theme-toggle { width: 44px; height: 44px; min-height: 44px; padding: 8px; margin: 0; }

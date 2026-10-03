@@ -39,6 +39,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: [
+        { find: /^\.\/components\/VPLocalNav\.vue$/, replacement: component('ReadingControls') },
+        { find: /^\.\/VPDocAsideOutline\.vue$/, replacement: component('KnowledgeAside') },
         { find: /^\.\/VPSidebarGroup\.vue$/, replacement: component('KnowledgeTree') },
         { find: /^\.\/VPDocOutlineItem\.vue$/, replacement: component('KnowledgeOutline') },
         { find: /^\.\/VPLocalSearchBox\.vue$/, replacement: component('KnowledgeSearch') },
@@ -110,7 +112,12 @@ export default defineConfig({
       },
     },
 
-    nav: [],
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '云计算', link: '/cloud/' },
+      { text: '人工智能', link: '/ai/' },
+      { text: '软件开发', link: '/software/' },
+    ],
 
     sidebar: knowledgeSidebar,
 

@@ -86,9 +86,10 @@ npm run docs:preview  # 预览构建产物
 
 ## 导航与阅读体验维护
 
-- `site-navigation.mjs`（软件研发引用 `software-sidebar.mjs`）是目录名称、顺序与层级的唯一来源；顶部不设置模块跳转或下拉菜单。`KnowledgeTree.vue` 将有子条目的节点渲染为纯展开按钮，只有叶子条目是页面链接；分组的 `link` 仅用于兼容旧目录地址与推导面包屑，不作为侧栏点击行为。
+- `site-navigation.mjs`（软件研发引用 `software-sidebar.mjs`）是目录名称、顺序与层级的唯一来源；顶部只设置「首页、云计算、人工智能、软件开发」四个主页面直达链接，不设置模块下拉菜单。`KnowledgeTree.vue` 将有子条目的节点渲染为纯展开按钮，只有叶子条目是页面链接；分组的 `link` 仅用于兼容旧目录地址与推导面包屑，不作为侧栏点击行为。
+- `ReadingControls.vue` 提供目录开关：桌面左侧知识目录可向左收起并在本次浏览会话保留偏好，手机使用抽屉；右侧本页目录每次切换文章默认关闭，手动打开后桌面宽屏显示右栏、窄屏显示浮层，支持 Escape 关闭。隐藏的目录不占正文宽度，也不进入键盘焦点顺序。
 - 分类整行展开或收起，不更换正文或关闭手机抽屉；选择文章才切页。目录在当前浏览会话内记住展开状态和滚动位置，导航时仅补充展开目标路径。标题筛选显示匹配文章及所属路径，清除后恢复原目录状态。文章翻页跳过分类目录页；兼容目录页不显示右侧大纲。
 - 本站使用“版块 → 目录 → 文章”，不添加导读卡或推荐阅读顺序。`directory-markdown.mjs` 将目录标记展开为普通 Markdown 链接；文章标题后直接呈现正文，复核记录置于文末。
 - `reading-guides.mjs` 保留搜索摘要；目录、侧栏和文章翻页顺序统一，软件研发翻页不跨目录。首页以版块入口为主。
 - `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。
-- 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue`、`KnowledgeTree.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、文章大纲、全站目录和手机抽屉覆盖；必须包含分类不跳页、状态保留、筛选清除、深链接和返回位置。
+- 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue`、`KnowledgeTree.vue`、`ReadingControls.vue`、`KnowledgeAside.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、文章大纲、全站目录和手机抽屉覆盖；必须包含分类不跳页、状态保留、筛选清除、深链接、返回位置、左右目录开关和顶部主页面链接。

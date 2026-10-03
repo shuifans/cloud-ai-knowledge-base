@@ -110,7 +110,12 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   const { sidebar, nav } = config.site.themeConfig
   assert.ok(Array.isArray(sidebar))
   assert.deepEqual(sidebar, knowledgeSidebar)
-  assert.deepEqual(nav, [])
+  assert.deepEqual(nav, [
+    { text: '首页', link: '/' },
+    { text: '云计算', link: '/cloud/' },
+    { text: '人工智能', link: '/ai/' },
+    { text: '软件开发', link: '/software/' },
+  ])
   assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/chronicle/'])
   const links = []
   function visit(items) {
