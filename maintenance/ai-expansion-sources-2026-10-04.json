@@ -420,6 +420,33 @@
     },
     "diff_check": "passed",
     "scope": "Documentation, source mapping, navigation, local build and browser rendering; production examples and cloud API behavior were not executed.",
-    "deployed": false
+    "deployed": true
+  },
+  "publication": {
+    "status": "published",
+    "content_commit": "52fd348ae2d73bfad05b8f37921b9dab36328d09",
+    "workflow_run_id": 37196400457,
+    "workflow_run_url": "https://github.com/shuifans/cloud-ai-knowledge-base/actions/runs/37196400457",
+    "workflow_conclusion": "success",
+    "site_url": "https://shuifans.github.io/cloud-ai-knowledge-base/ai/",
+    "verified_at": "2026-10-04T10:50:44+00:00",
+    "release_preflight": {
+      "node_tests_passed": 32,
+      "node_tests_failed": 0,
+      "vitepress_build": "passed",
+      "base": "/cloud-ai-knowledge-base/"
+    },
+    "live_validation": {
+      "articles_http_200": 8,
+      "directories_http_200": 2,
+      "mermaid_diagrams": 8,
+      "page_errors": 0,
+      "horizontal_overflow": false,
+      "mobile": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "diagramErrors": 0
+      }
+    }
   }
 }
