@@ -112,6 +112,7 @@ flowchart TD
 
 <Refs>
 
+- 行业知识：[组织与岗位](/gaming/organization/roles) · [美术资产生产](/gaming/production/asset-pipeline) · [游戏业务系统与云需求](/gaming/systems/cloud-workloads)
 - [Godot：Idle and Physics Processing](https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html)（访问日期 2026-10-03）
 - [Godot：Resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html)（访问日期 2026-10-03）
 - [Godot：High-level multiplayer](https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html)（访问日期 2026-10-03）

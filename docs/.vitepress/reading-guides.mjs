@@ -1,5 +1,8 @@
 // Editorial summaries describe the existing content; verification dates remain in each page.
+import { gamingReadingGuides } from './gaming-reading-guides.mjs'
+
 const entries = {
+  ...gamingReadingGuides,
   'software/': ['连接需求、实现、验证、协作、交付与维护；先建立全局理解，再按专业领域查阅。', '使用 AI 编程的非程序员、软件开发者与项目负责人', '无需编程经验；专业文章另列前置知识'],
   'software/guide/': ['以虚构的活动报名系统认识完整软件生命周期，建立管理与验收 AI 编程成果的能力。', '初次接触 AI 编程或需要接管项目的读者', '无需编程经验'],
   'software/foundations/': ['理解程序运行与系统边界，连接具体问题、机制、实践与适用边界。', '建立系统概念的读者', '无需编程经验'],

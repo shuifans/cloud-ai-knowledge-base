@@ -115,9 +115,10 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
     { text: '云计算', link: '/cloud/' },
     { text: '人工智能', link: '/ai/' },
     { text: '软件开发', link: '/software/' },
+    { text: '游戏行业', link: '/gaming/' },
     { text: '鹈鹕测试', link: '/playground/pelican/' },
   ])
-  assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/chronicle/'])
+  assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/gaming/','/chronicle/'])
   const links = []
   function visit(items) {
     for (const item of items) {

@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "title": "游戏行业知识与实践",
+  "updatedOn": "2026-10-04",
+  "organization": "4 个业务目录 + 1 个调研索引目录；目录由 gaming-sidebar.mjs 生成；既有文章地址保留",
+  "statusMeaning": {
+    "completed-local": "正文与结构已完成；测试与构建结果另见 validation；不代表线上已部署",
+    "planned": "仅登记主题，不创建空页或空链接"
+  },
+  "scope": "手游、小游戏与 PC 为主要语境，按主题说明单机、主机、实时竞技及持续运营差异",
+  "counts": {
+    "businessDirectories": 4,
+    "referenceDirectories": 1,
+    "articles": 14,
+    "indexes": 3,
+    "directoryPages": 6,
+    "totalPages": 29,
+    "contentAndDirectoryPages": 23,
+    "redirectPages": 6
+  },
+  "articles": [
+    {
+      "title": "游戏产业链、公司类型与商业模式",
+      "path": "/gaming/industry/company-models",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "区分研发、发行、平台与外包责任，拆解商业模式、资金流和成本。"
+    },
+    {
+      "title": "游戏公司的组织、岗位与协作",
+      "path": "/gaming/organization/roles",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "梳理制作人、策划、美术、程序、发行运营等岗位的交付物、协作与评价维度。"
+    },
+    {
+      "title": "策划岗位、需求与核心交付物",
+      "path": "/gaming/design/planning-deliverables",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "以合作副本奖励为例，把策划需求落到规则、配置、异常与验收。"
+    },
+    {
+      "title": "玩法、成长与游戏经济系统",
+      "path": "/gaming/design/gameplay-economy",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "从核心循环、成长、社交与资源产消理解体验和系统约束。"
+    },
+    {
+      "title": "游戏从立项到停运的生命周期",
+      "path": "/gaming/production/lifecycle",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "识别立项、原型、预制作、量产、上线、运营及退出阶段的验证目标。"
+    },
+    {
+      "title": "美术资产生产与技术美术协作",
+      "path": "/gaming/production/asset-pipeline",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "沿角色源文件、导出、引擎集成和设备验收，理解 TA 协作及资产成本。"
+    },
+    {
+      "title": "版本研发、测试与发布流程",
+      "path": "/gaming/production/version-release",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "连接客户端、服务端、资源与配置，验证兼容、发布停止条件和数据回退。"
+    },
+    {
+      "title": "游戏发行、渠道与买量流程",
+      "path": "/gaming/publishing/distribution-growth",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "从产品评估到渠道、素材、投放和复盘，区分归因关联与真实增量。"
+    },
+    {
+      "title": "长线运营、活动与玩家服务",
+      "path": "/gaming/operations/liveops-player-service",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "组织版本活动、结算、合服、工单和舆情反馈，并明确运行责任。"
+    },
+    {
+      "title": "游戏核心指标与统计口径",
+      "path": "/gaming/analytics/metrics",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "定义 DAU、CCU、留存、ARPU、CPI、ROAS 和 LTV，复算虚构例子并识别口径误用。"
+    },
+    {
+      "title": "游戏业务系统与云需求地图",
+      "path": "/gaming/systems/cloud-workloads",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "按账号、匹配、战斗、交易、分发和研发负载规划云资源与验收。"
+    },
+    {
+      "title": "游戏 AI 场景与验收方法",
+      "path": "/gaming/ai/scenarios-evaluation",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "为策划、美术、研发、本地化、客服和 NPC 建立任务基线与可验收的 AI 试点。"
+    },
+    {
+      "title": "出海、本地化与合规协作",
+      "path": "/gaming/globalization/localization-governance",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "组织语言、游戏内验证、地区服务和适用规则核查，明确证据与责任。"
+    },
+    {
+      "title": "面向不同岗位的业务调研",
+      "path": "/gaming/reference/discovery",
+      "type": "article",
+      "status": "completed-local",
+      "summary": "按岗位观察工作与交接，将业务诉求转成可证伪假设、验证计划和场景记录。"
+    },
+    {
+      "title": "游戏行业术语表",
+      "path": "/gaming/reference/terms",
+      "type": "index",
+      "status": "completed-local",
+      "summary": "查询游戏行业中英文术语、常见混淆与对应主文。"
+    },
+    {
+      "title": "岗位与流程索引",
+      "path": "/gaming/reference/roles-workflows",
+      "type": "index",
+      "status": "completed-local",
+      "summary": "从协作对象或立项、生产、发布、活动、客服等流程定位知识。"
+    },
+    {
+      "title": "场景与案例索引",
+      "path": "/gaming/reference/scenarios-cases",
+      "type": "index",
+      "status": "completed-local",
+      "summary": "按具体业务问题查找方法，区分公开机制资料、虚构示例与实施结果。"
+    }
+  ],
+  "futureTopics": [
+    {
+      "directory": "industry",
+      "status": "planned",
+      "topics": [
+        "按公司规模和工作室模式深化岗位协作",
+        "国内公开招聘职责样本的专项核验"
+      ]
+    },
+    {
+      "directory": "production",
+      "status": "planned",
+      "topics": [
+        "按玩法品类拆解设计与数值",
+        "用户研究与可玩性测试",
+        "音频与配音生产专项",
+        "外包验收与资产版本管理专项"
+      ]
+    },
+    {
+      "directory": "publishing",
+      "status": "planned",
+      "topics": [
+        "小游戏平台接入专项",
+        "广告实验与增量评估专项",
+        "赛季与合服专项",
+        "社区与公会治理专项",
+        "按目标市场专项核验现行要求",
+        "本地化工作流与 LQA 专项"
+      ]
+    },
+    {
+      "directory": "systems",
+      "status": "planned",
+      "topics": [
+        "按玩法拆分服务端参考架构",
+        "云游戏与跨地域实时体验专项"
+      ]
+    }
+  ],
+  "evidencePolicy": "公开事实附直接来源与日期；方法标明建议；示例和算例标明虚构；不发布客户、内部信息或未公开数据；未执行的模型和容量实验不声称已验证",
+  "validation": {
+    "status": "passed",
+    "completedOn": "2026-10-04",
+    "unitTests": {
+      "passed": 35,
+      "failed": 0,
+      "command": "node --test tests/*.test.mjs"
+    },
+    "productionBuild": {
+      "passed": true,
+      "internalDeadLinks": 0,
+      "checks": [
+        "check-pelicans.mjs 通过",
+        "VitePress 生产构建及站内死链检查通过"
+      ],
+      "previewOutput": "独立临时构建目录，避免并行任务覆盖共享产物"
+    },
+    "browser": {
+      "contentPages": 17,
+      "mermaidDiagrams": 14,
+      "pageErrors": [],
+      "viewports": [
+        "1440×1000",
+        "1024×900",
+        "390×844"
+      ],
+      "checks": [
+        "desktop filtering, article navigation, sidebar and outline controls",
+        "full-text search scoped to gaming",
+        "mobile drawer filtering and article navigation"
+      ]
+    },
+    "content": {
+      "topicArticles": 14,
+      "referenceIndexes": 3,
+      "directoryPages": 6,
+      "fullTextPlaceholderPages": 0,
+      "evidence": "各文记录公开来源及复核范围；业务示例和计算样例与真实实施结果分开",
+      "redirectPages": 6
+    },
+    "notes": [
+      "原有 PromQL 代码高亮降级为文本及大体积 chunk 提示未阻止构建。",
+      "未执行真实游戏引擎、云容量或 AI 模型实验。"
+    ]
+  },
+  "deployment": {
+    "status": "tracked-by-github-actions",
+    "branch": "main",
+    "workflow": "Deploy to GitHub Pages",
+    "workflowUrl": "https://github.com/shuifans/cloud-ai-knowledge-base/actions/workflows/deploy.yml",
+    "productionUrl": "https://shuifans.github.io/cloud-ai-knowledge-base/gaming/",
+    "note": "实际部署结果以对应提交的工作流与线上页面为准"
+  },
+  "directories": [
+    {
+      "title": "行业与组织",
+      "path": "/gaming/industry/",
+      "contentPages": 2
+    },
+    {
+      "title": "策划与研发",
+      "path": "/gaming/production/",
+      "contentPages": 5
+    },
+    {
+      "title": "发行与运营",
+      "path": "/gaming/publishing/",
+      "contentPages": 4
+    },
+    {
+      "title": "云与 AI",
+      "path": "/gaming/systems/",
+      "contentPages": 2
+    },
+    {
+      "title": "调研与索引",
+      "path": "/gaming/reference/",
+      "contentPages": 4
+    }
+  ],
+  "structureRevision": {
+    "updatedOn": "2026-10-04",
+    "previousDirectories": 11,
+    "currentDirectories": 5,
+    "articleUrlsPreserved": true,
+    "redirects": {
+      "/gaming/organization/": "/gaming/industry/",
+      "/gaming/design/": "/gaming/production/",
+      "/gaming/operations/": "/gaming/publishing/",
+      "/gaming/analytics/": "/gaming/publishing/",
+      "/gaming/ai/": "/gaming/systems/",
+      "/gaming/globalization/": "/gaming/publishing/"
+    },
+    "validation": {
+      "status": "passed",
+      "completedOn": "2026-10-04",
+      "unitTests": {
+        "passed": 35,
+        "failed": 0
+      },
+      "productionBuild": {
+        "passed": true,
+        "internalDeadLinks": 0
+      },
+      "browser": {
+        "directories": 5,
+        "legacyRedirects": 6,
+        "articleBreadcrumbs": 4,
+        "viewports": [
+          "1440×1000",
+          "390×844"
+        ],
+        "pageErrors": [],
+        "checks": [
+          "5 个目录共 17 篇内容",
+          "6 个旧目录入口跳转且保留查询参数",
+          "原文章地址与新面包屑层级",
+          "合并目录内跨原文件夹翻页",
+          "桌面和手机标题筛选显示新目录",
+          "旧目录跳转页不进入搜索结果",
+          "手机页面无横向溢出",
+          "用户当前预览页已刷新显示 5 个目录"
+        ]
+      }
+    }
+  }
+}

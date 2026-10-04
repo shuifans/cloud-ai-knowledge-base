@@ -7,7 +7,8 @@ const areas = [
   { number: '01', name: '云计算', english: 'CLOUD COMPUTING', icon: 'cloud', description: '从基础设施出发，理解云上系统如何构建、运行与演进。', topics: '云计算基座 / 计算·存储·网络 / 数据 / 云原生 / 架构', link: '/cloud/' },
   { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '从模型原理走向工程实践，连接算力、应用与智能体。', topics: '模型与算法 / AI 基础设施 / 应用与评测 / 智能体', link: '/ai/' },
   { number: '03', name: '软件研发', english: 'SOFTWARE ENGINEERING', icon: 'software', description: '从需求与代码到验证、交付和维护，理解并管理软件项目。', topics: '软件项目入门 / 程序与设计 / 实现与数据 / 质量与交付 / 维护治理', link: '/software/' },
-  { number: '04', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/' },
+  { number: '04', name: '游戏行业', english: 'GAMES INDUSTRY', icon: 'gaming', description: '理解游戏公司的岗位、业务流程与经营逻辑，连接云与 AI 场景。', topics: '行业与组织 / 策划与研发 / 发行与运营 / 云与 AI / 调研与索引', link: '/gaming/' },
+  { number: '05', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/' },
 ]
 function openSearch() {
   document.querySelector<HTMLButtonElement>('.VPNavBarSearch .DocSearch-Button')?.click()
@@ -21,25 +22,26 @@ function openSearch() {
         <p class="eyebrow">A LITTLE KNOWLEDGE JOURNEY</p>
         <h1 id="home-title">云与 AI<br /><span>知识体系</span></h1>
         <p class="hero-tagline">保持好奇，慢慢深入。</p>
-        <p class="hero-description">从云计算、大模型，到软件研发与工程实践。<br />把零散的技术线索，整理成可检索的知识体系。<br class="desktop-break" />理解原理，也抵达实践。</p>
+        <p class="hero-description">从云计算、大模型，到软件研发与游戏行业。<br />把零散的技术与业务知识，整理成可检索的体系。<br class="desktop-break" />理解原理，也抵达实践。</p>
         <div class="hero-actions">
-          <a class="coast-button" href="#knowledge-areas">探索技术领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
+          <a class="coast-button" href="#knowledge-areas">探索知识领域 <span class="vpi-arrow-right" aria-hidden="true"></span></a>
           <button class="search-button" type="button" @click="openSearch"><span class="vpi-search" aria-hidden="true"></span>搜索知识</button>
         </div>
-        <nav class="hero-shortcuts" aria-label="快速入口"><a :href="withBase('/cloud/')">云计算</a><a :href="withBase('/ai/')">人工智能</a><a :href="withBase('/software/')">软件研发</a><a :href="withBase('/chronicle/')">技术编年史</a></nav>
+        <nav class="hero-shortcuts" aria-label="快速入口"><a v-for="area in areas" :key="area.link" :href="withBase(area.link)">{{ area.name }}</a></nav>
         <p class="hero-footnote">公开资料为起点 · 工程实践为方向 · 持续校验</p>
       </div>
       <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
     </section>
 
     <section id="knowledge-areas" class="knowledge-section" aria-labelledby="knowledge-title">
-      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR ROUTE</p><h2 id="knowledge-title">每一条路，都通向理解。</h2></div><span class="section-note">三大技术领域，一条历史线索</span></div>
+      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR ROUTE</p><h2 id="knowledge-title">每一条路，都通向理解。</h2></div><span class="section-note">技术、行业与演进</span></div>
       <div class="knowledge-grid">
         <article v-for="area in areas" :key="area.number" class="knowledge-card">
           <div class="card-top"><span class="area-icon" aria-hidden="true">
             <svg v-if="area.icon === 'cloud'" viewBox="0 0 64 64" fill="none"><path d="M19 48h27a11 11 0 0 0 1-22 15 15 0 0 0-28-3A12 12 0 0 0 19 48Z"/><path d="M20 53h24M24 58h16"/></svg>
             <svg v-else-if="area.icon === 'ai'" viewBox="0 0 64 64" fill="none"><rect x="18" y="18" width="28" height="28" rx="6"/><path d="M27 27h10v10H27zM32 12v6M32 46v6M12 32h6M46 32h6M19 19l4 4M41 41l4 4M45 19l-4 4M23 41l-4 4"/></svg>
             <svg v-else-if="area.icon === 'software'" viewBox="0 0 64 64" fill="none"><rect x="10" y="12" width="44" height="40" rx="5"/><path d="M10 22h44M26 31l-6 6 6 6M38 31l6 6-6 6M34 29l-4 16"/></svg>
+            <svg v-else-if="area.icon === 'gaming'" viewBox="0 0 64 64" fill="none"><path d="M22 20h20c6 0 9 5 11 13l3 12c1 6-5 10-9 6l-9-8H26l-9 8c-4 4-10 0-9-6l3-12c2-8 5-13 11-13Z"/><path d="M22 27v12M16 33h12"/><circle cx="43" cy="29" r="2"/><circle cx="48" cy="36" r="2"/></svg>
             <svg v-else viewBox="0 0 64 64" fill="none"><path d="M14 47h36M18 39V23M32 39V16M46 39V28"/><circle cx="18" cy="20" r="4"/><circle cx="32" cy="13" r="4"/><circle cx="46" cy="25" r="4"/></svg>
           </span><span class="route-number">ROUTE / {{ area.number }}</span></div>
           <p class="area-english">{{ area.english }}</p><h3><a :href="withBase(area.link)">{{ area.name }}</a></h3>

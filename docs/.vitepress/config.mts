@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { pageKey, verifiedDate } from './reading-guides.mjs'
 import { knowledgeSidebar } from './site-navigation.mjs'
 import { sectionPager } from './theme/knowledge.mjs'
-import { directoryMarkdown, softwarePager } from './directory-markdown.mjs'
+import { directoryMarkdown, directoryPager } from './directory-markdown.mjs'
 
 const require = createRequire(import.meta.url)
 const component = (name: string) => fileURLToPath(new URL(`./theme/components/${name}.vue`, import.meta.url))
@@ -17,7 +17,7 @@ const base = (process.env.VITEPRESS_BASE || '/').replace(/([^/])$/, '$1/')
 export default defineConfig({
   title: '云与 AI 知识体系',
   description:
-    '从云计算与人工智能，到软件研发、工程实践与技术演进的系统化中文知识库。',
+    '从云计算与人工智能，到软件研发、游戏行业与技术演进的系统化中文知识库。',
   lang: 'zh-CN',
   appearance: true,
   base,
@@ -27,7 +27,7 @@ export default defineConfig({
 
   transformPageData(pageData) {
     const path = `/${pageKey(pageData.relativePath)}`
-    Object.assign(pageData.frontmatter, sectionPager(knowledgeSidebar, path), softwarePager(path))
+    Object.assign(pageData.frontmatter, sectionPager(knowledgeSidebar, path), directoryPager(path))
     if (pageData.frontmatter.directory) {
       pageData.frontmatter.outline = false
       pageData.frontmatter.aside = false
@@ -60,7 +60,7 @@ export default defineConfig({
       'meta',
       {
         property: 'og:description',
-        content: '云计算、人工智能与软件研发：可检索、可核验、持续更新的技术知识体系',
+        content: '云计算、人工智能、软件研发与游戏行业：可检索、可核验、持续更新的知识体系',
       },
     ],
   ],
@@ -117,6 +117,7 @@ export default defineConfig({
       { text: '云计算', link: '/cloud/' },
       { text: '人工智能', link: '/ai/' },
       { text: '软件开发', link: '/software/' },
+      { text: '游戏行业', link: '/gaming/' },
       { text: '鹈鹕测试', link: '/playground/pelican/' },
     ],
 

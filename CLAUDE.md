@@ -6,11 +6,12 @@
 
 - 公开技术知识库：**云与 AI 知识体系**，不使用作者履历或个人项目经历为内容背书
 - 技术栈：VitePress 1.x + Mermaid（自定义组件），纯中文
-- 分类体系：三大技术领域 + 技术编年史
+- 分类体系：云、AI、软件研发、游戏行业 + 技术编年史
   - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）/ architecture（卓越架构·安全·可靠性·FinOps·迁移）
   - **人工智能** `docs/ai/`：models（模型与算法）/ infra（集群/训练/推理）/ application（应用与评测）/ agent（智能体全景·编年史·框架对比）
   - **编年史** `docs/chronicle/`：技术浪潮与信创演进
   - **软件研发** `docs/software/`：guide（软件项目入门）+ 按专业领域组织的子域 + reference（术语、场景与技术工具索引）；完整专题和批次见 `maintenance/software-roadmap.json`
+  - **游戏行业** `docs/gaming/`：industry（行业与组织）/ production（策划与研发）/ publishing（发行与运营）/ systems（云与 AI）四个业务目录，配套 reference（调研与索引）；既有文章路径保留，旧目录入口跳转至合并后的目录；清单见 `maintenance/gaming-roadmap.json`
 - 内容分级：完整文章（无标记）· 提纲页（纯文字“本文是提纲页”提示块 + 有意义的范围与要点）；仅规划的专题不创建空页
 
 ## 常用命令
@@ -24,9 +25,9 @@ npm run docs:preview  # 预览构建产物
 ## 新增文章流程
 
 1. 从 `templates/article-template.md` 或概念、专题、实践、比较模板复制，放入对应知识域目录，英文短横线文件名；按主题调整结构，不为套模板重复空话
-2. 在 `docs/.vitepress/site-navigation.mjs` 的全站目录树中注册条目；软件研发统一维护 `docs/.vitepress/software-sidebar.mjs`（提纲页标注"（提纲）"）
-3. 目录页只组织文章入口，不写导读、学习路径或推荐阅读顺序；软件研发目录由同一份侧栏配置在构建时生成，不重复手写清单
-4. 在 `docs/.vitepress/reading-guides.mjs` 补充搜索摘要；正文不注入阅读指南
+2. 在 `docs/.vitepress/site-navigation.mjs` 的全站目录树中注册条目；软件研发维护 `docs/.vitepress/software-sidebar.mjs`，游戏行业维护 `docs/.vitepress/gaming-sidebar.mjs`（提纲页标注"（提纲）"）
+3. 目录页只组织文章入口，不写导读、学习路径或推荐阅读顺序；软件研发和游戏行业目录由各自侧栏配置在构建时生成，不重复手写清单
+4. 在 `docs/.vitepress/reading-guides.mjs` 补充搜索摘要；游戏行业摘要维护在 `gaming-reading-guides.mjs` 并汇入；正文不注入阅读指南
 5. 跑 `node --test tests/*.test.mjs` 和 `npm run docs:build` 确认行为与链接
 
 ## 文章结构标准
@@ -86,10 +87,10 @@ npm run docs:preview  # 预览构建产物
 
 ## 导航与阅读体验维护
 
-- `site-navigation.mjs`（软件研发引用 `software-sidebar.mjs`）是知识目录名称、顺序与层级的唯一来源；顶部依次设置「首页、云计算、人工智能、软件开发、鹈鹕测试」直达链接，不设置模块下拉菜单。鹈鹕测试是独立展示页面，不放入知识目录，页面不显示知识侧栏。`KnowledgeTree.vue` 将有子条目的节点渲染为纯展开按钮，只有叶子条目是页面链接；分组的 `link` 仅用于兼容旧目录地址与推导面包屑，不作为侧栏点击行为。
+- `site-navigation.mjs`（软件研发引用 `software-sidebar.mjs`，游戏行业引用 `gaming-sidebar.mjs`）是知识目录名称、顺序与层级的唯一来源；顶部依次设置「首页、云计算、人工智能、软件开发、游戏行业、鹈鹕测试」直达链接，不设置模块下拉菜单。鹈鹕测试是独立展示页面，不放入知识目录，页面不显示知识侧栏。`KnowledgeTree.vue` 将有子条目的节点渲染为纯展开按钮，只有叶子条目是页面链接；分组的 `link` 仅用于兼容旧目录地址与推导面包屑，不作为侧栏点击行为。
 - `ReadingControls.vue` 提供目录开关：桌面左侧知识目录可向左收起并在本次浏览会话保留偏好，手机使用抽屉；右侧本页目录每次切换文章默认关闭，手动打开后桌面宽屏显示右栏、窄屏显示浮层，支持 Escape 关闭。隐藏的目录不占正文宽度，也不进入键盘焦点顺序。
 - 分类整行展开或收起，不更换正文或关闭手机抽屉；选择文章才切页。目录在当前浏览会话内记住展开状态和滚动位置，导航时仅补充展开目标路径。标题筛选显示匹配文章及所属路径，清除后恢复原目录状态。文章翻页跳过分类目录页；兼容目录页不显示右侧大纲。
 - 本站使用“版块 → 目录 → 文章”，不添加导读卡或推荐阅读顺序。`directory-markdown.mjs` 将目录标记展开为普通 Markdown 链接；文章标题后直接呈现正文，复核记录置于文末。
-- `reading-guides.mjs` 保留搜索摘要；目录、侧栏和文章翻页顺序统一，软件研发翻页不跨目录。首页以版块入口为主。
+- `reading-guides.mjs` 保留搜索摘要；目录、侧栏和文章翻页顺序统一，软件研发与游戏行业翻页不跨目录。首页以版块入口为主。
 - `lastVerified` 仅在技术内容实际复核后更新。主题的“内容复核于”与 Git 的“页面修订于”含义不同，改布局不能刷新复核日期。
 - 搜索按文章聚合章节并优先匹配文章标题；`KnowledgeSearch.vue`、`KnowledgeOutline.vue`、`KnowledgeMenuButton.vue`、`KnowledgeTree.vue`、`ReadingControls.vue`、`KnowledgeAside.vue` 通过主题组件别名接入 VitePress。升级 VitePress 时需复测搜索、文章大纲、全站目录和手机抽屉覆盖；必须包含分类不跳页、状态保留、筛选清除、深链接、返回位置、左右目录开关和顶部主页面链接。

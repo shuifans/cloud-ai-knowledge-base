@@ -1,4 +1,5 @@
 import { softwareSidebar } from './software-sidebar.mjs'
+import { gamingSidebar } from './gaming-sidebar.mjs'
 
 // Shared knowledge tree for articles and home; the pelican gallery has its own top-level entrance.
 export const knowledgeSidebar = [ { text: '首页', link: '/' },
@@ -89,6 +90,7 @@ export const knowledgeSidebar = [ { text: '首页', link: '/' },
             { text: 'Agent 开发框架对比', link: '/ai/agent/frameworks' },
             { text: 'Agent 安全与可靠执行', link: '/ai/agent/security' } ] } ] },
   { text: '软件研发', link: '/software/', collapsed: true, items: softwareSidebar.filter(item => item.items?.length) },
+  { text: '游戏行业', link: '/gaming/', collapsed: true, items: gamingSidebar },
   { text: '技术编年史',
     link: '/chronicle/',
     collapsed: true,

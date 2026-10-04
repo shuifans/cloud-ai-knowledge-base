@@ -17,7 +17,7 @@ const filter = ref('')
 const index = shallowRef<MiniSearch>()
 const loading = ref(true)
 const failed = ref(false)
-const filters = [{ label: '全部', value: '' }, { label: '云计算', value: '/cloud/' }, { label: '人工智能', value: '/ai/' }, { label: '软件研发', value: '/software/' }, { label: '编年史', value: '/chronicle/' }]
+const filters = [{ label: '全部', value: '' }, { label: '云计算', value: '/cloud/' }, { label: '人工智能', value: '/ai/' }, { label: '软件研发', value: '/software/' }, { label: '游戏行业', value: '/gaming/' }, { label: '编年史', value: '/chronicle/' }]
 const grouped = computed(() => groupSearchResults(query.value, index.value?.search(query.value, { fuzzy: .15, prefix: true, combineWith: 'AND', boost: { title: 6, titles: 2, text: 1 } }) || [], catalog, site.value.base))
 const results = computed(() => grouped.value.filter(result => !filter.value || result.url.startsWith(filter.value)))
 let trigger: HTMLElement | null = null
