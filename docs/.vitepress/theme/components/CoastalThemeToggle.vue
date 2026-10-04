@@ -10,7 +10,7 @@ watchPostEffect(() => { isNight.value = isDark.value })
 onMounted(() => {
   watch(isDark, (night) => {
     const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
-    if (meta) meta.content = night ? '#172d32' : '#f1f3eb'
+    if (meta) meta.content = night ? '#171b22' : '#ffffff'
   }, { immediate: true })
 })
 </script>
@@ -27,7 +27,6 @@ onMounted(() => {
   >
     <span class="vpi-sun mode-day-icon" aria-hidden="true"></span>
     <span class="vpi-moon mode-night-icon" aria-hidden="true"></span>
-    <span class="mode-name">{{ isNight ? '夜晚' : '白天' }}</span>
   </button>
 </template>
 
@@ -40,7 +39,8 @@ onMounted(() => {
   gap: 7px;
   min-height: 36px;
   margin-left: 18px;
-  padding: 8px 13px;
+  width: 36px;
+  padding: 8px;
   border: 1px solid var(--coast-line);
   border-radius: 99px;
   background: var(--coast-card);
@@ -54,7 +54,7 @@ onMounted(() => {
 .coastal-theme-toggle:focus-visible { outline: 3px solid var(--coast-focus); outline-offset: 4px; }
 [class^='vpi-'] { font-size: 16px; }
 @media (max-width: 767px) { .coastal-theme-toggle { margin-left: 0; padding: 8px 10px; gap: 5px; } }
-@media (max-width: 420px) { .mode-name { display: none; } .coastal-theme-toggle { width: 36px; padding: 8px; } }
+@media (max-width: 420px) { .coastal-theme-toggle { width: 36px; padding: 8px; } }
 </style>
 
 <style>

@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-04",
+  "status": "implemented-and-verified-locally",
+  "selected_option": 1,
+  "preview_url": "http://127.0.0.1:5173/ai/models/llm",
+  "content_note": "Selected modern-publication direction implemented in the existing VitePress theme. Complete article text, verification dates, pelican branding and navigation behavior are preserved. Not published.",
+  "references": [
+    "https://shuifans.github.io/cloud-ai-knowledge-base/ai/models/llm",
+    "https://distill.pub/2016/misread-tsne/",
+    "https://aeon.co/essays/why-real-intelligence-is-something-more-than-optimisation"
+  ],
+  "observed_current": {
+    "viewport_width_px": 1440,
+    "article_width_px": 1078,
+    "body_font_px": 16
+  },
+  "implemented_tokens": {
+    "desktop_body_font_px": 20,
+    "tablet_body_font_px": 18,
+    "mobile_body_font_px": 17,
+    "desktop_h1_px": 48,
+    "desktop_h2_px": 34,
+    "body_line_height": 1.9,
+    "body_max_width_px": 960,
+    "primary_ink": "#242d38",
+    "body_ink": "#414c59",
+    "paper": "#ffffff",
+    "sidebar": "#f8faf9",
+    "link_accent": "#397e70"
+  },
+  "options_in_display_order": [
+    {
+      "number": 1,
+      "file": "01-modern-publication.png"
+    },
+    {
+      "number": 2,
+      "file": "02-editorial-reading.png"
+    },
+    {
+      "number": 3,
+      "file": "03-technical-handbook.png"
+    }
+  ],
+  "verification": {
+    "tests_passed": 32,
+    "production_base_build": "passed",
+    "qa_report": "../../design-qa.md",
+    "final_screenshot": "qa/desktop-final.jpg",
+    "comparison": "qa/comparison-final.jpg"
+  },
+  "implementation_constraints": [
+    "Preserve complete article content, taxonomy and the four primary navigation links",
+    "Keep both navigation panels collapsible; article outline closed by default",
+    "Keep mobile, dark mode, search, filter, navigation state and figure zoom behavior",
+    "Retain original pelican logo; generated logos are not replacement assets",
+    "Do not change content verification dates during design changes"
+  ]
+}

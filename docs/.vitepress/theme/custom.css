@@ -1,18 +1,22 @@
-/* 海风知识库：暖纸色与海盐绿，日夜共用同一套语义变量。 */
+/* 现代技术刊：中性纸面、清晰正文，海盐绿只用于交互与重点。 */
 :root {
   color-scheme: light;
   --vp-nav-logo-height: 30px;
-  --coast-page: #f1f3eb;
-  --coast-card: #fffdf5;
-  --coast-ink: #29464a;
-  --coast-muted: #63756e;
-  --coast-line: #dce2d5;
+  --coast-page: #ffffff;
+  --coast-card: #ffffff;
+  --coast-sidebar: #f8faf9;
+  --coast-ink: #242d38;
+  --coast-body: #414c59;
+  --coast-muted: #65717d;
+  --coast-line: #e6eaed;
+  --coast-quote: #c3cbd3;
   --coast-accent: #397e70;
   --coast-button: #39796b;
-  --coast-wash: #e8eee3;
-  --coast-code: #edf1e8;
+  --coast-wash: #f3f6f5;
+  --coast-code: #f5f7f9;
   --coast-focus: #a17630;
-  --coast-shadow: 0 12px 45px #304b3808;
+  --coast-shadow: 0 12px 40px #242d3810;
+  --reading-width: 960px;
   --coast-node: #e1ece1;
   --coast-node-border: #7f9f90;
   --coast-note: #f5e9c8;
@@ -36,7 +40,7 @@
   --vp-c-bg-elv: var(--coast-card);
   --vp-c-bg-soft: var(--coast-wash);
   --vp-c-bg-mute: var(--coast-code);
-  --vp-c-border: #b5c5b8;
+  --vp-c-border: #cad1d8;
   --vp-c-divider: var(--coast-line);
   --vp-c-gutter: var(--coast-line);
   --vp-c-default-1: #c1cec1;
@@ -52,12 +56,12 @@
   --vp-c-purple-1: #776081;
   --vp-c-purple-soft: #77608112;
 
-  --vp-nav-height: 64px;
+  --vp-nav-height: 72px;
   --vp-nav-bg-color: var(--coast-page);
   --vp-local-nav-bg-color: var(--coast-page);
-  --vp-sidebar-width: 280px;
+  --vp-sidebar-width: 304px;
   --vp-layout-max-width: clamp(1440px, 100vw, 1760px);
-  --vp-sidebar-bg-color: var(--coast-page);
+  --vp-sidebar-bg-color: var(--coast-sidebar);
   --vp-backdrop-bg-color: #172d3299;
   --vp-button-brand-bg: var(--coast-button);
   --vp-button-brand-hover-bg: #306c5e;
@@ -80,15 +84,18 @@
 
 .dark {
   color-scheme: dark;
-  --coast-page: #172d32;
-  --coast-card: #233b3e;
-  --coast-ink: #e7e9d8;
-  --coast-muted: #acbfb7;
-  --coast-line: #3a5354;
+  --coast-page: #171b22;
+  --coast-card: #1d232c;
+  --coast-sidebar: #1a1f27;
+  --coast-ink: #e5eaf0;
+  --coast-body: #c3cbd5;
+  --coast-muted: #a1abb8;
+  --coast-line: #303946;
+  --coast-quote: #526173;
   --coast-accent: #a3cab7;
   --coast-button: #3d7165;
-  --coast-wash: #20373a;
-  --coast-code: #1b3337;
+  --coast-wash: #222a35;
+  --coast-code: #1f252f;
   --coast-focus: #e2bc75;
   --coast-shadow: 0 12px 45px #07171b20;
   --coast-node: #35574f;
@@ -130,10 +137,10 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPNav .VPNavBar { background: var(--coast-page) !important; backdrop-filter: none; }
 .VPNavBar .divider-line { background: var(--coast-line); }
 .VPNavBar.home .container { max-width: 1056px; }
-.VPNavBarTitle .title { font-size: 14px; font-weight: 600; letter-spacing: .035em; color: var(--coast-ink); }
-.VPNavBarMenu .VPLink { font-size: 13px; font-weight: 400; }
+.VPNavBarTitle .title { font-size: 18px; font-weight: 650; letter-spacing: .01em; color: var(--coast-ink); }
+.VPNavBarMenu .VPLink { font-size: 15px; font-weight: 450; }
 .VPNavBarMenu .VPLink:hover { color: var(--coast-accent); }
-.VPNavBarSearch .DocSearch-Button { height: 34px; border-radius: 99px; background: var(--coast-card); border: 1px solid var(--coast-line); }
+.VPNavBarSearch .DocSearch-Button { height: 38px; border-radius: 8px; background: var(--coast-card); border: 1px solid var(--coast-line); }
 .VPNavBarSearch .DocSearch-Button-Keys { border: 0; background: transparent; }
 .VPNavBarAppearance, .VPNavScreenAppearance, .VPNavBarExtra .group:has(.appearance) { display: none !important; }
 .VPNavBarExtra .group:has(.appearance) + .group { border-top: 0; padding-top: 0; }
@@ -148,29 +155,33 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .VPDocAsideOutline .content { border-color: var(--coast-line); }
 .VPDocAsideOutline .outline-title { font-size: 12px; letter-spacing: .04em; }
 .VPDocAsideOutline .outline-link { font-size: 12px; }
-.knowledge-breadcrumb { font-size: 11px !important; letter-spacing: .025em; }
+.knowledge-breadcrumb { font-size: 13px; letter-spacing: 0; }
 .knowledge-layout { --knowledge-content-offset: var(--vp-sidebar-width); }
 .knowledge-layout:not(.article-outline-open) .VPDoc > .container > .aside { display: none; }
 
-/* 文章：纸面阅读区 */
-.VPDoc .content-container { padding: 32px 24px; border: 1px solid var(--coast-line); border-radius: 24px; background: var(--coast-card); box-shadow: var(--coast-shadow); }
-/* Fill the space between the knowledge tree and the article outline. */
+/* 正文直接排在页面上；收起目录也保持舒适行宽。 */
+.VPDoc .content-container { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .VPDoc > .container > .content > .content-container,
-.VPDoc.has-aside > .container > .content > .content-container { max-width: none; }
-.vp-doc { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
+.VPDoc.has-aside > .container > .content > .content-container { max-width: var(--reading-width); }
+.vp-doc { color: var(--coast-body); font-size: 18px; line-height: 1.9; overflow-wrap: anywhere; }
 .vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { scroll-margin-top: calc(var(--vp-nav-height) + 28px); }
-.vp-doc h1 { font-size: 34px; line-height: 1.45; font-weight: 600; letter-spacing: .025em; margin: 0 0 24px; }
-.vp-doc h2 { font-size: 25px; line-height: 1.5; font-weight: 550; letter-spacing: .02em; margin: 52px 0 22px; padding-top: 25px; border-top: 1px solid var(--coast-line); }
-.vp-doc h3 { font-size: 20px; line-height: 1.6; font-weight: 550; margin: 32px 0 14px; }
-.vp-doc h4 { font-size: 17px; font-weight: 550; }
-.vp-doc p { line-height: 1.95; margin: 20px 0; }
-.vp-doc li { line-height: 1.95; }
+.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { color: var(--coast-ink); }
+.vp-doc h1 { font-size: 40px; line-height: 1.4; font-weight: 650; letter-spacing: -.015em; margin: 0 0 32px; }
+.vp-doc h2 { font-size: 28px; line-height: 1.5; font-weight: 650; letter-spacing: 0; margin: 52px 0 24px; padding-top: 0; border-top: 0; }
+.vp-doc h3 { font-size: 22px; line-height: 1.6; font-weight: 600; margin: 36px 0 16px; }
+.vp-doc h4 { font-size: 18px; font-weight: 600; }
+.vp-doc p { line-height: 1.9; margin: 24px 0; }
+.vp-doc li { line-height: 1.9; }
+.vp-doc li + li { margin-top: 10px; }
 .vp-doc li::marker { color: var(--coast-muted); }
 .vp-doc a { color: var(--coast-accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .vp-doc a:hover { color: var(--vp-c-brand-2); text-decoration-color: currentColor; }
 .vp-doc strong { font-weight: 600; }
-.vp-doc blockquote { margin: 24px 0; padding: 14px 20px; border: 1px solid var(--coast-line); border-left: 3px solid var(--coast-accent); border-radius: 0 14px 14px 0; background: var(--coast-wash); color: var(--coast-muted); font-size: 14px; }
-.vp-doc blockquote p { margin: 4px 0; }
+.vp-doc blockquote { margin: 32px 0; padding: 0 0 0 24px; border: 0; border-left: 3px solid var(--coast-quote); border-radius: 0; background: transparent; color: var(--coast-body); font-size: 18px; }
+.vp-doc blockquote p { margin: 16px 0; }
+.vp-doc blockquote > p { font-size: inherit; }
+.vp-doc blockquote p:first-child { margin-top: 0; }
+.vp-doc blockquote p:last-child { margin-bottom: 0; }
 /* Direct article catalogs: one row per article, no repeated guide cards. */
 .vp-doc .article-directory .directory-count { margin: -8px 0 24px; color: var(--coast-muted); font-size: 13px; }
 .vp-doc .article-directory h2 { font-size: 21px; margin: 32px 0 12px; padding-top: 24px; }
@@ -188,28 +199,27 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .vp-doc hr { border: 0; border-top: 1px solid var(--coast-line); margin: 40px 0; }
 
 /* 表格在容器内滚动，长句可换行，避免撑宽整页。 */
-.vp-doc table { display: block; max-width: 100%; width: 100%; overflow-x: auto; border: 1px solid var(--coast-line); border-radius: 14px; border-spacing: 0; font-size: 13px; line-height: 1.8; }
+.vp-doc table { display: block; max-width: 100%; width: 100%; overflow-x: auto; border: 1px solid var(--coast-line); border-radius: 0; border-spacing: 0; font-size: 15px; line-height: 1.8; }
 .vp-doc th { font-weight: 600; text-align: left; background: var(--coast-wash); white-space: normal; }
-.vp-doc tr { background: var(--coast-card); border: 0; }
-.vp-doc tr:nth-child(2n) { background: color-mix(in srgb, var(--coast-wash) 45%, var(--coast-card)); }
+.vp-doc tr, .vp-doc tr:nth-child(2n) { background: transparent; border: 0; }
 .vp-doc td, .vp-doc th { padding: 12px 14px; border: 0; border-bottom: 1px solid var(--coast-line); min-width: 100px; }
 .vp-doc tr:last-child td { border-bottom: 0; }
 
 /* 代码与语义提示：保留语法色，统一容器和状态色。 */
 .vp-doc :not(pre, h1, h2, h3) > code { background: var(--coast-wash); color: var(--coast-accent); border-radius: 5px; padding: .15em .4em; font-size: .85em; }
-.vp-doc div[class*='language-'] { margin: 24px 0; border: 1px solid var(--coast-line); border-radius: 14px; }
-.vp-doc .custom-block { padding: 16px 20px; border: 1px solid var(--coast-line); border-left: 3px solid var(--coast-accent); border-radius: 0 14px 14px 0; background: var(--coast-wash); }
+.vp-doc div[class*='language-'] { margin: 28px 0; border: 1px solid var(--coast-line); border-radius: 8px; }
+.vp-doc .custom-block { padding: 16px 20px; border: 0; border-left: 3px solid var(--coast-accent); border-radius: 0; background: var(--coast-wash); }
 .vp-doc .custom-block.tip { border-left-color: var(--vp-c-success-1); background: var(--vp-c-success-soft); }
 .vp-doc .custom-block.important { border-left-color: var(--vp-c-important-1); background: var(--vp-c-important-soft); }
 .vp-doc .custom-block.warning { border-left-color: var(--vp-c-warning-1); background: var(--vp-c-warning-soft); }
 .vp-doc .custom-block.danger, .vp-doc .custom-block.caution { border-left-color: var(--vp-c-danger-1); background: var(--vp-c-danger-soft); }
 .vp-doc .custom-block .custom-block-title { font-weight: 600; }
-.vp-doc .custom-block.details { border-left-width: 1px; border-radius: 14px; }
+.vp-doc .custom-block.details { border: 1px solid var(--coast-line); border-radius: 8px; }
 .badge-done { color: var(--vp-c-success-1); font-weight: 600; }
 .badge-draft { color: var(--vp-c-warning-1); font-weight: 600; }
 
 /* 图表与图片：完整缩放，点击放大。 */
-.mermaid { margin: 24px 0; padding: 20px 16px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 16px; overflow-x: auto; }
+.mermaid { margin: 32px 0; padding: 24px 16px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 8px; overflow-x: auto; }
 .mermaid svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
 :is(.mermaid, .zoom-stage) .coast-node-warm > rect { fill: var(--coast-note) !important; stroke: var(--coast-node-border) !important; }
 :is(.mermaid, .zoom-stage) .coast-node-warm .nodeLabel { fill: var(--coast-note-ink) !important; color: var(--coast-note-ink) !important; }
@@ -236,7 +246,7 @@ body.zoom-lock { overflow: hidden; }
 .zoom-stage svg { background: var(--coast-wash); border-radius: 14px; }
 
 /* 引用与文章底部 */
-.vp-doc .refs { margin-top: 48px; padding: 20px 24px; background: var(--coast-wash); border: 1px solid var(--coast-line); border-radius: 16px; font-size: 13px; line-height: 1.85; color: var(--coast-muted); }
+.vp-doc .refs { margin-top: 40px; padding: 20px 24px; background: var(--coast-wash); border: 0; border-radius: 8px; font-size: 14px; line-height: 1.85; color: var(--coast-muted); }
 .vp-doc .refs p { margin: .45em 0; }
 .vp-doc .refs ul, .vp-doc .refs ol { margin: .35em 0; padding-left: 1.3em; }
 .vp-doc .refs li { margin: .25em 0; }
@@ -244,7 +254,7 @@ body.zoom-lock { overflow: hidden; }
 .vp-doc .refs a { color: var(--coast-accent); }
 .vp-doc .refs strong { color: var(--coast-ink); }
 .vp-doc .refs table { font-size: 12px; }
-.VPDocFooter .pager-link { border-color: var(--coast-line); border-radius: 16px; background: var(--coast-wash); }
+.VPDocFooter .pager-link { border-color: var(--coast-line); border-radius: 8px; background: transparent; }
 .VPDocFooter .pager-link:hover { border-color: var(--coast-accent); }
 .VPDocFooter .edit-info, .VPDocFooter .prev-next { border-color: var(--coast-line); }
 .VPFooter { padding: 26px 24px; background: var(--coast-page); border-top: 1px solid var(--coast-line); }
@@ -270,14 +280,19 @@ body.zoom-lock { overflow: hidden; }
   .vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { scroll-margin-top: calc(var(--vp-nav-height) + 64px); }
   .Layout .VPSidebar:has(.knowledge-directory) { padding-left: 20px; padding-right: 20px; }
   .VPSidebar .curtain { margin-left: -20px; margin-right: -20px; }
-  .VPContent > .VPDoc { padding: 16px 16px 0; }
+  .VPContent > .VPDoc { padding: 36px 48px 0; }
   .VPDoc > .container { max-width: none; }
   .VPDoc > .container > .content { min-width: 0; padding: 0 0 64px; }
 }
 @media (min-width: 1280px) {
-  .VPDoc > .container > .aside { flex: 0 0 200px; max-width: 200px; padding-left: 16px; }
+  .VPNavBarSearch .DocSearch-Button { width: 264px; }
+  .VPNavBarSearch .DocSearch-Button-Keys { margin-left: auto; }
+  .vp-doc, .vp-doc blockquote { font-size: 20px; }
+  .vp-doc h1 { font-size: 48px; }
+  .vp-doc h2 { font-size: 34px; }
+  .VPDoc > .container > .aside { flex: 0 0 216px; max-width: 216px; padding-left: 32px; }
   .VPDoc .aside-container, .VPDoc .aside-curtain { width: 184px; }
-  .VPDoc .aside-container { padding-top: calc(var(--vp-nav-height) + 84px); }
+  .VPDoc .aside-container { padding-top: calc(var(--vp-nav-height) + 92px); }
 }
 @media (min-width: 1440px) {
   .knowledge-layout:not(.sidebar-collapsed) { --knowledge-content-offset: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)); }
@@ -286,20 +301,19 @@ body.zoom-lock { overflow: hidden; }
   .VPNavBarSearch .DocSearch-Button-Placeholder, .VPNavBarSearch .DocSearch-Button-Keys { display: none; }
   .VPNavBarSearch .DocSearch-Button { width: 36px; padding: 0; justify-content: center; }
   .VPNavBar .coastal-theme-toggle { margin-left: 8px; padding: 8px; }
-  .VPNavBar .mode-name { display: none; }
 }
 @media (max-width: 959px) {
-  .VPContent > .VPDoc { padding: 24px 16px 48px; }
-  .VPDoc .content-container { padding: 28px 24px; }
+  :root { --vp-nav-height: 64px; }
+  .VPContent > .VPDoc { padding: 32px 32px 48px; }
 }
 @media (max-width: 600px) {
-  .VPContent > .VPDoc { padding: 16px 12px 36px; }
-  .VPDoc .content-container { padding: 22px 18px; border-radius: 20px; }
-  .vp-doc { font-size: 16px; }
-  .vp-doc h1 { font-size: 27px; }
-  .vp-doc h2 { font-size: 22px; margin-top: 36px; padding-top: 20px; }
-  .vp-doc h3 { font-size: 18px; }
-  .vp-doc blockquote, .vp-doc .custom-block, .vp-doc .refs { padding: 13px 15px; }
+  .VPContent > .VPDoc { padding: 24px 20px 36px; }
+  .vp-doc { font-size: 17px; }
+  .vp-doc h1 { font-size: 30px; margin-bottom: 28px; }
+  .vp-doc h2 { font-size: 24px; margin-top: 40px; }
+  .vp-doc h3 { font-size: 20px; }
+  .vp-doc blockquote { padding: 0 0 0 16px; font-size: 17px; }
+  .vp-doc .custom-block, .vp-doc .refs { padding: 14px 16px; }
   .vp-doc th, .vp-doc td { padding: 10px; }
   .mermaid { padding: 14px 10px; }
   .VPNavBarTitle .title { font-size: 12px; letter-spacing: 0; }
@@ -325,7 +339,6 @@ body.zoom-lock { overflow: hidden; }
   .VPNavBar .VPNavBarHamburger { width: 44px; flex-shrink: 0; }
   .VPNavBarSearch .DocSearch-Button { width: 44px; height: 44px; margin: 0; }
   .VPNavBar .coastal-theme-toggle { width: 44px; height: 44px; min-height: 44px; padding: 8px; margin: 0; }
-  .VPNavBar .mode-name { display: none; }
   .VPNavBar .coastal-music { margin-left: 4px; }
   .VPNavBar .coastal-music-toggle { width: 44px; height: 44px; }
   .VPNavBar .content { flex-shrink: 0; }

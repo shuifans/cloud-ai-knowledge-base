@@ -130,9 +130,9 @@ onBeforeUnmount(() => {
 
 <style>
 .knowledge-directory { padding: 16px 0 24px; }
-.directory-filter { position: sticky; top: 12px; z-index: 2; display: flex; align-items: center; gap: 7px; min-height: 38px; margin-bottom: 18px; padding: 0 10px; border: 1px solid var(--coast-line); border-radius: 8px; background: var(--coast-card); box-shadow: 0 -8px 0 4px var(--vp-sidebar-bg-color); }
+.directory-filter { position: sticky; top: 12px; z-index: 2; display: flex; align-items: center; gap: 8px; min-height: 40px; margin-bottom: 24px; padding: 0 12px; border: 1px solid var(--coast-line); border-radius: 7px; background: var(--coast-card); box-shadow: 0 -8px 0 4px var(--vp-sidebar-bg-color); }
 .directory-filter > span { flex: 0 0 14px; color: var(--coast-muted); }
-.directory-filter input { width: 100%; min-width: 0; padding: 8px 0; font: inherit; font-size: 12px; background: transparent; }
+.directory-filter input { width: 100%; min-width: 0; padding: 8px 0; font: inherit; font-size: 13px; background: transparent; }
 .directory-filter input::-webkit-search-cancel-button { display: none; }
 .directory-filter button { display: grid; flex: 0 0 28px; place-items: center; height: 32px; color: var(--coast-muted); }
 .directory-filter:focus-within { outline: 2px solid var(--coast-focus); outline-offset: 2px; }
@@ -141,14 +141,14 @@ onBeforeUnmount(() => {
 .knowledge-tree.nested { margin: 2px 0 8px 8px; padding-left: 10px; border-left: 1px solid var(--coast-line); }
 .knowledge-tree > .root-node { margin-bottom: 6px; }
 .knowledge-tree > .root-node + .root-node:has(> .directory-folder) { margin-top: 10px; }
-.directory-row { position: relative; display: flex; align-items: center; width: 100%; gap: 7px; min-height: 38px; padding: 7px 8px; border-radius: 6px; text-align: left; font-size: 13px; line-height: 1.65; color: var(--coast-muted); overflow-wrap: anywhere; }
+.directory-row { position: relative; display: flex; align-items: center; width: 100%; gap: 7px; min-height: 40px; padding: 8px; border-radius: 6px; text-align: left; font-size: 14px; line-height: 1.65; color: var(--coast-muted); overflow-wrap: anywhere; }
 .directory-row:hover { color: var(--coast-ink); background: var(--coast-wash); }
 .directory-folder { font-weight: 550; }
-.root-node > .directory-folder { font-size: 14px; font-weight: 650; color: var(--coast-ink); }
+.root-node > .directory-folder { font-size: 15px; font-weight: 650; color: var(--coast-ink); }
 .directory-folder > .vpi-chevron-right { flex: 0 0 12px; font-size: 12px; transition: transform .15s; }
 .directory-folder > .expanded { transform: rotate(90deg); }
 .in-path > .directory-folder { color: var(--coast-ink); }
-.directory-row[aria-current="page"] { color: var(--coast-accent); background: var(--coast-wash); font-weight: 650; }
+.directory-row[aria-current="page"] { color: var(--coast-accent); background: var(--vp-c-brand-soft); font-weight: 600; }
 .directory-row[aria-current="page"]::before { content: ''; position: absolute; left: -4px; top: 9px; bottom: 9px; width: 2px; border-radius: 2px; background: var(--coast-accent); }
 .directory-row:focus-visible, .directory-filter button:focus-visible { outline: 2px solid var(--coast-focus); outline-offset: 2px; }
 .directory-result { display: block; margin-bottom: 7px; }

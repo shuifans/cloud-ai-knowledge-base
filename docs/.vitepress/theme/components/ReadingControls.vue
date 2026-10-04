@@ -83,9 +83,9 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
-.reading-controls { position: sticky; top: 0; z-index: var(--vp-z-index-local-nav); background: var(--coast-page); border-bottom: 1px solid var(--coast-line); }
+.reading-controls { position: sticky; top: 0; z-index: var(--vp-z-index-local-nav); background: var(--coast-page); }
 .reading-controls-row { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 12px; }
-.reading-controls button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 0 8px; color: var(--coast-muted); font-size: 12px; }
+.reading-controls button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 8px; color: var(--coast-muted); font-size: 13px; }
 .reading-controls button:hover { color: var(--coast-accent); }
 .reading-controls button:focus-visible { outline: 2px solid var(--coast-focus); outline-offset: -3px; border-radius: 6px; }
 .reading-controls svg { width: 18px; height: 18px; }
@@ -94,7 +94,7 @@ onBeforeUnmount(() => {
 .reading-outline-popover { position: absolute; top: 100%; right: 12px; left: 12px; max-height: min(65dvh, 520px); overflow-y: auto; padding: 12px 16px; border: 1px solid var(--coast-line); border-radius: 10px; background: var(--coast-card); box-shadow: 0 12px 32px #172d3220; }
 @media (min-width: 960px) {
   .reading-controls { position: fixed; top: var(--vp-nav-height); left: var(--knowledge-content-offset); right: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2)); }
-  .reading-controls-row { padding: 0 8px; }
+  .reading-controls-row { padding: 0 24px; }
   .reading-outline-popover { left: auto; width: 320px; }
 }
 </style>
