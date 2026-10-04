@@ -115,6 +115,7 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
     { text: '云计算', link: '/cloud/' },
     { text: '人工智能', link: '/ai/' },
     { text: '软件开发', link: '/software/' },
+    { text: '鹈鹕测试', link: '/playground/pelican/' },
   ])
   assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/chronicle/'])
   const links = []
@@ -128,9 +129,9 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   assert.equal(new Set(links).size, links.length)
   assert.ok(overviewChildren(sidebar, '/cloud/').length === 5)
   assert.ok(overviewChildren(sidebar, '/software/').length === 19)
-  for (const file of ['docs/index.md', 'docs/playground/pelican/index.md']) {
-    assert.doesNotMatch(readFileSync(file,'utf8'), /^sidebar: false$|^layout: home$/m, file)
-  }
+  assert.doesNotMatch(readFileSync('docs/index.md','utf8'), /^sidebar: false$|^layout: home$/m)
+  assert.equal(findNode(sidebar, '/playground/pelican/'), undefined)
+  assert.match(readFileSync('docs/playground/pelican/index.md','utf8'), /^sidebar: false$/m)
 })
 
 test('breadcrumbs retain the full directory hierarchy without top navigation, including deployment base', () => {

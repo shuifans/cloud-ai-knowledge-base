@@ -1,6 +1,6 @@
 import { softwareSidebar } from './software-sidebar.mjs'
 
-// One knowledge tree for every page, including the home page and gallery.
+// Shared knowledge tree for articles and home; the pelican gallery has its own top-level entrance.
 export const knowledgeSidebar = [ { text: '首页', link: '/' },
   { text: '云计算',
     link: '/cloud/',
@@ -100,5 +100,4 @@ export const knowledgeSidebar = [ { text: '首页', link: '/' },
        { text: '元宇宙时代', link: '/chronicle/metaverse' },
        { text: 'AI 大模型时代', link: '/chronicle/ai-era' },
        { text: '暗流：信创与国产化', link: '/chronicle/xinchuang' } ] },
-  { text: '鹈鹕测试', link: '/playground/pelican/' },
   { text: '关于', link: '/about' } ]

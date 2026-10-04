@@ -117,6 +117,7 @@ export default defineConfig({
       { text: '云计算', link: '/cloud/' },
       { text: '人工智能', link: '/ai/' },
       { text: '软件开发', link: '/software/' },
+      { text: '鹈鹕测试', link: '/playground/pelican/' },
     ],
 
     sidebar: knowledgeSidebar,
