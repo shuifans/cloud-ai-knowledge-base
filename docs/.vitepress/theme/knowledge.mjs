@@ -63,7 +63,7 @@ export const taskPaths = [
 ]
 
 export const topicPaths = [
-  { title: '安全与权限', links: [['应用安全', '/software/security/'], ['身份治理', '/cloud/architecture/security-governance'], ['智能体治理', '/ai/agent/security']] },
-  { title: '质量与观测', links: [['软件质量', '/software/quality/'], ['大模型评测', '/ai/application/evaluation'], ['可观测体系', '/cloud/native/observability']] },
-  { title: '数据与检索', links: [['应用数据', '/software/data/'], ['数据库选型', '/cloud/data/database'], ['RAG 检索链路', '/ai/application/rag-architecture']] },
+  { title: '安全与权限', links: [['测试与安全', '/software/quality/'], ['身份治理', '/cloud/architecture/security-governance'], ['智能体治理', '/ai/agent/security']] },
+  { title: '质量与观测', links: [['测试与安全', '/software/quality/'], ['大模型评测', '/ai/application/evaluation'], ['可观测体系', '/cloud/native/observability']] },
+  { title: '数据与检索', links: [['后端与数据', '/software/backend/'], ['数据库选型', '/cloud/data/database'], ['RAG 检索链路', '/ai/application/rag-architecture']] },
 ]

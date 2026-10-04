@@ -1,5 +1,5 @@
 ---
-title: 构建交付与部署
+title: 交付与维护
 outline: 2
 directory: true
 readingProgress: false
@@ -7,6 +7,6 @@ prev: false
 next: false
 ---
 
-# 构建交付与部署
+# 交付与维护
 
 <!-- directory:/software/delivery/ -->

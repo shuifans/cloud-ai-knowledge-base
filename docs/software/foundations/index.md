@@ -1,5 +1,5 @@
 ---
-title: 计算机与软件基础
+title: 编程与计算机基础
 outline: 2
 directory: true
 readingProgress: false
@@ -7,6 +7,6 @@ prev: false
 next: false
 ---
 
-# 计算机与软件基础
+# 编程与计算机基础
 
 <!-- directory:/software/foundations/ -->

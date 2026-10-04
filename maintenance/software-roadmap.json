@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "plannedOn": "2026-10-03",
   "title": "软件研发与工程实践",
-  "organization": "领域→子域→专题；导览和独立专业查询共存",
+  "organization": "版块→目录→文章；9 个目录统一入门、专业专题与查询索引；原专业分组仅用于内容维护",
   "case": "虚构的小型活动报名与管理系统，不含支付、多租户或真实个人数据",
   "statusMeaning": {
     "planned": "仅规划，无公开空页",
@@ -1778,8 +1778,9 @@
     "guideArticles": 16,
     "professionalArticles": 105,
     "referencePages": 3,
-    "overviewPages": 20,
-    "totalPages": 144
+    "overviewPages": 10,
+    "totalPages": 144,
+    "redirectPages": 10
   },
   "nextBatch": null,
   "outlinePlanResolution": {
@@ -2120,5 +2121,132 @@
   ],
   "completedOn": "2026-10-03",
   "completionRecord": "maintenance/software-completion.json",
-  "status": "complete"
+  "status": "complete",
+  "directories": [
+    {
+      "title": "软件项目入门",
+      "path": "/software/guide/",
+      "contentPages": 16,
+      "sourceTopics": [
+        "guide"
+      ]
+    },
+    {
+      "title": "编程与计算机基础",
+      "path": "/software/foundations/",
+      "contentPages": 17,
+      "sourceTopics": [
+        "foundations",
+        "programming",
+        "algorithms"
+      ]
+    },
+    {
+      "title": "需求与架构",
+      "path": "/software/architecture/",
+      "contentPages": 13,
+      "sourceTopics": [
+        "requirements",
+        "architecture"
+      ]
+    },
+    {
+      "title": "前端与专项开发",
+      "path": "/software/frontend/",
+      "contentPages": 15,
+      "sourceTopics": [
+        "frontend",
+        "specialized"
+      ]
+    },
+    {
+      "title": "后端与数据",
+      "path": "/software/backend/",
+      "contentPages": 13,
+      "sourceTopics": [
+        "backend",
+        "data"
+      ]
+    },
+    {
+      "title": "工具与 AI 协作",
+      "path": "/software/toolchain/",
+      "contentPages": 18,
+      "sourceTopics": [
+        "toolchain",
+        "collaboration",
+        "ai-assisted"
+      ]
+    },
+    {
+      "title": "测试与安全",
+      "path": "/software/quality/",
+      "contentPages": 13,
+      "sourceTopics": [
+        "quality",
+        "security"
+      ]
+    },
+    {
+      "title": "交付与维护",
+      "path": "/software/delivery/",
+      "contentPages": 16,
+      "sourceTopics": [
+        "delivery",
+        "operations",
+        "maintenance"
+      ]
+    },
+    {
+      "title": "术语与查询索引",
+      "path": "/software/reference/",
+      "contentPages": 3,
+      "sourceTopics": [
+        "reference"
+      ]
+    }
+  ],
+  "structureRevision": {
+    "updatedOn": "2026-10-04",
+    "previousDirectories": 19,
+    "currentDirectories": 9,
+    "articleUrlsPreserved": true,
+    "redirects": {
+      "/software/programming/": "/software/foundations/",
+      "/software/algorithms/": "/software/foundations/",
+      "/software/requirements/": "/software/architecture/",
+      "/software/specialized/": "/software/frontend/",
+      "/software/data/": "/software/backend/",
+      "/software/collaboration/": "/software/toolchain/",
+      "/software/ai-assisted/": "/software/toolchain/",
+      "/software/security/": "/software/quality/",
+      "/software/operations/": "/software/delivery/",
+      "/software/maintenance/": "/software/delivery/"
+    },
+    "validation": {
+      "status": "passed",
+      "completedOn": "2026-10-04",
+      "unitTests": {
+        "passed": 35,
+        "failed": 0
+      },
+      "productionBuild": {
+        "passed": true,
+        "base": "/cloud-ai-knowledge-base/",
+        "internalDeadLinks": 0
+      },
+      "browser": {
+        "directories": 9,
+        "legacyRedirects": 10,
+        "checks": [
+          "总览显示 9 个目录、124 篇文章",
+          "10 个旧目录入口跳转并保留查询参数",
+          "原安全文章地址显示测试与安全面包屑",
+          "标题筛选显示新目录归属",
+          "质量与安全文章跨原文件夹翻页",
+          "浏览器控制台无错误"
+        ]
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 ---
-title: 开发环境与工具链
+title: 工具与 AI 协作
 outline: 2
 directory: true
 readingProgress: false
@@ -7,6 +7,6 @@ prev: false
 next: false
 ---
 
-# 开发环境与工具链
+# 工具与 AI 协作
 
 <!-- directory:/software/toolchain/ -->

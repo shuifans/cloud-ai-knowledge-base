@@ -129,7 +129,7 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   visit(sidebar)
   assert.equal(new Set(links).size, links.length)
   assert.ok(overviewChildren(sidebar, '/cloud/').length === 5)
-  assert.ok(overviewChildren(sidebar, '/software/').length === 19)
+  assert.ok(overviewChildren(sidebar, '/software/').length === 9)
   assert.doesNotMatch(readFileSync('docs/index.md','utf8'), /^sidebar: false$|^layout: home$/m)
   assert.equal(findNode(sidebar, '/playground/pelican/'), undefined)
   assert.match(readFileSync('docs/playground/pelican/index.md','utf8'), /^sidebar: false$/m)

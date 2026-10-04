@@ -87,7 +87,7 @@ reviewScope: 技术职责定位与官方文档入口
 
 语言选择应连接运行环境与团队能力，框架选择应连接状态、业务及部署模型；工具检查的结果须回到需求和风险。跨平台不免除宿主验证，托管不免除应用责任，安全扫描不免除威胁与权限判断。
 
-需要开发模型、检索或 Agent 产品时，从 [AI 应用工程入口](/software/specialized/ai-applications)进入已有 AI 专题；需要用 AI 写和管理软件时，从 [AI 辅助研发](/software/ai-assisted/)进入任务、上下文、权限和验证。这两种目的可能同时存在，但验证对象不同。
+需要开发模型、检索或 Agent 产品时，从 [AI 应用工程入口](/software/specialized/ai-applications)进入已有 AI 专题；需要用 AI 写和管理软件时，从 [AI 辅助研发](/software/ai-assisted/ai-development)进入任务、上下文、权限和验证。这两种目的可能同时存在，但验证对象不同。
 
 ## 参考资料
 
