@@ -30,9 +30,16 @@ flowchart LR
 
 ## 计划扩充方向
 
-- Prompt 工程的系统化方法（模板、版本化、回归测试）
-- 多模型路由与降级策略
-- AI 应用的安全基线（提示注入、数据泄露、内容合规）
+- 提示词设计与多模型路由的专项方法
+
+## 工程运营与治理专题
+
+- [MLOps / LLMOps：AI 持续交付](/ai/operations/mlops-llmops)
+- [AI 联合版本、发布与回滚](/ai/operations/version-release)
+- [AI 生产监控与反馈闭环](/ai/operations/monitoring-feedback)
+- [企业知识治理：权限、时效与删除](/ai/data/knowledge-governance)
+- [企业 AI 治理：责任、风险与准入](/ai/operations/enterprise-governance)
+- [Agent 安全与可靠执行](/ai/agent/security)
 
 ## 精选资源
 

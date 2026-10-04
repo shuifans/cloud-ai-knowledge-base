@@ -659,6 +659,8 @@ flowchart TD
 
 <Refs>
 
+- 持续治理：[企业知识治理](/ai/data/knowledge-governance) · [AI 联合版本与发布](/ai/operations/version-release)
+
 **原始论文**
 
 - [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997) — RAG 综述，Naive/Advanced/Modular 三代划分的常用出处（访问日期 2026-09-05）

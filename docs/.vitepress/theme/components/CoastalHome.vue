@@ -5,7 +5,7 @@ import Timeline from './Timeline.vue'
 
 const areas = [
   { number: '01', name: '云计算', english: 'CLOUD COMPUTING', icon: 'cloud', description: '从基础设施出发，理解云上系统如何构建、运行与演进。', topics: '云计算基座 / 计算·存储·网络 / 数据 / 云原生 / 架构', link: '/cloud/' },
-  { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '从模型原理走向工程实践，连接算力、应用与智能体。', topics: '模型与算法 / AI 基础设施 / 应用与评测 / 智能体', link: '/ai/' },
+  { number: '02', name: '人工智能', english: 'ARTIFICIAL INTELLIGENCE', icon: 'ai', description: '连接模型、数据与算力，覆盖 AI 应用交付、运行与治理。', topics: '模型 / 数据与知识 / 基础设施 / 应用 / 智能体 / 工程治理', link: '/ai/' },
   { number: '03', name: '软件研发', english: 'SOFTWARE ENGINEERING', icon: 'software', description: '从需求与代码到验证、交付和维护，理解并管理软件项目。', topics: '软件项目入门 / 程序与设计 / 实现与数据 / 质量与交付 / 维护治理', link: '/software/' },
   { number: '04', name: '技术编年史', english: 'A HISTORY OF TECHNOLOGY', icon: 'history', description: '循着技术浪潮回望，在变化中看清不变的架构命题。', topics: '移动互联网 / 直播 / 短视频 / 区块链 / 元宇宙 / AI', link: '/chronicle/' },
 ]
