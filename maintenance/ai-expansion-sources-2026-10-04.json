@@ -1,0 +1,425 @@
+{
+  "research_date": "2026-10-04",
+  "method": "Official sites and original project documentation; IQS failed DNS resolution, web search and original-page reading used as fallback.",
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://openlineage.io/docs/spec/object-model/",
+      "authority": "OpenLineage",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "Dataset、Job、Run 与事件的输入输出关系",
+      "limits": "只解释规范模型，不代表具体部署已完整采集血缘",
+      "articles": [
+        "docs/ai/data/data-lifecycle.md"
+      ]
+    },
+    {
+      "id": "S02",
+      "url": "https://www.tensorflow.org/tfx/guide/mlmd",
+      "authority": "TensorFlow",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "制品、执行、事件与上游下游追踪",
+      "limits": "血缘能力不保证数据内容或授权有效",
+      "articles": [
+        "docs/ai/data/data-lifecycle.md"
+      ]
+    },
+    {
+      "id": "S03",
+      "url": "https://huggingface.co/docs/hub/datasets-cards",
+      "authority": "Hugging Face",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "README 数据卡、许可与语言等元数据、偏差说明",
+      "limits": "数据卡不是独立的授权或质量证明",
+      "articles": [
+        "docs/ai/data/data-lifecycle.md",
+        "docs/ai/data/dataset-quality.md"
+      ]
+    },
+    {
+      "id": "S04",
+      "url": "https://help.aliyun.com/zh/pai/create-and-manage-datasets",
+      "authority": "阿里云 PAI",
+      "site_scope": "中国站",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "数据集的存储入口与基础数据集版本管理",
+      "limits": "经 user-guide 兼容地址成功读取；不推导底层字节不可变或全地域能力",
+      "articles": [
+        "docs/ai/data/data-lifecycle.md"
+      ]
+    },
+    {
+      "id": "S05",
+      "url": "https://www.tensorflow.org/tfx/data_validation/get_started",
+      "authority": "TensorFlow",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "统计、模式、异常、训练服务偏差与跨批次漂移检查",
+      "limits": "自动模式需人工复核；不证明语义正确",
+      "articles": [
+        "docs/ai/data/dataset-quality.md"
+      ]
+    },
+    {
+      "id": "S06",
+      "url": "https://docs.feast.dev/getting-started/concepts/point-in-time-joins",
+      "authority": "Feast",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "时点关联、TTL、created timestamp 过滤与后端限制",
+      "limits": "默认事件时间限制可能包含之后回填的值；使用选项前核验版本与后端",
+      "articles": [
+        "docs/ai/data/dataset-quality.md"
+      ]
+    },
+    {
+      "id": "S07",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+      "authority": "scikit-learn",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "测试数据参与预处理拟合造成泄漏",
+      "limits": "未运行文档中的训练示例",
+      "articles": [
+        "docs/ai/data/dataset-quality.md"
+      ]
+    },
+    {
+      "id": "S08",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview",
+      "authority": "Microsoft",
+      "site_scope": "Azure 全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "应用安全过滤与原生文档级权限路径",
+      "limits": "原生 ACL、RBAC scope、敏感度标签等按页面分别处于预览，不推导中国区能力",
+      "articles": [
+        "docs/ai/data/knowledge-governance.md"
+      ]
+    },
+    {
+      "id": "S09",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-how-to-delete-documents",
+      "authority": "Microsoft",
+      "site_scope": "Azure 全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "删除同步、软删除顺序与孤儿索引文档",
+      "limits": "具体行为依数据源和索引方式；通用撤销架构为工程建议",
+      "articles": [
+        "docs/ai/data/knowledge-governance.md"
+      ]
+    },
+    {
+      "id": "S10",
+      "url": "https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+      "authority": "Google Cloud",
+      "site_scope": "全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "预测型 AI 的 CI、CD、CT 与流水线自动化",
+      "limits": "主要针对预测型 AI，不把所有成熟度描述直接套用 LLM 应用",
+      "articles": [
+        "docs/ai/operations/mlops-llmops.md"
+      ]
+    },
+    {
+      "id": "S11",
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/ai/mlops-genaiops",
+      "authority": "Microsoft",
+      "site_scope": "Azure 全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "生成式应用生命周期、模型提示词索引编排与渐进部署",
+      "limits": "示例产品不作为其他云或地域能力保证",
+      "articles": [
+        "docs/ai/operations/mlops-llmops.md",
+        "docs/ai/operations/version-release.md"
+      ]
+    },
+    {
+      "id": "S12",
+      "url": "https://mlflow.org/docs/latest/ml/tracking/",
+      "authority": "MLflow",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "实验、运行、参数、代码版本、指标与制品记录",
+      "limits": "记录成功不等于结果代表真实业务",
+      "articles": [
+        "docs/ai/operations/mlops-llmops.md"
+      ]
+    },
+    {
+      "id": "S13",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html",
+      "authority": "AWS",
+      "site_scope": "全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "模型批准状态与可配置的自动部署步骤",
+      "limits": "是否触发部署取决于项目流水线；未查询 AWS 中国区",
+      "articles": [
+        "docs/ai/operations/mlops-llmops.md"
+      ]
+    },
+    {
+      "id": "S14",
+      "url": "https://mlflow.org/docs/latest/ml/model-registry/workflow/",
+      "authority": "MLflow",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "模型版本与可重新分配的别名",
+      "limits": "别名不是冻结版本",
+      "articles": [
+        "docs/ai/operations/version-release.md"
+      ]
+    },
+    {
+      "id": "S15",
+      "url": "https://mlflow.org/docs/latest/genai/prompt-registry/index.html",
+      "authority": "MLflow",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "模板版本不可变，关联模型配置和别名可变，加载存在缓存",
+      "limits": "不能把固定模板版本推导为整个应用配置冻结",
+      "articles": [
+        "docs/ai/operations/version-release.md"
+      ]
+    },
+    {
+      "id": "S16",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/model-monitoring/overview",
+      "authority": "Google Cloud",
+      "site_scope": "全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "Model Monitoring v1 训练服务偏差与生产分布漂移",
+      "limits": "原 Vertex AI URL 重定向到此地址；本文仅使用明确的 v1 概念，不比较各版本功能",
+      "articles": [
+        "docs/ai/operations/monitoring-feedback.md"
+      ]
+    },
+    {
+      "id": "S17",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/concepts/observability",
+      "authority": "Microsoft",
+      "site_scope": "Azure 全球文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "模型选择、上线前与生产阶段的评估和可观测",
+      "limits": "原 AI Foundry 评估 URL 重定向到此地址；未引用定价、限额或地区支持",
+      "articles": [
+        "docs/ai/operations/monitoring-feedback.md"
+      ]
+    },
+    {
+      "id": "S18",
+      "url": "https://opentelemetry.io/docs/security/handling-sensitive-data/",
+      "authority": "OpenTelemetry",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "观测数据最小化、处理器与可预测标识哈希的限制",
+      "limits": "未在实际 Collector 中验证配置",
+      "articles": [
+        "docs/ai/operations/monitoring-feedback.md"
+      ]
+    },
+    {
+      "id": "S19",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+      "authority": "OpenTelemetry",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "GenAI 规范已迁移到独立官方仓库",
+      "limits": "旧入口不再维护；不据此声称具体字段稳定",
+      "articles": [
+        "docs/ai/operations/monitoring-feedback.md"
+      ]
+    },
+    {
+      "id": "S20",
+      "url": "https://github.com/open-telemetry/semantic-conventions-genai",
+      "authority": "OpenTelemetry",
+      "site_scope": "项目官方仓库",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "当前 GenAI 语义约定维护入口",
+      "limits": "只核验仓库入口与范围，不声称全规范或 SDK 实现已验证",
+      "articles": [
+        "docs/ai/operations/monitoring-feedback.md"
+      ]
+    },
+    {
+      "id": "S21",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+      "authority": "NIST",
+      "site_scope": "机构公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "AI RMF 1.0 四功能、非固定顺序与治理贯穿；页面提示正在修订",
+      "limits": "使用 2023 年 1.0；本文准入流程是工程建议，不是官方强制清单",
+      "articles": [
+        "docs/ai/operations/enterprise-governance.md"
+      ]
+    },
+    {
+      "id": "S22",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-resources",
+      "authority": "NIST",
+      "site_scope": "机构公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "AI RMF 1.0 与 2024 GenAI Profile 版本入口",
+      "limits": "资源目录用于确认版本，不替代具体章节",
+      "articles": [
+        "docs/ai/operations/enterprise-governance.md"
+      ]
+    },
+    {
+      "id": "S23",
+      "url": "https://www.iso.org/standard/42001",
+      "authority": "ISO",
+      "site_scope": "机构公开概览",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "ISO/IEC 42001:2023 的 AI 管理体系范围",
+      "limits": "只读取公开概览，未取得付费标准全文，不提供条款符合性或认证结论",
+      "articles": [
+        "docs/ai/operations/enterprise-governance.md"
+      ]
+    },
+    {
+      "id": "S24",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "authority": "NIST",
+      "site_scope": "机构公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "2024 GenAI Profile 的 GOVERN 1.7、6.1、6.2：停用与第三方治理",
+      "limits": "重点读取 PDF 相关段落；采购表和验收方案是结合场景的工程建议",
+      "articles": [
+        "docs/ai/operations/risk-supplier.md"
+      ]
+    },
+    {
+      "id": "S25",
+      "url": "https://research.google/pubs/model-cards-for-model-reporting/",
+      "authority": "Google Research",
+      "site_scope": "原始论文官方页面",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "2019 模型卡论文摘要：用途、评测条件与相关切片表现",
+      "limits": "读取官方摘要页，未声称阅读全文或复现实验",
+      "articles": [
+        "docs/ai/operations/risk-supplier.md"
+      ]
+    },
+    {
+      "id": "S26",
+      "url": "https://genai.owasp.org/llmrisk/llm032025-supply-chain/",
+      "authority": "OWASP",
+      "site_scope": "项目公共文档",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "LLM03:2025 的数据、模型、软件与服务供应链风险",
+      "limits": "风险资料不等于法规或认证清单",
+      "articles": [
+        "docs/ai/operations/risk-supplier.md"
+      ]
+    },
+    {
+      "id": "S27",
+      "url": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+      "authority": "国家互联网信息办公室",
+      "site_scope": "中国官方原文",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "生成式人工智能服务管理暂行办法第二条适用范围",
+      "limits": "只说明本条范围，不推导内部应用豁免其他法律，不构成完整法律清单",
+      "articles": [
+        "docs/ai/operations/risk-supplier.md"
+      ]
+    },
+    {
+      "id": "S28",
+      "url": "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm",
+      "authority": "国家互联网信息办公室",
+      "site_scope": "中国官方原文",
+      "verified_at": "2026-10-04",
+      "read_status": "original_page_read",
+      "supported_claim": "生成合成内容标识办法的适用范围、标识类型和施行日期",
+      "limits": "具体服务与传播角色须另按原文判断，不把所有 AI 应用等同",
+      "articles": [
+        "docs/ai/operations/risk-supplier.md"
+      ]
+    }
+  ],
+  "article_count": 8,
+  "source_count": 28,
+  "validation": {
+    "verified_at": "2026-10-04",
+    "content_audit": {
+      "status": "passed",
+      "articles": 8,
+      "registered_sources": 28,
+      "markdown_links_checked": 99,
+      "backlink_only_dates_preserved": 6
+    },
+    "node_tests": {
+      "status": "passed",
+      "command": "node --test tests/*.test.mjs",
+      "passed": 35,
+      "failed": 0
+    },
+    "static_assets": {
+      "status": "passed",
+      "command": "node scripts/check-pelicans.mjs",
+      "original_works": 17
+    },
+    "vitepress_build": {
+      "status": "passed",
+      "command": "node node_modules/vitepress/bin/vitepress.js build docs",
+      "version": "1.6.4",
+      "warnings": [
+        "Existing PromQL syntax highlighting fallback",
+        "Some generated chunks exceed 500 kB"
+      ]
+    },
+    "diagram_validation": {
+      "status": "passed",
+      "method": "Chrome browser rendered every new article; two diagram screenshots inspected and long labels simplified",
+      "articles": 8,
+      "rendered_diagrams": 8,
+      "page_errors": 0,
+      "horizontal_overflow": false
+    },
+    "mobile_validation": {
+      "status": "passed",
+      "article": "docs/ai/operations/enterprise-governance.md",
+      "viewport": [
+        390,
+        844
+      ],
+      "document_width": 390,
+      "diagram_errors": 0
+    },
+    "diff_check": "passed",
+    "scope": "Documentation, source mapping, navigation, local build and browser rendering; production examples and cloud API behavior were not executed.",
+    "deployed": false
+  }
+}

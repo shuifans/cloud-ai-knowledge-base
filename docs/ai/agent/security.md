@@ -92,6 +92,8 @@ checkpoint 记录任务状态。若外部服务已经写成功、调用方却在
 
 <Refs>
 
+- 企业治理：[AI 责任与准入](/ai/operations/enterprise-governance) · [风险与供应商](/ai/operations/risk-supplier) · [联合版本与恢复](/ai/operations/version-release)
+
 - [MCP 2026-07-28 Authorization](https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization)（访问日期 2026-09-26）
 - [MCP Security Best Practices](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)（访问日期 2026-09-26）
 - [OWASP LLM01 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)（访问日期 2026-09-26）

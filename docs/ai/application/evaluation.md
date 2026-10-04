@@ -583,6 +583,8 @@ BrowseComp 一类"单题深挖"基准在 2025 年确立后迅速饱和并出现�
 
 <Refs>
 
+- 数据与运营：[数据集质量与防泄漏](/ai/data/dataset-quality) · [发布准入](/ai/operations/version-release) · [生产监控与反馈](/ai/operations/monitoring-feedback)
+
 **原始论文**
 
 - [Measuring Massive Multitask Language Understanding / MMLU（arXiv:2009.03300）](https://arxiv.org/abs/2009.03300) — 57 学科选择题基准的原始论文（访问日期 2026-09-05）

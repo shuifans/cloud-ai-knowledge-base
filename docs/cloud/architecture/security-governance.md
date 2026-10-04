@@ -160,6 +160,8 @@ flowchart LR
 
 <Refs>
 
+- AI 治理专题：[企业 AI 治理](/ai/operations/enterprise-governance) · [AI 风险与供应商治理](/ai/operations/risk-supplier)
+
 **阿里云官方**（访问日期 2026-09-20）
 
 - [云上安全共同体：安全责任共担模型](https://help.aliyun.com/zh/acsg/cloud-security-community)

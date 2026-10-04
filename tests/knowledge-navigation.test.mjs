@@ -148,7 +148,7 @@ test('breadcrumbs retain the full directory hierarchy without top navigation, in
 
 test('global sidebar does not introduce article paging across unrelated areas', () => {
   assert.equal(sectionPager(knowledgeSidebar, '/cloud/architecture/migration').next, false)
-  assert.equal(sectionPager(knowledgeSidebar, '/ai/agent/security').next, false)
+  assert.equal(sectionPager(knowledgeSidebar, '/ai/operations/risk-supplier').next, false)
   assert.equal(sectionPager(knowledgeSidebar, '/ai/').prev, false)
   assert.deepEqual(sectionPager(knowledgeSidebar, '/about'), {prev:false,next:false})
 })

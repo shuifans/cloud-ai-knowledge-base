@@ -644,6 +644,8 @@ sequenceDiagram
 
 <Refs>
 
+- 数据与交付：[数据生命周期](/ai/data/data-lifecycle) · [数据集质量](/ai/data/dataset-quality) · [MLOps / LLMOps](/ai/operations/mlops-llmops)
+
 **论文**（未注明者访问日期 2026-09-04；新增条目 2026-09-05）
 
 - [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](https://arxiv.org/abs/1910.02054) —— ZeRO 三档分片原理与显存账、通信分析

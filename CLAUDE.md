@@ -8,7 +8,7 @@
 - 技术栈：VitePress 1.x + Mermaid（自定义组件），纯中文
 - 分类体系：云、AI、软件研发、游戏行业 + 技术编年史
   - **云计算** `docs/cloud/`：foundation（基座）/ infra（计算·存储·网络）/ data（数据库·OLAP·大数据）/ native（云原生）/ architecture（卓越架构·安全·可靠性·FinOps·迁移）
-  - **人工智能** `docs/ai/`：models（模型与算法）/ infra（集群/训练/推理）/ application（应用与评测）/ agent（智能体全景·编年史·框架对比）
+  - **人工智能** `docs/ai/`：models（模型与算法）/ data（数据生命周期·质量·知识治理）/ infra（集群/训练/推理）/ application（应用与评测）/ agent（智能体全景·编年史·框架对比）/ operations（持续交付·联合版本·监控反馈·企业治理·风险与供应商）
   - **编年史** `docs/chronicle/`：技术浪潮与信创演进
   - **软件研发** `docs/software/`：guide（软件项目入门）+ 按专业领域组织的子域 + reference（术语、场景与技术工具索引）；完整专题和批次见 `maintenance/software-roadmap.json`
   - **游戏行业** `docs/gaming/`：industry（行业与组织）/ production（策划与研发）/ publishing（发行与运营）/ systems（云与 AI）四个业务目录，配套 reference（调研与索引）；既有文章路径保留，旧目录入口跳转至合并后的目录；清单见 `maintenance/gaming-roadmap.json`
