@@ -91,3 +91,19 @@ test('published catalog preserves every original hash, prompt, unique run and re
     assert.ok(result.capture?.viewport && result.previewViewport.height >= 800)
   }
 })
+
+
+test('offline dependency preview preserves the original animation and download source', () => {
+  const catalog = JSON.parse(readFileSync('docs/.vitepress/theme/pelican-catalog.json', 'utf8'))
+  const result = catalog.results.find(result => result.modelId === 'gemini3.8-flash' && result.reasoningEffort === 'high')
+  assert.ok(result?.previewArtifactPath)
+  const original = readFileSync('docs/public' + result.artifactPath, 'utf8')
+  const preview = readFileSync('docs/public' + result.previewArtifactPath, 'utf8')
+  const dependency = /<script src="https:\/\/www.gstatic.com\/antigravity\/web\/dev\/tailwindcss.min.js"><\/script>/
+  const localStyle = /<style data-preview-dependency="tailwind">[\s\S]*?<\/style>/
+  assert.match(original, dependency)
+  assert.match(preview, localStyle)
+  assert.equal(preview.replace(localStyle, ''), original.replace(dependency, ''))
+  assert.doesNotMatch(preview, /<script[^>]+src\s*=/i)
+  assert.match(previewDocument(preview), /connect-src 'none'/)
+})

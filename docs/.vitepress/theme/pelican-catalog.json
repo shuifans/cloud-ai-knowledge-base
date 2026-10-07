@@ -10,6 +10,10 @@
     {
       "id": "batch-002",
       "label": "补充测试 · 2026-09-30"
+    },
+    {
+      "id": "batch-003",
+      "label": "第三批"
     }
   ],
   "results": [
@@ -523,6 +527,38 @@
         "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
         "capturedOn": "2026-09-30"
       }
+    },
+    {
+      "id": "batch-003-gemini3.8-flash-high-8f17d09fba",
+      "modelId": "gemini3.8-flash",
+      "reasoningEffort": "high",
+      "modelLabel": "gemini3.8-flash",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-003",
+      "runId": "8f17d09fba",
+      "sourceFilename": "pelican-bicycle-gemini3.8-flash-high.html",
+      "artifactPath": "/playground/pelican/assets/batch-003/batch-003-gemini3.8-flash-high-8f17d09fba.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-003/batch-003-gemini3.8-flash-high-8f17d09fba.webp",
+      "sha256": "8f17d09fbaf0198bd6ca2f2f61333f06dda10339cc069649e6ddca1c90f75079",
+      "importedAt": "2026-10-07T04:14:39.381Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "rendered sandbox preview after load; animation phase varies",
+        "capturedOn": "2026-10-07",
+        "note": "原始 HTML 按字节保留；预览用静态 Tailwind CSS 替代在线依赖，不需要联网。"
+      },
+      "previewArtifactPath": "/playground/pelican/assets/batch-003/batch-003-gemini3.8-flash-high-8f17d09fba.preview.html.txt"
     }
   ]
 }

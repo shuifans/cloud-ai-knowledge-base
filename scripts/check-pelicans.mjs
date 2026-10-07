@@ -10,12 +10,17 @@ for (const result of catalog.results) {
   ids.add(result.id)
   const parsed = parsePelicanFilename(result.sourceFilename)
   if (parsed.modelId !== result.modelId || parsed.reasoningEffort !== result.reasoningEffort) throw new Error(`元数据与文件名不一致：${result.id}`)
-  for (const path of [result.artifactPath, result.thumbnailPath]) {
+  for (const path of [result.artifactPath, result.thumbnailPath, ...(result.previewArtifactPath ? [result.previewArtifactPath] : [])]) {
     if (!/^\/playground\/pelican\/assets\/[a-z0-9-]+\/[a-z0-9.-]+$/.test(path) || path.includes('..')) throw new Error(`无效资源路径：${path}`)
   }
   if (!result.artifactPath.endsWith('.html.txt')) throw new Error('原始作品须作为文本归档')
   const source = readFileSync(new URL('../docs/public' + result.artifactPath, import.meta.url))
   if (createHash('sha256').update(source).digest('hex') !== result.sha256) throw new Error(`原始文件被改动：${result.id}`)
+  if (result.previewArtifactPath) {
+    if (!result.previewArtifactPath.endsWith('.preview.html.txt')) throw new Error('预览副本须作为文本存储')
+    const preview = readFileSync(new URL('../docs/public' + result.previewArtifactPath, import.meta.url), 'utf8')
+    if (!/<svg\b/i.test(preview) || /<script[^>]+src\s*=/i.test(preview)) throw new Error(`预览副本未离线化：${result.id}`)
+  }
   const image = readFileSync(new URL('../docs/public' + result.thumbnailPath, import.meta.url))
   if (image.toString('ascii', 8, 12) !== 'WEBP' || !result.capture) throw new Error(`缺少真实封面及截图记录：${result.id}`)
   if (!catalog.batches.some(batch => batch.id === result.batchId)) throw new Error(`批次不存在：${result.id}`)
