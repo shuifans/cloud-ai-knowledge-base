@@ -14,6 +14,10 @@
     {
       "id": "batch-003",
       "label": "第三批"
+    },
+    {
+      "id": "batch-004",
+      "label": "第四批"
     }
   ],
   "results": [
@@ -559,6 +563,66 @@
         "note": "原始 HTML 按字节保留；预览用静态 Tailwind CSS 替代在线依赖，不需要联网。"
       },
       "previewArtifactPath": "/playground/pelican/assets/batch-003/batch-003-gemini3.8-flash-high-8f17d09fba.preview.html.txt"
+    },
+    {
+      "id": "batch-004-grok4.6-xhigh-31e27455cf",
+      "modelId": "grok4.6",
+      "reasoningEffort": "xhigh",
+      "modelLabel": "grok4.6",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-004",
+      "runId": "31e27455cf",
+      "sourceFilename": "pelican-bicycle-grok4.6-xhigh.html",
+      "artifactPath": "/playground/pelican/assets/batch-004/batch-004-grok4.6-xhigh-31e27455cf.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-004/batch-004-grok4.6-xhigh-31e27455cf.webp",
+      "sha256": "31e27455cf4a0fa5cf00b036a4db18b111718fb2a208da9927ea355776a6b57f",
+      "importedAt": "2026-10-10T08:39:48.700Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-10"
+      }
+    },
+    {
+      "id": "batch-004-grok4.7-xhigh-b01335f044",
+      "modelId": "grok4.7",
+      "reasoningEffort": "xhigh",
+      "modelLabel": "grok4.7",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-004",
+      "runId": "b01335f044",
+      "sourceFilename": "pelican-bicycle-grok4.7-xhigh.html",
+      "artifactPath": "/playground/pelican/assets/batch-004/batch-004-grok4.7-xhigh-b01335f044.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-004/batch-004-grok4.7-xhigh-b01335f044.webp",
+      "sha256": "b01335f044224e46c87525a390a145d317d7a32383fd061f62a9f8411a6b1a59",
+      "importedAt": "2026-10-10T08:39:48.700Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-10"
+      }
     }
   ]
 }
