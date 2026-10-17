@@ -14,6 +14,7 @@ const sample = [
 test('filename parser preserves model suffixes and rejects missing or unsupported effort', () => {
   assert.deepEqual(parsePelicanFilename('pelican-bicycle-qwen3.8-max-xhigh.html'), { modelId: 'qwen3.8-max', reasoningEffort: 'xhigh' })
   assert.deepEqual(parsePelicanFilename('pelican-bicycle-deepseek-v4.1-flash-max.html'), { modelId: 'deepseek-v4.1-flash', reasoningEffort: 'max' })
+  assert.deepEqual(parsePelicanFilename('pelican-bicycle-deepseek-v4.1-flash-1017-max.html'), { modelId: 'deepseek-v4.1-flash-1017', reasoningEffort: 'max' })
   assert.throws(() => parsePelicanFilename('pelican-bicycle-gpt6-sol.html'))
   assert.throws(() => parsePelicanFilename('pelican-bicycle-gpt6-sol-unknown.html'))
 })

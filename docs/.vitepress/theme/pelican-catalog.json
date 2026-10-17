@@ -18,6 +18,10 @@
     {
       "id": "batch-004",
       "label": "第四批"
+    },
+    {
+      "id": "batch-005",
+      "label": "第五批"
     }
   ],
   "results": [
@@ -622,6 +626,36 @@
         "browser": "Chromium (Google Chrome)",
         "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
         "capturedOn": "2026-10-10"
+      }
+    },
+    {
+      "id": "batch-005-deepseek-v4.1-flash-1017-max-302fcfc6d9",
+      "modelId": "deepseek-v4.1-flash-1017",
+      "reasoningEffort": "max",
+      "modelLabel": "deepseek-v4.1-flash-1017",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-005",
+      "runId": "302fcfc6d9",
+      "sourceFilename": "pelican-bicycle-deepseek-v4.1-flash-1017-max.html",
+      "artifactPath": "/playground/pelican/assets/batch-005/batch-005-deepseek-v4.1-flash-1017-max-302fcfc6d9.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-005/batch-005-deepseek-v4.1-flash-1017-max-302fcfc6d9.webp",
+      "sha256": "302fcfc6d9528bcad62241fb337cee27a57b0d9cd090435bd261a566bb6f52d5",
+      "importedAt": "2026-10-17T12:30:06.398Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-17"
       }
     }
   ]
