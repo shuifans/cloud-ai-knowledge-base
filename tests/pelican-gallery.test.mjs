@@ -15,6 +15,10 @@ test('filename parser preserves model suffixes and rejects missing or unsupporte
   assert.deepEqual(parsePelicanFilename('pelican-bicycle-qwen3.8-max-xhigh.html'), { modelId: 'qwen3.8-max', reasoningEffort: 'xhigh' })
   assert.deepEqual(parsePelicanFilename('pelican-bicycle-deepseek-v4.1-flash-max.html'), { modelId: 'deepseek-v4.1-flash', reasoningEffort: 'max' })
   assert.deepEqual(parsePelicanFilename('pelican-bicycle-deepseek-v4.1-flash-1017-max.html'), { modelId: 'deepseek-v4.1-flash-1017', reasoningEffort: 'max' })
+  assert.deepEqual(parsePelicanFilename('pelican-bicycle-qoder-fast-1019-default.html'), { modelId: 'qoder-fast-1019', reasoningEffort: 'default' })
+  assert.deepEqual(parsePelicanFilename('pelican-bicycle-qoder-efficient-1019-default.html'), { modelId: 'qoder-efficient-1019', reasoningEffort: 'default' })
+  assert.deepEqual(parsePelicanFilename('pelican-bicycle-qoder-ultimate-1019-xhigh.html'), { modelId: 'qoder-ultimate-1019', reasoningEffort: 'xhigh' })
+  assert.throws(() => parsePelicanFilename('pelican-bicycle-qoder-ultimate-xhigh-1019.html'))
   assert.throws(() => parsePelicanFilename('pelican-bicycle-gpt6-sol.html'))
   assert.throws(() => parsePelicanFilename('pelican-bicycle-gpt6-sol-unknown.html'))
 })
@@ -62,6 +66,11 @@ test('default comparison order groups full model names and sorts effort from low
     importedAt: `2026-10-0${index + 1}T00:00:00Z`,
   }))
   assert.deepEqual(filterResults(unordered).map(result => result.reasoningEffort), ['low', 'medium', 'high', 'xhigh', 'max'])
+  const withDefault = ['default', 'max', 'medium'].map((reasoningEffort, index) => ({
+    id: `default-${index}`, modelId: 'example-model', reasoningEffort,
+    importedAt: `2026-10-1${index}T00:00:00Z`,
+  }))
+  assert.deepEqual(filterResults(withDefault).map(result => result.reasoningEffort), ['medium', 'max', 'default'])
 })
 
 test('preview policy precedes executable content while original output remains intact', () => {

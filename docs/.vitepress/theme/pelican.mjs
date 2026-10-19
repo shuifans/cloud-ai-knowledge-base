@@ -1,5 +1,6 @@
 export const PELICAN_PROMPT = '创建一个HTML，内容是SVG绘制一个鹈鹕骑自行车的2D动画。'
-export const EFFORT_ORDER = ['none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max']
+// `default` is a recorded product setting, sorted after the none-to-max scale.
+export const EFFORT_ORDER = ['none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max', 'default']
 export const CAPTURE_VIEWPORT = { width: 1280, height: 800 }
 
 export function parsePelicanFilename(filename) {

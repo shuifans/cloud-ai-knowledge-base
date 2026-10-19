@@ -22,6 +22,10 @@
     {
       "id": "batch-005",
       "label": "第五批"
+    },
+    {
+      "id": "batch-006",
+      "label": "第六批"
     }
   ],
   "results": [
@@ -656,6 +660,96 @@
         "browser": "Chromium (Google Chrome)",
         "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
         "capturedOn": "2026-10-17"
+      }
+    },
+    {
+      "id": "batch-006-qoder-efficient-1019-default-8b4ece99e6",
+      "modelId": "qoder-efficient-1019",
+      "reasoningEffort": "default",
+      "modelLabel": "qoder-efficient-1019",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-006",
+      "runId": "8b4ece99e6",
+      "sourceFilename": "pelican-bicycle-qoder-efficient-1019-default.html",
+      "artifactPath": "/playground/pelican/assets/batch-006/batch-006-qoder-efficient-1019-default-8b4ece99e6.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-006/batch-006-qoder-efficient-1019-default-8b4ece99e6.webp",
+      "sha256": "8b4ece99e6df02f86d95dcb01f01c5fb31f492a6fb50c8a34d2a056aea69e8aa",
+      "importedAt": "2026-10-19T00:54:42.261Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-19"
+      }
+    },
+    {
+      "id": "batch-006-qoder-fast-1019-default-f6808fdf49",
+      "modelId": "qoder-fast-1019",
+      "reasoningEffort": "default",
+      "modelLabel": "qoder-fast-1019",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-006",
+      "runId": "f6808fdf49",
+      "sourceFilename": "pelican-bicycle-qoder-fast-1019-default.html",
+      "artifactPath": "/playground/pelican/assets/batch-006/batch-006-qoder-fast-1019-default-f6808fdf49.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-006/batch-006-qoder-fast-1019-default-f6808fdf49.webp",
+      "sha256": "f6808fdf490a992a4fe4b7a263aec406d1fdca24f0157919da1c360b58acb927",
+      "importedAt": "2026-10-19T00:54:42.261Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-19"
+      }
+    },
+    {
+      "id": "batch-006-qoder-ultimate-1019-xhigh-ef8605638a",
+      "modelId": "qoder-ultimate-1019",
+      "reasoningEffort": "xhigh",
+      "modelLabel": "qoder-ultimate-1019",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-006",
+      "runId": "ef8605638a",
+      "sourceFilename": "pelican-bicycle-qoder-ultimate-1019-xhigh.html",
+      "artifactPath": "/playground/pelican/assets/batch-006/batch-006-qoder-ultimate-1019-xhigh-ef8605638a.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-006/batch-006-qoder-ultimate-1019-xhigh-ef8605638a.webp",
+      "sha256": "ef8605638aa20d397dc43690ec640d7b712bb764373a7f78e87f37f8be86d077",
+      "importedAt": "2026-10-19T00:54:42.261Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 1029
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 1029
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-19"
       }
     }
   ]

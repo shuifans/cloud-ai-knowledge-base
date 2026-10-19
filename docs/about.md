@@ -56,6 +56,10 @@ reviewScope: AI 数据、持续交付、企业治理及游戏行业的内容结�
 
 > 这里说明哪些知识被修正、依据是什么，以及哪些内容仍保留历史资料口径。复核日期只覆盖列出的范围；网页能访问、文章结构完整或刚刚发布，都不等于其中每一个事实已重新验证。
 
+### 2026-10-19：鹈鹕测试新增 Qoder 作品
+
+[鹈鹕测试](/playground/pelican/?model=qoder-efficient-1019,qoder-fast-1019,qoder-ultimate-1019&effort=default,xhigh) 新增 `qoder-fast-1019 / default`、`qoder-efficient-1019 / default` 与 `qoder-ultimate-1019 / xhigh`，现有 24 个作品、17 个模型。原始 HTML 按字节保留并可下载；三份作品均为内联 SVG，隔离预览不依赖外网。`default` 按测试记录收录，不表示推理强度。测试时间未知，收录日期不作为测试时间。
+
 ### 2026-10-17：鹈鹕测试新增 DeepSeek 作品
 
 [鹈鹕测试](/playground/pelican/?model=deepseek-v4.1-flash-1017&effort=max) 新增 `deepseek-v4.1-flash-1017 / max`，现有 21 个作品、14 个模型。原始 HTML 按字节保留并可下载；作品为内联 SVG，隔离预览不依赖外网。测试时间未知，收录日期不作为测试时间。
