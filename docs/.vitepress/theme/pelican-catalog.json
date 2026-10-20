@@ -26,6 +26,10 @@
     {
       "id": "batch-006",
       "label": "第六批"
+    },
+    {
+      "id": "batch-007",
+      "label": "第七批"
     }
   ],
   "results": [
@@ -750,6 +754,96 @@
         "browser": "Chromium (Google Chrome)",
         "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
         "capturedOn": "2026-10-19"
+      }
+    },
+    {
+      "id": "batch-007-mimo-v2.6-pro-default-9dd4d5898c",
+      "modelId": "mimo-v2.6-pro",
+      "reasoningEffort": "default",
+      "modelLabel": "mimo-v2.6-pro",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-007",
+      "runId": "9dd4d5898c",
+      "sourceFilename": "pelican-bicycle-mimo-v2.6-pro-default.html",
+      "artifactPath": "/playground/pelican/assets/batch-007/batch-007-mimo-v2.6-pro-default-9dd4d5898c.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-007/batch-007-mimo-v2.6-pro-default-9dd4d5898c.webp",
+      "sha256": "9dd4d5898c4e6d4a9e35a015de0a83dabe4e122ffc0aef5e3dbf62f629014026",
+      "importedAt": "2026-10-20T14:29:20.373Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-20"
+      }
+    },
+    {
+      "id": "batch-007-minimax-m3.1-flash-default-e204e25fbe",
+      "modelId": "minimax-m3.1-flash",
+      "reasoningEffort": "default",
+      "modelLabel": "minimax-m3.1-flash",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-007",
+      "runId": "e204e25fbe",
+      "sourceFilename": "pelican-bicycle-minimax-m3.1-flash-default.html",
+      "artifactPath": "/playground/pelican/assets/batch-007/batch-007-minimax-m3.1-flash-default-e204e25fbe.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-007/batch-007-minimax-m3.1-flash-default-e204e25fbe.webp",
+      "sha256": "e204e25fbe1219d6f262779d34d066e068c4fa99cd698fdd6ec150e2c3e0bdce",
+      "importedAt": "2026-10-20T14:29:20.373Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-20"
+      }
+    },
+    {
+      "id": "batch-007-step5-preview-high-a54e1095cf",
+      "modelId": "step5-preview",
+      "reasoningEffort": "high",
+      "modelLabel": "step5-preview",
+      "challengeId": "pelican-bicycle",
+      "promptVersion": "v1",
+      "effortSource": "filename",
+      "batchId": "batch-007",
+      "runId": "a54e1095cf",
+      "sourceFilename": "pelican-bicycle-step5-preview-high.html",
+      "artifactPath": "/playground/pelican/assets/batch-007/batch-007-step5-preview-high-a54e1095cf.html.txt",
+      "thumbnailPath": "/playground/pelican/assets/batch-007/batch-007-step5-preview-high-a54e1095cf.webp",
+      "sha256": "a54e1095cf91c1311686a03f0e6d6dde514a07819899464af8c77937219c2061",
+      "importedAt": "2026-10-20T14:29:20.373Z",
+      "testedAt": null,
+      "previewViewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "capture": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "browser": "Chromium (Google Chrome)",
+        "timing": "first rendered frame after navigation and DOM snapshot; animation phase varies",
+        "capturedOn": "2026-10-20"
       }
     }
   ]

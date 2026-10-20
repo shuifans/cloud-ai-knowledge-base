@@ -24,3 +24,7 @@
 第四批于 2026-10-10 收录 `grok4.6 / xhigh` 与 `grok4.7 / xhigh`，参考视口均为 1280 × 800。两份原作没有外链脚本或样式，页面在该视口内完整展示，直接使用原始归档预览。
 
 第五批于 2026-10-17 收录 `deepseek-v4.1-flash-1017 / max`，参考视口为 1280 × 800。原作没有外链脚本或样式，页面在该视口内完整展示，直接使用原始归档预览。
+
+第六批于 2026-10-19 收录 `qoder-fast-1019 / default`、`qoder-efficient-1019 / default` 与 `qoder-ultimate-1019 / xhigh`。fast 与 efficient 的参考视口为 1280 × 800，ultimate 为 1280 × 1029，以便页脚完整显示。三份原作没有外链脚本或样式，直接使用原始归档预览。`default` 不表示推理强度。
+
+第七批于 2026-10-20 收录 `mimo-v2.6-pro / default`、`step5-preview / high` 与 `minimax-m3.1-flash / default`，参考视口均为 1280 × 800。三份原作没有外链脚本或样式，页面在该视口内完整展示，直接使用原始归档预览。`mimo-v2.6-pro` 与 `minimax-m3.1-flash` 的源文件名末段属于模型名，导入副本补上 `default`，HTML 字节不变。源文件 `pelican-bicycle-mimimax-m3.1-flash.html` 按模型名 `minimax-m3.1-flash` 收录。`default` 不表示推理强度。
