@@ -111,6 +111,7 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   assert.ok(Array.isArray(sidebar))
   assert.deepEqual(sidebar, knowledgeSidebar)
   assert.deepEqual(nav, [
+    { text: '首页', link: '/' },
     {
       text: '知识体系',
       link: '/knowledge/',
@@ -144,8 +145,8 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
 })
 
 test('breadcrumbs retain the full directory hierarchy without top navigation, including deployment base', () => {
-  const path = '/cloud-ai-knowledge-base/ai/infra/inference/gpu-sizing.html'
-  const trail = breadcrumbTrail(knowledgeSidebar, path, 'GPU 选型', '/cloud-ai-knowledge-base/')
+  const path = '/pelican-lab/ai/infra/inference/gpu-sizing.html'
+  const trail = breadcrumbTrail(knowledgeSidebar, path, 'GPU 选型', '/pelican-lab/')
   assert.deepEqual(trail.map(item=>item.link), ['/knowledge/', '/ai/', '/ai/infra/', '/ai/infra/inference/', '/ai/infra/inference/gpu-sizing'])
   assert.equal(trail[1].text, '人工智能')
   assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/backend/http-api-contracts', '').map(item=>item.link), ['/knowledge/', '/software/', '/software/backend/', '/software/backend/http-api-contracts'])

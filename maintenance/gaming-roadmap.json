@@ -229,8 +229,8 @@
     "status": "tracked-by-github-actions",
     "branch": "main",
     "workflow": "Deploy to GitHub Pages",
-    "workflowUrl": "https://github.com/shuifans/cloud-ai-knowledge-base/actions/workflows/deploy.yml",
-    "productionUrl": "https://shuifans.github.io/cloud-ai-knowledge-base/gaming/",
+    "workflowUrl": "https://github.com/shuifans/pelican-lab/actions/workflows/deploy.yml",
+    "productionUrl": "https://shuifans.github.io/pelican-lab/gaming/",
     "note": "实际部署结果以对应提交的工作流与线上页面为准"
   },
   "directories": [

@@ -1,13 +1,13 @@
-# Pelican Lab（cloud-ai-knowledge-base）
+# Pelican Lab（pelican-lab）
 
 Pelican Lab 是一个以“同一道提示词，看看不同模型如何绘制鹈鹕骑车动画”为主展区的站点，同时保留围绕云计算、人工智能、软件研发与游戏行业构建的公开中文知识库。
 
-> 站点地址：<https://shuifans.github.io/cloud-ai-knowledge-base/>
+> 站点地址：<https://shuifans.github.io/pelican-lab/>
 
 ## 站点结构
 
 - 首页 `/`：鹈鹕测试展区，按模型与 reasoning effort 筛选、播放和放大查看 27 个 SVG 动画作品
-- 知识体系 `/knowledge/`：知识首页与版块入口，通过右上角「知识体系」进入
+- 知识体系 `/knowledge/`：知识首页与版块入口，通过右上角「知识体系」进入；右上角同时提供「首页」返回展区
 - 云、AI、软件研发、游戏行业与技术编年史的文章地址保持不变；旧 `/playground/pelican/` 会跳转到首页并保留筛选参数
 
 ## 内容结构

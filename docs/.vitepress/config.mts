@@ -11,7 +11,7 @@ const component = (name: string) => fileURLToPath(new URL(`./theme/components/${
 const miniSearchEntry = require.resolve('minisearch', { paths: [require.resolve('vitepress/package.json')] })
 
 // GitHub Pages 项目站点部署时需要设置仓库名作为 base。
-// 本地开发默认 '/'；CI 构建时通过环境变量注入，例如 /cloud-ai-knowledge-base/
+// 本地开发默认 '/'；CI 构建时通过环境变量注入，例如 /pelican-lab/
 const base = (process.env.VITEPRESS_BASE || '/').replace(/([^/])$/, '$1/')
 
 export default defineConfig({
@@ -85,7 +85,7 @@ export default defineConfig({
 
   sitemap: {
     // 项目站点：hostname 需包含仓库路径并以 / 结尾，保证 URL 正确拼接
-    hostname: 'https://shuifans.github.io/cloud-ai-knowledge-base/',
+    hostname: 'https://shuifans.github.io/pelican-lab/',
   },
 
   themeConfig: {
@@ -113,6 +113,7 @@ export default defineConfig({
     },
 
     nav: [
+      { text: '首页', link: '/' },
       {
         text: '知识体系',
         link: '/knowledge/',
@@ -125,12 +126,12 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/shuifans/cloud-ai-knowledge-base',
+        link: 'https://github.com/shuifans/pelican-lab',
       },
     ],
 
     editLink: {
-      pattern: 'https://github.com/shuifans/cloud-ai-knowledge-base/edit/main/docs/:path',
+      pattern: 'https://github.com/shuifans/pelican-lab/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
 

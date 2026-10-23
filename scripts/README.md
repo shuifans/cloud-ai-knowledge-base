@@ -28,7 +28,7 @@ python3 scripts/prepare-coastal-music.py /tmp/coastal-original.wav /tmp/coastal-
 
 ```sh
 node --test tests/background-music.test.mjs
-VITEPRESS_BASE=/cloud-ai-knowledge-base/ npm run docs:build
+VITEPRESS_BASE=/pelican-lab/ npm run docs:build
 ```
 
 浏览器还需验证播放进度在页面切换后连续、完整一轮后自动循环、静音刷新后保留，以及深浅主题和 320px 导航布局。
