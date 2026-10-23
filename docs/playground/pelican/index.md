@@ -1,14 +1,27 @@
 ---
+title: 鹈鹕测试已移至首页
 layout: page
 sidebar: false
-title: 鹈鹕测试 · 同一道题，骑出不同的风景
-description: 用同一条提示词，看看不同模型与 reasoning effort 如何绘制鹈鹕骑自行车的 SVG 动画。支持作品筛选、播放与放大查看。
 outline: false
+search: false
 readingProgress: false
+redirect: /
 ---
 
 <script setup>
-import PelicanGallery from '../../.vitepress/theme/components/PelicanGallery.vue'
+import { onMounted } from 'vue'
+import { useData, withBase } from 'vitepress'
+
+const { frontmatter } = useData()
+onMounted(() => {
+  const destination = new URL(withBase(frontmatter.value.redirect), window.location.origin)
+  destination.search = window.location.search
+  if (window.location.hash) destination.hash = window.location.hash
+  window.location.replace(destination.href)
+})
 </script>
 
-<PelicanGallery />
+<div class="vp-doc" style="max-width: 760px; margin: 0 auto; padding: 48px 24px;">
+  <h1>鹈鹕测试已移至首页</h1>
+  <p>正在打开新的首页。也可以<a :href="withBase(frontmatter.redirect)">直接查看鹈鹕测试</a>。</p>
+</div>

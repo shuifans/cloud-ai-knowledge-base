@@ -15,9 +15,9 @@ const miniSearchEntry = require.resolve('minisearch', { paths: [require.resolve(
 const base = (process.env.VITEPRESS_BASE || '/').replace(/([^/])$/, '$1/')
 
 export default defineConfig({
-  title: '云与 AI 知识体系',
+  title: 'Pelican Lab',
   description:
-    '从云计算与人工智能，到软件研发、游戏行业与技术演进的系统化中文知识库。',
+    '同一道提示词下的模型 SVG 动画作品展区；同时收录云计算、人工智能、软件研发、游戏行业与技术编年史知识体系。',
   lang: 'zh-CN',
   appearance: true,
   base,
@@ -55,12 +55,12 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg?v=pelican` }],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: '云与 AI 知识体系' }],
+    ['meta', { property: 'og:title', content: 'Pelican Lab' }],
     [
       'meta',
       {
         property: 'og:description',
-        content: '云计算、人工智能、软件研发与游戏行业：可检索、可核验、持续更新的知识体系',
+        content: '同一道提示词下的模型 SVG 动画作品展区；同时收录云、AI、软件研发与游戏行业知识体系',
       },
     ],
   ],
@@ -89,8 +89,8 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: { light: '/logo.svg?v=pelican', dark: '/logo-dark.svg?v=pelican', alt: '鹈鹕' },
-    siteTitle: '云与 AI 知识体系',
+    logo: { light: '/logo.svg?v=pelican', dark: '/logo-dark.svg?v=pelican', alt: 'Pelican Lab' },
+    siteTitle: 'Pelican Lab',
 
     search: {
       provider: 'local',
@@ -113,12 +113,11 @@ export default defineConfig({
     },
 
     nav: [
-      { text: '首页', link: '/' },
-      { text: '云计算', link: '/cloud/' },
-      { text: '人工智能', link: '/ai/' },
-      { text: '软件开发', link: '/software/' },
-      { text: '游戏行业', link: '/gaming/' },
-      { text: '鹈鹕测试', link: '/playground/pelican/' },
+      {
+        text: '知识体系',
+        link: '/knowledge/',
+        activeMatch: '^/(knowledge|cloud|ai|software|gaming|chronicle|about)',
+      },
     ],
 
     sidebar: knowledgeSidebar,
@@ -142,7 +141,7 @@ export default defineConfig({
     docFooter: { prev: '上一篇', next: '下一篇' },
 
     footer: {
-      message: '内容优先依据官方文档、原始论文与项目仓库',
+      message: 'Pelican Lab · 模型作品仅作趣味观察；知识内容优先依据官方文档与原始来源',
       copyright: 'CC BY-NC-SA 4.0',
     },
 

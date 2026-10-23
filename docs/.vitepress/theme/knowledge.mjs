@@ -1,3 +1,5 @@
+export const knowledgeRoot = { text: '知识体系', link: '/knowledge/' }
+
 export function normalizePath(path) {
   return path.split('#')[0].replace(/index\.html?$/, '').replace(/\.html$/, '').replace(/\/+$/, '') || '/'
 }
@@ -28,11 +30,11 @@ export function findTrail(items, path, ancestors = []) {
   return null
 }
 
-export function breadcrumbTrail(sidebar, path, title, base = '/') {
+export function breadcrumbTrail(sidebar, path, title, base = '/', root = knowledgeRoot) {
   const current = base !== '/' && path.startsWith(base) ? path.slice(base.length - 1) : path
   if (normalizePath(current) === '/') return []
   const trail = findTrail(sidebar, current) || (title ? [{ text: title }] : [])
-  return [{ text: '首页', link: '/' }, ...trail.filter(item => item.link !== '/')]
+  return [root, ...trail.filter(item => !item.link || normalizePath(item.link) !== normalizePath(root.link))]
 }
 
 // A shared sidebar must not make the last article jump into another knowledge area.

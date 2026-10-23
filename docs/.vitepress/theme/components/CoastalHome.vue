@@ -30,7 +30,7 @@ function openSearch() {
         <nav class="hero-shortcuts" aria-label="快速入口"><a v-for="area in areas" :key="area.link" :href="withBase(area.link)">{{ area.name }}</a></nav>
         <p class="hero-footnote">公开资料为起点 · 工程实践为方向 · 持续校验</p>
       </div>
-      <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/playground/pelican/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
+      <div class="hero-pelican"><PelicanRide /><a class="pelican-gallery-link" :href="withBase('/')">同一道题，看看其他模型怎么画 <span class="vpi-arrow-right" aria-hidden="true"></span></a></div>
     </section>
 
     <section id="knowledge-areas" class="knowledge-section" aria-labelledby="knowledge-title">

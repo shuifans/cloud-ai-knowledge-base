@@ -111,12 +111,11 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   assert.ok(Array.isArray(sidebar))
   assert.deepEqual(sidebar, knowledgeSidebar)
   assert.deepEqual(nav, [
-    { text: '首页', link: '/' },
-    { text: '云计算', link: '/cloud/' },
-    { text: '人工智能', link: '/ai/' },
-    { text: '软件开发', link: '/software/' },
-    { text: '游戏行业', link: '/gaming/' },
-    { text: '鹈鹕测试', link: '/playground/pelican/' },
+    {
+      text: '知识体系',
+      link: '/knowledge/',
+      activeMatch: '^/(knowledge|cloud|ai|software|gaming|chronicle|about)',
+    },
   ])
   assert.deepEqual(sidebar.filter(item=>item.items).map(item=>item.link), ['/cloud/','/ai/','/software/','/gaming/','/chronicle/'])
   const links = []
@@ -130,19 +129,28 @@ test('one global sidebar contains every knowledge area and no duplicate destinat
   assert.equal(new Set(links).size, links.length)
   assert.ok(overviewChildren(sidebar, '/cloud/').length === 5)
   assert.ok(overviewChildren(sidebar, '/software/').length === 9)
-  assert.doesNotMatch(readFileSync('docs/index.md','utf8'), /^sidebar: false$|^layout: home$/m)
+  const home = readFileSync('docs/index.md', 'utf8')
+  assert.match(home, /^layout: page$/m)
+  assert.match(home, /^sidebar: false$/m)
+  assert.match(home, /PelicanGallery/)
+  const knowledgeHome = readFileSync('docs/knowledge/index.md', 'utf8')
+  assert.match(knowledgeHome, /^layout: page$/m)
+  assert.match(knowledgeHome, /CoastalHome/)
+  assert.equal(findNode(sidebar, '/knowledge/')?.link, '/knowledge/')
   assert.equal(findNode(sidebar, '/playground/pelican/'), undefined)
-  assert.match(readFileSync('docs/playground/pelican/index.md','utf8'), /^sidebar: false$/m)
+  const legacyGallery = readFileSync('docs/playground/pelican/index.md', 'utf8')
+  assert.match(legacyGallery, /^sidebar: false$/m)
+  assert.match(legacyGallery, /^redirect: \/$/m)
 })
 
 test('breadcrumbs retain the full directory hierarchy without top navigation, including deployment base', () => {
   const path = '/cloud-ai-knowledge-base/ai/infra/inference/gpu-sizing.html'
   const trail = breadcrumbTrail(knowledgeSidebar, path, 'GPU 选型', '/cloud-ai-knowledge-base/')
-  assert.deepEqual(trail.map(item=>item.link), ['/', '/ai/', '/ai/infra/', '/ai/infra/inference/', '/ai/infra/inference/gpu-sizing'])
+  assert.deepEqual(trail.map(item=>item.link), ['/knowledge/', '/ai/', '/ai/infra/', '/ai/infra/inference/', '/ai/infra/inference/gpu-sizing'])
   assert.equal(trail[1].text, '人工智能')
-  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/backend/http-api-contracts', '').map(item=>item.link), ['/', '/software/', '/software/backend/', '/software/backend/http-api-contracts'])
-  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/', '').map(item=>item.text), ['首页','软件研发'])
-  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/about', '').map(item=>item.text), ['首页','关于'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/backend/http-api-contracts', '').map(item=>item.link), ['/knowledge/', '/software/', '/software/backend/', '/software/backend/http-api-contracts'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/software/', '').map(item=>item.text), ['知识体系','软件研发'])
+  assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/about', '').map(item=>item.text), ['知识体系','关于'])
   assert.deepEqual(breadcrumbTrail(knowledgeSidebar, '/', ''), [])
 })
 
@@ -163,7 +171,8 @@ test('real site config exposes every hub and keeps inference articles inside the
     const source = readFileSync(`docs/${page}`, 'utf8')
     const redirect = source.match(/^redirect:\s*(\S+)/m)?.[1]
     if (redirect) {
-      assert.ok(findNode(nodes, redirect.split('#')[0]), `Missing redirect destination: ${page}`)
+      const target = redirect.split('#')[0]
+      assert.ok(target === '/' || findNode(nodes, target), `Missing redirect destination: ${page}`)
       continue
     }
     assert.ok(findNode(nodes,path), `Missing navigation: ${page}`)

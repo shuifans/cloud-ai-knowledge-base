@@ -31,6 +31,7 @@ test('navigating opens the destination path without resetting other manually exp
 test('title filtering returns direct articles with their paths and no intermediate directory pages', () => {
   assert.deepEqual(filterDirectory(tree, ''), [])
   assert.deepEqual(filterDirectory(tree, '不存在的文章关键词'), [])
+  assert.deepEqual(filterDirectory(tree, '知识体系'), [])
   const result = filterDirectory(tree, '源码')
   assert.equal(result.length, 1)
   assert.equal(result[0].link, source)

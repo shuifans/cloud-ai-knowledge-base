@@ -47,6 +47,10 @@ test('shared filters survive reload with Pages base and preserve unrelated URL s
   assert.deepEqual(readFilters(url.search, sample), { models: ['gpt6-sol', 'qwen3.8-max'], efforts: ['xhigh'], sort: 'recent' })
   assert.deepEqual(readFilters('?model=invalid,gpt6-sol,gpt6-sol&effort=invalid&sort=invalid', sample), { models: ['gpt6-sol'], efforts: [], sort: 'model' })
   assert.equal(writeFilters(url.href, { models: [], efforts: [], sort: 'model' }), '/cloud-ai-knowledge-base/playground/pelican/?campaign=demo#works')
+  assert.equal(
+    writeFilters('https://example.com/cloud-ai-knowledge-base/?campaign=demo#works', { models: ['gpt6-sol'], efforts: [], sort: 'model' }),
+    '/cloud-ai-knowledge-base/?campaign=demo&model=gpt6-sol#works',
+  )
 })
 
 test('default comparison order groups full model names and sorts effort from low to max across batches', () => {

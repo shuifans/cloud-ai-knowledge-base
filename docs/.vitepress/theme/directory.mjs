@@ -1,4 +1,4 @@
-import { normalizePath } from './knowledge.mjs'
+import { knowledgeRoot, normalizePath } from './knowledge.mjs'
 
 export function directoryPath(path, base = '/') {
   return normalizePath(base !== '/' && path.startsWith(base) ? path.slice(base.length - 1) : path)
@@ -49,5 +49,5 @@ export function filterDirectory(nodes, query) {
   if (!words.length) return []
   return nodes.flatMap(node => node.children.length
     ? filterDirectory(node.children, query)
-    : node.link && node.link !== '/' && words.every(word => node.text.normalize('NFKC').toLocaleLowerCase().includes(word)) ? [node] : [])
+    : node.link && normalizePath(node.link) !== normalizePath(knowledgeRoot.link) && words.every(word => node.text.normalize('NFKC').toLocaleLowerCase().includes(word)) ? [node] : [])
 }

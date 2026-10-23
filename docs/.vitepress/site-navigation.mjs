@@ -1,8 +1,9 @@
 import { softwareSidebar } from './software-sidebar.mjs'
 import { gamingSidebar } from './gaming-sidebar.mjs'
+import { knowledgeRoot } from './theme/knowledge.mjs'
 
-// Shared knowledge tree for articles and home; the pelican gallery has its own top-level entrance.
-export const knowledgeSidebar = [ { text: '首页', link: '/' },
+// Shared knowledge tree for articles and the /knowledge/ home; Pelican Lab is the site home.
+export const knowledgeSidebar = [ { ...knowledgeRoot },
   { text: '云计算',
     link: '/cloud/',
     collapsed: true,
