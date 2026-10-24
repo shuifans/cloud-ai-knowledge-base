@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鹈鹕骑自行车</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #16222e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  svg {
+    width: min(100vw, 160vh);
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+  }
+</style>
+</head>
+<body>
+<svg id="scene" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="一只鹈鹕骑着自行车">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#55b0e6"/>
+      <stop offset="1" stop-color="#dcf2fc"/>
+    </linearGradient>
+    <radialGradient id="sunGlow">
+      <stop offset="0" stop-color="#fff7cf"/>
+      <stop offset=".45" stop-color="#ffe36b" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ffd43b" stop-opacity="0"/>
+    </radialGradient>
+
+    <g id="cloud">
+      <ellipse rx="44" ry="18"/>
+      <ellipse cx="-28" cy="7" rx="26" ry="14"/>
+      <ellipse cx="30" cy="7" rx="24" ry="13"/>
+      <ellipse cx="4" cy="-11" rx="26" ry="17"/>
+    </g>
+
+    <g id="tree">
+      <rect x="-4" y="-12" width="8" height="26" fill="#7a4e2a"/>
+      <circle cy="-26" r="19" fill="#3f8f4b"/>
+      <circle cx="-13" cy="-16" r="13" fill="#4ca357"/>
+      <circle cx="13" cy="-16" r="13" fill="#367e43"/>
+    </g>
+
+    <g id="wheel">
+      <circle r="52" fill="none" stroke="#262626" stroke-width="9"/>
+      <circle r="44" fill="none" stroke="#cfcfcf" stroke-width="3"/>
+      <g stroke="#a9a9a9" stroke-width="1.6">
+        <line y2="-44"/>
+        <line y2="-44" transform="rotate(30)"/>
+        <line y2="-44" transform="rotate(60)"/>
+        <line y2="-44" transform="rotate(90)"/>
+        <line y2="-44" transform="rotate(120)"/>
+        <line y2="-44" transform="rotate(150)"/>
+        <line y2="-44" transform="rotate(180)"/>
+        <line y2="-44" transform="rotate(210)"/>
+        <line y2="-44" transform="rotate(240)"/>
+        <line y2="-44" transform="rotate(270)"/>
+        <line y2="-44" transform="rotate(300)"/>
+        <line y2="-44" transform="rotate(330)"/>
+      </g>
+      <circle r="6" fill="#3a3a3a"/>
+      <rect x="-2" y="-52" width="4" height="8" fill="#777"/>
+    </g>
+
+    <path id="footShape" d="M-10 -8 L18 -11 L25 -5 L18 -3 L25 0 L16 1 L-10 0 Z" stroke-linejoin="round"/>
+  </defs>
+
+  <!-- 天空 / 太阳 -->
+  <rect width="900" height="560" fill="url(#sky)"/>
+  <circle cx="760" cy="96" r="80" fill="url(#sunGlow)"/>
+  <circle cx="760" cy="96" r="38" fill="#ffe25a"/>
+
+  <!-- 云（视差层） -->
+  <g id="clouds" fill="#fff" fill-opacity=".92">
+    <g>
+      <use href="#cloud" transform="translate(120 100)"/>
+      <use href="#cloud" transform="translate(390 62) scale(.8)"/>
+      <use href="#cloud" transform="translate(600 130) scale(.65)"/>
+      <use href="#cloud" transform="translate(840 80) scale(1.05)"/>
+    </g>
+    <g transform="translate(900 0)">
+      <use href="#cloud" transform="translate(120 100)"/>
+      <use href="#cloud" transform="translate(390 62) scale(.8)"/>
+      <use href="#cloud" transform="translate(600 130) scale(.65)"/>
+      <use href="#cloud" transform="translate(840 80) scale(1.05)"/>
+    </g>
+  </g>
+
+  <!-- 远山 / 近山 -->
+  <g id="hillsFar" fill="#b5dd98">
+    <path d="M0 412 C120 322 250 322 380 398 C460 356 540 350 620 392 C720 318 820 330 900 412 Z"/>
+    <path transform="translate(900 0)" d="M0 412 C120 322 250 322 380 398 C460 356 540 350 620 392 C720 318 820 330 900 412 Z"/>
+  </g>
+  <g id="hillsNear" fill="#8fcb73">
+    <path d="M0 412 C180 362 300 362 450 412 C590 356 760 360 900 412 Z"/>
+    <path transform="translate(900 0)" d="M0 412 C180 362 300 362 450 412 C590 356 760 360 900 412 Z"/>
+  </g>
+
+  <!-- 树 -->
+  <g id="trees">
+    <g>
+      <use href="#tree" transform="translate(60 404)"/>
+      <use href="#tree" transform="translate(230 404) scale(.8)"/>
+      <use href="#tree" transform="translate(415 404) scale(1.1)"/>
+      <use href="#tree" transform="translate(640 404) scale(.9)"/>
+      <use href="#tree" transform="translate(805 404)"/>
+    </g>
+    <g transform="translate(900 0)">
+      <use href="#tree" transform="translate(60 404)"/>
+      <use href="#tree" transform="translate(230 404) scale(.8)"/>
+      <use href="#tree" transform="translate(415 404) scale(1.1)"/>
+      <use href="#tree" transform="translate(640 404) scale(.9)"/>
+      <use href="#tree" transform="translate(805 404)"/>
+    </g>
+  </g>
+
+  <!-- 地面 / 道路 -->
+  <rect y="412" width="900" height="20" fill="#6cb85b"/>
+  <rect y="430" width="900" height="60" fill="#4b4e55"/>
+  <line x1="0" y1="434" x2="900" y2="434" stroke="#e8e8e8" stroke-width="2" stroke-opacity=".8"/>
+  <line x1="0" y1="486" x2="900" y2="486" stroke="#e8e8e8" stroke-width="2" stroke-opacity=".8"/>
+  <line id="roadLine" x1="0" y1="460" x2="900" y2="460" stroke="#f3cf4a" stroke-width="4" stroke-dasharray="50 40"/>
+  <rect y="490" width="900" height="70" fill="#5aa84b"/>
+  <ellipse cx="395" cy="431" rx="160" ry="5" fill="#000" fill-opacity=".22"/>
+
+  <!-- 远侧曲柄与腿（在车架后方） -->
+  <path id="farCrank" fill="none" stroke="#6a6a6a" stroke-width="5" stroke-linecap="round"/>
+  <g id="farPedal"><rect x="-11" y="-3" width="22" height="6" rx="1.5" fill="#2e2e2e"/></g>
+  <g stroke="#d2862b" stroke-linecap="round" fill="none">
+    <path id="farThigh" stroke-width="15"/>
+    <path id="farShin" stroke-width="11"/>
+    <use id="farFoot" href="#footShape" fill="#d2862b" stroke="#a8641a" stroke-width="1.5"/>
+  </g>
+
+  <!-- 自行车 -->
+  <g id="bike">
+    <use id="rearWheel" href="#wheel"/>
+    <use id="frontWheel" href="#wheel"/>
+
+    <circle cx="270" cy="378" r="10" fill="none" stroke="#555" stroke-width="3"/>
+    <circle cx="370" cy="372" r="20" fill="none" stroke="#555" stroke-width="4"/>
+    <path id="chain" d="M270 368 L370 352 M370 392 L270 388" fill="none" stroke="#333" stroke-width="3.5" stroke-dasharray="4 3"/>
+
+    <g fill="none" stroke="#d9443a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M325 268 L490 268"/>
+      <path d="M498 296 L370 372"/>
+      <path d="M325 268 L370 372"/>
+      <path d="M370 372 L270 378" stroke-width="5"/>
+      <path d="M325 268 L270 378" stroke-width="5"/>
+      <path d="M490 268 L498 296"/>
+      <path d="M498 296 Q505 340 520 378" stroke-width="5"/>
+    </g>
+    <circle cx="370" cy="372" r="5" fill="#333"/>
+
+    <path d="M325 268 L323 258" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+    <path d="M298 262 Q324 248 352 260 Q352 268 342 269 L304 270 Q296 268 298 262 Z" fill="#222"/>
+
+    <path d="M490 268 L486 248 L468 245" fill="none" stroke="#333" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="466" cy="245" r="5.5" fill="#1f1f1f"/>
+  </g>
+
+  <!-- 鹈鹕 -->
+  <g id="rider">
+    <path d="M380 198 C410 182 440 176 452 136" fill="none" stroke="#cfcfcf" stroke-width="33" stroke-linecap="round"/>
+    <path d="M380 198 C410 182 440 176 452 136" fill="none" stroke="#fff" stroke-width="29" stroke-linecap="round"/>
+
+    <path d="M286 206 L246 184 L260 210 L236 206 L262 224 L284 226 Z" fill="#f6f6f6" stroke="#cfcfcf" stroke-width="2" stroke-linejoin="round"/>
+
+    <ellipse cx="335" cy="218" rx="62" ry="46" transform="rotate(-12 335 218)" fill="#fff" stroke="#cfcfcf" stroke-width="2"/>
+    <ellipse cx="342" cy="236" rx="42" ry="20" transform="rotate(-12 342 236)" fill="#f0f0f0"/>
+
+    <path d="M298 198 C322 168 384 174 400 206 C372 216 330 214 298 198 Z" fill="#ececec" stroke="#cfcfcf" stroke-width="2"/>
+    <path d="M318 196 C340 186 370 188 392 204 M312 203 C336 196 364 198 388 210" fill="none" stroke="#d8d8d8" stroke-width="1.5"/>
+
+    <g id="head">
+      <circle cx="455" cy="125" r="25" fill="#fff" stroke="#cfcfcf" stroke-width="2"/>
+      <g id="pouch">
+        <path d="M474 128 L598 146 Q576 186 530 181 Q490 177 474 130 Z" fill="#ea9a5e" stroke="#c4733d" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M490 150 Q530 172 580 152" fill="none" stroke="#d98447" stroke-width="1.2"/>
+      </g>
+      <path d="M472 110 L596 134 Q607 140 598 149 L474 129 Z" fill="#f5b942" stroke="#c98a1c" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M478 116 L590 138" stroke="#e0a030" stroke-width="1"/>
+      <circle cx="466" cy="116" r="9" fill="#fde9c9"/>
+      <circle cx="467" cy="115" r="5.5" fill="#222"/>
+      <circle cx="469" cy="113" r="1.8" fill="#fff"/>
+      <path d="M430 116 Q454 78 481 104 L480 110 Q455 90 433 122 Z" fill="#e04b4b"/>
+      <path d="M472 102 L504 108 L502 114 L473 110 Z" fill="#c23b3b"/>
+    </g>
+
+    <path d="M362 190 C402 186 448 214 478 238 Q486 248 474 256 Q462 252 456 244 C424 234 390 230 356 222 Z" fill="#fff" stroke="#cfcfcf" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M375 198 C410 200 440 218 462 236 M372 208 C404 208 434 224 455 242" fill="none" stroke="#dcdcdc" stroke-width="1.5"/>
+  </g>
+
+  <!-- 近侧曲柄与腿（在身体前方） -->
+  <path id="nearCrank" fill="none" stroke="#444" stroke-width="5" stroke-linecap="round"/>
+  <g id="nearPedal"><rect x="-11" y="-3" width="22" height="6" rx="1.5" fill="#1f1f1f"/></g>
+  <g stroke="#f2a23a" stroke-linecap="round" fill="none">
+    <path id="nearThigh" stroke-width="15"/>
+    <path id="nearShin" stroke-width="11"/>
+    <use id="nearFoot" href="#footShape" fill="#f2a23a" stroke="#c47a18" stroke-width="1.5"/>
+  </g>
+</svg>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+
+  const BB = { x: 370, y: 372 };
+  const HIP = { x: 345, y: 262 };
+  const CRANK_R = 30, WHEEL_R = 52, THIGH = 75, SHIN = 75;
+  const SPEED = 130;
+
+  const rear = $('rearWheel'), front = $('frontWheel');
+  const roadLine = $('roadLine'), chain = $('chain');
+  const rider = $('rider'), head = $('head'), pouch = $('pouch');
+  const layers = [
+    [$('clouds'), 0.08],
+    [$('hillsFar'), 0.2],
+    [$('hillsNear'), 0.35],
+    [$('trees'), 0.6]
+  ];
+
+  function solveKnee(hip, ankle) {
+    const dx = ankle.x - hip.x, dy = ankle.y - hip.y;
+    const d = Math.min(Math.max(Math.hypot(dx, dy), Math.abs(THIGH - SHIN) + 0.01), THIGH + SHIN - 0.01);
+    const base = Math.atan2(dy, dx);
+    const a = Math.acos((THIGH * THIGH + d * d - SHIN * SHIN) / (2 * THIGH * d));
+    const k1 = { x: hip.x + THIGH * Math.cos(base - a), y: hip.y + THIGH * Math.sin(base - a) };
+    const k2 = { x: hip.x + THIGH * Math.cos(base + a), y: hip.y + THIGH * Math.sin(base + a) };
+    return k1.x > k2.x ? k1 : k2;
+  }
+
+  function updateLeg(prefix, ang, hipY) {
+    const pedal = { x: BB.x + CRANK_R * Math.cos(ang), y: BB.y + CRANK_R * Math.sin(ang) };
+    const ankle = { x: pedal.x - 4, y: pedal.y - 8 };
+    const hip = { x: HIP.x, y: hipY };
+    const knee = solveKnee(hip, ankle);
+    $(prefix + 'Thigh').setAttribute('d', `M${hip.x} ${hip.y} L${knee.x} ${knee.y}`);
+    $(prefix + 'Shin').setAttribute('d', `M${knee.x} ${knee.y} L${ankle.x} ${ankle.y}`);
+    $(prefix + 'Foot').setAttribute('transform', `translate(${pedal.x} ${pedal.y})`);
+    $(prefix + 'Crank').setAttribute('d', `M${BB.x} ${BB.y} L${pedal.x} ${pedal.y}`);
+    $(prefix + 'Pedal').setAttribute('transform', `translate(${pedal.x} ${pedal.y})`);
+  }
+
+  let dist = 0, last = null;
+
+  function frame(t) {
+    if (last === null) last = t;
+    const dt = Math.min((t - last) / 1000, 0.05);
+    last = t;
+    dist += SPEED * dt;
+
+    const wheelAng = dist / WHEEL_R;
+    const crankAng = wheelAng / 2;
+    const deg = wheelAng * 180 / Math.PI;
+    rear.setAttribute('transform', `translate(270 378) rotate(${deg})`);
+    front.setAttribute('transform', `translate(520 378) rotate(${deg})`);
+
+    for (const [el, f] of layers) {
+      el.setAttribute('transform', `translate(${-((dist * f) % 900)} 0)`);
+    }
+    roadLine.setAttribute('stroke-dashoffset', dist);
+    chain.setAttribute('stroke-dashoffset', -crankAng * 20);
+
+    const bob = Math.sin(crankAng * 2) * 1.8;
+    rider.setAttribute('transform', `translate(0 ${bob})`);
+    head.setAttribute('transform', `rotate(${Math.sin(crankAng * 2 + 0.6) * 2.5} 452 134)`);
+    const pouchScale = 1 + Math.sin(crankAng * 2 + 1.2) * 0.06;
+    pouch.setAttribute('transform', `translate(474 128) scale(1 ${pouchScale}) translate(-474 -128)`);
+
+    updateLeg('near', crankAng, HIP.y + bob);
+    updateLeg('far', crankAng + Math.PI, HIP.y + bob);
+
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
