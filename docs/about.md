@@ -62,6 +62,10 @@ Pelican Lab 以鹈鹕测试展区为首页：用同一条提示词，观察不�
 
 > 这里说明哪些知识被修正、依据是什么，以及哪些内容仍保留历史资料口径。复核日期只覆盖列出的范围；网页能访问、文章结构完整或刚刚发布，都不等于其中每一个事实已重新验证。
 
+### 2026-10-24：鹈鹕测试新增 Kimi、DeepSeek 与 QwenWork 作品
+
+[鹈鹕测试](/?model=deepseek-v4-pro-0813,kimi-k2.8-preview,kimi-k3.1-pro,qwenwork-pro,qwenwork-standard,qwenwork-ultimate&effort=high,max) 新增 `deepseek-v4-pro-0813 / max`、`kimi-k2.8-preview / max`、`kimi-k3.1-pro / max`、`qwenwork-pro / high`、`qwenwork-standard / high` 与 `qwenwork-ultimate / high`，现有 33 个作品、26 个模型。原始 HTML 按字节保留并可下载；六份作品均为内联 SVG，隔离预览不依赖外网。测试时间未知，收录日期不作为测试时间。
+
 ### 2026-10-23：鹈鹕测试成为首页，知识体系迁至 /knowledge/
 
 站点首页改为[鹈鹕测试](/)展区，顶部右上角保留单个[知识体系](/knowledge/)入口；知识首页迁至 `/knowledge/`，知识侧栏、面包屑和搜索摘要同步调整。云、AI、软件研发、游戏行业与技术编年史的文章地址保持不变；旧 `/playground/pelican/` 跳转到首页并保留筛选参数。本次只调整站点信息架构，不更新技术内容的复核日期。

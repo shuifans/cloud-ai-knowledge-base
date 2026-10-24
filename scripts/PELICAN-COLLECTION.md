@@ -28,3 +28,5 @@
 第六批于 2026-10-19 收录 `qoder-fast-1019 / default`、`qoder-efficient-1019 / default` 与 `qoder-ultimate-1019 / xhigh`。fast 与 efficient 的参考视口为 1280 × 800，ultimate 为 1280 × 1029，以便页脚完整显示。三份原作没有外链脚本或样式，直接使用原始归档预览。`default` 不表示推理强度。
 
 第七批于 2026-10-20 收录 `mimo-v2.6-pro / default`、`step5-preview / high` 与 `minimax-m3.1-flash / default`，参考视口均为 1280 × 800。三份原作没有外链脚本或样式，页面在该视口内完整展示，直接使用原始归档预览。`mimo-v2.6-pro` 与 `minimax-m3.1-flash` 的源文件名末段属于模型名，导入副本补上 `default`，HTML 字节不变。源文件 `pelican-bicycle-mimimax-m3.1-flash.html` 按模型名 `minimax-m3.1-flash` 收录。`default` 不表示推理强度。
+
+第八批于 2026-10-24 收录 `deepseek-v4-pro-0813 / max`、`kimi-k2.8-preview / max`、`kimi-k3.1-pro / max`、`qwenwork-pro / high`、`qwenwork-standard / high` 与 `qwenwork-ultimate / high`。除 `qwenwork-standard` 的参考视口为 1280 × 1028 外，其余均为 1280 × 800；加高用于完整展示页面自身的内容区域。六份原作没有外链脚本或样式，直接使用原始归档预览。
